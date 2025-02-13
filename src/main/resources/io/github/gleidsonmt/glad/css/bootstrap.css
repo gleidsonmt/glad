@@ -1,0 +1,59 @@
+
+/** @height **/
+
+.btn-small {
+    -fx-min-height: 32px;
+    -fx-pref-height: 32px;
+}
+
+.btn-regular, .button {
+    -fx-min-height: 40px;
+    -fx-pref-height: 40px;
+}
+
+.btn-large {
+    -fx-min-height: 52px;
+    -fx-pref-height: 52px;
+}
+
+.btn-gray {
+    -fx-background-color: -fx-background;
+    -fx-border-color: -light-gray-2;
+    -fx-border-width: 2px;
+    -fx-border-insets: 0px;
+    -fx-background-insets: 0px;
+}
+
+.btn-gray .text,
+.btn-gray .icon {
+    -fx-fill: -text-color;
+    -fx-font-weight: normal;
+}
+
+/* @ Text */
+
+.text-white {
+    -fx-fill: white;
+}
+
+.text-black {
+    -fx-fill: white;
+}
+
+/* @ Region */
+
+.bg-white {
+    -fx-background-color: white;
+}
+
+.bg-black {
+    -fx-background-color: black;
+}
+
+.bg-elegant {
+    -fx-background-color: -elegant;
+}
+
+.bg-cyan {
+    -fx-background-color: -cyan;
+}

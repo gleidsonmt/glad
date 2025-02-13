@@ -1,0 +1,13 @@
+.avatar-crop-container {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-padding: 20px;
+
+
+}
+
+.avatar-crop-container .picture-select-scroll {
+    -fx-vbar-policy : never;
+    -fx-hbar-policy : never;
+}
+

@@ -1,0 +1,87 @@
+/*
+    Created on : 20/10/224, 08:00:15
+    Author     : Gleidson Neves da Silveira
+    Context Menu
+*/
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 0px; /* 4 1 8 1 */
+    -fx-effect: none;
+    -fx-border-color: -medium-gray;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.menu-item .text {
+    -fx-font-size: 12px;
+}
+
+.menu-item {
+    -fx-padding: 8px 15px 8px 15px;
+    -fx-border-insets:0px;
+    -fx-background-insets:0px;
+}
+
+.menu-item .label {
+    -fx-padding: 4px;
+    -fx-graphic-text-gap: 30px;
+}
+
+.menu-item  {
+    -fx-graphic-text-gap: 30px;
+    -fx-border-width: 1px;
+     -fx-border-color: transparent;
+     -fx-cursor: hand;
+}
+
+.menu-item:focused,
+.menu-item:hover {
+    -fx-background-color: -light-gray;
+    -fx-border-color: -medium-gray;
+}
+
+.menu-item:hover .text {
+    -fx-fill: -dark-gray-2;
+}
+
+.menu-item-first {
+    -fx-border-color: transparent;
+}
+
+.menu-item-first:hover {
+    -fx-border-color: transparent transparent -medium-gray transparent;
+}
+.menu-item-last {
+    -fx-border-color: transparent;
+}
+
+.menu-item-last:hover {
+    -fx-border-color: -medium-gray transparent transparent transparent;
+}
+
+.combo-box-base {
+    -fx-background-color: transparent;
+    -fx-border-color: -medium-gray;
+    -fx-border-radius: 5px;
+}
+
+.combo-box > .list-cell {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-pref-height: 30px;
+}
+.combo-box-base > .arrow-button {
+    -fx-background-radius: 0 3 3 0, 0 2 2 0, 0 1 1 0;
+    -fx-padding: 0.5em 0.667em 0.5em 0.833333em; /* 6 8 6 10 */
+    -fx-background-color: transparent;
+}
+
+.arrow {
+    -fx-rotate: 90;
+    -fx-padding: 5px 3px 5px 3px ;
+    -fx-shape: "M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z";
+}
+

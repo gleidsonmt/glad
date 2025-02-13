@@ -1,0 +1,73 @@
+/*
+    Created on : 01/02/2024
+    Author     : Gleidson Neves da Silveira
+    v. 1.0
+*/
+
+.text-10, .btn-small, .text-small, .text-small  .text {
+  -fx-font-size : 10px;
+}
+
+.text-12, .h6, .h6  .text {
+    -fx-font-size : 12px;
+}
+
+.text-14, .h5, .h5 .text {
+  -fx-font-size : 14px;
+}
+
+.text-18, .text-18  .text, .h4, .h4 .text {
+  -fx-font-size : 18px;
+}
+
+.text-20, .text-20  .text {
+  -fx-font-size : 20px;
+}
+
+.text-22, .text-22  .text {
+  -fx-font-size : 22px;
+}
+
+.text-24, .text-24  .text, .h3, .h3 .label .text {
+  -fx-font-size : 24px;
+}
+
+.text-30, .h2, .h2 .text, .h2 .label .text {
+  -fx-font-size : 30px;
+}
+
+.text-34, .text-34 .text {
+  -fx-font-size : 34px;
+}
+
+.text-36, .h1, .h1  .text {
+  -fx-font-size : 36px;
+}
+
+.text-accent:hover .text,
+.text-accent:hover:focused .text,
+.text-accent:focused .text,
+.text-accent .text,
+.text-accent {
+    -fx-text-fill: -fx-accent;
+    -fx-fill: -fx-accent;
+    -text-color: -fx-accent;
+}
+
+.bold {
+    -fx-font-weight: bold;
+    -fx-text-fill: -dark-gray-2;
+    -fx-fill: -dark-gray-2;
+}
+
+.bolder {
+    -fx-font-weight: bolder;
+    -fx-text-fill: -dark-gray-2;
+    -fx-fill: -dark-gray-2;
+}
+
+.text-accent, .text-accent .text {
+    -fx-text-fill: -fx-accent;
+    -fx-fill: -fx-accent;
+}
+

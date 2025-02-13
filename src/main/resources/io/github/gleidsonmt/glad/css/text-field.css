@@ -1,0 +1,51 @@
+
+.text-field {
+    -fx-text-fill: -text-color;
+    -fx-background-color: -fx-background;
+    -fx-border-color: -light-gray-2;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-pref-height: 40px;
+    -fx-min-height: 40px;
+    -fx-padding: 0px 5px 0px 5px;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-field:hover {
+    -fx-background-color: transparent;
+}
+
+.text-field:focused .text {
+    -fx-fill: -fx-accent;
+}
+
+.text-field:focused:hover,
+.text-field:focused {
+    -fx-border-color: -fx-accent;
+}
+
+.text-field:readonly:hover,
+.text-field:readonly:focused,
+.text-field:readonly:focused:hover,
+.text-field:readonly {
+    -fx-border-color: transparent;
+}
+
+.text-field-error:focused,
+.text-field-error {
+    -fx-accent: -red-700;
+    -fx-border-color: -fx-accent;
+}
+
+.inside-text-field:focused,
+.inside-text-field:hover,
+.inside-text-field:focused:hover,
+.inside-text-field {
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+

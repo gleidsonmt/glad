@@ -1,0 +1,115 @@
+/* @CheckBox */
+
+.check-box:selected:determinate .box .mark,
+.check-box:selected:determinate:hover .box .mark,
+.check-box:indeterminate:hover .box .mark,
+.check-box:indeterminate .box .mark
+{
+    -fx-background-color : white;
+}
+
+.check-box:determinate:hover .box .mark,
+.check-box:indeterminate:hover .box .mark
+{
+    -fx-background-color : -fx-accent;
+}
+
+.check-box {
+    -fx-cursor: hand;
+    -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
+}
+
+.check-box,
+.radio-button
+{
+  -fx-text-fill : gray;
+  -fx-background-color : transparent;
+}
+
+.check-box:hover .box,
+.check-box .box {
+    -fx-background-color : white;
+   -fx-border-style : solid inside;
+    -fx-padding: 2px;
+    -fx-min-height: 40px;
+    -fx-pref-height: 21px;
+    -fx-pref-width: 21px;
+    -fx-background-radius : 5px;
+    -fx-border-radius : 5px;
+    -fx-border-width : 1px;
+}
+
+.check-box:determinate .box {
+    -fx-border-color : -fx-accent;
+    -fx-border-width : 2px;
+    -fx-border-radius : 0px;
+}
+
+.check-box:indeterminate .box, .check-box:hover:determinate .box,
+.check-box:selected:determinate .box
+{
+  -fx-border-width : 2px;
+  -fx-border-color : -fx-accent;
+}
+
+.check-box:determinate .box
+{
+  -fx-border-color : derive(gray, -10%);
+}
+
+
+.check-box:indeterminate .box,
+.check-box:determinate .box
+{
+    -fx-border-radius : 2px;
+}
+
+.check-box:determinate:selected .box {
+  -fx-background-color : -fx-accent;
+
+}
+
+.check-box .box .mark
+{
+  -fx-shape : "M9.005,17.766l13.759,14.739h1.716L49.02,0l10.298,8.488L25.997,50.453h-3.629L0,26.897L9.005,17.766z";
+}
+
+.check-circle:selected .box,
+.check-circle .box {
+    -fx-border-radius : 100px;
+}
+
+.check-circle:indeterminate .box,
+.check-circle:determinate .box
+{
+    -fx-padding: 4px;
+    -fx-border-radius : 100px;
+    -fx-pref-height: 25px;
+    -fx-max-height: 25px;
+    -fx-pref-width: 25px;
+    -fx-max-width: 25px;
+}
+
+.check-circle:determinate .box {
+    -fx-border-color : -fx-accent;
+    -fx-border-width : 2px;
+    -fx-border-radius : 100px;
+}
+
+.check-circle:hover .box,
+.check-circle .box {
+    -fx-background-radius : 100px;
+    -fx-border-radius : 100px;
+    -fx-border-width : 1px;
+    -fx-cursor: hand;
+    -fx-background-insets: 1px;
+}
+
+.check-circle .box .mark
+{
+}
+
+.check-circle:determinate .box
+{
+  -fx-border-color : derive(gray, -10%);
+}

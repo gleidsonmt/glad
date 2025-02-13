@@ -1,0 +1,43 @@
+/* -------------- STYLES FOR THE DEFAULT LISTVIEW-BASED COMBOBOX ------------- */
+
+.popup {
+    -fx-border-radius: 100px;
+    -fx-background-radius: 10px;
+        -fx-background-insets: 100px;
+}
+
+.combo-box-popup {
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.combo-box-popup > .list-view {
+    -fx-background-color: white;
+    -fx-border-width: 1px;
+    -fx-border-color: -medium-gray;
+    -fx-border-radius: 0px 0px 5px 5px;
+    -fx-background-insets: 0px;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.1) , 12, 0.0 , 0 , 1 );
+}
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-padding: 8px;
+    /* No alternate highlighting */
+    -fx-background: -fx-control-inner-background;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
+    -fx-background: red;
+    -fx-background-color: -light-gray;
+}
+.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover .text,
+.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected .text {
+    -fx-font-weight: bolder;
+}
+.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
+.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
+    -fx-background: red;
+    -fx-background-color: -light-gray;
+    -fx-background-insets: 0px;
+}
+.combo-box-popup > .list-view > .placeholder > .label {
+    -fx-text-fill: -text-color;
+}

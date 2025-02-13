@@ -1,0 +1,22 @@
+.alert .button {
+    -fx-accent: -fx-alert-accent-color;
+}
+
+.alert-info .alert-title,
+.alert-warn .alert-title,
+.alert-success .alert-title,
+.alert-error .alert-title {
+    -fx-fill: -fx-alert-accent-color;
+    -fx-font-size: 24pt;
+}
+
+.block-error {
+    -fx-background-color: derive(-fx-alert-accent-color, 120%);
+    -fx-border-width:  0px 0px 0px 2px;
+    -fx-border-color:  -fx-alert-accent-color;
+    -fx-padding: 20px;
+}
+
+.block-error > Text {
+    -fx-fill:  derive(-fx-alert-accent-color, -20%);
+}
