@@ -25,6 +25,12 @@ public class WrapperImpl implements Wrapper {
     public WrapperImpl(Root root) {
         this.root = root;
         this.foreground = new StackPane();
+
+        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> {
+            root.behavior().closeDrawer();
+            root.behavior().closeAside();
+        });
+
     }
 
     @Override

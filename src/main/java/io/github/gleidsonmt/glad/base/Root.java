@@ -4,6 +4,9 @@ package io.github.gleidsonmt.glad.base;
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -12,9 +15,12 @@ import javafx.scene.layout.StackPane;
  */
 public class Root extends StackPane {
 
-    private final Behavior behavior;
+    private final BehaviorImpl behavior;
     private final Flow flow;
     private final Wrapper wrapper;
+
+    // Breakpoint, use to change the layout to phone or bigger
+    private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
 
     public Root(Container container) {
         this.flow = new FlowImpl(this);
@@ -33,5 +39,28 @@ public class Root extends StackPane {
 
     public Behavior behavior() {
         return this.behavior;
+    }
+
+    /**
+     * Get in which width the view will change to phone size.
+     * @return The width.
+     */
+    public double getBreakpoint() {
+        return breakpoint.get();
+    }
+
+    /**
+     * Set in which width the view will change to phone size.
+     */
+    public void setBreakpoint(double breakpoint) {
+        this.breakpoint.set(breakpoint);
+    }
+
+    public DoubleProperty breakpointProperty() {
+        return this.breakpoint;
+    }
+
+    public ObjectProperty<Size> sizeProperty() {
+        return this.behavior.sizeProperty();
     }
 }

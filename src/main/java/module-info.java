@@ -13,4 +13,5 @@ module io.github.gleidsonmt.glad {
     opens io.github.gleidsonmt.glad.base.internal to javafx.fxml;
     exports io.github.gleidsonmt.glad.base.internal;
     exports io.github.gleidsonmt.glad.responsive_grid;
+    exports io.github.gleidsonmt.glad.demos;
 }

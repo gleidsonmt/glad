@@ -1,7 +1,10 @@
 plugins {
   id 'java'
+  id 'java-library'
   id 'org.javamodularity.moduleplugin' version '1.8.12'
   id 'org.openjfx.javafxplugin' version '0.0.13'
+  id 'org.beryx.jlink' version '2.25.0'
+  id 'application'
 }
 
 group 'io.github.gleidsonmt'
@@ -18,6 +21,12 @@ ext {
 tasks.withType(JavaCompile).configureEach {
   options.encoding = 'UTF-8'
 }
+
+application {
+  mainModule = 'io.github.gleidsonmt.glad'
+  mainClass = 'io.github.gleidsonmt.glad.demos.DashDrawerToNavBar'
+}
+
 
 javafx {
   version = '17.0.6'
