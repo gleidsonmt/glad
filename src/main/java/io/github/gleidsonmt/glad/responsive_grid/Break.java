@@ -1,10 +1,13 @@
 package io.github.gleidsonmt.glad.responsive_grid;
 
+import io.github.gleidsonmt.glad.responsive_grid.sizer.Size;
+import org.jetbrains.annotations.Contract;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/09/2024
  */
-public enum Break {
+public enum Break implements Size {
 
     SM(640),
     MD(768),
@@ -12,7 +15,6 @@ public enum Break {
     XL(1280),
     XXL(1536),
     WIDE(2560),
-    ALL(0)
     ;
 
     private final double size;
@@ -21,7 +23,8 @@ public enum Break {
         this.size = size;
     }
 
-    public double getSize() {
+    @Contract(pure = true)
+    public double getMax() {
         return size;
     }
 
