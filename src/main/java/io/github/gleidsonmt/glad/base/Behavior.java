@@ -1,6 +1,5 @@
 package io.github.gleidsonmt.glad.base;
 
-import javafx.beans.property.BooleanProperty;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

@@ -6,6 +6,7 @@ package io.github.gleidsonmt.glad.theme;
  */
 public enum Css {
 
+    TABLE_VIEW("table-view.css"),
     HYPERLINK("hyperlink.css"),
     CONTEXT_MENU("context-menu.css"),
     COMBO_BOX("combo-box.css"),

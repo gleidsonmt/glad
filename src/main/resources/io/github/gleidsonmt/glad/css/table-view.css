@@ -1,0 +1,231 @@
+
+ .table-view,
+ .tree-table-view,
+ .tree-view {
+   -fx-fixed-cell-size : 45px;
+   -fx-border-radius: 5px;
+   -fx-border-width: 2px;
+   -fx-effect: none;
+   -fx-faint-focus-color: transparent;
+   -fx-focus-color: transparent;
+   -fx-padding: 4px;
+
+   -fx-background-color : -fx-background;
+
+ }
+
+ .table-view {
+     -fx-border-color : transparent;
+     -fx-border-radius: 5px;
+     -fx-border-color : -medium-gray;
+
+ }
+
+  .table-view .virtual-flow .scroll-bar:horizontal {
+      visibility : false;
+     -fx-opacity : 1;
+     -fx-padding : 0px;
+     -fx-max-height : 0px;
+     -fx-pref-height : 0px;
+     -fx-min-height : 0px;
+  }
+
+ .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .table-column SVGPath,
+ .table-view .column-header-background .nested-column-header .table-column SVGPath {
+     -fx-fill : -dark-gray;
+ }
+
+ .table-view .column-header-background .nested-column-header .table-column,
+ .table-view .column-header-background,
+ .tree-table-view .column-header-background
+ {
+   -fx-padding : 10px 2px 10px 2px;
+   -fx-background-color : transparent;
+ }
+
+ .table-view .column-header-background .filler,
+ .tree-table-view .column-header-background .filler,
+ .table-view .column-header-background .show-hide-columns-button,
+ .tree-table-view .column-header-background .nested-column-header .table-column
+ {
+     -fx-background-color : transparent;
+ }
+
+ .table-view,
+ .tree-view,
+ .tree-table-view
+ {
+   -fx-faint-focus-color : transparent;
+   -fx-focus-color : transparent;
+ }
+
+ .tree-table-view:focused,
+ .tree-view:focused,
+ .table-view:focused
+ {
+   -fx-border-color : -fx-accent;
+ }
+
+ .tree-table-view .column-header-background .nested-column-header .table-column .label,
+ .table-view .column-header-background .nested-column-header .table-column .label {
+     -fx-alignment: center_left;
+ }
+
+ .tree-table-row-cell:filled:odd,
+ .table-row-cell:filled:odd
+ {
+   -fx-background-color : transparent;
+   -fx-border-color : transparent;
+     -fx-alignment: center_left;
+ }
+
+ .tree-table-row-cell:filled:selected .table-column .text,
+ .table-row-cell:filled:selected .table-column .text,
+ .table-row-cell:filled:selected:focused,
+ .tree-table-row-cell:filled:selected:focused,
+ .tree-cell:selected:focused
+ {
+   /* -fx-background-color : derive(-light-gray, 20%); */
+   -fx-border-color : transparent;
+ }
+
+ .tree-table-row-cell:filled:hover .table-column,
+ .table-row-cell:filled:hover .table-column {
+     -fx-background-color: derive(-light-gray-2, 50%);
+ }
+
+ .table-row-cell:filled:selected .table-column,
+ .tree-table-row-cell:filled:selected .table-column,
+ .tree-cell:filled:focused
+ {
+     -fx-background-color: derive(-fx-accent, 120%);
+ }
+
+
+
+ .table-view .arrow,
+ .tree-cell .arrow {
+     -fx-background-color: -text-color;
+     -fx-shape: "M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z";
+     -fx-padding: 4px 6px 4px 6px;
+ }
+
+ .tree-table-row-cell:filled:selected .table-column .button .text,
+ .table-row-cell:filled:selected .table-column .button .text {
+     -fx-fill : -text-color;
+ }
+
+ .tree-table-row-cell:filled:selected .table-column .text,
+ .table-row-cell:filled:selected .table-column .text
+ {
+   -fx-fill : -fx-accent;
+   -fx-font-weight: bold;
+ }
+
+ .table-row-cell:filled .table-column {
+ }
+
+ .tree-table-row-cell:filled .table-column .text,
+ .table-row-cell:filled .table-column .text
+ {
+   -fx-fill : -text-color;
+ }
+
+ .tree-table-view .text,
+ .tree-view .text {
+     -fx-fill: -text-color;
+ }
+
+ .table-row-cell,
+ .tree-table-row-cell,
+ .tree-cell
+ {
+   -fx-text-color : -text-color;
+   /* -fx-background-color : derive(-light-gray, 20%); */
+   -fx-background-color : transparent;
+   -fx-border-color : transparent;
+ }
+
+ .table-row-cell:filled .hyperlink .text {
+     -fx-fill : -fx-accent;
+ }
+
+ .table-row-cell:selected .tooltip,
+ .table-row-cell:filled:hover .tooltip {
+     -fx-font-size : 10pt;
+     -fx-background-color : -dark-gray;
+     -fx-font-weight : bold;
+
+     -fx-effect: dropshadow( gaussian , rgba(0,0,0,.01) , 10, 0 , 0 , 1 );
+ }
+
+ .table-row-cell:filled:hover .tooltip .text
+ {
+   -fx-fill : white;
+ }
+
+ .tree-table-view .tree-table-row-cell,
+ .table-view .table-row-cell {
+     -fx-border-width: 0px;
+ }
+
+ .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell:filled .table-column:filled,
+ .table-view .virtual-flow .clipped-container .sheet .table-row-cell:filled .table-column:filled {
+     -fx-border-width : 1px 0px 1px 0px;
+     -fx-border-color: -light-gray;
+ }
+
+ .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .table-column,
+ .table-view .virtual-flow .clipped-container .sheet .table-row-cell .table-column {
+     -fx-border-width : 0px;
+ }
+
+ .tree-table-view .tree-table-cell,
+ .table-view .table-cell {
+     -fx-alignment: center_left;
+ }
+
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell,
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-cell,
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-cell
+{
+    -fx-min-height: 30px;
+    -fx-gray-text-gap: 30px;
+}
+
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-cell .tree-disclosure-node,
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .tree-disclosure-node,
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell .tree-disclosure-node
+{
+    -fx-padding: 20px 10px 20px 10px;
+    -fx-pref-height: 40px;
+}
+
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .tree-disclosure-node .arrow
+{
+    -fx-background-color: -text-color;
+}
+
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell
+{
+    -fx-alignment: top_left;
+    -fx-content-display: right;
+    -fx-background-insets: 0px;
+}
+
+ .presentation-table,
+ .presentation-table:focused
+ {
+    -fx-border-color: transparent;
+ }
+
+ .presentation-table .table-row-cell:filled:hover .table-column {
+     -fx-background-color: transparent;
+ }
+.presentation-table .table-row-cell:filled:selected,
+.presentation-table .table-row-cell:filled:focused:selected,
+.presentation-table .table-row-cell:filled:focused:selected .table-column,
+.presentation-table .table-row-cell:filled:focus .table-column {
+  -fx-background-color: transparent;
+}

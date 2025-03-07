@@ -1,6 +1,6 @@
-package io.github.gleidsonmt.glad.responsive_grid;
+package io.github.gleidsonmt.glad.responsive;
 
-import io.github.gleidsonmt.glad.responsive_grid.sizer.Sizer;
+import io.github.gleidsonmt.glad.responsive.sizer.Sizer;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
 import org.jetbrains.annotations.ApiStatus;
@@ -53,4 +53,5 @@ public class ResponsiveGrid extends GridPane implements Actionable<Break> {
     public void addPoints(BreakPoint... points) {
         this.points.addAll(Arrays.stream(points).toList());
     }
+
 }

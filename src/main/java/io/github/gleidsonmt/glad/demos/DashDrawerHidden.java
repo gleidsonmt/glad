@@ -2,16 +2,15 @@ package io.github.gleidsonmt.glad.demos;
 
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.Size;
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.glad.responsive.Break;
+import io.github.gleidsonmt.glad.responsive.sizer.Sizer;
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,29 +30,34 @@ public class DashDrawerHidden extends Application {
         drawer.setStyle("-fx-background-color: white");
 
         Container container = new Container();
-        Button hamb = new Button("→__→");
+
+        Button hamb = new Button();
+        hamb.setGraphic(new SVGIcon(Icon.MENU));
 
         container.setLeft(drawer);
-        container.setCenter(new StackPane(new Label("Welcome, Resize this stage.")));
+        container.updateView(new StackPane(new Label("Welcome, Resize this stage.")));
 
         Root root = new Root(container);
-        root.setBreakpoint(800);
 
         hamb.setOnAction(e -> {
             root.behavior().openDrawer();
         });
 
-        root.sizeProperty().addListener((observableValue, size, newValue) -> {
-            System.out.println("newValue = " + newValue);
-            if (newValue == Size.PHONE) {
-                container.setTop(hamb);
-            } else {
-                container.setTop(null);
+        new Sizer<>(root, Break.values()) {
+            @Override
+            public void change(Break aBreak) {
+                if (aBreak == Break.SM) {
+                    container.setTop(hamb);
+                    container.setLeft(null);
+                } else {
+                    container.setLeft(drawer);
+                    container.setTop(null);
+                    root.wrapper().close();
+                }
             }
-        });
+        };
 
-
-        stage.setScene(new Scene(root, 800,600));
+        stage.setScene(new Scene(root, 800, 600));
         stage.show();
     }
 

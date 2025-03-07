@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.responsive_grid;
+package io.github.gleidsonmt.glad.responsive;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,4 +32,11 @@ public final class BreakPoint {
         return eventHandler;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("BreakPoint{");
+        sb.append("\n\tbreaks=").append(listBreaks);
+        sb.append("\n}");
+        return sb.toString();
+    }
 }

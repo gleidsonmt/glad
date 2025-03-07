@@ -1,0 +1,10 @@
+[java]
+Button button = new Button("Hello World!");
+// Setting graphic/icon
+button.setGraphic(node);
+[css]
+.button {
+
+}
+[fxml]
+<button>Hello World</button>

@@ -1,0 +1,23 @@
+[java]
+import javafx. scene. text.*;
+
+Text t = new Text(10, 50, "This is a test");
+t. setFont(new Font(20));
+import javafx. scene. text.*;
+
+Text t = new Text();
+text. setFont(new Font(20));
+text. setText("First row\nSecond row");
+import javafx. scene. text.*;
+
+Text t = new Text();
+text. setFont(new Font(20));
+text. setWrappingWidth(200);
+text. setTextAlignment(TextAlignment. JUSTIFY)
+text. setText("The quick brown fox jumps over the lazy dog");
+[css]
+.button {
+
+}
+[fxml]
+<button>Hello World</button>

@@ -1,6 +1,6 @@
 
-## Base
-### Initalizing
+## Understanding
+### Initializing
 ```java
     ..
 public void Start(Stage stage) {
@@ -18,9 +18,19 @@ public void Start(Stage stage) {
 
 ## The api
 ### Behavior
+### With behavior you can use execute the common actions in dashboards.
+```java
+    // Open drawer
+    root.behavior().openDrawer();
+    // Open aside
+    root.behavior().openAside();
+```
 ### Wrapper
+### The wrapper is a foreground usually gray that appears to focus.
 ### Flow
+### The Class to add node floatings.
 ### Container
+### The container(BorderPane) class is used to set a layout.
 #### Classe de layout
 
 

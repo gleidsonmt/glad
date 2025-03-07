@@ -1,6 +1,6 @@
-package io.github.gleidsonmt.glad.responsive_grid;
+package io.github.gleidsonmt.glad.responsive;
 
-import io.github.gleidsonmt.glad.responsive_grid.sizer.Size;
+import io.github.gleidsonmt.glad.responsive.sizer.Size;
 
 /**
  * Represents a single actionable class.

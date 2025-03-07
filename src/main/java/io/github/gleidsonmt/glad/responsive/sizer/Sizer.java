@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.responsive_grid.sizer;
+package io.github.gleidsonmt.glad.responsive.sizer;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -8,6 +8,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.scene.layout.Region;
 
 /**
+ * Add actions in breakpoints in scene width.
+ * It can use a custom enum implemented by Size interface
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  05/03/2025
  */
@@ -41,11 +43,11 @@ public abstract class Sizer<T extends Size> {
         if (width <= this.sizes[0].getMax()) {
             return this.sizes[0];
         }
+
         for (int i = 0; i < this.sizes.length-1;i++) {
             if (width >= this.sizes[i].getMax() && !(width >= this.sizes[i +1].getMax())) {
                 return this.sizes[i];
             }
-
         }
         return null;
     }
@@ -54,11 +56,10 @@ public abstract class Sizer<T extends Size> {
         T act = getSize(newValue.doubleValue());
         if (size.get() == null || size.get() != act) {
             size.set(act);
-            change(act);
-            if (log.get()) {
-                assert act != null;
+            if (this.log.get()) {
                 System.out.println("[ < " + act.getMax() + "] - " + act);
             }
+            change(act);
         }
     };
 

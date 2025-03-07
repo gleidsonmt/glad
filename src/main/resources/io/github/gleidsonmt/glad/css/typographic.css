@@ -4,6 +4,10 @@
     v. 1.0
 */
 
+Text, .text {
+    -fx-font-family: Poppins Regular;
+}
+
 .text-10, .btn-small, .text-small, .text-small  .text {
   -fx-font-size : 10px;
 }
@@ -70,4 +74,44 @@
     -fx-text-fill: -fx-accent;
     -fx-fill: -fx-accent;
 }
+
+.text-info, .text-info .text {
+    -fx-text-fill: -info;
+    -fx-fill: -info;
+}
+
+.text-success, .text-success .text {
+    -fx-text-fill: -success;
+    -fx-fill: -success;
+}
+
+.text-warning, .text-warning .text {
+    -fx-text-fill: -warning;
+    -fx-fill: -warning;
+}
+
+.text-danger, .text-danger .text {
+    -fx-text-fill: -danger;
+    -fx-fill: -danger;
+}
+
+.text-secondary, .text-secondary .text {
+    -fx-text-fill: -secondary;
+    -fx-fill: -secondary;
+}
+
+.text-unique, .text-unique .text {
+    -fx-text-fill: -unique;
+    -fx-fill: -unique;
+}
+
+.text-elegant, .text-elegant .text {
+    -fx-text-fill: -elegant;
+    -fx-fill: -elegant;
+}
+
+
+
+
+
 

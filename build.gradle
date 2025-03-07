@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.0.21'
+version '1.0.25'
 
 repositories {
   mavenCentral()
@@ -23,20 +23,31 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 application {
+
   mainModule = 'io.github.gleidsonmt.glad'
-  mainClass = 'io.github.gleidsonmt.glad.demos.DashDrawerToNavBar'
+  mainClass = 'io.github.gleidsonmt.glad.Start'
 }
 
 
 javafx {
   version = '17.0.6'
-  modules = ['javafx.controls', 'javafx.fxml']
+//  version = '23.0.1'
+  modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
 }
 
 dependencies {
   implementation 'org.jetbrains:annotations:24.0.1'
+  implementation fileTree('vendor') { include '*.jar' }
+  implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+
+  implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
+
+//  C:\Users\Gleidson\Desktop\blue_galaxy\presentation\build\libs;
+//  implementation files("C:/");
+
 }
 
 test {

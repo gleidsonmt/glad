@@ -21,12 +21,18 @@ public class Root extends StackPane {
 
     // Breakpoint, use to change the layout to phone or bigger
     private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
+    private final Layout container;
 
     public Root(Container container) {
+        this.container = container;
         this.flow = new FlowImpl(this);
         this.wrapper = new WrapperImpl(this);
         this.behavior = new BehaviorImpl(this, container);
         this.getChildren().add(container);
+    }
+
+    protected Container getContainer() {
+        return (Container) this.container;
     }
 
     public Flow flow() {
@@ -45,6 +51,7 @@ public class Root extends StackPane {
      * Get in which width the view will change to phone size.
      * @return The width.
      */
+    @Deprecated(forRemoval = true)
     public double getBreakpoint() {
         return breakpoint.get();
     }
@@ -52,15 +59,15 @@ public class Root extends StackPane {
     /**
      * Set in which width the view will change to phone size.
      */
+    @Deprecated(forRemoval = true)
     public void setBreakpoint(double breakpoint) {
         this.breakpoint.set(breakpoint);
     }
 
+    @Deprecated(forRemoval = true)
     public DoubleProperty breakpointProperty() {
         return this.breakpoint;
     }
 
-    public ObjectProperty<Size> sizeProperty() {
-        return this.behavior.sizeProperty();
-    }
+
 }

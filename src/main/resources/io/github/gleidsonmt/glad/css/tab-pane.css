@@ -21,9 +21,9 @@
     -fx-fill: -hover-color;
 }
 
-.tab-pane > .tab-header-area > .headers-region > .tab > .tab-container > .tab-label
+.tab-pane > .tab-header-area > .headers-region > .tab:selected > .tab-container > .tab-label
 {
-  -fx-font-weight : bold;
+
 }
 
 .tab-pane > .tab-header-area > .headers-region > .tab:selected > .tab-container > .tab-label .icon-container .icon
@@ -64,6 +64,9 @@
 .tab-pane:top .tab-header-area .headers-region .tab:selected:top {
     -fx-border-color : -fx-accent;
     -fx-border-width : 0px 0px 2px 0px;
+  -fx-font-family: "Poppins BoldItalic";
+
+
 }
 
 .tab-pane:top .tab-header-area .headers-region .tab:top {

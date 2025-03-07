@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.theme;
 
 import io.github.gleidsonmt.glad.GladResources;
+import io.github.gleidsonmt.glad.PresentationDemo;
 import javafx.scene.Parent;
 
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class ThemeProvider {
 
     public static void install(Parent parent, Font... css) {
         Arrays.stream(css).forEach(el -> {
-            parent.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("fonts/" + el.getUrl())).toExternalForm());
+            parent.getStylesheets().add(GladResources.class.getResource("fonts/" + el.getUrl()).toExternalForm());
         });
     }
 
