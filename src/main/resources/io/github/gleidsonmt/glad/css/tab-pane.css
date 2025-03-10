@@ -2,15 +2,15 @@
 {
     -fx-pref-width : 110px;
 }
-.tab-pane:top .tab-header-area .headers-region .tab .text
+.tab-pane .tab-header-area .headers-region .tab .text
 {
     -fx-fill: -text-color;
 }
-.tab-pane:top .tab-header-area .headers-region .tab:selected:top .text
+.tab-pane .tab-header-area .headers-region .tab:selected .text
 {
     -fx-fill: -fx-accent;
 }
-.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+.tab-pane .tab-header-area .headers-region .tab:selected
 {
   -fx-faint-focus-color : transparent;
   -fx-focus-color : transparent;
@@ -32,15 +32,15 @@
 }
 .tab-pane:top .tab-header-area .tab-header-background
 {
-  -fx-border-width : 0px 0px 1px 0px;
-}
-
-.tab-pane:top .tab-header-area .headers-region .tab:top
-{
   -fx-border-width : 0px 0px 2px 0px;
 }
 
-.tab-pane:top .tab-header-area .headers-region .tab:selected:top
+.tab-pane .tab-header-area .headers-region .tab
+{
+  -fx-border-width : 0px 0px 5px 0px;
+}
+
+.tab-pane .tab-header-area .headers-region .tab:selected:top
 {
   -fx-border-width : 2px 0px 2px 0px;
 }
@@ -50,28 +50,52 @@
   -fx-text-fill : -text-color;
   -fx-graphic-text-gap: 15px;
 }
-.tab-pane:top .tab-header-area .headers-region .tab:top
+.tab-pane .tab-header-area .headers-region .tab
 {
   -fx-pref-height : 40px;
 }
 
-.tab-pane:top .tab-header-area .tab-header-background {
+.tab-pane .tab-header-area .tab-header-background {
     -fx-background-color : transparent;
     -fx-border-width: 0px 0px 2px 0px;
     -fx-border-color: -light-gray;
 }
 
-.tab-pane:top .tab-header-area .headers-region .tab:selected:top {
+.tab-pane .tab-header-area .headers-region .tab:selected:top {
     -fx-border-color : -fx-accent;
     -fx-border-width : 0px 0px 2px 0px;
-  -fx-font-family: "Poppins BoldItalic";
-
-
+      -fx-font-family: "Poppins BoldItalic";
 }
 
-.tab-pane:top .tab-header-area .headers-region .tab:top {
+.tab-pane .tab-header-area .headers-region .tab {
     -fx-border-color : transparent;
     -fx-background-color : transparent;
     -fx-border-width : 0px 0px 2px 0px;
     -fx-border-radius : 2px;
+}
+
+.tab-pane .tab-header-area .headers-region .tab:bottom:selected {
+    -fx-border-width : 2px 0px 0px 0px;
+    -fx-border-color : -fx-accent;
+    -fx-background-color : transparent;
+    -fx-border-radius : 2px;
+}
+
+.tab-pane .tab-header-area .headers-region .tab:right:selected {
+    -fx-border-width : 0px 0px 2px 0px;
+    -fx-border-color : -fx-accent;
+    -fx-background-color : transparent;
+    -fx-border-radius : 2px;
+}
+
+.tab-pane .tab-header-area .headers-region .tab:left:selected {
+    -fx-border-width : 0px 0px 2px 0px;
+    -fx-border-color : -fx-accent;
+    -fx-background-color : transparent;
+    -fx-border-radius : 2px;
+}
+
+.tab-pane .tab-header-area .headers-region .tab:hover {
+    -fx-background-color: -light-gray-2;
+    -fx-cursor: hand;
 }

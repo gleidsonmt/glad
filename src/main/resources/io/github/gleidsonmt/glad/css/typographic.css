@@ -48,6 +48,10 @@ Text, .text {
   -fx-font-size : 36px;
 }
 
+.text-48, .h1, .h1  .text {
+  -fx-font-size : 48px;
+}
+
 .text-accent:hover .text,
 .text-accent:hover:focused .text,
 .text-accent:focused .text,
