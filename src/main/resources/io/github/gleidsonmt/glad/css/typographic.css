@@ -4,8 +4,9 @@
     v. 1.0
 */
 
-Text, .text {
-    -fx-font-family: Poppins Regular;
+.text {
+    -fx-font-family: "Poppins Regular";
+    -fx-fill: -text-color;
 }
 
 .text-10, .btn-small, .text-small, .text-small  .text {
@@ -113,9 +114,3 @@ Text, .text {
     -fx-text-fill: -elegant;
     -fx-fill: -elegant;
 }
-
-
-
-
-
-

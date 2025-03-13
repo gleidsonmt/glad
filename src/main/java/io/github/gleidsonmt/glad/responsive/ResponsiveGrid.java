@@ -18,11 +18,20 @@ import java.util.List;
 public class ResponsiveGrid extends GridPane implements Actionable<Break> {
 
     private final List<BreakPoint> points = new ArrayList<>();
+    private boolean log = false;
 
     public ResponsiveGrid() {
+        this(false);
+    }
+
+    public ResponsiveGrid(boolean log) {
+        this.log = log;
         new Sizer<>(this, Break.values()) {
             @Override
             public void change(Break aBreak) {
+                if (log) {
+                    System.out.println("[" + aBreak + "] = " + aBreak.getMax());
+                }
                 doAction(aBreak);
             }
         };

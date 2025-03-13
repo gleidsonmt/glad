@@ -30,7 +30,6 @@ public class Container extends BorderPane implements Layout, Actionable<Break> {
         new Sizer<>(this, Break.values()) {
             @Override
             public void change(Break aBreak) {
-                System.out.println("points = " + points);
                 doAction(aBreak);
             }
         };

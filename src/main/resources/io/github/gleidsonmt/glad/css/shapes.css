@@ -19,6 +19,10 @@
 }
 
 .rounded {
+  -fx-background-radius : 5px;
+}
+
+.semi-round {
   -fx-background-radius : 20px;
 }
 

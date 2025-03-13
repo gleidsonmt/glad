@@ -13,3 +13,7 @@
 .hyperlink:hover {
     -fx-underline:true;
 }
+
+.hyperlink .icon {
+    -fx-fill: -fx-accent;
+}

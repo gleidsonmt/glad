@@ -3,6 +3,8 @@ package io.github.gleidsonmt.glad;
 import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.responsive.Break;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
@@ -11,9 +13,11 @@ import javafx.application.Application;
 import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -26,12 +30,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        VBox box = new VBox(
-                createDemo(Side.TOP),
-                createDemo(Side.BOTTOM),
-                createDemo(Side.RIGHT),
-                createDemo(Side.LEFT)
-        );
+        VBox box = new VBox();
+
         Container container = new Container(
                 box
         );
@@ -39,6 +39,12 @@ public class App extends Application {
 
 
         Root root = new Root(container);
+
+        Label label = new Label("Welcome to javafx");
+        box.getChildren().add(label);
+        label.setGraphic(new SVGIcon(Icon.TODAY));
+        label.getStyleClass().add("lbl");
+
 
         container.addPoint(point -> {
 
@@ -48,7 +54,7 @@ public class App extends Application {
 //            System.out.println(" my point ");
 //        }, Break.SM, Break.LG);
 
-        ThemeProvider.install(root, Font.POPPINS);
+        ThemeProvider.install(root, Font.POPPINS, Font.INSTAGRAM);
         ThemeProvider.install(root,
                 Css.COLORS,
                 Css.TYPOGRAPHIC,
@@ -61,6 +67,10 @@ public class App extends Application {
                 Css.HYPERLINK,
                 Css.TABLE_VIEW
         );
+
+//        label.setStyle("-fx-font-family: \"Instagram Sans Headline\"; -fx-font-size: 22px; ");
+        label.getStyleClass().add("lbl-test");
+
         stage.setScene(new Scene(new Root(new Container(root)), 800, 600));
         stage.show();
 

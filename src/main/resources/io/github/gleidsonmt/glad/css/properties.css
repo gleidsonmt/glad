@@ -4,6 +4,98 @@
     v. 1.0
 */
 
+/* @Background */
+
+.bg-primary {
+    -fx-background-color: -primary;
+}
+
+.bg-info {
+    -fx-background-color: -info;
+}
+
+.bg-success {
+    -fx-background-color: -success;
+}
+
+.bg-warning {
+    -fx-background-color: -warning;
+}
+
+.bg-danger {
+    -fx-background-color: -danger;
+}
+
+.bg-secondary {
+    -fx-background-color: -secondary;
+}
+
+.bg-unique {
+    -fx-background-color: -unique;
+}
+
+.bg-elegant {
+    -fx-background-color: -elegant;
+}
+
+.bg-white {
+    -fx-background-color: white;
+}
+
+.bg-light-gray {
+    -fx-background-color: -light-gray;
+}
+
+.bg-light-gray-2 {
+    -fx-background-color: -light-gray-2;
+}
+
+.bg-medium-gray {
+    -fx-background-color: -medium-gray;
+}
+
+.bg-medium-gray-2 {
+    -fx-background-color: -medium-gray-2;
+}
+
+.bg-dark-gray {
+    -fx-background-color: -dark-gray;
+}
+
+.bg-dark-gray-2 {
+    -fx-background-color: -dark-gray-2;
+}
+
+.bg-accent {
+    -fx-background-color: -fx-accent;
+}
+
+/* @Insets */
+
+.border-insets-1 {
+    -fx-border-insets: 1px;
+}
+
+.border-insets-5 {
+    -fx-border-insets: 5px;
+}
+
+.border-insets-10 {
+    -fx-border-insets: 10px;
+}
+
+.bg-insets-1 {
+    -fx-background-insets: 1px;
+}
+
+.bg-insets-5 {
+    -fx-background-insets: 5px;
+}
+
+.bg-insets-10 {
+    -fx-background-insets: 10px;
+}
+
 /* @Padding */
 
 .padding-5 {
@@ -29,16 +121,72 @@
     -fx-border-width: 2px;
 }
 
-.border-bottom-1 {
+.border-3 {
+    -fx-border-width: 3px;
+}
+
+.border-4 {
+    -fx-border-width: 4px;
+}
+
+.border-5 {
+    -fx-border-width: 5px;
+}
+
+.border-b-1 {
     -fx-border-width : 0px 0px 1px 0px;
 }
 
-.border-top-1 {
+.border-t-1 {
     -fx-border-width : 1px 0px 0px 0px;
 }
 
+.border-r-1 {
+    -fx-border-width : 0px 1px 0px 0px;
+}
+
+.border-l-1 {
+    -fx-border-width : 0px 0px 0px 1px;
+}
 
 /* @Border-color */
+
+
+.border-primary {
+    -fx-border-color: -primary;
+}
+
+.border-info {
+    -fx-border-color: -info;
+}
+
+.border-success {
+    -fx-border-color: -success;
+}
+
+.border-warning {
+    -fx-border-color: -warning;
+}
+
+.border-danger {
+    -fx-border-color: -danger;
+}
+
+.border-secondary {
+    -fx-border-color: -secondary;
+}
+
+.border-unique {
+    -fx-border-color: -unique;
+}
+
+.border-elegant {
+    -fx-border-color: -elegant;
+}
+
+.border-white {
+    -fx-border-color: white;
+}
 
 .border-light-gray {
     -fx-border-color: -light-gray;
@@ -52,22 +200,32 @@
     -fx-border-color: -medium-gray;
 }
 
-.border-box {
-    -fx-border-color : -light-gray-2;
+.border-medium-gray-2 {
+    -fx-border-color: -medium-gray-2;
 }
+
+.border-dark-gray {
+    -fx-border-color: -dark-gray;
+}
+
+.border-dark-gray-2 {
+    -fx-border-color: -dark-gray-2;
+}
+
 
 /* @Border-radius */
-
-.radius-5 {
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
-}
 
 .radius-2 {
     -fx-background-radius: 2px;
     -fx-border-radius: 2px;
 }
 
+.radius-5 {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+/* @Raised */
 
 .raised:pressed, .raised:focused
 {
@@ -82,6 +240,8 @@
 .raised {
   -fx-effect: dropshadow( gaussian , rgba(0,0,0,.3) , 15, 0 , 0 , 4 );
 }
+
+/* @Depth */
 
 .depth-1
 {

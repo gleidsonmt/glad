@@ -28,6 +28,7 @@ public abstract class Sizer<T extends Size> {
         this.sizes = sizes;
         region.sceneProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
+                doAction(newValue.getWidth());
                 newValue.widthProperty().addListener(updateSizeListener);
             } else {
                 if (oldValue != null) oldValue.widthProperty().removeListener(updateSizeListener);
@@ -53,7 +54,11 @@ public abstract class Sizer<T extends Size> {
     }
 
     private final ChangeListener<Number> updateSizeListener = (observableValue, oldValue, newValue) -> {
-        T act = getSize(newValue.doubleValue());
+        doAction(newValue.doubleValue());
+    };
+
+    private void doAction(double width) {
+        T act = getSize(width);
         if (size.get() == null || size.get() != act) {
             size.set(act);
             if (this.log.get()) {
@@ -61,7 +66,7 @@ public abstract class Sizer<T extends Size> {
             }
             change(act);
         }
-    };
+    }
 
     public abstract void change(T t);
 

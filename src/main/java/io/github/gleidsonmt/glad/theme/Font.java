@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Contract;
  */
 public enum Font {
 
+    INSTAGRAM("instagram.css"),
     POPPINS("poppins.css");
 
     private final String url;

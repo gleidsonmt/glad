@@ -83,11 +83,15 @@
     CHART_COLOR_3_TRANS_70: derive(-amber, 70%);
     CHART_COLOR_4_TRANS_70: derive(-grapefruit, 70%);
 
+    -border-size: 20;
 }
 
-Text, .text {
-    -fx-fill: -text-color;
+.lbl-test {
+    -fx-border-width: -border-size;
+    -fx-border-color: red;
 }
+
+
 
 /*******************************************************************************
  *                                                                             *
