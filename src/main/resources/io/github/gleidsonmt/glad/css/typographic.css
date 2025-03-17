@@ -4,7 +4,7 @@
     v. 1.0
 */
 
-.text {
+Text, .text {
     -fx-font-family: "Poppins Regular";
     -fx-fill: -text-color;
 }
@@ -53,64 +53,51 @@
   -fx-font-size : 48px;
 }
 
-.text-accent:hover .text,
-.text-accent:hover:focused .text,
-.text-accent:focused .text,
-.text-accent .text,
-.text-accent {
-    -fx-text-fill: -fx-accent;
-    -fx-fill: -fx-accent;
-    -text-color: -fx-accent;
-}
-
 .bold {
     -fx-font-weight: bold;
-    -fx-text-fill: -dark-gray-2;
-    -fx-fill: -dark-gray-2;
 }
 
 .bolder {
     -fx-font-weight: bolder;
-    -fx-text-fill: -dark-gray-2;
-    -fx-fill: -dark-gray-2;
 }
 
 .text-accent, .text-accent .text {
-    -fx-text-fill: -fx-accent;
-    -fx-fill: -fx-accent;
+    -text-color: -fx-accent;
 }
 
-.text-info, .text-info .text {
-    -fx-text-fill: -info;
-    -fx-fill: -info;
+.text-primary {
+    -text-color: -fx-accent;
 }
 
-.text-success, .text-success .text {
-    -fx-text-fill: -success;
-    -fx-fill: -success;
+.text-info {
+     -text-color: -info;
 }
 
-.text-warning, .text-warning .text {
+.text-success {
+    -text-color: -success;
+}
+
+.text-warning{
     -fx-text-fill: -warning;
-    -fx-fill: -warning;
+    -text-color: -warning;
 }
 
-.text-danger, .text-danger .text {
-    -fx-text-fill: -danger;
-    -fx-fill: -danger;
+.text-danger {
+    -text-color: -danger;
 }
 
-.text-secondary, .text-secondary .text {
-    -fx-text-fill: -secondary;
-    -fx-fill: -secondary;
+.text-secondary {
+    -text-color: -secondary;
 }
 
-.text-unique, .text-unique .text {
-    -fx-text-fill: -unique;
-    -fx-fill: -unique;
+.text-unique {
+    -text-color: -unique;
 }
 
-.text-elegant, .text-elegant .text {
-    -fx-text-fill: -elegant;
-    -fx-fill: -elegant;
+.text-elegant {
+    -text-color: -elegant;
+}
+
+.text-white {
+    -text-color: white;
 }
