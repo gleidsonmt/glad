@@ -6,7 +6,7 @@
 */
 .root {
 
-    -fx-background: white;
+    -fx-background-color: -fx-background;
 
     /* Bootstrap */
     -primary   : #4285f4;
@@ -64,6 +64,7 @@
 
     -text-color: -dark-gray;
     -hover-color: -dark-gray-2;
+    -fx-background: white;
 
     -red-700: #c81e1e;
 
@@ -83,14 +84,7 @@
     CHART_COLOR_3_TRANS_70: derive(-amber, 70%);
     CHART_COLOR_4_TRANS_70: derive(-grapefruit, 70%);
 
-    -border-size: 20;
 }
-
-.lbl-test {
-    -fx-border-width: -border-size;
-    -fx-border-color: red;
-}
-
 
 
 /*******************************************************************************
@@ -113,9 +107,8 @@
 }
 
 .chart-legend {
-   -fx-background-color: -fx-shadow-highlight-color,
-        linear-gradient(to bottom, derive(-fx-background, -10%), derive(-fx-background, -5%)),
-        linear-gradient(from 0px 0px to 0px 4px, derive(-fx-background, -4%), derive(-fx-background, 10%));
+   -fx-background-color: -fx-background;
+   -fx-effect: none;
    -fx-background-insets: 0 0 -1 0, 0,1;
    -fx-background-radius: 4,4,3;
    -fx-padding: 6px;
