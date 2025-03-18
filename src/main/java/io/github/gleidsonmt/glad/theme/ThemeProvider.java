@@ -3,6 +3,8 @@ package io.github.gleidsonmt.glad.theme;
 import io.github.gleidsonmt.glad.GladResources;
 import io.github.gleidsonmt.glad.PresentationDemo;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -23,16 +25,29 @@ public class ThemeProvider {
 ////        node.getStylesheets().addAll(this.c)
 //    }
 
+    @ApiStatus.Experimental
     public static void install(Parent parent, Font... css) {
         Arrays.stream(css).forEach(el -> {
             parent.getStylesheets().add(GladResources.class.getResource("fonts/" + el.getUrl()).toExternalForm());
         });
     }
 
+    public static void install(Scene parent, Font... css) {
+        Arrays.stream(css).forEach(el -> {
+            parent.getStylesheets().add(GladResources.class.getResource("fonts/" + el.getUrl()).toExternalForm());
+        });
+    }
+
+    @ApiStatus.Experimental
     public static void install(Parent parent, Css... css) {
         Arrays.stream(css).forEach(el -> parent.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + el.getUrl())).toExternalForm()));
     }
 
+    public static void install(Scene scene, Css... css) {
+        Arrays.stream(css).forEach(el -> scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + el.getUrl())).toExternalForm()));
+    }
+
+    @ApiStatus.Experimental
     public static void install(Parent parent) {
         ThemeProvider.install(parent,
                 Css.COLORS,
@@ -40,11 +55,8 @@ public class ThemeProvider {
                 Css.SHAPES,
                 Css.PROPERTIES,
                 Css.BOOTSTRAP,
-
                 Css.IMMERSIVE_SCROLL,
-
                 Css.TAB_PANE,
-
                 Css.PROGRESS_BAR,
                 Css.HYPERLINK,
                 Css.COMBO_BOX,
