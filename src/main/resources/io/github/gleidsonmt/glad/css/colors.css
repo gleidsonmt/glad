@@ -62,9 +62,12 @@
     -light-blue    : #82B1FF;
     -gray          : #8e8e8e;
 
+
     -text-color: -dark-gray;
     -hover-color: -dark-gray-2;
     -fx-background: white;
+    -bar-color: -fx-accent;
+    -track-color: -light-gray;
 
     -red-700: #c81e1e;
 
