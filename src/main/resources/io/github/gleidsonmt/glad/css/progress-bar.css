@@ -1,5 +1,4 @@
 
-
  .progress-bar {
      -fx-pref-height : 3px;
      -fx-min-height : 5px;
@@ -10,7 +9,6 @@
  {
    -fx-background-radius : 2px;
  }
-
 
 .progress-bar:determinate .track,
 .progress-bar:indeterminate .track
@@ -23,18 +21,19 @@
 }
 
 .progress-bar:determinate .track {
-  -fx-background-color : -light-gray-2;
+  -fx-background-color : -track-color;
 }
 
 .progress-bar:determinate .bar {
   -fx-background-insets : 0px;
 }
 
-.progress-bar:indeterminate .bar {
+.progress-bar .bar {
     -fx-background-insets : 0px;
-  -fx-background-color: -fx-accent;
+  -fx-background-color: -bar-color;
 }
 
 .progress-bar:indeterminate .track {
-    -fx-background-color : -light-gray;
+    -fx-background-color : -track-color;
 }
+
