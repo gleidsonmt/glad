@@ -1,0 +1,44 @@
+
+.list-view {
+   -fx-fixed-cell-size : 45px;
+   -fx-border-radius: 5px;
+   -fx-border-width: 2px;
+   -fx-effect: none;
+   -fx-faint-focus-color: transparent;
+   -fx-focus-color: transparent;
+   -fx-padding: 4px;
+
+   -fx-background-color : -fx-background;
+
+}
+
+.transparent-list-view {
+   -fx-fixed-cell-size : 45px;
+   -fx-border-radius: 5px;
+   -fx-border-width: 2px;
+   -fx-effect: none;
+   -fx-faint-focus-color: transparent;
+   -fx-focus-color: transparent;
+   -fx-padding: 4px;
+
+   -fx-background-color : -fx-background;
+
+}
+
+.transparent-list-view  .virtual-flow .clipped-container .sheet .list-cell {
+    -fx-background-color: transparent;
+}
+
+.list-view  .virtual-flow .clipped-container .sheet .list-cell {
+    -fx-background-color: transparent;
+}
+
+.list-view  .virtual-flow .clipped-container .sheet .list-cell:selected .text {
+    -fx-fill: -fx-accent;
+}
+
+.transparent-list-view  .virtual-flow .clipped-container .sheet .list-cell .text {
+    -fx-fill: -text-color;
+}
+
+
