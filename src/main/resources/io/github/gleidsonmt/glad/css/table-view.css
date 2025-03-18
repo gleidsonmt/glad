@@ -1,4 +1,8 @@
 
+.root {
+
+}
+
  .table-view,
  .tree-table-view,
  .tree-view {
@@ -14,62 +18,74 @@
 
  }
 
- .table-view {
-     -fx-border-color : transparent;
-     -fx-border-radius: 5px;
-     -fx-border-color : -medium-gray;
+.transparent-table,
+.table-view {
+    -fx-border-color : transparent;
+    -fx-border-radius: 5px;
+    -fx-border-color : -medium-gray;
 
- }
+}
 
-  .table-view .virtual-flow .scroll-bar:horizontal {
-      visibility : false;
-     -fx-opacity : 1;
-     -fx-padding : 0px;
-     -fx-max-height : 0px;
-     -fx-pref-height : 0px;
-     -fx-min-height : 0px;
-  }
+.table-view .virtual-flow .scroll-bar:horizontal {
+    visibility : false;
+    -fx-opacity : 1;
+    -fx-padding : 0px;
+    -fx-max-height : 0px;
+    -fx-pref-height : 0px;
+    -fx-min-height : 0px;
+}
 
- .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .table-column SVGPath,
- .table-view .column-header-background .nested-column-header .table-column SVGPath {
-     -fx-fill : -dark-gray;
- }
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .table-column SVGPath,
+.table-view .column-header-background .nested-column-header .table-column SVGPath {
+    -fx-fill : -dark-gray;
+}
 
- .table-view .column-header-background .nested-column-header .table-column,
- .table-view .column-header-background,
- .tree-table-view .column-header-background
- {
-   -fx-padding : 10px 2px 10px 2px;
-   -fx-background-color : transparent;
- }
+.table-view .column-header-background .nested-column-header .table-column,
+.table-view .column-header-background,
+.tree-table-view .column-header-background
+{
+    -fx-padding : 10px 2px 10px 2px;
+    -fx-background-color : transparent;
+}
 
- .table-view .column-header-background .filler,
- .tree-table-view .column-header-background .filler,
- .table-view .column-header-background .show-hide-columns-button,
- .tree-table-view .column-header-background .nested-column-header .table-column
- {
-     -fx-background-color : transparent;
- }
+.table-view .column-header-background .filler,
+.tree-table-view .column-header-background .filler,
+.table-view .column-header-background .show-hide-columns-button,
+.tree-table-view .column-header-background .nested-column-header .table-column
+{
+    -fx-background-color : transparent;
+}
 
- .table-view,
- .tree-view,
- .tree-table-view
- {
-   -fx-faint-focus-color : transparent;
-   -fx-focus-color : transparent;
- }
+.table-transparent,
+.table-view,
+.tree-view,
+.tree-table-view
+{
+    -fx-faint-focus-color : transparent;
+    -fx-focus-color : transparent;
+}
 
- .tree-table-view:focused,
- .tree-view:focused,
- .table-view:focused
- {
-   -fx-border-color : -fx-accent;
- }
+.transparent-table {
+    -fx-border-color: transparent;
+}
 
- .tree-table-view .column-header-background .nested-column-header .table-column .label,
- .table-view .column-header-background .nested-column-header .table-column .label {
-     -fx-alignment: center_left;
- }
+.transparent-table:focused,
+.tree-table-view:focused,
+.tree-view:focused,
+.table-view:focused
+{
+    -fx-border-color : -fx-accent;
+}
+
+.transparent-table:focused
+{
+    -fx-border-color : transparent;
+}
+
+.tree-table-view .column-header-background .nested-column-header .table-column .label,
+.table-view .column-header-background .nested-column-header .table-column .label {
+ -fx-alignment: center_left;
+}
 
  .tree-table-row-cell:filled:odd,
  .table-row-cell:filled:odd
@@ -89,62 +105,71 @@
    -fx-border-color : transparent;
  }
 
- .tree-table-row-cell:filled:hover .table-column,
- .table-row-cell:filled:hover .table-column {
-     -fx-background-color: derive(-light-gray-2, 50%);
+.table-view .tree-table-row-cell:filled:hover .table-column,
+.table-view .table-row-cell:filled:hover .table-column {
+ -fx-background-color: derive(-light-gray-2, 50%);
+}
+
+.transparent-table .table-row-cell:filled:hover .table-column {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:filled:selected .table-column,
+.tree-table-row-cell:filled:selected .table-column,
+.tree-cell:filled:focused
+{
+ -fx-background-color: derive(-fx-accent, 120%);
+}
+
+ .transparent-table .table-row-cell:filled:selected .table-column {
+     -fx-background-color: transparent;
  }
 
- .table-row-cell:filled:selected .table-column,
- .tree-table-row-cell:filled:selected .table-column,
- .tree-cell:filled:focused
- {
-     -fx-background-color: derive(-fx-accent, 120%);
- }
-
-
-
- .table-view .arrow,
- .tree-cell .arrow {
+.table-view .arrow,
+.tree-cell .arrow {
      -fx-background-color: -text-color;
      -fx-shape: "M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z";
      -fx-padding: 4px 6px 4px 6px;
- }
+}
 
- .tree-table-row-cell:filled:selected .table-column .button .text,
- .table-row-cell:filled:selected .table-column .button .text {
+.tree-table-row-cell:filled:selected .table-column .button .text,
+.table-row-cell:filled:selected .table-column .button .text {
      -fx-fill : -text-color;
- }
+}
 
- .tree-table-row-cell:filled:selected .table-column .text,
- .table-row-cell:filled:selected .table-column .text
- {
-   -fx-fill : -fx-accent;
-   -fx-font-weight: bold;
- }
+.table-view .tree-table-row-cell:filled:selected .table-column .text,
+.table-view .table-row-cell:filled:selected .table-column .text
+{
+    -fx-fill : -fx-accent;
+    -fx-font-weight: bold;
+}
 
- .table-row-cell:filled .table-column {
- }
+.transparent-table .table-row-cell:filled:selected .table-column .label .text,
+.transparent-table .table-row-cell:filled:selected .table-column .text {
+    -fx-fill : -text-color;
+    -fx-font-weight: normal;
+}
 
- .tree-table-row-cell:filled .table-column .text,
- .table-row-cell:filled .table-column .text
- {
-   -fx-fill : -text-color;
- }
+.tree-table-row-cell:filled .table-column .text,
+.table-row-cell:filled .table-column .text
+{
+    -fx-fill : -text-color;
+}
 
- .tree-table-view .text,
- .tree-view .text {
-     -fx-fill: -text-color;
- }
+.tree-table-view .text,
+.tree-view .text {
+    -fx-fill: -text-color;
+}
 
- .table-row-cell,
- .tree-table-row-cell,
- .tree-cell
- {
-   -fx-text-color : -text-color;
-   /* -fx-background-color : derive(-light-gray, 20%); */
-   -fx-background-color : transparent;
-   -fx-border-color : transparent;
- }
+.table-row-cell,
+.tree-table-row-cell,
+.tree-cell
+{
+    -fx-text-color : -text-color;
+    /* -fx-background-color : derive(-light-gray, 20%); */
+    -fx-background-color : transparent;
+    -fx-border-color : transparent;
+}
 
  .table-row-cell:filled .hyperlink .text {
      -fx-fill : -fx-accent;
@@ -171,8 +196,17 @@
 
  .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell:filled .table-column:filled,
  .table-view .virtual-flow .clipped-container .sheet .table-row-cell:filled .table-column:filled {
-     -fx-border-width : 1px 0px 1px 0px;
      -fx-border-color: -light-gray;
+ }
+
+ .table-view .table-row-cell:filled {
+    -fx-border-color: transparent transparent -light-gray transparent;
+    -fx-border-width: 2px;
+ }
+
+.table-view .column-header-background {
+     -fx-border-color: transparent transparent -medium-gray transparent;
+     -fx-border-width: 2px;
  }
 
  .tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .table-column,
@@ -229,3 +263,4 @@
 .presentation-table .table-row-cell:filled:focus .table-column {
   -fx-background-color: transparent;
 }
+
