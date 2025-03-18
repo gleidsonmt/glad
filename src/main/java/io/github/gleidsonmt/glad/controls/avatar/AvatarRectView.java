@@ -19,13 +19,23 @@ public class AvatarRectView extends Rectangle {
     }
 
     public AvatarRectView(Image image) {
-        getStyleClass().add("avatar-circle-view");
+        this(image, 40);
+    }
+
+    public AvatarRectView(Image image, double size) {
+        this(image, size, size, 0);
+    }
+
+    public AvatarRectView(Image image, double width, double height, double arc) {
+        getStyleClass().add("avatar-rect-view");
         if (image != null)
             this.setFill(new ImagePattern(image));
 
 //        setRadius(40);
-        setWidth(40);
-        setHeight(40);
+        setWidth(width);
+        setHeight(height);
+        setArcWidth(arc);
+        setArcHeight(arc);
 
         this.image.addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -38,6 +48,11 @@ public class AvatarRectView extends Rectangle {
     public void setSize(double s) {
         setWidth(s);
         setHeight(s);
+    }
+
+    public void setArc(double s) {
+        setArcWidth(s);
+        setArcHeight(s);
     }
 
     public Image getImage() {

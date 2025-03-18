@@ -19,11 +19,15 @@ public class AvatarCircleView extends Circle {
     }
 
     public AvatarCircleView(Image image) {
+        this(image, 20);
+    }
+
+    public AvatarCircleView(Image image, double radius) {
         getStyleClass().add("avatar-circle-view");
         if (image != null)
             this.setFill(new ImagePattern(image));
 
-        setRadius(40);
+        setRadius(radius);
 
         this.image.addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
