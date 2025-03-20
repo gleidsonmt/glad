@@ -112,7 +112,7 @@
   -fx-shape : "M 200 350 L 250 400 L 450 400 L 450 300 L 250 300 L 200 350 ";
 }
 
-.hexagom {
+.hexagon {
   -fx-shape : "M 200 350 L 250 400 L 450 400 L 500 350 L 450 300 L 250 300 L 200 350 ";
 }
 
@@ -141,15 +141,6 @@
   -fx-shape : "M 300 150 L 300 200 L 200 250 L 300 300 L 300 450 C 300 475 300 500 350 500 L 750 500 C 800 500 800 475 800 450 L 800 150 C 800 100 800 100 750 100 L 350 100 C 300 100 300 150 300 150 ";
 }
 
-
-.img-test {
-    -fx-background-image : url("/com/gn/media/img/jessy.png");
-    -fx-background-size : contain;
-    -fx-background-position : center;
-    -fx-background-repeat : no-repeat;
-}
-
-
-.img-semi {
-    -fx-shape : "M 150 350 L 450 150 Q 550 150 550 250 L 250 450 Q 150 450 150 350 ";
+.label {
+    -fx-shape: "M 114 95 V 95 L 116 93 L 114 91 V 91 L 109 91 C 109 91 108 91 108 92 L 108 94 C 108 95 109 95 109 95 L 114 95";
 }
