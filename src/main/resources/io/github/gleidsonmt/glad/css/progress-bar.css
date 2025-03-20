@@ -1,7 +1,7 @@
 
  .progress-bar {
      -fx-pref-height : 3px;
-     -fx-min-height : 5px;
+     -fx-pref-height : 5px;
      -fx-background-radius: 20px;
  }
 
