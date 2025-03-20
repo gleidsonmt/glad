@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.demos;
 
 import io.github.gleidsonmt.glad.base.Container;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
@@ -29,7 +30,7 @@ public class DashDrawerHidden extends Application {
         drawer.setMinWidth(250);
         drawer.setStyle("-fx-background-color: white");
 
-        Container container = new Container();
+        Layout container = new Layout();
 
         Button hamb = new Button();
         hamb.setGraphic(new SVGIcon(Icon.MENU));

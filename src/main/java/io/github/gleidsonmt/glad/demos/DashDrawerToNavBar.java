@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.demos;
 
 import io.github.gleidsonmt.glad.base.Container;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.responsive.Break;
 import io.github.gleidsonmt.glad.responsive.sizer.Sizer;
@@ -21,7 +22,7 @@ public class DashDrawerToNavBar extends Application {
     @Override
     public void start(Stage stage) {
         Drawer drawer = new Drawer();
-        Container container = new Container();
+        Layout container = new Layout();
 
         container.setCenter(new StackPane(new Label("Welcome, Resize this stage.")));
 

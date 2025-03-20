@@ -2,6 +2,7 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Behavior;
 import io.github.gleidsonmt.glad.base.Container;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -20,7 +21,7 @@ import javafx.util.Duration;
 public class BehaviorImpl implements Behavior {
 
     private Root root;
-    private Container container;
+    private Layout layout;
 
     private Node drawer;
     private Node aside;
@@ -30,9 +31,9 @@ public class BehaviorImpl implements Behavior {
 
     private BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
-    public BehaviorImpl(Root root, Container container) {
+    public BehaviorImpl(Root root, Layout layout) {
         this.root = root;
-        this.container = container;
+        this.layout = layout;
         drawerTimeline = new Timeline();
         asideTimeline = new Timeline();
 
@@ -44,27 +45,27 @@ public class BehaviorImpl implements Behavior {
 //                        root.flow().remove(drawer);
 //                        root.flow().remove(aside);
 //                        root.wrapper().close();
-//                        container.setLeft(drawer);
-//                        container.setRight(aside);
+//                        layout.setLeft(drawer);
+//                        layout.setRight(aside);
 //                    }
 //                    case MD -> {
-//                        container.setLeft(null);
-//                        container.setRight(null);
+//                        layout.setLeft(null);
+//                        layout.setRight(null);
 //                    }
 //                }
 //            }
 //        };
 
-        if (container.getLeft() != null) drawer = container.getLeft();
-        if (container.getRight() != null) aside = container.getRight();
+        if (layout.getLeft() != null) drawer = layout.getLeft();
+        if (layout.getRight() != null) aside = layout.getRight();
 
-        container.leftProperty().addListener((observableValue, node, newValue) -> {
+        layout.leftProperty().addListener((observableValue, node, newValue) -> {
             if (newValue != null) {
                 drawer = newValue;
             }
         });
 
-        container.rightProperty().addListener((observableValue, node, newValue) -> {
+        layout.rightProperty().addListener((observableValue, node, newValue) -> {
             if (newValue != null) {
                 aside = newValue;
             }
@@ -138,11 +139,11 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public boolean isDrawerOpen() {
-        return container.getLeft() != null || isDrawerAbsolute();
+        return layout.getLeft() != null || isDrawerAbsolute();
     }
 
     public boolean isAsideOpen() {
-        return container.getRight() != null || isAsideAbsolute();
+        return layout.getRight() != null || isAsideAbsolute();
     }
 
     private boolean isAsideAbsolute() {

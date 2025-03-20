@@ -37,8 +37,6 @@ public class AvatarCircleView extends Circle {
 
     }
 
-
-
     public Image getImage() {
         return image.get();
     }

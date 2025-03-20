@@ -2,22 +2,22 @@ package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.glad.base.Container;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.controls.icon.Icon;
-import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.responsive.Break;
+import io.github.gleidsonmt.glad.responsive.BreakPoint;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
-import javafx.geometry.Side;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -32,30 +32,64 @@ public class App extends Application {
 
         VBox box = new VBox();
 
-        Container container = new Container(
+//        TableView<User> tableView = new TableView<>();
+//        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+//        TableColumn<User, String> firstColumn = new TableColumn<>("First column");
+//        TableColumn<User, String> secondColumn = new TableColumn<>("Second column");
+//
+//        firstColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+//        secondColumn.setCellValueFactory(new PropertyValueFactory<>("legend"));
+//
+//        tableView.getItems().addAll(
+//                new User("Gleidson", "Freelancer"),
+//                new User("Jhon Doe", "Freelancer")
+//        );
+//
+//        tableView.getColumns().addAll(firstColumn, secondColumn);
+
+//        box.getChildren().setAll(tableView);
+//        ListView<String> listView = new ListView<>();
+//        listView.getItems().addAll(
+//                "Line One",
+//                "Line One",
+//                "Line One",
+//                "Line One"
+//        );
+//        box.getChildren().setAll(listView);
+
+        ProgressBar progressBar = new ProgressBar(0.5);
+        progressBar.getStyleClass().add("bg-success");
+        progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+
+        box.getChildren().setAll(progressBar);
+        Layout container = new Layout(
                 box
         );
 
-
+        box.setPadding(new Insets(20));
 
         Root root = new Root(container);
 
-        Label label = new Label("Welcome to javafx");
-        box.getChildren().add(label);
-        label.setGraphic(new SVGIcon(Icon.TODAY));
-        label.getStyleClass().add("lbl");
+        Container ct = new Container();
+        ct.addPoint(point -> {
+            System.out.println("point 1 = ");
+        }, Break.SM);
 
+        ct.addPoint(point -> {
+            System.out.println("point others");
+        }, Break.values());
 
-        container.addPoint(point -> {
+        ct.addPoint(event -> {
 
         }, Break.SM);
 
-//        root.addPoint(point -> {
-//            System.out.println(" my point ");
-//        }, Break.SM, Break.LG);
 
-        ThemeProvider.install(root, Font.POPPINS, Font.INSTAGRAM);
-        ThemeProvider.install(root,
+        ct.getChildren().add(new Label("Welcome"));
+
+        Scene scene = new Scene(ct, 800, 600);
+
+        ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
+        ThemeProvider.install(scene,
                 Css.COLORS,
                 Css.TYPOGRAPHIC,
                 Css.SHAPES,
@@ -65,25 +99,18 @@ public class App extends Application {
                 Css.TAB_PANE,
                 Css.PROGRESS_BAR,
                 Css.HYPERLINK,
+                Css.LIST_VIEW,
                 Css.TABLE_VIEW
         );
 
 //        label.setStyle("-fx-font-family: \"Instagram Sans Headline\"; -fx-font-size: 22px; ");
-        label.getStyleClass().add("lbl-test");
 
-        stage.setScene(new Scene(new Root(new Container(root)), 800, 600));
+        stage.setScene(scene);
         stage.show();
 
         CSSFX.start(stage);
         ScenicView.show(stage.getScene());
     }
 
-    private TabPane createDemo(Side side) {
-        TabPane tabPane = new TabPane();
-        tabPane.setSide(side);
-        Tab one = new Tab("Example 01");
-        Tab two =new Tab("Example 02");
-        tabPane.getTabs().addAll(one, two);
-        return tabPane;
-    }
 }
+

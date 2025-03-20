@@ -5,7 +5,6 @@ import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.layout.StackPane;
 
@@ -21,18 +20,18 @@ public class Root extends StackPane {
 
     // Breakpoint, use to change the layout to phone or bigger
     private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
-    private final Layout container;
+    private final LayoutActions layout;
 
-    public Root(Container container) {
-        this.container = container;
+    public Root(Layout layout) {
+        this.layout = layout;
         this.flow = new FlowImpl(this);
         this.wrapper = new WrapperImpl(this);
-        this.behavior = new BehaviorImpl(this, container);
-        this.getChildren().add(container);
+        this.behavior = new BehaviorImpl(this, layout);
+        this.getChildren().add(layout);
     }
 
-    protected Container getContainer() {
-        return (Container) this.container;
+    protected Layout getLayout() {
+        return (Layout) this.layout;
     }
 
     public Flow flow() {

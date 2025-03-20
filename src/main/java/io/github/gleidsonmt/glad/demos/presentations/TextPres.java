@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.demos.presentations;
 
 import io.github.gleidsonmt.glad.base.Container;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.presentation.CssPresentation;
 import io.github.gleidsonmt.presentation.Presentation;
@@ -18,7 +19,7 @@ import java.util.List;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  18/02/2025
  */
-public class TextPres extends Container {
+public class TextPres extends Layout {
 
     public TextPres() {
 
@@ -52,6 +53,10 @@ public class TextPres extends Container {
                                     text.getStyleClass().add("h-[*size-number*]");
                                 """, "")
                         .h3("Fonts")
+                        .demo(
+                                createDemo("Normal"),
+                                createDemo("Instagram","font-instagram")
+                        )
                         .code("ThemeProvider.install(root, Css.POPPINS);")
 
                         .build()

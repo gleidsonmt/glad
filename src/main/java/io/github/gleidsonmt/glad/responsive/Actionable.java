@@ -1,6 +1,11 @@
 package io.github.gleidsonmt.glad.responsive;
 
 import io.github.gleidsonmt.glad.responsive.sizer.Size;
+import javafx.event.ActionEvent;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Represents a single actionable class.
@@ -10,6 +15,8 @@ import io.github.gleidsonmt.glad.responsive.sizer.Size;
 @FunctionalInterface
 public interface Actionable<T extends Size> {
 
+
     void doAction(T size);
+
 
 }

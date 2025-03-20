@@ -2,6 +2,7 @@ package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.glad.base.Container;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
@@ -29,7 +30,7 @@ public class PresentationDemo extends Application {
     @Override
     public void start(Stage stage) {
 
-        Container container = new Container();
+        Layout container = new Layout();
         Root root = new Root(container);
 
         ThemeProvider.install(root, Font.POPPINS);

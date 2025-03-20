@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.demos;
 
 import io.github.gleidsonmt.glad.base.Container;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.responsive.Break;
 import io.github.gleidsonmt.glad.theme.Font;
@@ -34,7 +35,7 @@ public class DashAsideHidden extends Application {
         aside.setMinWidth(250);
         aside.setStyle("-fx-background-color: white");
 
-        Container container = new Container();
+        Layout container = new Layout();
         Button hamb = new Button("Open Aside");
 
         container.updateView(new StackPane(new Label("Welcome, Resize this stage.")));
