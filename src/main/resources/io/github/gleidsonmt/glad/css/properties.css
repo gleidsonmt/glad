@@ -20,17 +20,44 @@
 
 /* @Size */
 
+.size-2 {
+    -fx-pref-width: 2px;
+    -fx-pref-height: 2px;
+}
+
+.w-2 {
+    -fx-pref-width: 2px;
+}
+
+.h-2 {
+    -fx-pref-height: 2px;
+}
+
 .size-5 {
     -fx-pref-width: 5px;
     -fx-pref-height: 5px;
 }
 
+.w-5 {
+    -fx-pref-width: 5px;
+}
+
+.h-5 {
+    -fx-pref-height: 5px;
+}
 
 .size-10 {
     -fx-pref-width: 10px;
     -fx-pref-height: 10px;
 }
 
+.w-10 {
+    -fx-pref-width: 10px;
+}
+
+.h-10 {
+    -fx-pref-height: 10px;
+}
 
 .size-20 {
     -fx-pref-width: 20px;
