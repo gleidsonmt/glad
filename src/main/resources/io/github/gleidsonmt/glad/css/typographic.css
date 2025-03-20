@@ -9,6 +9,17 @@ Text, .text {
     -fx-fill: -text-color;
 }
 
+/* @Font */
+
+.font-instagram {
+    -fx-font-family: "Instagram Sans Regular";
+}
+
+.font-instagram-headline {
+    -fx-font-family: "Instagram Sans Headline";
+}
+
+/* @Size */
 .text-10, .btn-small, .text-small, .text-small  .text {
   -fx-font-size : 10px;
 }
