@@ -1,23 +1,27 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
+import io.github.gleidsonmt.glad.dialog.DialogContainer;
+import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.responsive.Break;
-import io.github.gleidsonmt.glad.responsive.BreakPoint;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.Labeled;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -29,8 +33,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-        VBox box = new VBox();
 
 //        TableView<User> tableView = new TableView<>();
 //        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -57,36 +59,58 @@ public class App extends Application {
 //        );
 //        box.getChildren().setAll(listView);
 
-        ProgressBar progressBar = new ProgressBar(0.5);
-        progressBar.getStyleClass().add("bg-success");
-        progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+//        ProgressBar progressBar = new ProgressBar(0.5);
+//        progressBar.getStyleClass().add("bg-success");
+//        progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+//
+//        box.getChildren().setAll(progressBar);
+//        Layout container = new Layout(
+//                box
+//        );
 
-        box.getChildren().setAll(progressBar);
-        Layout container = new Layout(
-                box
-        );
+//        box.setPadding(new Insets(20));
 
-        box.setPadding(new Insets(20));
-
-        Root root = new Root(container);
 
         Container ct = new Container();
-        ct.addPoint(point -> {
-            System.out.println("point 1 = ");
-        }, Break.SM);
+        Root root = new Root(new Layout(ct));
 
-        ct.addPoint(point -> {
-            System.out.println("point others");
-        }, Break.values());
+        Button action = new Button("Click me");
+        ct.getChildren().add(action);
 
-        ct.addPoint(event -> {
+        TextFlow textFlow = new TextFlow(new Text("Lorem ipsum dolor color"));
+        textFlow.setMinWidth(300);
+        textFlow.getStyleClass().addAll( "border-warning", "text-warning", "border-l-2", "padding-5");
+        textFlow.setStyle("-fx-background-color: derive(-warning, 99%);");
 
-        }, Break.SM);
+//        action.getStyleClass().addAll("bg-danger", "round");
+        action.setGraphic(new SVGIcon(Icon.CHAT));
+        action.setCancelButton(true);
+
+        action.setOnAction(e -> {
+
+            Button ok = new Button("Ok");
+            ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
+            Button cancel = new Button("Cancel");
+            cancel.setCancelButton(true);
+
+            ButtonBar.setButtonData(cancel, ButtonBar.ButtonData.CANCEL_CLOSE);
+            VBox box = new VBox(textFlow, ok);
+            box.setPadding(new Insets(20));
+            root.behavior().alert().open("About", box, AlertType.INFO);
+
+            ok.setOnAction(i -> {
+//                root.behavior().dialog().close();
+                root.wrapper().hide();
+                root.behavior().alert().close();
+            });
+
+//            root.behavior().alert().open("Title", textFlow, AlertType.INFO);
+//            root.behavior().dialog().open(textFlow);
+        });
 
 
-        ct.getChildren().add(new Label("Welcome"));
 
-        Scene scene = new Scene(ct, 800, 600);
+        Scene scene = new Scene(root, 800, 600);
 
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
         ThemeProvider.install(scene,
@@ -100,6 +124,7 @@ public class App extends Application {
                 Css.PROGRESS_BAR,
                 Css.HYPERLINK,
                 Css.LIST_VIEW,
+                Css.BUTTON,
                 Css.TABLE_VIEW
         );
 

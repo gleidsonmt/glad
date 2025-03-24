@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 /**
+ * The wrapper interface disposes a region with color to focus on the element stacked.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
@@ -15,7 +16,10 @@ public interface Wrapper {
 
     void setOnClick(EventHandler<MouseEvent> eventHandler);
 
+    @Deprecated
     void close();
+
+    void hide();
 
     boolean isShowing();
 }

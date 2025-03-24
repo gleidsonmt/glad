@@ -1,9 +1,11 @@
 package io.github.gleidsonmt.glad.base;
 
 
+import io.github.gleidsonmt.glad.base.internal.AlertImpl;
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
+import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.layout.StackPane;
@@ -21,6 +23,8 @@ public class Root extends StackPane {
     // Breakpoint, use to change the layout to phone or bigger
     private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
     private final LayoutActions layout;
+
+
 
     public Root(Layout layout) {
         this.layout = layout;

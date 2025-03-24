@@ -49,7 +49,6 @@ public class SVGIcon extends SVGPathIcon {
     public SVGIcon(Icon icon, Color color, double size) {
         super(new SVGPath(), color, size);
         path.setContent(icon.getContent());
-
 //        setFill(color);
         name = icon.name();
 

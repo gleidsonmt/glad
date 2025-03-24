@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Flow;
+import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,6 +19,16 @@ public class FlowImpl implements Flow {
 
     public FlowImpl(Root root) {
         this.root = root;
+    }
+
+    @Override
+    public void openAbsolute(Node container) {
+        openAbsolute(container, Pos.CENTER, Insets.EMPTY);
+    }
+
+    @Override
+    public void openAbsolute(Node container, Pos pos) {
+        openAbsolute(container, pos, Insets.EMPTY);
     }
 
     @Override
@@ -61,5 +72,12 @@ public class FlowImpl implements Flow {
     @Override
     public void remove(Node container) {
         root.getChildren().remove(container);
+    }
+
+    @Override
+    public void clear() {
+        root.getChildren().removeIf(e ->
+                !(e instanceof Layout)
+        );
     }
 }

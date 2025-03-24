@@ -20,6 +20,21 @@ public interface Flow {
      */
     void openAbsolute(Node container, Pos position, Insets insets);
 
+    /**
+     * Open directly in root.
+     * Default insets 0
+     * @param container The node to add.
+     * @param position The default pos.
+     */
+    void openAbsolute(Node container, Pos position);
+
+    /**
+     * Open directly in root.
+     * Default pos center, and insets 0
+     * @param container The node to add.
+     */
+    void openAbsolute(Node container);
+
     void openLeft(Node container);
 
     void openLeft(Node container, Insets insets);
@@ -29,5 +44,7 @@ public interface Flow {
     void openRight(Node container, Insets insets);
 
     void remove(Node container);
+
+    void clear();
 
 }

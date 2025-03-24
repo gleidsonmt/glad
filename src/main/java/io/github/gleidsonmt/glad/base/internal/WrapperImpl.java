@@ -71,6 +71,13 @@ public class WrapperImpl implements Wrapper {
     }
 
     @Override
+    public void hide() {
+        foreground.setOnMouseClicked(null);
+        root.getChildren().remove(foreground);
+        root.getChildren().get(0).setEffect(null);
+    }
+
+    @Override
     public boolean isShowing() {
         return root.getChildren().contains(foreground);
     }

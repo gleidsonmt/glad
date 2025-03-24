@@ -1,9 +1,7 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Behavior;
-import io.github.gleidsonmt.glad.base.Container;
-import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.*;
+import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -29,6 +27,10 @@ public class BehaviorImpl implements Behavior {
     private Timeline drawerTimeline;
     private Timeline asideTimeline;
 
+    private Alert alert;
+    private Dialog dialog;
+
+
     private BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
     public BehaviorImpl(Root root, Layout layout) {
@@ -36,6 +38,10 @@ public class BehaviorImpl implements Behavior {
         this.layout = layout;
         drawerTimeline = new Timeline();
         asideTimeline = new Timeline();
+
+        this.alert = new AlertImpl(root);
+        this.dialog = new DialogImpl(root);
+
 
 //        new Sizer<>(root, Break.values()) {
 //            @Override
@@ -135,6 +141,16 @@ public class BehaviorImpl implements Behavior {
             });
             drawerTimeline.play();
         }
+    }
+
+    @Override
+    public Alert alert() {
+        return this.alert;
+    }
+
+    @Override
+    public Dialog dialog() {
+        return this.dialog;
     }
 
     @Override
