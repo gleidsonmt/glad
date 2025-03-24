@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.0.333'
+version '1.0.347'
 
 repositories {
   mavenCentral()
@@ -25,7 +25,8 @@ tasks.withType(JavaCompile).configureEach {
 application {
 
   mainModule = 'io.github.gleidsonmt.glad'
-  mainClass = 'io.github.gleidsonmt.glad.Start'
+//  mainClass = 'io.github.gleidsonmt.glad.demos.DashDrawerHidden'
+  mainClass = 'io.github.gleidsonmt.glad.App'
 }
 
 
