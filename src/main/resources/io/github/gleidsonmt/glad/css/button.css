@@ -1,15 +1,5 @@
 
-.button .icon,
-.button .text {
-    -fx-fill : white;
-}
-
-
-.button:cancel .icon {
-    -fx-fill : -fx-accent;
-}
-
-.button {
+Button {
     -fx-text-fill : white;
     -fx-font-weight : bolder;
     -fx-graphic-text-gap : 10;
@@ -18,88 +8,54 @@
     -fx-background-color: -fx-accent;
     -fx-background-radius: 5px;
     -fx-pref-height: 40px;
+    -icon-color: white;
+    -text-color: white;
 }
 
-.button:hover {
+Button:pressed:focused {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+Button:hover {
   -fx-background-color : derive(-fx-accent, -40%);
 }
 
-.button:focused {
+Button:focused {
   -fx-background-color : derive(-fx-accent, -40%), derive(-fx-accent, -40%), -fx-accent;
 }
 
-.button:cancel {
+Button:cancel {
     -fx-background-color: transparent;
-    -fx-border-color : -fx-accent;
+    -fx-border-color: -fx-accent;
     -fx-border-radius : 5px;
     -fx-background-radius : 5px;
     -fx-border-width : 2px;
+
+    -icon-color: -fx-accent;
+    -text-color: -fx-accent;
 }
 
-.button .ripple {
-    -fx-fill: #ffffff50
+Button:cancel:hover  {
+    -text-color : derive(-fx-accent, -40%);
 }
 
-.button:cancel:hover .text {
-    -fx-fill : derive(-fx-accent, -40%);
-}
-
-.button:cancel .text {
-    -fx-fill : -fx-accent;
-}
-
-.button:cancel:focused {
+Button:cancel:focused {
     -fx-background-color: transparent;
     -fx-border-color : -fx-accent;
     -fx-border-radius : 5px;
     -fx-border-width : 2px;
 }
 
-.button:cancel:hover:focused,
-.button:cancel:hover {
+Button:cancel:hover:focused,
+Button:cancel:hover {
     -fx-border-color : derive(-fx-accent, -40%);
 }
 
-.button:cancel:focused:pressed {
+Button:cancel:focused:pressed {
     -fx-border-color : derive(-fx-accent, -90%);
 }
 
-
-#btn-favorite {
-    -fx-background-color : transparent;
+Button .ripple {
+    -fx-fill: #ffffff50
 }
-
-#btn-favorite:hover {
-    -fx-background-color: white ;
-    -fx-border-color: -medium-gray;
-    -fx-border-radius: 5px;
-}
-
-.btn-danger {
-    -fx-accent: -red-700;
-}
-
-.btn-danger:cancel .icon-container .icon {
-    -fx-fill: -fx-accent;
-}
-
-.btn-danger:cancel {
-    -fx-accent: -red-700;
-}
-
-.btn-warning {
-    -fx-accent: -warning;
-}
-
-.btn-warning:cancel {
-    -fx-accent: -warning;
-}
-
-.btn-success {
-    -fx-accent: -success;
-}
-
-.btn-success:cancel {
-    -fx-accent: -success;
-}
-

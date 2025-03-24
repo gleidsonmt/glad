@@ -1,22 +1,100 @@
-.alert .button {
-    -fx-accent: -fx-alert-accent-color;
+.root {
+
 }
 
-.alert-info .alert-title,
-.alert-warn .alert-title,
-.alert-success .alert-title,
-.alert-error .alert-title {
+.alert {
+    -fx-alert-accent-color: gray;
+    -fx-background-alert: white;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,.3) , 5, 0 , 0 , 1 );
+}
+
+.alert-header {
+    -fx-background-insets:  0px 40px 0px 40px;
+    -fx-background-radius:  100px 100px 0px 0px;
+    -fx-background-color:  -fx-alert-accent-color;
+}
+
+.alert-content {
+    -fx-background-color: -fx-background-alert;
+    -fx-background-radius: 10px;
+}
+
+.icon SVGPath {
     -fx-fill: -fx-alert-accent-color;
-    -fx-font-size: 24pt;
 }
 
-.block-error {
-    -fx-background-color: derive(-fx-alert-accent-color, 120%);
-    -fx-border-width:  0px 0px 0px 2px;
-    -fx-border-color:  -fx-alert-accent-color;
-    -fx-padding: 20px;
+.icon Region {
+    -fx-background-color: -fx-background-alert;
 }
 
-.block-error > Text {
-    -fx-fill:  derive(-fx-alert-accent-color, -20%);
+.alert-info {
+    -fx-alert-accent-color: #33B5E5;
+}
+
+.alert-error {
+    -fx-alert-accent-color: #FF3547;
+}
+
+.alert-warn {
+    -fx-alert-accent-color: #FF8800;
+}
+
+.alert-success {
+    -fx-alert-accent-color: #02C852;
+}
+
+.error-icon SVGPath {
+    -fx-fill: -fx-alert-accent-color;
+}
+
+.error-icon {
+    -fx-border-width: 5px;
+    -fx-background-color: -fx-background-alert;
+    -fx-background-radius: 100px;
+    -fx-border-color: -fx-alert-accent-color;
+    -fx-border-radius: 100px;
+    -fx-padding: 10px;
+    -fx-translate-y: -30px;
+}
+
+.warn-icon {
+    -fx-background-color: -fx-background-alert;
+    -fx-alert-accent-color: #FF8800;
+}
+
+.warn-icon SVGPath {
+    -fx-fill:  -fx-alert-accent-color;
+}
+
+.success-icon {
+    -fx-background-color: -fx-background-alert;
+    -fx-alert-accent-color: #02C852;
+}
+
+.warn-icon SVGPath {
+    -fx-fill:  -fx-alert-accent-color;
+}
+
+.success-icon {
+    -fx-background-radius: 10px;
+    -fx-background-color: -fx-background-alert;
+    -fx-border-width: 8px;
+    -fx-border-color: -fx-alert-accent-color;
+}
+
+
+.bar-error {
+    -fx-accent: -danger;
+}
+
+.bar-success {
+    -fx-accent: -success;
+}
+
+.bar-warning {
+    -fx-accent: -warning;
+}
+
+.bar-info {
+    -fx-accent: -info;
 }
