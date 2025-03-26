@@ -1,7 +1,7 @@
 module io.github.gleidsonmt.glad {
 
-    requires transitive javafx.graphics;
-    requires transitive javafx.controls;
+    requires  javafx.graphics;
+    requires  javafx.controls;
 
     requires org.jetbrains.annotations;
     requires io.github.gleidsonmt.blockcode;
@@ -17,7 +17,6 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.controls.icon;
     exports io.github.gleidsonmt.glad.controls.avatar;
 
-    opens io.github.gleidsonmt.glad.demos.presentations to javafx.base;
 
 
     opens io.github.gleidsonmt.glad.base to javafx.fxml;
