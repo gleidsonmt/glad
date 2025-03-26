@@ -46,25 +46,23 @@ public class PresentationDemo extends Application {
                 Css.HYPERLINK
         );
 
-        container.setCenter(new StackPane(
-                new Presentation()
-                        .title("Title")
-                        .subTitle("Sub title")
-                        .h1("Headline 1")
-                        .h2("Headline 2")
-                        .h3("Headline 3")
-                        .h4("Headline 4")
-                        .h5("Headline 5")
-                        .h6("Headline 6")
-                        .text("Lorem ipsum dolor color")
-                        .image(new Image(Assets.getImage("avatar.jpg")))
-                        .demonstration(new Button("Welcome"))
-                        .demo(new Button("Welcome"))
-                        .demonstration(List.of(new Button("Ok")), Assets.getResourceAsStream("button.txt"))
-
-                        .build()
-                        .getRoot()
-        ));
+//        container.setCenter(
+//                new Presentation()
+//                        .h1("Headline 1")
+//                        .h2("Headline 2")
+//                        .h3("Headline 3")
+//                        .h4("Headline 4")
+//                        .h5("Headline 5")
+//                        .h6("Headline 6")
+//                        .text("Lorem ipsum dolor color")
+//                        .image(new Image(Assets.getImage("avatar.jpg")))
+//                        .demonstration(new Button("Welcome"))
+//                        .demo(new Button("Welcome"))
+//                        .demonstration(List.of(new Button("Ok")), Assets.getResourceAsStream("button.txt"))
+//
+//                        .build()
+//                        .getRoot()
+//        );
 
         stage.setScene(new Scene(root, 800, 600));
 
