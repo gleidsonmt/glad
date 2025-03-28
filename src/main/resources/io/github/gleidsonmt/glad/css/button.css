@@ -29,8 +29,8 @@ Button:focused {
 Button:cancel {
     -fx-background-color: transparent;
     -fx-border-color: -fx-accent;
-    -fx-border-radius : 5px;
-    -fx-background-radius : 5px;
+    -fx-border-radius : 10px;
+    -fx-background-radius : 10px;
     -fx-border-width : 2px;
 
     -icon-color: -fx-accent;
@@ -44,7 +44,6 @@ Button:cancel:hover  {
 Button:cancel:focused {
     -fx-background-color: transparent;
     -fx-border-color : -fx-accent;
-    -fx-border-radius : 5px;
     -fx-border-width : 2px;
 }
 
@@ -69,6 +68,7 @@ Button .text {
     -fx-background-color: -light-gray-2;
     -fx-border-color: transparent;
     -text-color: -dark-gray;
+        -icon-color: -text-color;
 }
 
 .flat:focused,
