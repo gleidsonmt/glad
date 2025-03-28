@@ -6,7 +6,8 @@ Button {
     -fx-cursor : hand;
     -fx-effect: none;
     -fx-background-color: -fx-accent;
-    -fx-background-radius: 5px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
     -fx-pref-height: 40px;
     -icon-color: white;
     -text-color: white;
@@ -59,3 +60,21 @@ Button:cancel:focused:pressed {
 Button .ripple {
     -fx-fill: #ffffff50
 }
+
+Button .text {
+    -fx-fill: -text-color;
+}
+
+.flat {
+    -fx-background-color: -light-gray-2;
+    -fx-border-color: transparent;
+    -text-color: -dark-gray;
+}
+
+.flat:focused,
+.flat:armed {
+    -fx-background-color: derive(-fx-accent, 115%);
+    -fx-border-color: transparent;
+    -text-color: -fx-accent;
+}
+

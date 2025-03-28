@@ -85,3 +85,16 @@
     -fx-shape: "M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z";
 }
 
+.tooltip {
+    -fx-background: rgba(30,30,30);
+    -fx-background-color: -elegant;
+    -fx-background-radius: 3px;
+    -fx-background-insets: 0;
+    -fx-padding: 0.667em 0.75em 0.667em 0.75em; /* 10px */
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.2) , 10, 0.0 , 0 , 3 );
+    -fx-font-size: 0.95em;
+}
+
+.tooltip .text {
+    -fx-fill: white;
+}

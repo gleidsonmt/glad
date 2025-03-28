@@ -1,59 +1,33 @@
 
 /** @height **/
 
-.btn-small {
-    -fx-min-height: 32px;
-    -fx-pref-height: 32px;
-}
-
-.btn-regular, .button {
-    -fx-min-height: 40px;
-    -fx-pref-height: 40px;
-}
-
-.btn-large {
-    -fx-min-height: 52px;
-    -fx-pref-height: 52px;
-}
-
-.btn-gray {
-    -fx-background-color: -fx-background;
-    -fx-border-color: -light-gray-2;
+.flat {
     -fx-border-width: 2px;
     -fx-border-insets: 0px;
     -fx-background-insets: 0px;
 }
 
-.btn-gray .text,
-.btn-gray .icon {
-    -fx-fill: -text-color;
-    -fx-font-weight: normal;
-}
-
-/* @ Text */
-
-.text-white {
-    -fx-fill: white;
-}
-
-.text-black {
-    -fx-fill: white;
-}
-
-/* @ Region */
-
-.bg-white {
+.flat:selected {
     -fx-background-color: white;
+    -icon-color: -fx-accent;
+    -text-color: -fx-accent;
+    -fx-border-color: -fx-accent;
+    -fx-border-width: 2px;
 }
 
-.bg-black {
-    -fx-background-color: black;
+.flat .text {
+    -fx-fill: -text-color;
 }
 
-.bg-elegant {
-    -fx-background-color: -elegant;
-}
+.inverse-toggle:selected {
+    -fx-background-color: white;
+    -fx-border-color: -fx-accent;
+    -fx-border-width: 2px;
+    -text-color: -fx-accent;
+    -fx-background-insets: 2px;
 
-.bg-cyan {
-    -fx-background-color: -cyan;
+
+}
+.inverse-toggle:selected .text {
+    -fx-fill: -fx-accent;
 }
