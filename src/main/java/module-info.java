@@ -8,7 +8,6 @@ module io.github.gleidsonmt.glad {
 
     requires org.scenicview.scenicview;
 
-    requires io.github.gleidsonmt.presentation;
     requires org.yaml.snakeyaml;
     requires fr.brouillard.oss.cssfx;
 
@@ -16,6 +15,7 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.theme;
     exports io.github.gleidsonmt.glad.controls.icon;
     exports io.github.gleidsonmt.glad.controls.avatar;
+    exports io.github.gleidsonmt.glad.charts;
 
 
 

@@ -1,25 +1,15 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
-import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
-import io.github.gleidsonmt.presentation.Presentation;
-import io.github.gleidsonmt.presentation.PresentationCreator;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
-
-import javax.swing.text.html.CSS;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

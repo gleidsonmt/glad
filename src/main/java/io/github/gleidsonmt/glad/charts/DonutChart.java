@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.controls.charts;
+package io.github.gleidsonmt.glad.charts;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
