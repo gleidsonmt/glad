@@ -1,5 +1,5 @@
 
-.text-field {
+TextField {
     -fx-text-fill: -text-color;
     -fx-background-color: -fx-background;
     -fx-border-color: -light-gray-2;
@@ -12,28 +12,24 @@
     -fx-faint-focus-color: transparent;
 }
 
-.text-field:hover {
+TextField:hover {
     -fx-background-color: transparent;
 }
 
-.text-field:focused .text {
-    -fx-fill: -fx-accent;
-}
-
-.text-field:focused:hover,
-.text-field:focused {
+TextField:focused:hover,
+TextField:focused {
     -fx-border-color: -fx-accent;
 }
 
-.text-field:readonly:hover,
-.text-field:readonly:focused,
-.text-field:readonly:focused:hover,
-.text-field:readonly {
+TextField:readonly:hover,
+TextField:readonly:focused,
+TextField:readonly:focused:hover,
+TextField:readonly {
     -fx-border-color: transparent;
 }
 
-.text-field-error:focused,
-.text-field-error {
+TextField-error:focused,
+TextField-error {
     -fx-accent: -red-700;
     -fx-border-color: -fx-accent;
 }
