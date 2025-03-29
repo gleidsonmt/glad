@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Contract;
  */
 public enum Break implements Size {
 
+    MOBILE(0),
     SM(640),
     MD(768),
     LG(1024),

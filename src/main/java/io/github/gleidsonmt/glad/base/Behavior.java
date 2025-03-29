@@ -28,6 +28,8 @@ public interface Behavior {
     @ApiStatus.Experimental
     void openAside();
 
+    @ApiStatus.Experimental
+    boolean isDrawerAbsolute();
 
 
 }

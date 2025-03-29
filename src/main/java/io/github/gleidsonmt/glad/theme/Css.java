@@ -6,7 +6,9 @@ package io.github.gleidsonmt.glad.theme;
  */
 public enum Css {
 
+    TOGGLE_SWITCH("toggle-switch.css"),
     LIST_VIEW("list-view.css"),
+    TOGGLE_BUTTON("toggle-button.css"),
     BUTTON("button.css"),
     TABLE_VIEW("table-view.css"),
     HYPERLINK("hyperlink.css"),
@@ -21,8 +23,8 @@ public enum Css {
     TYPOGRAPHIC("typographic.css"),
 
 
-    PROGRESS_BAR("progress-bar.css")
-    ;
+    PROGRESS_BAR("progress-bar.css"),
+    TEXT_FIELD("text-field.css");
 
     private String url;
 
