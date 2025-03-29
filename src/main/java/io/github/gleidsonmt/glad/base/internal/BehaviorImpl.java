@@ -1,14 +1,15 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.*;
+import io.github.gleidsonmt.glad.base.Alert;
+import io.github.gleidsonmt.glad.base.Behavior;
+import io.github.gleidsonmt.glad.base.Layout;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
@@ -170,6 +171,7 @@ public class BehaviorImpl implements Behavior {
         return this.drawerOpen;
     }
 
+    @Override
     public boolean isDrawerAbsolute() {
         return this.root.getChildren().contains(drawer);
     }

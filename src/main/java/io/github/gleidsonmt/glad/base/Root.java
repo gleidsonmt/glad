@@ -24,8 +24,6 @@ public class Root extends StackPane {
     private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
     private final LayoutActions layout;
 
-
-
     public Root(Layout layout) {
         this.layout = layout;
         this.flow = new FlowImpl(this);

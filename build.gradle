@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.0.347'
+version '1.0.359'
 
 repositories {
   mavenCentral()
@@ -31,8 +31,8 @@ application {
 
 
 javafx {
-  version = '17.0.6'
-//  version = '23.0.1'
+//  version = '17.0.6'
+  version = '23.0.2'
   modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
 }
 
