@@ -1,6 +1,5 @@
 
 .list-view {
-   -fx-fixed-cell-size : 45px;
    -fx-border-radius: 5px;
    -fx-border-width: 2px;
    -fx-effect: none;
@@ -9,6 +8,8 @@
    -fx-padding: 4px;
 
    -fx-background-color : -fx-background;
+
+   -fx-fixed-cell-size : 45px;
 
 }
 
