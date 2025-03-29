@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
+import io.github.gleidsonmt.glad.controls.ToggleSwitch;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.dialog.DialogContainer;
@@ -8,6 +9,7 @@ import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.responsive.Break;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
@@ -134,10 +136,19 @@ public class App extends Application {
         box.setPadding(new Insets(20));
         box.setAlignment(Pos.CENTER);
 
+        ct.addPoint(e -> {
 
-        ComboBox<String> comboBox= new ComboBox<>();
-        comboBox.setItems(FXCollections.observableArrayList("Item 01", "Item 02"));
-        ct.getChildren().addAll(new VBox(comboBox, new TextField("Wow")));
+        }, Break.LG);
+
+
+//        ComboBox<String> comboBox= new ComboBox<>();
+//        comboBox.setItems(FXCollections.observableArrayList("Item 01", "Item 02"));
+
+
+        ToggleSwitch _switch = new ToggleSwitch();
+        VBox b = new VBox(_switch);
+        b.setAlignment(Pos.CENTER);
+        ct.getChildren().addAll(b);
         Scene scene = new Scene(root, 800, 600);
 
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);

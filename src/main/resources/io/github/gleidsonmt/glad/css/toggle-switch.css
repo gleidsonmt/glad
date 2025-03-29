@@ -1,0 +1,18 @@
+.toggle-switch  {
+    -fx-padding: 20px;
+    -fx-color-animation: -fx-accent;
+}
+
+.toggle-switch  .foreground {
+    -fx-background-color: white;
+    -fx-border-color: -light-gray-2;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+}
+
+.toggle-switch  .trigger {
+    -fx-background-color: white;
+    -fx-border-color: -light-gray-2;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+}

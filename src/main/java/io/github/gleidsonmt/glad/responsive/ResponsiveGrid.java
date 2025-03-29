@@ -15,17 +15,16 @@ import java.util.List;
  */
 @ApiStatus.Internal
 @ApiStatus.Experimental
+@Deprecated
 public class ResponsiveGrid extends GridPane implements Actionable<Break> {
 
     private final List<BreakPoint> points = new ArrayList<>();
-    private boolean log = false;
 
     public ResponsiveGrid() {
         this(false);
     }
 
     public ResponsiveGrid(boolean log) {
-        this.log = log;
         new Sizer<>(this, Break.values()) {
             @Override
             public void change(Break aBreak) {
@@ -53,12 +52,14 @@ public class ResponsiveGrid extends GridPane implements Actionable<Break> {
      * @param event  The event to occurs.
      * @param breaks The breaks/size to event occurs.
      */
+    @Deprecated
     public void addPoint(PointEvent event, Break... breaks) {
 //        if (breaks.length == 0) this.points.add(new BreakPoint(event, Break.ALL));
 //        else
             this.points.add(new BreakPoint(event, breaks));
     }
 
+    @Deprecated
     public void addPoints(BreakPoint... points) {
         this.points.addAll(Arrays.stream(points).toList());
     }

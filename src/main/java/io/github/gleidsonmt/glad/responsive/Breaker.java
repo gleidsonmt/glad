@@ -30,27 +30,15 @@ public interface Breaker extends Actionable<Break> {
 
     /**
      * Add a point to make an action when the scene size is equal this break point.
-     *
      * @param event  The event to occur.
      * @param breaks The breaks/size to event occurs.
      */
-    default void addPoint(PointEvent event, Break... breaks) {
-        Breaker.points.add(new BreakPoint(event, breaks));
-    }
-
-    /**
-     * Add a multiples points to make an action when the scene size is equal this break point.
-     *
-     * @param event  The event to occur.
-     * @param breaks The breaks/size to event occurs.
-     */
-    @Deprecated
     default void addPoint(EventHandler<ActionEvent> event, Break... breaks) {
         Breaker.points.add(new BreakPoint(event, breaks));
     }
 
     /**
-     * Add a multiples points to make an action when the scene size is equal this break point.
+     * Add a multiple points to make an action when the scene size is equal this break point.
      * @param points The Breakpoints.
      */
     default void addPoints(BreakPoint... points) {
