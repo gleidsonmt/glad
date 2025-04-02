@@ -14,6 +14,8 @@ public enum Css {
     HYPERLINK("hyperlink.css"),
     CONTEXT_MENU("context-menu.css"),
     COMBO_BOX("combo-box.css"),
+    CHECK_BOX("check-box.css"),
+    RADIO_BUTTON("radio-button.css"),
     COLORS("colors.css"),
     TAB_PANE("tab-pane.css"),
     PROPERTIES("properties.css"),
