@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.controls;
+package io.github.gleidsonmt.glad.controls.toggle_switch;
 
 import javafx.animation.FillTransition;
 import javafx.animation.ParallelTransition;
@@ -37,8 +37,6 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
         super(control);
         getChildren().add(pane);
         trigger.getStyleClass().add("trigger");
-        trigger.setCenterX(2500);
-        trigger.setCenterY(0);
         trigger.setFill(Color.WHITE);
         trigger.setStroke(Color.LIGHTGRAY);
         trigger.setLayoutX(-30);
@@ -54,8 +52,7 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
         background.setStroke(Color.LIGHTGRAY);
         getChildren().addAll(background, trigger);
 
-        Color back = (Color) background.getFill();
-        Color toColor = control.getColor();
+        background.setFill(control.getTrackColor());
 
         Color strokeInit = (Color) background.getStroke();
 
@@ -64,20 +61,22 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
         strokeTransition.setShape(background);
 
         on.bindBidirectional(control.onProperty());
+        if (control.isOn()) {
+            background.setFill(control.getAnimationColor());
+            trigger.setTranslateX(23);
+        }
 
         control.setOnMouseClicked(e -> {
             translateAnimation.setToX(
                     control.isOn() ? 0 : 23
             );
 
-            fillAnimation.setFromValue(control.isOn() ? toColor : back );
-            fillAnimation.setToValue(control.isOn() ? back : toColor );
+            fillAnimation.setFromValue(on.get() ? control.getTrackColor() : control.getAnimationColor());
+            fillAnimation.setToValue(!on.get() ? control.getAnimationColor() : control.getTrackColor());
 
-            strokeTransition.setFromValue(control.isOn() ? toColor : strokeInit );
-            strokeTransition.setToValue(control.isOn() ? strokeInit : toColor );
-            translateAnimation.setOnFinished(_ -> {
-                on.set(!on.get());
-            });
+            strokeTransition.setFromValue(on.get() ? control.getAnimationColor() : strokeInit);
+            strokeTransition.setToValue(!on.get() ? control.getAnimationColor() : strokeInit);
+            animation.setOnFinished(_ -> on.set(!on.get()));
             animation.play();
         });
 

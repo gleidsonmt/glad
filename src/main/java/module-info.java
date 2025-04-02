@@ -11,16 +11,9 @@ module io.github.gleidsonmt.glad {
     requires org.yaml.snakeyaml;
     requires fr.brouillard.oss.cssfx;
 
-    exports io.github.gleidsonmt.glad.base;
-    exports io.github.gleidsonmt.glad.theme;
-    exports io.github.gleidsonmt.glad.controls.icon;
-    exports io.github.gleidsonmt.glad.controls.avatar;
-    exports io.github.gleidsonmt.glad.charts;
-
-
-
     opens io.github.gleidsonmt.glad.base to javafx.fxml;
     opens io.github.gleidsonmt.glad.base.internal to javafx.fxml;
+
     exports io.github.gleidsonmt.glad.base.internal;
     exports io.github.gleidsonmt.glad.responsive;
     exports io.github.gleidsonmt.glad.demos;
@@ -29,4 +22,11 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.dialog.alert;
 
     exports io.github.gleidsonmt.glad;
+
+    exports io.github.gleidsonmt.glad.base;
+    exports io.github.gleidsonmt.glad.theme;
+    exports io.github.gleidsonmt.glad.controls.toggle_switch;
+    exports io.github.gleidsonmt.glad.controls.icon;
+    exports io.github.gleidsonmt.glad.controls.avatar;
+    exports io.github.gleidsonmt.glad.charts;
 }

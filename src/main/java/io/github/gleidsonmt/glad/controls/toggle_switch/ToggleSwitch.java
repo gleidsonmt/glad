@@ -1,17 +1,14 @@
-package io.github.gleidsonmt.glad.controls;
+package io.github.gleidsonmt.glad.controls.toggle_switch;
 
+import io.github.gleidsonmt.glad.GladResources;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.css.*;
-import javafx.css.converter.PaintConverter;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,11 +20,19 @@ public class ToggleSwitch extends Control {
     private final BooleanProperty on = new SimpleBooleanProperty(false);
 
     // StyleableProperty
-    private final StyleableProperty<Color> color =
-            new SimpleStyleableObjectProperty<>(COLOR, this, "color");
+    private final StyleableProperty<Color> animationColor =
+            new SimpleStyleableObjectProperty<>(ANIMATION_COLOR, this, "color", Color.RED);
+
+    private final StyleableProperty<Color> trackColor =
+            new SimpleStyleableObjectProperty<>(TRACK_COLOR, this, "color", Color.WHITE);
 
     public ToggleSwitch() {
+        this(false);
+    }
+
+    public ToggleSwitch(boolean on) {
         getStyleClass().add("toggle-switch");
+        setOn(on);
     }
 
     // StyleablePropertyFactory
@@ -35,8 +40,12 @@ public class ToggleSwitch extends Control {
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
 
     // CssMetaData from StyleablePropertyFactory
-    private static final CssMetaData<ToggleSwitch, Color> COLOR =
-            FACTORY.createColorCssMetaData("-fx-color-animation", s -> s.color, Color.RED, false);
+    private static final CssMetaData<ToggleSwitch, Color> ANIMATION_COLOR =
+            FACTORY.createColorCssMetaData("-fx-color-animation", s -> s.animationColor, Color.RED, false);
+
+    private static final CssMetaData<ToggleSwitch, Color> TRACK_COLOR =
+            FACTORY.createColorCssMetaData("-fx-track-color", s -> s.trackColor, Color.RED, false);
+
 
     // Return all CssMetadata information from StyleablePropertyFactory
     public static List<CssMetaData<? extends Styleable, ?>> getClassCssMetaData() {
@@ -47,14 +56,26 @@ public class ToggleSwitch extends Control {
         return getClassCssMetaData();
     }
     // Typical JavaFX property implementation
-    public Color getColor() {
-        return this.color.getValue();
+    public Color getTrackColor() {
+        return this.trackColor.getValue();
+    }
+
+    public Color getAnimationColor() {
+        return this.animationColor.getValue();
     }
     public void setColor(final Color color) {
-        this.color.setValue(color);
+        this.animationColor.setValue(color);
     }
-    public ObjectProperty<Color> colorProperty() {
-        return (ObjectProperty<Color>) this.color;
+    public ObjectProperty<Color> animationColorProperty() {
+        return (ObjectProperty<Color>) this.animationColor;
+    }
+
+    public ObjectProperty<Color> trackColorProperty() {
+        return (ObjectProperty<Color>) this.trackColor;
+    }
+
+    public void setOn(boolean on) {
+        this.on.set(on);
     }
 
     public boolean isOn() {
@@ -68,5 +89,10 @@ public class ToggleSwitch extends Control {
     @Override
     protected Skin<?> createDefaultSkin() {
         return new ToggleSwitchSkin(this);
+    }
+
+    @Override
+    public String getUserAgentStylesheet() {
+        return GladResources.class.getResource("css/toggle-switch.css").toExternalForm();
     }
 }
