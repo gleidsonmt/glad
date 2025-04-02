@@ -1,11 +1,10 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
-import io.github.gleidsonmt.glad.controls.ToggleSwitch;
+import io.github.gleidsonmt.glad.controls.TextField;
+import io.github.gleidsonmt.glad.controls.toggle_switch.ToggleSwitch;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.dialog.DialogContainer;
-import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
@@ -14,16 +13,11 @@ import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -128,7 +122,9 @@ public class App extends Application {
 
         Button flat = new Button("Button");
         flat.setGraphic(new SVGIcon(Icon.TODAY));
-        flat.getStyleClass().addAll("flat");
+        flat.getStyleClass().add("bg-red border-red border-l-1");
+
+
 
         TextField textField = new TextField("Text Field");
         VBox box = new VBox(textField, flat);
@@ -145,8 +141,9 @@ public class App extends Application {
 //        comboBox.setItems(FXCollections.observableArrayList("Item 01", "Item 02"));
 
 
-        ToggleSwitch _switch = new ToggleSwitch();
-        VBox b = new VBox(_switch);
+        ToggleSwitch _switch = new ToggleSwitch(true);
+        textField.addClasses("radius-10 border-warning border-2 hover:border-warning focused:border-danger focused:border-5");
+        VBox b = new VBox(_switch, textField);
         b.setAlignment(Pos.CENTER);
         ct.getChildren().addAll(b);
         Scene scene = new Scene(root, 800, 600);
