@@ -10,8 +10,10 @@ import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
+ * A toggle specialized in turning off and on action.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  29/03/2025
  */
@@ -93,6 +95,6 @@ public class ToggleSwitch extends Control {
 
     @Override
     public String getUserAgentStylesheet() {
-        return GladResources.class.getResource("css/toggle-switch.css").toExternalForm();
+        return Objects.requireNonNull(GladResources.class.getResource("css/toggle-switch.css")).toExternalForm();
     }
 }

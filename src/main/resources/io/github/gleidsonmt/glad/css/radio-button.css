@@ -12,11 +12,17 @@ RadioButton{
 
 RadioButton .radio {
     -fx-background-color: transparent;
-    -fx-border-color: -fx-accent;
+    -fx-border-color: -border-color;
     -fx-border-radius: 100px;
     -fx-background-insets: 14px;
     -fx-border-width: 2px;
     -fx-padding: 5px;
+}
+
+RadioButton:hover .radio,
+RadioButton:selected:hover .radio
+{
+    -fx-border-color: -border-hover;
 }
 
 RadioButton:selected .radio  {
@@ -31,14 +37,6 @@ RadioButton:selected .radio .dot {
     -fx-background-insets: -2px;
 }
 
-.radio-menu-item:checked > .left-container > .radio {
-    -fx-background-color: -fx-accent;
-    -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z";
-    -fx-scale-shape: false;
-    -fx-padding: 6px;
-}
-.radio-menu-item:focused:checked > .left-container > .radio {
-    -fx-background-color: -fx-focused-mark-color;
-}
+
 
 

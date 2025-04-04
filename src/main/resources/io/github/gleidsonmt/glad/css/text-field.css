@@ -2,7 +2,7 @@
 TextField {
     -fx-text-fill: -text-color;
     -fx-background-color: -fx-background;
-    -fx-border-color: -light-gray-2;
+    -fx-border-color: -border-color;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-border-width: 2px;

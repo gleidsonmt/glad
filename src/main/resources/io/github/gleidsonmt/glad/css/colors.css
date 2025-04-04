@@ -66,6 +66,8 @@
     -text-color: -dark-gray;
     -icon-color: -text-color;
     -hover-color: -dark-gray-2;
+    -border-color: -light-gray-2;
+    -border-hover: -medium-gray-2;
     -fx-background: white;
     -bar-color: -fx-accent;
     -track-color: -light-gray;

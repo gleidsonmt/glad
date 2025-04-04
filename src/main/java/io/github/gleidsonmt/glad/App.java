@@ -13,10 +13,12 @@ import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
@@ -141,9 +143,48 @@ public class App extends Application {
 //        comboBox.setItems(FXCollections.observableArrayList("Item 01", "Item 02"));
 
 
-        ToggleSwitch _switch = new ToggleSwitch(true);
-        textField.addClasses("radius-10 border-warning border-2 hover:border-warning focused:border-danger focused:border-5");
-        VBox b = new VBox(_switch, textField);
+//        ToggleSwitch _switch = new ToggleSwitch(true);
+//        textField.addClasses("radius-10 border-warning border-2 hover:border-warning focused:border-danger focused:border-5");
+
+// create the tree model
+        CheckBoxTreeItem<String> jonathanGiles = new CheckBoxTreeItem<>("Jonathan");
+        jonathanGiles.setIndeterminate(true);
+        CheckBoxTreeItem<String> juliaGiles = new CheckBoxTreeItem<>("Julia");
+        CheckBoxTreeItem<String> mattGiles = new CheckBoxTreeItem<>("Matt");
+        CheckBoxTreeItem<String> sueGiles = new CheckBoxTreeItem<>("Sue");
+        CheckBoxTreeItem<String> ianGiles = new CheckBoxTreeItem<>("Ian");
+
+        CheckBoxTreeItem<String> gilesFamily = new CheckBoxTreeItem<>("Giles Family");
+        gilesFamily.setExpanded(true);
+        gilesFamily.getChildren().addAll(jonathanGiles, juliaGiles, mattGiles, sueGiles, ianGiles);
+
+        // create the treeView
+        final TreeView<String> treeView = new TreeView<>();
+        treeView.setRoot(gilesFamily);
+
+        // set the cell factory
+        treeView.setCellFactory(CheckBoxTreeCell.forTreeView());
+//        treeView.setCellFactory(Radio);
+
+        CheckBox checkBox = new CheckBox();
+//        checkBox.setAllowIndeterminate(true);
+//        checkBox.setIndeterminate(true);
+//        checkBox.setSelected(true);
+
+        RadioButton radioButton = new RadioButton();
+
+        ChoiceBox<String> contextMenu = new ChoiceBox<>();
+        contextMenu.setItems(FXCollections.observableArrayList(
+                "Item 01",
+                "Item 01",
+                "Item 01",
+                "Item 01"
+        ));
+
+//        VBox b = new VBox(_switch, textField);
+        VBox b = new VBox( treeView );
+        b.setPadding(new Insets(20));
+        b.setSpacing(10);
         b.setAlignment(Pos.CENTER);
         ct.getChildren().addAll(b);
         Scene scene = new Scene(root, 800, 600);
@@ -166,7 +207,9 @@ public class App extends Application {
                 Css.TOGGLE_BUTTON,
                 Css.TOGGLE_SWITCH,
                 Css.TEXT_FIELD,
-                Css.COMBO_BOX,
+                Css.CHECK_BOX,
+                Css.TREE_VIEW,
+                Css.RADIO_BUTTON,
                 Css.TABLE_VIEW
         );
 

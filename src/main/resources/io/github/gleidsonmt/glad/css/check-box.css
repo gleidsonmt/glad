@@ -1,43 +1,124 @@
+/* @CheckBox */
 
-/*******************************************************************************
- *                                                                             *
- * CheckBox                                                                    *
- *                                                                             *
- ******************************************************************************/
-
-CheckBox {
-    -fx-background-color: transparent;
-    -fx-cursor: hand;
+.check-box:selected .box .mark,
+.check-box:selected:hover .box .mark,
+.check-box:hover .box .mark,
+.check-box .box .mark
+{
+    -fx-background-color : -fx-background;
 }
 
-CheckBox > .box {
-    /* -fx-background-radius: 3, 2, 2; */
-    -fx-background-color:transparent;
-    -fx-border-radius: 3,2,1;
-    -fx-border-width: 2px;
+.check-box:selected:hover .box .mark {
+}
+
+.check-box {
+    -fx-cursor: hand;
+    -fx-label-padding: 0.0em 0.0em 0.0em 0.416667em; /* 0 0 0 5 */
+}
+
+.check-box
+{
+  -fx-text-fill : gray;
+  -fx-background-color : transparent;
+}
+
+.check-box .box {
+    -fx-background-color : white;
+
+    -fx-padding: 2px;
+    -fx-min-height: 40px;
+    -fx-pref-height: 21px;
+    -fx-pref-width: 21px;
+    -fx-background-radius : 5px;
+}
+
+.check-box .box {
+    -fx-border-color : -fx-accent;
+    -fx-border-width : 2px;
+}
+
+.check-box .box,
+.check-box:hover .box
+{
+  -fx-border-width : 2px;
+  -fx-border-color : -border-hover;
+}
+
+.check-box:selected .box {
+  -fx-border-color : -fx-accent;
+}
+
+
+
+.check-box .box
+{
+  -fx-border-color : -border-color;
+}
+
+.check-box .box
+{
+    -fx-border-radius : 2px;
+}
+
+.check-box:selected .box {
+  -fx-background-color : -fx-accent;
+}
+
+.check-box:determinate .box .mark
+{
+  -fx-shape : "M9.005,17.766l13.759,14.739h1.716L49.02,0l10.298,8.488L25.997,50.453h-3.629L0,26.897L9.005,17.766z";
+}
+
+.check-box:indeterminate .box .mark
+{
+  -fx-shape : "M5 13v-2h14v2Z";
+}
+
+.check-box:indeterminate .box .mark
+{
+    -fx-background-color: -fx-background;
+}
+
+.check-box:indeterminate .box
+{
+    -fx-background-color: -fx-accent;
     -fx-border-color: -fx-accent;
 }
 
-CheckBox:selected > .box  {
-    -fx-background-color: -fx-accent;
-    -fx-border-width: 2px;
-    -fx-border-color: transparent;
+.check-box:indeterminate {
+    -fx-padding: 0px;
 }
 
-CheckBox:selected > .box > .mark {
+
+.check-menu-item > .left-container  {
+    -fx-padding: 8px;
+    -fx-background-color: -light-gray;
+    -fx-border-color: -light-gray-2;
+        -fx-border-radius: 4px;
+        -fx-background-radius: 4px;
+}
+
+.check-menu-item:checked > .left-container {
+    -fx-background-color: -fx-accent;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-alignment: center;
+    -fx-border-width: 2px;
+    -fx-border-radius: 2px;
+    -fx-padding: 8px;
+}
+
+.check-menu-item:checked > .left-container > .check {
+    -fx-background-color: white;
     -fx-shape: "M382-227q-13 0-25.5-5T335-247L160-421q-19-20-18.5-48.5T161-517q20-20 49-20t48 20l124 124 320-321q20-19 48.5-19.5T799-714q20 20 20 49t-20 48L429-247q-9 10-21.5 15t-25.5 5Z";
-    -fx-scale-shape: true;
+    -fx-scale-x: 0.019px;
+    -fx-scale-y: 0.019px;
+
+}
+
+.check-menu-item:focused:checked > .left-container > .check {
     -fx-background-color: white;
 }
 
-CheckBox:indeterminate > .box {
-    -fx-border-color: -fx-accent;
-}
 
-CheckBox:indeterminate  > .box > .mark {
-    -fx-shape: "M0,0H10V2H0Z";
-    -fx-scale-x: 1;
-    -fx-scale-y: 1;
-    -fx-scale-shape: false;
-    -fx-background-color: -fx-accent;
-}

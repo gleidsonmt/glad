@@ -7,6 +7,7 @@ package io.github.gleidsonmt.glad.theme;
 public enum Css {
 
     TOGGLE_SWITCH("toggle-switch.css"),
+    TREE_VIEW("tree-view.css"),
     LIST_VIEW("list-view.css"),
     TOGGLE_BUTTON("toggle-button.css"),
     BUTTON("button.css"),
