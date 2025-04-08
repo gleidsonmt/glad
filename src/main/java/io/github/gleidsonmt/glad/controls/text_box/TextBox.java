@@ -33,6 +33,11 @@ public class TextBox extends GNTextBoxBase {
         this(icon, null);
     }
 
+    public TextBox(Node icon) {
+        this(icon, null);
+    }
+
+
     public TextBox(String text) {
         this((Icon) null, text);
     }

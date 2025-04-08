@@ -190,26 +190,27 @@ public class App extends Application {
         ));
 
         Editor editor = new Editor();
-        editor.setMaskText(true);
-        editor.setMaxText(12);
+//        editor.setMaskText(true);
+//        editor.setMaxText(12);
         FloatEditor floatEditor = new FloatEditor();
         floatEditor.setFloatAlignment(FloatAlignment.TOP);
         floatEditor.setPromptText("Float Text");
 //        floatEditor.setText("Text");
-        floatEditor.setMinHeight(200);
         GNTextBoxBase base = new GNTextBoxBase();
-        TextBox textBox = new TextBox(Icon.TODAY);
-        textBox.setMinHeight(200);
-        textBox.setPrefHeight(200);
+        SVGIcon icon = new SVGIcon(Icon.TODAY);
+        icon.setScale(1.5);
+        TextBox textBox = new TextBox(icon);
         textBox.setPromptText("Float Text");
 
         textBox.setAnimated(true);
         PasswordBox passBox = new PasswordBox(Icon.TODAY);
+        passBox.setPromptText("Float Text");
+        passBox.setAnimated(true);
 
 //        textBox.setIcon(Icon.TODAY);
 //        textBox.setAction(true);
 //        VBox b = new VBox(_switch, textField);
-        VBox b = new VBox(  textBox, passBox, floatEditor);
+        VBox b = new VBox( editor, floatEditor, textBox, passBox);
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);

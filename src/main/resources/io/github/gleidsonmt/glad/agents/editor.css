@@ -2,12 +2,12 @@
 .editor:focused,
 .editor:hover:focused,
 .editor {
-    -fx-border-color: transparent;
+    -fx-border-color: -fx-accent;
     -fx-text-fill: -text-color;
-    -fx-background-color: transparent;
-    -fx-background-radius: 0px;
-    -fx-border-radius: 0px;
-    -fx-border-width: 0px;
+    -fx-background-color: -fx-background;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
     -fx-faint-focus-color: transparent;
-    -fx-border-color: transparent;
+    -fx-pref-height: 30px;
 }

@@ -61,7 +61,12 @@ public class FloatEditorSkin extends EditorSkin {
                     up();
                 }
             } else {
-                if (_control.getText() == null || _control.getText().isEmpty()) {
+                if (_control.getText() == null ) {
+                    down();
+                    return;
+                }
+
+                if (_control.getText().isEmpty()) {
                     down();
                 }
             }
@@ -70,6 +75,8 @@ public class FloatEditorSkin extends EditorSkin {
     }
 
     private void down() {
+        System.out.println("getSkinnable().getHeight() = " + getSkinnable().getHeight());
+        System.out.println(moveablePrompt.getTranslateY());
         downAnimation.getKeyFrames().setAll(
                 new KeyFrame(Duration.ZERO, new KeyValue(
                         moveablePrompt.translateYProperty(), ((getSkinnable().getHeight() / 2) * -1)
@@ -90,13 +97,11 @@ public class FloatEditorSkin extends EditorSkin {
                             moveablePrompt.translateXProperty(), 0
                     ))
             );
-//        };
-            downAnimation.play();
         }
+        downAnimation.play();
     }
 
     private void up() {
-
 
         upAnimation.getKeyFrames().setAll(
                 new KeyFrame(Duration.ZERO, new KeyValue(
@@ -152,7 +157,6 @@ public class FloatEditorSkin extends EditorSkin {
     @Override
     protected void layoutChildren(double x, double y, double w, double h) {
         super.layoutChildren(x, y, w, h);
-        System.out.println("super.getChildren() = " + super.getChildren());
         if (!isAnimation()) {
             if (getSkinnable().getText() != null && !getSkinnable().getText().isEmpty()) {
                 positionInArea(moveablePrompt, x,
