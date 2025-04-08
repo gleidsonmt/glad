@@ -1,0 +1,30 @@
+.text-box {
+    -fx-border-color: -border-color;
+    -fx-text-fill: -text-color;
+    -fx-background-color: -fx-background;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-padding: 0px 5px 0px 5px;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-box:hover,
+.text-box:focused {
+    -fx-border-color: -fx-accent;
+    -fx-border-width: 2px;
+}
+
+.text-box .editor:focused,
+.text-box .editor
+{
+    -fx-text-fill: -text-color;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-box *. .editor {
+    -fx-background-color: transparent;
+    -fx-border-color: red;
+}

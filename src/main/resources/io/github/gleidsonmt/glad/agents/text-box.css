@@ -1,0 +1,25 @@
+TextBox, PasswordBox,
+TextBox {
+    -fx-border-color: -border-color;
+    -fx-text-fill: -text-color;
+    -fx-background-color: -fx-background;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+
+    -fx-padding: 0px 5px 0px 5px;
+    -fx-faint-focus-color: transparent;
+}
+
+TextBox:hover,
+PasswordBox:hover,
+PasswordBox:focused,
+TextBox:focused {
+    -fx-border-color: -fx-accent;
+}
+
+TextBox .float-editor {
+    -fx-background-color: red;
+}
+
+

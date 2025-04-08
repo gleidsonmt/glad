@@ -25,8 +25,14 @@ module io.github.gleidsonmt.glad {
 
     exports io.github.gleidsonmt.glad.base;
     exports io.github.gleidsonmt.glad.theme;
-    exports io.github.gleidsonmt.glad.controls.toggle_switch;
+
+    exports io.github.gleidsonmt.glad.controls;
     exports io.github.gleidsonmt.glad.controls.icon;
     exports io.github.gleidsonmt.glad.controls.avatar;
+    exports io.github.gleidsonmt.glad.controls.toggle_switch;
+    exports io.github.gleidsonmt.glad.controls.text_box;
+    exports io.github.gleidsonmt.glad.controls.skin;
+
+    exports io.github.gleidsonmt.glad.controls.enums;
     exports io.github.gleidsonmt.glad.charts;
 }

@@ -1,0 +1,17 @@
+
+.float-editor:focused,
+.float-editor {
+    -fx-background-color: transparent;
+    -fx-border-width: 2px;
+    -fx-border-color: transparent;
+    -fx-padding: 0px 5px 0px 5px;
+}
+
+.float-editor:focused .moveable-prompt  {
+    -text-color: -fx-accent;
+}
+
+.moveable-prompt {
+    -fx-background-color: -fx-background;
+    -fx-padding: 2px;
+}
