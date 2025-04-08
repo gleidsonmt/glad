@@ -17,6 +17,7 @@ public enum Css {
     COMBO_BOX("combo-box.css"),
     CHECK_BOX("check-box.css"),
     RADIO_BUTTON("radio-button.css"),
+    TEXT_BOX("text-box.css"),
     COLORS("colors.css"),
     TAB_PANE("tab-pane.css"),
     PROPERTIES("properties.css"),

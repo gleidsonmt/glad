@@ -19,7 +19,6 @@ package io.github.gleidsonmt.glad.controls;
 
 import io.github.gleidsonmt.glad.GladResources;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
-import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.controls.skin.GNTextBoxBase;
 import io.github.gleidsonmt.glad.controls.skin.GNTextBoxSkin;
 import javafx.beans.DefaultProperty;
@@ -27,7 +26,6 @@ import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
 import javafx.css.*;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.Skin;
 
 import java.util.List;
@@ -38,7 +36,7 @@ import java.util.Objects;
  * Create on  10/09/2022
  */
 @DefaultProperty("control")
-public class TextBox extends GNTextBoxBase {
+public class TextBoxOld extends GNTextBoxBase {
 
     private final StyleableProperty<Boolean> action =
             new SimpleStyleableBooleanProperty(ACTION, this, "action");
@@ -46,26 +44,26 @@ public class TextBox extends GNTextBoxBase {
     private final StyleableObjectProperty<Icon> icon =
             new SimpleStyleableObjectProperty<>(ICON, this, "icon", Icon.NONE);
 
-    private static final StyleablePropertyFactory<TextBox> FACTORY =
+    private static final StyleablePropertyFactory<TextBoxOld> FACTORY =
             new StyleablePropertyFactory<>(GNTextBoxBase.getClassCssMetaData());
 
     private final StyleableIntegerProperty count =
             new SimpleStyleableIntegerProperty(COUNT, this, "count", 0);
 
-    private static final CssMetaData<TextBox, Number> COUNT =
+    private static final CssMetaData<TextBoxOld, Number> COUNT =
             FACTORY.createSizeCssMetaData( "-gn-count", g -> g.count);
 
     private final StyleableBooleanProperty visibleHelperText =
             new SimpleStyleableBooleanProperty(VISIBLE_HELPER_TEXT, this, "helperText", false);
 
-    private static final CssMetaData<TextBox, Boolean> VISIBLE_HELPER_TEXT =
+    private static final CssMetaData<TextBoxOld, Boolean> VISIBLE_HELPER_TEXT =
             FACTORY.createBooleanCssMetaData("-gn-helper-text", f -> f.visibleHelperText, false);
 
-    private static final CssMetaData<TextBox, Boolean> ACTION =
+    private static final CssMetaData<TextBoxOld, Boolean> ACTION =
             FACTORY.createBooleanCssMetaData("-gn-action",
                     g -> g.action,true, true);
 
-    private static final CssMetaData<TextBox, Icon> ICON =
+    private static final CssMetaData<TextBoxOld, Icon> ICON =
             FACTORY.createEnumCssMetaData(Icon.class, "-gn-icon",
                     g -> g.icon, Icon.NONE, true);
 
@@ -108,27 +106,27 @@ public class TextBox extends GNTextBoxBase {
 
     ///  Refactoring
 
-    public TextBox() {
+    public TextBoxOld() {
         this(null, null);
     }
 
-    public TextBox(Icon icon) {
+    public TextBoxOld(Icon icon) {
         this(icon, null);
     }
 
-    public TextBox(String text) {
+    public TextBoxOld(String text) {
         this(null, text);
     }
 
-    public TextBox(Icon icon, String text) {
+    public TextBoxOld(Icon icon, String text) {
         this(icon, text, false);
     }
 
-    public TextBox(Icon icon, String text, boolean action) {
+    public TextBoxOld(Icon icon, String text, boolean action) {
         this(icon, text, action, false, false);
     }
 
-    private TextBox(Icon _icon, String text, boolean action, boolean animated, boolean mask) {
+    private TextBoxOld(Icon _icon, String text, boolean action, boolean animated, boolean mask) {
         setAction(action);
         setMaskText(mask);
         getStyleClass().add("gn-text-box");

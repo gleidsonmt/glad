@@ -1,21 +1,29 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
+import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
+import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import io.github.gleidsonmt.glad.controls.TextField;
-import io.github.gleidsonmt.glad.controls.toggle_switch.ToggleSwitch;
+import io.github.gleidsonmt.glad.controls.enums.FloatAlignment;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.controls.skin.GNTextBoxBase;
+import io.github.gleidsonmt.glad.controls.text_box.Editor;
+import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
 import io.github.gleidsonmt.glad.responsive.Break;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
@@ -181,13 +189,39 @@ public class App extends Application {
                 "Item 01"
         ));
 
+        Editor editor = new Editor();
+        editor.setMaskText(true);
+        editor.setMaxText(12);
+        FloatEditor floatEditor = new FloatEditor();
+        floatEditor.setFloatAlignment(FloatAlignment.TOP);
+        floatEditor.setPromptText("Float Text");
+//        floatEditor.setText("Text");
+        floatEditor.setMinHeight(200);
+        GNTextBoxBase base = new GNTextBoxBase();
+        TextBox textBox = new TextBox(Icon.TODAY);
+        textBox.setMinHeight(200);
+        textBox.setPrefHeight(200);
+        textBox.setPromptText("Float Text");
+
+        textBox.setAnimated(true);
+        PasswordBox passBox = new PasswordBox(Icon.TODAY);
+
+//        textBox.setIcon(Icon.TODAY);
+//        textBox.setAction(true);
 //        VBox b = new VBox(_switch, textField);
-        VBox b = new VBox( treeView );
+        VBox b = new VBox(  textBox, passBox, floatEditor);
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);
         ct.getChildren().addAll(b);
         Scene scene = new Scene(root, 800, 600);
+
+        scene.focusOwnerProperty().addListener(new ChangeListener<Node>() {
+            @Override
+            public void changed(ObservableValue<? extends Node> observableValue, Node node, Node t1) {
+//                System.out.println("scene focus = " + t1);
+            }
+        });
 
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
         ThemeProvider.install(scene,
@@ -210,6 +244,7 @@ public class App extends Application {
                 Css.CHECK_BOX,
                 Css.TREE_VIEW,
                 Css.RADIO_BUTTON,
+                Css.TEXT_BOX,
                 Css.TABLE_VIEW
         );
 
@@ -217,6 +252,8 @@ public class App extends Application {
 
         stage.setScene(scene);
         stage.show();
+
+//        scene.getStylesheets().add(getClass().getResource("agents/editor.css").toExternalForm());
 
         CSSFX.start(stage);
         ScenicView.show(stage.getScene());
