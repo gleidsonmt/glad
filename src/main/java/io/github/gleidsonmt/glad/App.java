@@ -10,7 +10,7 @@ import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.controls.skin.GNTextBoxBase;
+import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
 import io.github.gleidsonmt.glad.controls.text_box.Editor;
 import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
 import io.github.gleidsonmt.glad.responsive.Break;
@@ -196,7 +196,7 @@ public class App extends Application {
         floatEditor.setFloatAlignment(FloatAlignment.TOP);
         floatEditor.setPromptText("Float Text");
 //        floatEditor.setText("Text");
-        GNTextBoxBase base = new GNTextBoxBase();
+
         SVGIcon icon = new SVGIcon(Icon.TODAY);
         icon.setScale(1.5);
         TextBox textBox = new TextBox(icon);

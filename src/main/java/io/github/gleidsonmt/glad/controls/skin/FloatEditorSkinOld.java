@@ -80,7 +80,7 @@ public class FloatEditorSkinOld extends EditorSkin {
             vPos = VPos.CENTER;
 
         Parent inFocus; // Change the focus when the parent is gntextbox
-        if (control.getParent() instanceof GNTextBoxBase) {
+        if (control.getParent() instanceof TextBoxBase) {
             inFocus = control.getParent();
         } else
             inFocus = control;

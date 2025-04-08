@@ -35,7 +35,7 @@ import javafx.util.Duration;
  */
 public class GNTextBoxBaseFilledSkin extends GNTextBoxBaseSkin {
 
-    private final GNTextBoxBase control;
+    private final TextBoxBase control;
 
     // Only Tests
 
@@ -46,8 +46,7 @@ public class GNTextBoxBaseFilledSkin extends GNTextBoxBaseSkin {
     private final Timeline increase = new Timeline();
     private final Timeline decrease = new Timeline();
 
-
-    public GNTextBoxBaseFilledSkin(GNTextBoxBase control) {
+    public GNTextBoxBaseFilledSkin(TextBoxBase control) {
         super(control);
         this.control = control;
 

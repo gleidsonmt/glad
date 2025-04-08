@@ -30,13 +30,13 @@ import javafx.scene.control.SkinBase;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/09/2022
  */
-public class GNTextBoxBaseSkin extends SkinBase<GNTextBoxBase> {
+public class GNTextBoxBaseSkin extends SkinBase<TextBoxBase> {
 
     //Fixed
-    protected final GNTextBoxBase control;
+    protected final TextBoxBase control;
 
 
-    protected GNTextBoxBaseSkin(GNTextBoxBase _control) {
+    protected GNTextBoxBaseSkin(TextBoxBase _control) {
         super(_control);
         this.control = _control;
 

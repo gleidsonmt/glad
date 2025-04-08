@@ -37,13 +37,13 @@ import java.util.List;
  * Create on  15/09/2022
  */
 @DefaultProperty("children")
-public class GNTextBoxBase extends Control {
+public class TextBoxBase extends Control {
 
     private final ObjectProperty<Editor> editor = new SimpleObjectProperty<>();
     private final ObjectProperty<Node> leftNode = new SimpleObjectProperty<>();
     private final ObjectProperty<Node> rightNode = new SimpleObjectProperty<>();
 
-    private static final StyleablePropertyFactory<GNTextBoxBase> FACTORY =
+    private static final StyleablePropertyFactory<TextBoxBase> FACTORY =
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
 
     private final StyleableObjectProperty<FieldType> fieldType =
@@ -52,12 +52,12 @@ public class GNTextBoxBase extends Control {
     private final StyleableObjectProperty<Boolean> animated =
             new SimpleStyleableObjectProperty<>(ANIMATED, this, "animated", false);
 
-    private static final CssMetaData<GNTextBoxBase, FieldType> FIELD_TYPE =
+    private static final CssMetaData<TextBoxBase, FieldType> FIELD_TYPE =
             FACTORY.createEnumCssMetaData(
                     FieldType.class, "-gn-field-type",
                     g -> g.fieldType, FieldType.OUTLINED);
 
-    private static final CssMetaData<GNTextBoxBase, Boolean> ANIMATED =
+    private static final CssMetaData<TextBoxBase, Boolean> ANIMATED =
             FACTORY.createBooleanCssMetaData(
                     "-gn-animated",
                     g -> g.animated, true);
@@ -74,11 +74,11 @@ public class GNTextBoxBase extends Control {
     private final StringProperty text = new SimpleStringProperty();
     private final StringProperty promptText = new SimpleStringProperty();
 
-    public GNTextBoxBase() {
+    public TextBoxBase() {
         this(false);
     }
 
-    protected GNTextBoxBase(boolean mask) {
+    protected TextBoxBase(boolean mask) {
 
         maskText.set(mask);
         getStyleClass().add("text-box-base");

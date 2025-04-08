@@ -4,7 +4,7 @@ import io.github.gleidsonmt.glad.GladResources;
 import io.github.gleidsonmt.glad.controls.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.controls.skin.GNTextBoxBase;
+import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -20,7 +20,7 @@ import java.util.Objects;
  * Create on  04/04/2025
  * Ultimate.
  */
-public class TextBox extends GNTextBoxBase {
+public class TextBox extends TextBoxBase {
 
     private final IconButton clearButton;
     private BooleanProperty action;

@@ -1,18 +1,12 @@
 package io.github.gleidsonmt.glad.controls.skin;
 
-import io.github.gleidsonmt.glad.controls.text_box.Editor;
 import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -24,8 +18,6 @@ import javafx.util.Duration;
  */
 public class FloatEditorSkin extends EditorSkin {
 
-    private FloatEditor editor;
-
     private final Label moveablePrompt = new Label("Float Prompt");
     private final double aniVeloz = 100;
 
@@ -34,7 +26,6 @@ public class FloatEditorSkin extends EditorSkin {
 
     public FloatEditorSkin(FloatEditor _control) {
         super(_control);
-        this.editor = _control;
 
         // Setting default Conventions
         moveablePrompt.textProperty().bind(_control.promptTextProperty());
@@ -43,9 +34,6 @@ public class FloatEditorSkin extends EditorSkin {
         moveablePrompt.getStyleClass().add("moveable-prompt");
         moveablePrompt.setMouseTransparent(true);
         moveablePrompt.toFront();
-
-        moveablePrompt.setStyle("-fx-background-color: white;");
-
 
         // add prompt and hide old prompt
         getChildren().add(moveablePrompt);
@@ -75,8 +63,6 @@ public class FloatEditorSkin extends EditorSkin {
     }
 
     private void down() {
-        System.out.println("getSkinnable().getHeight() = " + getSkinnable().getHeight());
-        System.out.println(moveablePrompt.getTranslateY());
         downAnimation.getKeyFrames().setAll(
                 new KeyFrame(Duration.ZERO, new KeyValue(
                         moveablePrompt.translateYProperty(), ((getSkinnable().getHeight() / 2) * -1)
@@ -87,7 +73,7 @@ public class FloatEditorSkin extends EditorSkin {
                 ))
         );
 //
-        if (getSkinnable().getParent() instanceof GNTextBoxBase base) {
+        if (getSkinnable().getParent() instanceof TextBoxBase base) {
             downAnimation.getKeyFrames().addAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(
                             moveablePrompt.translateXProperty(), -(base.getLeftNode().getBoundsInParent().getWidth())
@@ -129,7 +115,7 @@ public class FloatEditorSkin extends EditorSkin {
 //                ))
         );
 
-        if (getSkinnable().getParent() instanceof GNTextBoxBase base) {
+        if (getSkinnable().getParent() instanceof TextBoxBase base) {
             upAnimation.getKeyFrames().addAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(
                             moveablePrompt.translateXProperty(), 0
