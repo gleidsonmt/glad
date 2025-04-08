@@ -17,8 +17,8 @@
 
 package io.github.gleidsonmt.glad.controls.skin;
 
-import io.github.gleidsonmt.glad.controls.enums.FieldType;
 import io.github.gleidsonmt.glad.controls.text_box.Editor;
+import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
 import javafx.beans.DefaultProperty;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
@@ -37,7 +37,7 @@ import java.util.List;
  * Create on  15/09/2022
  */
 @DefaultProperty("children")
-public class TextBoxBase extends Control {
+public abstract class TextBoxBase extends Control {
 
     private final ObjectProperty<Editor> editor = new SimpleObjectProperty<>();
     private final ObjectProperty<Node> leftNode = new SimpleObjectProperty<>();
@@ -46,25 +46,17 @@ public class TextBoxBase extends Control {
     private static final StyleablePropertyFactory<TextBoxBase> FACTORY =
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
 
-    private final StyleableObjectProperty<FieldType> fieldType =
-            new SimpleStyleableObjectProperty<>(FIELD_TYPE, this, "fieldType", FieldType.OUTLINED);
 
     private final StyleableObjectProperty<Boolean> animated =
-            new SimpleStyleableObjectProperty<>(ANIMATED, this, "animated", false);
+            new SimpleStyleableObjectProperty<>(ANIMATE, this, "animate", false);
 
-    private static final CssMetaData<TextBoxBase, FieldType> FIELD_TYPE =
-            FACTORY.createEnumCssMetaData(
-                    FieldType.class, "-gn-field-type",
-                    g -> g.fieldType, FieldType.OUTLINED);
-
-    private static final CssMetaData<TextBoxBase, Boolean> ANIMATED =
+    private static final CssMetaData<TextBoxBase, Boolean> ANIMATE =
             FACTORY.createBooleanCssMetaData(
-                    "-gn-animated",
+                    "-fx-animate",
                     g -> g.animated, true);
 
 
-    private static final PseudoClass PSEUDO_CLASS_FILLED = PseudoClass.getPseudoClass("filled");
-    private static final PseudoClass PSEUDO_CLASS_ANIMATED = PseudoClass.getPseudoClass("animated");
+    private static final PseudoClass PSEUDO_CLASS_ANIMATE = PseudoClass.getPseudoClass("animate");
 
     private final ChangeListener<Boolean> retainFocus = (_, _, newValue) ->
             setFocused(newValue);
@@ -102,43 +94,19 @@ public class TextBoxBase extends Control {
 
     @Override
     protected Skin<?> createDefaultSkin() {
-
-//        if (animated.get()) {
-//            editor.set(new FloatEditor());
-//            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATED, true);
-//        } else {
-//            editor.set(new Editor());
-//            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATED, false);
-//        }
-
-        if (fieldType.get() == FieldType.FILLED) {
-            pseudoClassStateChanged(PSEUDO_CLASS_FILLED, true);
-            if (animated.get())
-                return new GNTextBoxBaseFilledSkin(this);
-            else
-                return new GNTextBoxBaseSkin(this);
+        if (animated.get()) {
+            editor.set(new FloatEditor());
+            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, true);
         } else {
-            pseudoClassStateChanged(PSEUDO_CLASS_FILLED, false);
-            return new GNTextBoxBaseSkin(this);
+            editor.set(new Editor());
+            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, false);
         }
-    }
-
-    public static List<CssMetaData<? extends Styleable, ?>> getClassCssMetaData() {
-        return FACTORY.getCssMetaData();
+        return new TextBoxBaseSkin(this);
     }
 
     @Override
     public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
         return FACTORY.getCssMetaData();
-    }
-
-//    @Override
-//    public String getUserAgentStylesheet() {
-//        return Objects.requireNonNull(GNTextBox.class.getResource("/io.github.gleidsonmt.gncontrols/agents/text_box_base.css")).toExternalForm();
-//    }
-
-    public ObservableValue<FieldType> fieldTypeProperty() {
-        return fieldType;
     }
 
     public Editor getEditor() {
@@ -177,24 +145,16 @@ public class TextBoxBase extends Control {
         this.rightNode.set(rightNode);
     }
 
-    public FieldType getFieldType() {
-        return fieldType.get();
-    }
-
-    public void setFieldType(FieldType fieldType) {
-        this.fieldType.set(fieldType);
-    }
-
-    public boolean isAnimated() {
+    public boolean isAnimate() {
         return animated.get();
     }
 
-    public ObservableValue<Boolean> animatedProperty() {
+    public ObservableValue<Boolean> animateProperty() {
         return animated;
     }
 
-    public void setAnimated(boolean animated) {
-        this.animated.set(animated);
+    public void setAnimate(boolean animate) {
+        this.animated.set(animate);
     }
 
     public boolean isMaskText() {

@@ -17,7 +17,7 @@
 
 package io.github.gleidsonmt.glad.controls.skin;
 
-import io.github.gleidsonmt.glad.controls.IconButton;
+import io.github.gleidsonmt.glad.controls.IconButtonOld;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.animation.Animation;
@@ -38,9 +38,9 @@ import javafx.util.Duration;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  25/09/2022
  */
-public class GNIconButtonSkin extends SkinBase<IconButton> {
+public class GNIconButtonSkin extends SkinBase<IconButtonOld> {
 
-    private final IconButton control;
+    private final IconButtonOld control;
 
     private final Rectangle clip = new Rectangle();
     private final SVGIcon iconContainer = new SVGIcon();
@@ -48,7 +48,7 @@ public class GNIconButtonSkin extends SkinBase<IconButton> {
     private final Timeline timeline = new Timeline();
     private final Circle circle = new Circle();
 
-    public GNIconButtonSkin(IconButton _control) {
+    public GNIconButtonSkin(IconButtonOld _control) {
         super(_control);
         this.control = _control;
 

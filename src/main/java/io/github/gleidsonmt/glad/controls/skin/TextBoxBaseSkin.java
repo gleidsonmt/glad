@@ -19,10 +19,8 @@ package io.github.gleidsonmt.glad.controls.skin;
 
 import io.github.gleidsonmt.glad.controls.text_box.Editor;
 import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
-import javafx.animation.Timeline;
 import javafx.css.PseudoClass;
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.control.SkinBase;
 
@@ -30,26 +28,24 @@ import javafx.scene.control.SkinBase;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/09/2022
  */
-public class GNTextBoxBaseSkin extends SkinBase<TextBoxBase> {
+public class TextBoxBaseSkin extends SkinBase<TextBoxBase> {
 
     //Fixed
     protected final TextBoxBase control;
 
-
-    protected GNTextBoxBaseSkin(TextBoxBase _control) {
+    protected TextBoxBaseSkin(TextBoxBase _control) {
         super(_control);
         this.control = _control;
 
-        if (_control.isAnimated()) {
+        if (_control.isAnimate()) {
             _control.setEditor(new FloatEditor());
-            pseudoClassStateChanged(PseudoClass.getPseudoClass("animated"), true);
+            pseudoClassStateChanged(PseudoClass.getPseudoClass("animate"), true);
         } else {
             _control.setEditor(new Editor());
-            pseudoClassStateChanged(PseudoClass.getPseudoClass("animated"), false);
+            pseudoClassStateChanged(PseudoClass.getPseudoClass("animate"), false);
         }
 
         if (_control.getEditor() != null) {
-
             _control.getEditor().textProperty().bindBidirectional(_control.textProperty());
             _control.getEditor().promptTextProperty().bindBidirectional(_control.promptTextProperty());
             _control.getEditor().maskTextProperty().bindBidirectional(_control.maskTextProperty());
@@ -96,7 +92,6 @@ public class GNTextBoxBaseSkin extends SkinBase<TextBoxBase> {
             control.getLeftNode().setManaged(false);
             getChildren().add( _control.getLeftNode());
         }
-
 
         registerChangeListener(_control.focusWithinProperty(), c -> {
 
@@ -155,8 +150,4 @@ public class GNTextBoxBaseSkin extends SkinBase<TextBoxBase> {
             control.getEditor().resize(edW, control.getHeight());
 
     }
-
-
-
-
 }

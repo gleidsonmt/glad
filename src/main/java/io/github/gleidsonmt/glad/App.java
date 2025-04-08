@@ -1,6 +1,9 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
+import io.github.gleidsonmt.glad.controls.button.Button;
+import io.github.gleidsonmt.glad.controls.button.FabButton;
+import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
 import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import io.github.gleidsonmt.glad.controls.TextField;
@@ -10,7 +13,6 @@ import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
 import io.github.gleidsonmt.glad.controls.text_box.Editor;
 import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
 import io.github.gleidsonmt.glad.responsive.Break;
@@ -130,7 +132,7 @@ public class App extends Application {
 //        inverse.getStyleClass().addAll("radius-0", "flat");
 //        ct.getChildren().addAll(new HBox(left, inverse, right));
 
-        Button flat = new Button("Button");
+        javafx.scene.control.Button flat = new javafx.scene.control.Button("Button");
         flat.setGraphic(new SVGIcon(Icon.TODAY));
         flat.getStyleClass().add("bg-red border-red border-l-1");
 
@@ -198,19 +200,25 @@ public class App extends Application {
 //        floatEditor.setText("Text");
 
         SVGIcon icon = new SVGIcon(Icon.TODAY);
-        icon.setScale(1.5);
         TextBox textBox = new TextBox(icon);
         textBox.setPromptText("Float Text");
+        textBox.setAction(true);
 
-        textBox.setAnimated(true);
         PasswordBox passBox = new PasswordBox(Icon.TODAY);
         passBox.setPromptText("Float Text");
-        passBox.setAnimated(true);
+        passBox.setStyle("-fx-animate: true;");
+        passBox.setAction(true);
+
+//        passBox.setAnimate(true);
 
 //        textBox.setIcon(Icon.TODAY);
 //        textBox.setAction(true);
 //        VBox b = new VBox(_switch, textField);
-        VBox b = new VBox( editor, floatEditor, textBox, passBox);
+
+        FabButton iconButton = new FabButton(Icon.TODAY, true);
+        iconButton.setStyle("-fx-icon: UNDO;");
+
+        VBox b = new VBox( editor, floatEditor, textBox, passBox, new Button(), new javafx.scene.control.Button("Button"), iconButton, new IconButton(new SVGIcon(Icon.CALENDAR_MONTH), true));
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);

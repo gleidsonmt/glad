@@ -58,6 +58,7 @@ public class SVGIcon extends SVGPathIcon {
             }
         });
         setAutoSizeChildren(true);
+        setMouseTransparent(true);
     }
 
     public Icon getIcon() {

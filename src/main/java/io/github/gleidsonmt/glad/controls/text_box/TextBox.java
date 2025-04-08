@@ -1,7 +1,9 @@
 package io.github.gleidsonmt.glad.controls.text_box;
 
 import io.github.gleidsonmt.glad.GladResources;
-import io.github.gleidsonmt.glad.controls.IconButton;
+import io.github.gleidsonmt.glad.controls.IconButtonOld;
+import io.github.gleidsonmt.glad.controls.button.FabButton;
+import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
@@ -20,7 +22,7 @@ import java.util.Objects;
  * Create on  04/04/2025
  * Ultimate.
  */
-public class TextBox extends TextBoxBase {
+public final class TextBox extends TextBoxBase {
 
     private final IconButton clearButton;
     private BooleanProperty action;
@@ -36,7 +38,6 @@ public class TextBox extends TextBoxBase {
     public TextBox(Node icon) {
         this(icon, null);
     }
-
 
     public TextBox(String text) {
         this((Icon) null, text);
@@ -56,7 +57,8 @@ public class TextBox extends TextBoxBase {
 
     public TextBox(Node icon, String text, boolean action) {
         super(false);
-        this.clearButton = new IconButton(Icon.CLEAR);
+        this.clearButton = new IconButton(new SVGIcon(Icon.CLEAR), true);
+        this.clearButton.getStyleClass().addAll("rounded", "max-w-30", "min-w-30", "min-h-30", "max-h-30");
         this.action = new SimpleBooleanProperty(action);
 
         getStyleClass().add("text-box");
@@ -66,7 +68,9 @@ public class TextBox extends TextBoxBase {
         if (action) setRightNode(createRightAction());
 
         // When editor has text clear button will appear
-        ChangeListener<String> hideAction = (_, _, newVal) -> setRightNode(newVal != null && !newVal.isEmpty() && isAction() ? clearButton : null);
+        ChangeListener<String> hideAction = (_, _, newVal) -> {
+            setRightNode(newVal != null && !newVal.isEmpty() && isAction() ? createRightAction() : null);
+        };
 
         this.editorProperty().addListener((_, oldVal, newVal) -> {
             if (newVal != null) {

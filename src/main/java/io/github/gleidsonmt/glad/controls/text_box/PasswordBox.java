@@ -1,7 +1,8 @@
 package io.github.gleidsonmt.glad.controls.text_box;
 
 import io.github.gleidsonmt.glad.GladResources;
-import io.github.gleidsonmt.glad.controls.IconButton;
+import io.github.gleidsonmt.glad.controls.IconButtonOld;
+import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
@@ -51,7 +52,8 @@ public class PasswordBox extends TextBoxBase {
 
     public PasswordBox(Node icon, String text, boolean action) {
         super(true);
-        this.hideButton = new IconButton(Icon.CLEAR);
+        this.hideButton = new IconButton(new SVGIcon(Icon.VISIBILITY), true);
+        this.hideButton.getStyleClass().addAll("rounded", "max-w-30", "min-w-30", "min-h-30", "max-h-30");
         this.action = new SimpleBooleanProperty(action);
 
         getStyleClass().addAll("password-box", "text-box");
@@ -61,7 +63,9 @@ public class PasswordBox extends TextBoxBase {
         if (action) setRightNode(createRightAction());
 
         // When editor has text clear button will appear
-        ChangeListener<String> hideAction = (_, _, newVal) -> setRightNode(newVal != null && !newVal.isEmpty() && isAction() ? hideButton : null);
+        ChangeListener<String> hideAction = (_, _, newVal) -> {
+            setRightNode(newVal != null && !newVal.isEmpty() && isAction() ? createRightAction() : null);
+        };
 
         this.editorProperty().addListener((_, oldVal, newVal) -> {
             if (newVal != null) {
@@ -88,8 +92,15 @@ public class PasswordBox extends TextBoxBase {
 
     private @NotNull EventHandler<MouseEvent> createAction() {
         return _ -> {
-            getEditor().clear();
-            getEditor().requestFocus();
+            getEditor().setMaskText(!getEditor().isMaskText());
+            hideButton.setGraphic(
+                    new SVGIcon(
+                            !getEditor().isMaskText() ?
+                                    Icon.VISIBILITY_OFF : Icon.VISIBILITY
+                    )
+            );
+            getEditor().setText(getText());
+            getEditor().end();
         };
     }
 

@@ -17,8 +17,8 @@
 //
 //package io.github.gleidsonmt.glad.controls.skin;
 //
-//import io.github.gleidsonmt.glad.controls.IconButton;
-//import io.github.gleidsonmt.glad.controls.IconButton;
+//import io.github.gleidsonmt.glad.controls.IconButtonOld;
+//import io.github.gleidsonmt.glad.controls.IconButtonOld;
 //import io.github.gleidsonmt.glad.controls.TextBoxOld;
 //import io.github.gleidsonmt.glad.controls.icon.Icon;
 //import io.github.gleidsonmt.glad.controls.text_box.CounterLabel;
@@ -47,20 +47,20 @@
 //    private final Label         helperLabel         = new Label();
 //    private final TextBoxBase base                = new TextBoxBase();
 ////    private final IconContainer iconContainer       = new IconContainer();
-//    private final IconButton iconContainer        = new IconButton();
+//    private final IconButtonOld iconContainer        = new IconButtonOld();
 //    private final CounterLabel counterLabel         = new CounterLabel();
 //
 //    private final Timeline timeline = new Timeline();
 //
 //
-//    private IconButton  iconButton;
+//    private IconButtonOld  iconButton;
 //
 //    private final TextBoxOld control;
 //
 //    public GNTextBoxSkin(TextBoxOld _control) {
 //        super(_control);
 //        this.control = _control;
-//        this.iconButton = new IconButton(Icon.CLEAR);
+//        this.iconButton = new IconButtonOld(Icon.CLEAR);
 //        this.iconButton.setFocusTraversable(false);
 //        this.iconButton.setManaged(false);
 //        this.iconButton.setOnMouseClicked(createAction());
@@ -153,11 +153,11 @@
 //
 //    }
 //
-//    protected void setActionButton(IconButton node) {
+//    protected void setActionButton(IconButtonOld node) {
 //        this.iconButton = node;
 //    }
 //
-//    protected IconButton getActionButton() {
+//    protected IconButtonOld getActionButton() {
 //        return this.iconButton;
 //    }
 //

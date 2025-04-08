@@ -15,19 +15,20 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.glad.controls.icon;
+package io.github.gleidsonmt.glad.controls.button;
 
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.SkinBase;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderStroke;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -37,61 +38,52 @@ import javafx.util.Duration;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  25/09/2022
  */
-public class IconButtonSkin extends SkinBase<IconButton> {
+@Deprecated
+public class IconButtonSkin extends SkinBase<FabButton> {
 
-    private final IconButton control;
+    private final FabButton control;
 
     private final Rectangle clip = new Rectangle();
-    private final SVGIcon svgIcon = new SVGIcon();
+    private final SVGIcon iconContainer = new SVGIcon();
 
     private final Timeline timeline = new Timeline();
     private final Circle circle = new Circle();
 
-    public IconButtonSkin(IconButton _control) {
+    double radi = 0;
+
+    public IconButtonSkin(FabButton _control) {
         super(_control);
         this.control = _control;
 
         if (_control.getIcon() == null || _control.getIcon() == Icon.NONE) {
-            svgIcon.setContent(Icon.ADD);
+            iconContainer.setContent(Icon.FAVORITE);
         } else
-            svgIcon.setContent(_control.getIcon());
+            iconContainer.setContent(_control.getIcon());
 
         _control.iconProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && newValue != Icon.NONE) {
-                svgIcon.setContent(newValue);
+                iconContainer.setContent(newValue);
             }
         });
 
-        _control.iconColorProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                svgIcon.getPath().setFill(newValue);
-            }
-        });
-
-        getChildren().add(svgIcon);
+//        iconContainer.setFill(Color.WHITE);
+        getChildren().add(iconContainer);
 
         this.clip.widthProperty().bind(this.control.widthProperty());
         this.clip.heightProperty().bind(this.control.heightProperty());
 
-        this.control.widthProperty().addListener((observable, oldValue, newValue) -> {
-            clip.setArcWidth(_control.getWidth() * 2);
-            clip.setArcHeight(_control.getHeight() * 2);
-        });
-
-        this.control.heightProperty().addListener((observable, oldValue, newValue) -> {
-            clip.setArcWidth(_control.getWidth() * 2);
-            clip.setArcHeight(_control.getHeight() * 2);
-        });
+        for (BorderStroke stroke : this.control.getBorder().getStrokes()) {
+            radi = stroke.getRadii().getTopLeftVerticalRadius();
+        }
 
         _control.addEventHandler(MouseEvent.MOUSE_RELEASED, onPressed);
-
         _control.setClip(clip);
 
     }
 
     @Override
     protected void layoutChildren(double contentX, double contentY, double contentWidth, double contentHeight) {
-        layoutInArea(svgIcon, contentX, contentY, contentWidth, contentHeight, -1, HPos.CENTER, VPos.CENTER);
+        layoutInArea(iconContainer, contentX, contentY, contentWidth, contentHeight, -1, HPos.CENTER, VPos.CENTER);
     }
 
     private final EventHandler<MouseEvent> onPressed = new EventHandler<>() {
@@ -102,7 +94,7 @@ public class IconButtonSkin extends SkinBase<IconButton> {
                 return;
             }
 
-            circle.setRadius(0);
+            circle.setRadius(10);
             circle.setStrokeWidth(0);
 
             circle.setFill(Color.WHITE);
@@ -114,6 +106,21 @@ public class IconButtonSkin extends SkinBase<IconButton> {
 
             circle.setMouseTransparent(true);
             circle.setManaged(false);
+
+            for (BorderStroke stroke : control.getBorder().getStrokes()) {
+//                double arcWidth =
+//                        stroke.getRadii().getTopLeftHorizontalRadius()
+//                        + stroke.getRadii().getTopLeftVerticalRadius()
+//                        + stroke.getRadii().getTopRightHorizontalRadius()
+//                        + stroke.getRadii().getTopLeftVerticalRadius();
+
+                double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() +  stroke.getRadii().getTopLeftVerticalRadius();
+
+
+                clip.setArcWidth(arcWidth);
+                clip.setArcHeight(arcWidth);
+            }
+
 
 //            clip.setArcWidth( Math.floor(control.getWidth() / 6 ));
 //            clip.setArcHeight( Math.floor(control.getHeight() / 6 ));
@@ -136,4 +143,22 @@ public class IconButtonSkin extends SkinBase<IconButton> {
             timeline.setOnFinished( (e) -> getChildren().remove(circle));
         }
     };
+
+    protected double computeMaxWidth(double var1, double var3, double var5, double var7, double var9) {
+        return this.getSkinnable().prefWidth(var1);
+    }
+
+    protected double computeMaxHeight(double var1, double var3, double var5, double var7, double var9) {
+        return this.getSkinnable().prefHeight(var1);
+    }
+
+//    @Override
+//    protected double computeMaxHeight(double v, double v1, double v2, double v3, double v4) {
+//        return super.computePrefHeight(v, v1, v2, v3, v4);
+//    }
+//
+//    @Override
+//    protected double computeMaxWidth(double v, double v1, double v2, double v3, double v4) {
+//        return super.computePrefWidth(v, v1, v2, v3, v4);
+//    }
 }

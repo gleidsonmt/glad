@@ -15,13 +15,14 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.glad.controls.icon;
+package io.github.gleidsonmt.glad.controls;
 
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.skin.GNIconButtonSkin;
 import javafx.beans.DefaultProperty;
 import javafx.css.*;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
-import javafx.scene.paint.Color;
 
 import java.util.List;
 
@@ -30,58 +31,41 @@ import java.util.List;
  * Create on  25/09/2022
  */
 @DefaultProperty("control")
-public class IconButton extends Control {
+@Deprecated
+public class IconButtonOld extends Control {
 
-    private static final StyleablePropertyFactory<IconButton> FACTORY =
+    private static final StyleablePropertyFactory<IconButtonOld> FACTORY =
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
 
     private final StyleableObjectProperty<Icon> icon =
             new SimpleStyleableObjectProperty<>(ICON, this, "icon", Icon.NONE);
 
-    private final StyleableObjectProperty<Color> iconColor =
-            new SimpleStyleableObjectProperty<>(ICON_COLOR, this, "icon", Color.BLACK);
-
-    private static final CssMetaData<IconButton, Color> ICON_COLOR =
-            FACTORY.createColorCssMetaData("-gn-icon-color",
-                    g -> g.iconColor, Color.BLACK, true);
-
-    private static final CssMetaData<IconButton, Icon> ICON =
+    private static final CssMetaData<IconButtonOld, Icon> ICON =
             FACTORY.createEnumCssMetaData(Icon.class, "-gn-icon",
                     g -> g.icon, Icon.NONE, true);
 
-
-    public IconButton() {
+    public IconButtonOld() {
         this(null);
     }
 
-    public IconButton(Icon icon) {
+    public IconButtonOld(Icon icon) {
         setMaxSize(40, 40);
         setMinSize(40, 40);
         setIcon(icon);
-        getStyleClass().add("icon-button");
-
-
+        getStyleClass().add("gn-icon-button");
     }
+
+
 
     @Override
     protected Skin<?> createDefaultSkin() {
-        return new IconButtonSkin(this);
+        return new GNIconButtonSkin(this);
     }
 
 //    @Override
 //    public String getUserAgentStylesheet() {
-//        return Objects.requireNonNull(IconButton.class.getResource("/agents/button.css")).toExternalForm();
+//        return Objects.requireNonNull(GNIconButton.class.getResource("/io.github.gleidsonmt.gncontrols/agents/button.css")).toExternalForm();
 //    }
-
-
-    public Color getIconColor() {
-        return iconColor.get();
-    }
-
-    public StyleableObjectProperty<Color> iconColorProperty() {
-        return iconColor;
-    }
-
 
     public Icon getIcon() {
         return icon.get();
@@ -94,8 +78,6 @@ public class IconButton extends Control {
     public void setIcon(Icon icon) {
         this.icon.set(icon);
     }
-
-
 
     @Override
     protected List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
