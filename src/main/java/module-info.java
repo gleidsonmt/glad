@@ -1,4 +1,4 @@
-moduleImpl io.github.gleidsonmt.glad {
+module io.github.gleidsonmt.glad {
 
     requires  javafx.graphics;
     requires  javafx.controls;
