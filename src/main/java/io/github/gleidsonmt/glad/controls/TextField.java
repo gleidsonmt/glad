@@ -4,6 +4,7 @@ import javafx.collections.SetChangeListener;
 import javafx.css.PseudoClass;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -63,13 +64,13 @@ public class TextField extends javafx.scene.control.TextField implements Compone
 
     @Override
     public void addClasses(String classes) {
-        for (String clazz : classes.split(" ")) {
+        Arrays.stream(classes.split(" ")).forEach(clazz -> {
             if (clazz.contains(":")) {
-                 if (pseudos == null) pseudos = new ArrayList<>();
-                 pseudos.add(clazz);
+                if (pseudos == null) pseudos = new ArrayList<>();
+                pseudos.add(clazz);
             } else {
                 getStyleClass().add(clazz);
             }
-        }
+        });
     }
 }

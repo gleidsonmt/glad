@@ -91,7 +91,7 @@ public class SVGIcon extends SVGPathIcon {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("SVGIconOld{");
+        final StringBuffer sb = new StringBuffer("SVGIcon{");
         sb.append("name='").append(name).append('\'');
         sb.append('}');
         return sb.toString();

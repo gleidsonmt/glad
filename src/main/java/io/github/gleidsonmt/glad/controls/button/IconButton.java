@@ -48,4 +48,6 @@ public class IconButton extends Button {
         getStyleClass().addAll(inside ? "inside-button" : "icon-button", "w-40", "h-40");
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
     }
+
+
 }

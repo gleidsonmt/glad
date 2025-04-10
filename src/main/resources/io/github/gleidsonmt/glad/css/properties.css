@@ -722,6 +722,15 @@
 .min-size-30 {
 	-fx-min-width: 30px;	-fx-min-height: 30px;
 }
+.size-40 {
+	-fx-pref-width: 40px;	-fx-pref-height: 40px;
+}
+.min-size-40 {
+	-fx-min-width: 40px;	-fx-min-height: 40px;
+}
+.max-size-40 {
+	-fx-max-width: 40px;	-fx-max-height: 40px;
+}
 .size-45 {
 	-fx-pref-width: 45px;	-fx-pref-height: 45px;
 }

@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
+import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.FabButton;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
@@ -209,16 +210,14 @@ public class App extends Application {
         passBox.setStyle("-fx-animate: true;");
         passBox.setAction(true);
 
-//        passBox.setAnimate(true);
-
-//        textBox.setIcon(Icon.TODAY);
-//        textBox.setAction(true);
-//        VBox b = new VBox(_switch, textField);
+        Badge badge = new Badge();
+        badge.setStyle("-fx-box-color: -danger; -fx-type: rounded;");
+//        badge.getStyleClass().add("rounded");
 
         FabButton iconButton = new FabButton(Icon.TODAY, true);
         iconButton.setStyle("-fx-icon: UNDO;");
 
-        VBox b = new VBox( editor, floatEditor, textBox, passBox, new Button(), new javafx.scene.control.Button("Button"), iconButton, new IconButton(new SVGIcon(Icon.CALENDAR_MONTH), true));
+        VBox b = new VBox( badge, editor, floatEditor, textBox, passBox, new Button(), new javafx.scene.control.Button("Button"), iconButton, new IconButton(new SVGIcon(Icon.CALENDAR_MONTH), true));
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);
