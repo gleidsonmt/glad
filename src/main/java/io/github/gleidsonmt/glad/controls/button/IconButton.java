@@ -49,5 +49,8 @@ public class IconButton extends Button {
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
     }
 
+    public void setIcon(Node icon) {
+        setGraphic(icon);
+    }
 
 }

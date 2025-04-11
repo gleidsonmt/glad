@@ -19,32 +19,21 @@
 
 package io.github.gleidsonmt.glad.controls.badge;
 
-import io.github.gleidsonmt.glad.GladResources;
 import io.github.gleidsonmt.glad.controls.RegionType;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.binding.Bindings;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.css.CssParser;
-import javafx.css.Rule;
-import javafx.css.Stylesheet;
-import javafx.css.converter.ColorConverter;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.CacheHint;
 import javafx.scene.control.Label;
 import javafx.scene.control.SkinBase;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.function.Consumer;
+import javafx.util.StringConverter;
 
 public class BadgeSkin extends SkinBase<Badge> {
 
@@ -62,7 +51,33 @@ public class BadgeSkin extends SkinBase<Badge> {
         lblInfo.setMaxSize(10,10);
         lblInfo.setMouseTransparent(true);
 
-        lblInfo.textProperty().bind(Bindings.convert(control.numberOfNotificationsProperty()));
+        lblInfo.setCache(true);
+        lblInfo.setCacheHint(CacheHint.QUALITY);
+
+        lblInfo.getStyleClass().add("bold");
+//        lblInfo.getStyleClass().add("font-instagram-headline");
+//        lblInfo.setStyle("-fx-font-family: \"Instagram Sans Headline\"");
+
+        StringConverter<Number> converter = new StringConverter<>() {
+            @Override
+            public String toString(Number number) {
+                System.out.println("number = " + number.intValue());
+                System.out.println("control.getMaxNotifications() = " + control.getMaxNotifications());
+                System.out.println("(number.intValue() >= control.getMaxNotifications()) = " + (number.intValue() >= control.getMaxNotifications()));
+                if (number.intValue() >= control.getMaxNotifications()) {
+                    return "9+";
+                } else {
+                    return String.valueOf(number.intValue());
+                }
+            }
+
+            @Override
+            public Number fromString(String s) {
+                return null;
+            }
+        };
+
+        Bindings.bindBidirectional(lblInfo.textProperty(), control.numberOfNotificationsProperty(), converter);
 
         this.getChildren().addAll(icon, lblInfo);
         lblInfo.getStyleClass().addAll(   "text-white");
