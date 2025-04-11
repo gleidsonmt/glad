@@ -10,31 +10,36 @@ import javafx.scene.shape.Rectangle;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  05/04/2024
  */
-@Deprecated
-public class AvatarRectView extends Rectangle {
+public class AvatarView extends Rectangle {
 
     private final ObjectProperty<Image> image =  new SimpleObjectProperty<>();
 
-    public AvatarRectView() {
+    public AvatarView() {
         this(null);
     }
 
-    public AvatarRectView(Image image) {
+    public AvatarView(Image image) {
         this(image, 40);
     }
 
-    public AvatarRectView(Image image, double size) {
-        this(image, size, size, 0);
+    public AvatarView(Image image, double radius) {
+        this(image, radius, 40);
     }
 
-    public AvatarRectView(Image image, double width, double height, double arc) {
-        getStyleClass().add("avatar-rect-view");
+    public AvatarView(Image image, double radius, double size) {
+        this(image, radius, size, size);
+    }
+
+
+    public AvatarView(Image image,  double arc, double width, double height) {
+        getStyleClass().add("avatar-view");
         if (image != null)
             this.setFill(new ImagePattern(image));
 
 //        setRadius(40);
         setWidth(width);
         setHeight(height);
+
         setArcWidth(arc);
         setArcHeight(arc);
 
@@ -51,7 +56,7 @@ public class AvatarRectView extends Rectangle {
         setHeight(s);
     }
 
-    public void setArc(double s) {
+    public void setRadius(double s) {
         setArcWidth(s);
         setArcHeight(s);
     }

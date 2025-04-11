@@ -1,6 +1,8 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
+import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
+import io.github.gleidsonmt.glad.controls.avatar.StackedAvatar;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.FabButton;
@@ -31,6 +33,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import org.scenicview.ScenicView;
 
@@ -182,8 +185,6 @@ public class App extends Application {
 //        checkBox.setIndeterminate(true);
 //        checkBox.setSelected(true);
 
-        RadioButton radioButton = new RadioButton();
-
         ChoiceBox<String> contextMenu = new ChoiceBox<>();
         contextMenu.setItems(FXCollections.observableArrayList(
                 "Item 01",
@@ -217,7 +218,25 @@ public class App extends Application {
         FabButton iconButton = new FabButton(Icon.TODAY, true);
         iconButton.setStyle("-fx-icon: UNDO;");
 
-        VBox b = new VBox( badge, editor, floatEditor, textBox, passBox, new Button(), new javafx.scene.control.Button("Button"), iconButton, new IconButton(new SVGIcon(Icon.CALENDAR_MONTH), true));
+//        VBox b = new VBox( badge, editor, floatEditor, textBox, passBox, new Button(), new javafx.scene.control.Button("Button"), iconButton, new IconButton(new SVGIcon(Icon.CALENDAR_MONTH), true));
+        StackedAvatar avatars = new StackedAvatar(
+                2,
+                40,
+                Assets.getImage("avatar.jpg"),
+                Assets.getImage("avatar.jpg"),
+                Assets.getImage("avatar.jpg")
+
+        );
+
+        StackedAvatar avatars2 = new StackedAvatar(
+                3,
+                40,
+                new AvatarView(Assets.getImage("avatar.jpg"), 40),
+                new AvatarView(Assets.getImage("avatar.jpg"), 40),
+                new AvatarView(Assets.getImage("avatar.jpg"), 10),
+                new AvatarView(Assets.getImage("avatar.jpg"), 20)
+        );
+        VBox b = new VBox( avatars2);
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);
