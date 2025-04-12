@@ -212,6 +212,9 @@ public class App extends Application {
         passBox.setAction(true);
 
         Badge badge = new Badge();
+        badge.setIcon(new SVGIcon(Icon.APPS));
+        badge.setNumberOfNotifications(10);
+        badge.setMaxNotifications(20);
         badge.setStyle("-fx-box-color: -danger; -fx-type: rounded;");
 //        badge.getStyleClass().add("rounded");
 
@@ -219,15 +222,6 @@ public class App extends Application {
         iconButton.setStyle("-fx-icon: UNDO;");
 
 //        VBox b = new VBox( badge, editor, floatEditor, textBox, passBox, new Button(), new javafx.scene.control.Button("Button"), iconButton, new IconButton(new SVGIcon(Icon.CALENDAR_MONTH), true));
-        StackedAvatar avatars = new StackedAvatar(
-                2,
-                40,
-                Assets.getImage("avatar.jpg"),
-                Assets.getImage("avatar.jpg"),
-                Assets.getImage("avatar.jpg")
-
-        );
-
         StackedAvatar avatars2 = new StackedAvatar(
                 3,
                 40,
@@ -236,7 +230,9 @@ public class App extends Application {
                 new AvatarView(Assets.getImage("avatar.jpg"), 10),
                 new AvatarView(Assets.getImage("avatar.jpg"), 20)
         );
-        VBox b = new VBox( avatars2);
+
+        badge.getStyleClass().addAll("min-size-50");
+        VBox b = new VBox( new PasswordField() );
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);

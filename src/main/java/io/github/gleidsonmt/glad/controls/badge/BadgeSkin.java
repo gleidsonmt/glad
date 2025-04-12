@@ -61,9 +61,6 @@ public class BadgeSkin extends SkinBase<Badge> {
         StringConverter<Number> converter = new StringConverter<>() {
             @Override
             public String toString(Number number) {
-                System.out.println("number = " + number.intValue());
-                System.out.println("control.getMaxNotifications() = " + control.getMaxNotifications());
-                System.out.println("(number.intValue() >= control.getMaxNotifications()) = " + (number.intValue() >= control.getMaxNotifications()));
                 if (number.intValue() >= control.getMaxNotifications()) {
                     return "9+";
                 } else {

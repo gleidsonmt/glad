@@ -1,5 +1,6 @@
 
-TextField {
+TextField, PasswordField
+{
     -fx-text-fill: -text-color;
     -fx-background-color: -fx-background;
     -fx-border-color: -border-color;
@@ -12,15 +13,24 @@ TextField {
     -fx-faint-focus-color: transparent;
 }
 
-TextField:hover {
+TextField:hover,
+PasswordField:hover
+{
     -fx-background-color: transparent;
 }
 
+PasswordField:focused:hover,
 TextField:focused:hover,
-TextField:focused {
+PasswordField:focused,
+TextField:focused
+{
     -fx-border-color: -fx-accent;
 }
 
+PasswordField:readonly:hover,
+PasswordField:readonly:focused,
+PasswordField:readonly:focused:hover,
+PasswordField:readonly,
 TextField:readonly:hover,
 TextField:readonly:focused,
 TextField:readonly:focused:hover,

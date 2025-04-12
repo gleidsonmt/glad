@@ -19,32 +19,31 @@
 
 package io.github.gleidsonmt.glad.controls.badge;
 
-import io.github.gleidsonmt.glad.controls.Component;
 import io.github.gleidsonmt.glad.controls.RegionType;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.controls.toggle_switch.ToggleSwitch;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.css.*;
-import javafx.css.converter.ColorConverter;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
-import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+import org.jetbrains.annotations.Contract;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public final class Badge extends IconButton {
 
     private final ObjectProperty<Icon> icon = new SimpleObjectProperty<>(this, "icon");
     private final IntegerProperty numberOfNotifications = new SimpleIntegerProperty(this, "numberOfNotification",0);
+    private final IntegerProperty maxNotifications = new SimpleIntegerProperty(this, "maxNotification",-1);
 
     private final StyleableProperty<Color> boxColor =
             new SimpleStyleableObjectProperty<>(BOX_COLOR, this, "color", Color.RED);
@@ -56,22 +55,29 @@ public final class Badge extends IconButton {
     private static final StyleablePropertyFactory<Badge> FACTORY =
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
 
-
     public Badge() {
-        this(Icon.NOTIFICATION_IMPORTANT, 0);
+        this(Icon.NOTIFICATION_IMPORTANT);
     }
 
     public Badge(Icon _icon) {
-        this(_icon, 0);
+        this(new SVGIcon(_icon, 1.2), 0, 10);
     }
 
     public Badge(Icon _icon, int number) {
-        super(new SVGIcon(_icon, 1.2), true);
+        this(new SVGIcon(_icon, 1.2), number, 10);
+    }
+
+    public Badge(Icon _icon, int number, int max) {
+        this(new SVGIcon(_icon, 1.2), number, max);
+    }
+
+    public Badge(Node node, int number, int max) {
+        super(node, true);
         getStyleClass().addAll(  "size-40", "max-size-40", "min-size-40");
         setCursor(Cursor.HAND);
         numberOfNotifications.set(number);
+        maxNotifications.set(max);
         setAlignment(Pos.TOP_RIGHT);
-
     }
 
     @Override
@@ -79,7 +85,6 @@ public final class Badge extends IconButton {
         return new BadgeSkin(this);
     }
 
-    // CssMetaData from StyleablePropertyFactory
     private static final CssMetaData<Badge, Color> BOX_COLOR =
             FACTORY.createColorCssMetaData("-fx-box-color", s -> s.boxColor, Color.RED, false);
 
@@ -102,8 +107,22 @@ public final class Badge extends IconButton {
         return icon.get();
     }
 
+    @Contract(pure = true)
     public ObjectProperty<Icon> iconProperty() {
         return icon;
+    }
+
+    public int getMaxNotifications() {
+        return maxNotifications.get();
+    }
+
+    public void setMaxNotifications(int max) {
+        this.maxNotifications.set(max);
+    }
+
+    @Contract(pure = true)
+    public IntegerProperty maxNotificationsProperty() {
+        return maxNotifications;
     }
 
     public RegionType getType() {
@@ -114,6 +133,7 @@ public final class Badge extends IconButton {
         this.type.setValue(type);
     }
 
+    @Contract(pure = true)
     public ObjectProperty<RegionType> typeProperty() {
         return this.type;
     }
@@ -126,6 +146,7 @@ public final class Badge extends IconButton {
         this.boxColor.setValue(color);
     }
 
+    @Contract(pure = true)
     public ObjectProperty<Color> boxColorProperty() {
         return (ObjectProperty<Color>) this.boxColor;
     }
@@ -134,6 +155,7 @@ public final class Badge extends IconButton {
         return numberOfNotifications.get();
     }
 
+    @Contract(pure = true)
     public IntegerProperty numberOfNotificationsProperty() {
         return numberOfNotifications;
     }
