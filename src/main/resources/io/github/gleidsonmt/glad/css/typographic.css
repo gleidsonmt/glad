@@ -19,10 +19,12 @@ Text, .text {
 
 /* @Font */
 
+.label .text,
 .font-instagram {
     -fx-font-family: "Instagram Sans Regular";
 }
 
+.label .text,
 .font-instagram-headline {
     -fx-font-family: "Instagram Sans Headline";
 }
