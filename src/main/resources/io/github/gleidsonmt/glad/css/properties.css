@@ -842,6 +842,10 @@
 
 /* @Background */
 
+.bg-background {
+    -fx-background-color: -fx-background;
+}
+
 .bg-primary {
     -fx-background-color: -primary;
     -bar-color: -primary;
