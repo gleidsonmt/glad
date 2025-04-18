@@ -2,6 +2,7 @@ package io.github.gleidsonmt.glad.base;
 
 
 import io.github.gleidsonmt.glad.dialog.Dialog;
+import javafx.scene.Node;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -9,15 +10,6 @@ import org.jetbrains.annotations.ApiStatus;
  * Create on  01/02/2025
  */
 public interface Behavior {
-
-
-    void openDrawer();
-
-    void closeDrawer();
-
-    Alert alert();
-
-    Dialog dialog();
 
     @ApiStatus.Experimental
     void closeAside();
@@ -31,5 +23,20 @@ public interface Behavior {
     @ApiStatus.Experimental
     boolean isDrawerAbsolute();
 
+    /******************************************************************
+     *
+     *                          Fixed
+     *
+     *****************************************************************/
+
+    Alert alert();
+
+    Dialog dialog();
+
+    void setDrawer(Node drawer);
+
+    void openDrawer();
+
+    void closeDrawer();
 
 }

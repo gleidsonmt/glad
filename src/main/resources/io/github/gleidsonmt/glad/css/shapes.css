@@ -14,8 +14,8 @@
 }
 
 .round {
-  -fx-background-radius : 100px;
-  -fx-border-radius : 100px;
+  -fx-background-radius: 100px;
+  -fx-border-radius: 100px;
 }
 
 .rounded {

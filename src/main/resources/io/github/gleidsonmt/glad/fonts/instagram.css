@@ -1,24 +1,24 @@
 @font-face {
-    -fx-font-family: Instagram Light;
+    -fx-font-family: Instagram Sans Light;
         src: url('Instagram-Sans-Light.ttf');
 }
 
 @font-face {
-    -fx-font-family: Instagram Medium;
+    -fx-font-family: Instagram Sans Medium;
     src: url('Instagram-Sans-Medium.ttf');
 }
 
 @font-face {
-    -fx-font-family: Instagram Bold;
+    -fx-font-family: Instagram Sans Bold;
     src: url('Instagram-Sans-Bold.ttf');
 }
 
 @font-face {
-    -fx-font-family: Instagram Headline;
+    -fx-font-family: Instagram Sans Headline;
         src: url('Instagram-Sans-Headline.otf');
 }
 
 @font-face {
-    -fx-font-family: Instagram Regular;
+    -fx-font-family: Instagram Sans Regular;
     src: url('Instagram-Sans-Regular.ttf');
 }

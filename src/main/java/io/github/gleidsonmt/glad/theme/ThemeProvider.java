@@ -44,7 +44,17 @@ public class ThemeProvider {
     }
 
     public static void install(Scene scene, Css... css) {
-        Arrays.stream(css).forEach(el -> scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + el.getUrl())).toExternalForm()));
+
+        Arrays.stream(css).forEach(el -> {
+            if (el.toString().toLowerCase().contains("default")) {
+                String[] list = el.getUrl().split(" ");
+                for (String cs : list) {
+                    scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + cs)).toExternalForm());
+                }
+            } else {
+                scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + el.getUrl())).toExternalForm());
+            }
+        });
     }
 
     @ApiStatus.Experimental

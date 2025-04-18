@@ -1,12 +1,11 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
-import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
-import io.github.gleidsonmt.glad.controls.avatar.StackedAvatar;
+import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
+import io.github.gleidsonmt.glad.base.internal.animations.Animations;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.FabButton;
-import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
 import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import io.github.gleidsonmt.glad.controls.TextField;
@@ -22,6 +21,9 @@ import io.github.gleidsonmt.glad.responsive.Break;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -32,9 +34,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.scenicview.ScenicView;
 
 /**
@@ -123,7 +127,8 @@ public class App extends Application {
 //        });
 
     Container ct = new Container();
-        Root root = new Root(new Layout(ct));
+    Layout layout = new Layout(ct);
+        Root root = new Root(layout);
 
 //        ToggleButton left = new ToggleButton("Left");
 //        ToggleButton right = new ToggleButton("Right");
@@ -222,17 +227,49 @@ public class App extends Application {
         iconButton.setStyle("-fx-icon: UNDO;");
 
 //        VBox b = new VBox( badge, editor, floatEditor, textBox, passBox, new Button(), new javafx.scene.control.Button("Button"), iconButton, new IconButton(new SVGIcon(Icon.CALENDAR_MONTH), true));
-        StackedAvatar avatars2 = new StackedAvatar(
-                3,
-                40,
-                new AvatarView(Assets.getImage("avatar.jpg"), 40),
-                new AvatarView(Assets.getImage("avatar.jpg"), 40),
-                new AvatarView(Assets.getImage("avatar.jpg"), 10),
-                new AvatarView(Assets.getImage("avatar.jpg"), 20)
-        );
+        Text text = new Text("Texto");
+
+//        text.getStyleClass().addAll("font-instagram-medium");
+
+        ToggleButton toggleButton = new ToggleButton("WOe");
+        VBox drawer = new VBox(text, toggleButton);
+        drawer.getStyleClass().addAll("bg-yellow-500", "min-size-40");
+        drawer.setPrefWidth(280);
+        drawer.setPrefHeight(40);
+        root.behavior().setDrawer(drawer);
 
         badge.getStyleClass().addAll("min-size-50");
-        VBox b = new VBox( new PasswordField() );
+        Button ac = new Button("Action");
+        ac.setOnAction(e -> {
+
+            Root main = (Root) ac.getScene().getRoot();
+            main.behavior().openDrawer();
+//            main.flow()
+////                    .insets(new Insets(20))
+//                    .pos(Pos.TOP_CENTER)
+//                    .content(drawer)
+////                    .anchor(Anchor.RIGHT)/
+//                    .show();
+
+//            Timeline timeline = new Timeline();
+//            Insets insets = StackPane.getMargin(drawer);
+//            timeline.getKeyFrames().setAll(
+//                    new KeyFrame(Duration.ZERO, new KeyValue(
+//                            drawer.translateYProperty(), drawer.getHeight() + insets.getBottom()
+//                    )),
+//                    new KeyFrame(Duration.millis(200), new KeyValue(
+//                            drawer.translateYProperty(), 0
+//                    ))
+//            );
+
+//            timeline.play();
+//            main.flow().openAbsolute(
+//                    Pos.BOTTOM_CENTER,
+//                    drawer,
+//                    new Insets(20),
+//                    Animations.APPEAR_FROM_BOTTOM);
+        });
+        VBox b = new VBox( ac );
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);
@@ -248,27 +285,28 @@ public class App extends Application {
 
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
         ThemeProvider.install(scene,
-                Css.COLORS,
-                Css.TYPOGRAPHIC,
-                Css.SHAPES,
-                Css.PROPERTIES,
-                Css.BOOTSTRAP,
-                Css.COMBO_BOX,
-                Css.IMMERSIVE_SCROLL,
-                Css.TAB_PANE,
-                Css.PROGRESS_BAR,
-                Css.HYPERLINK,
-                Css.LIST_VIEW,
-                Css.BUTTON,
-                Css.CONTEXT_MENU,
-                Css.TOGGLE_BUTTON,
-                Css.TOGGLE_SWITCH,
-                Css.TEXT_FIELD,
-                Css.CHECK_BOX,
-                Css.TREE_VIEW,
-                Css.RADIO_BUTTON,
-                Css.TEXT_BOX,
-                Css.TABLE_VIEW
+                Css.DEFAULT
+//                Css.COLORS,
+//                Css.TYPOGRAPHIC,
+//                Css.SHAPES,
+//                Css.PROPERTIES,
+//                Css.BOOTSTRAP,
+//                Css.COMBO_BOX,
+//                Css.IMMERSIVE_SCROLL,
+//                Css.TAB_PANE,
+//                Css.PROGRESS_BAR,
+//                Css.HYPERLINK,
+//                Css.LIST_VIEW,
+//                Css.BUTTON,
+//                Css.CONTEXT_MENU,
+//                Css.TOGGLE_BUTTON,
+//                Css.TOGGLE_SWITCH,
+//                Css.TEXT_FIELD,
+//                Css.CHECK_BOX,
+//                Css.TREE_VIEW,
+//                Css.RADIO_BUTTON,
+//                Css.TEXT_BOX,
+//                Css.TABLE_VIEW
         );
 
 //        label.setStyle("-fx-font-family: \"Instagram Sans Headline\"; -fx-font-size: 22px; ");

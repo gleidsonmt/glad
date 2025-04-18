@@ -37,4 +37,6 @@ module io.github.gleidsonmt.glad {
 
     exports io.github.gleidsonmt.glad.controls.enums;
     exports io.github.gleidsonmt.glad.charts;
+    exports io.github.gleidsonmt.glad.base.internal.animations;
+    opens io.github.gleidsonmt.glad.base.internal.animations to javafx.fxml;
 }

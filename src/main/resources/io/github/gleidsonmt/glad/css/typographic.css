@@ -13,16 +13,24 @@
 }
 
 Text, .text {
-    -fx-font-family: "Poppins Regular";
+    -fx-font-family: Poppins Regular;
     -fx-fill: -text-color;
 }
 
 /* @Font */
 
-.label .text,
 .font-instagram {
-    -fx-font-family: "Instagram Sans Regular";
+    -fx-font-family: "Instagram Sans";
 }
+
+.font-instagram-light {
+     -fx-font-family: "Instagram Sans Light";
+}
+
+.font-instagram-medium {
+     -fx-font-family: "Instagram Sans Medium";
+}
+
 
 .label .text,
 .font-instagram-headline {

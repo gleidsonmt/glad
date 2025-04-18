@@ -2353,6 +2353,14 @@
     -fx-border-width : 0px 1px 0px 0px;
 }
 
+.border-r-2 {
+    -fx-border-width : 0px 2px 0px 0px;
+}
+
+.border-r-3 {
+    -fx-border-width : 0px 3px 0px 0px;
+}
+
 .border-l-1 {
     -fx-border-width : 0px 0px 0px 1px;
 }

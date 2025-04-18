@@ -4,12 +4,15 @@ import io.github.gleidsonmt.glad.base.Alert;
 import io.github.gleidsonmt.glad.base.Behavior;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.util.Duration;
 
@@ -43,26 +46,6 @@ public class BehaviorImpl implements Behavior {
         this.alert = new AlertImpl(root);
         this.dialog = new DialogImpl(root);
 
-
-//        new Sizer<>(root, Break.values()) {
-//            @Override
-//            public void change(Break aBreak) {
-//                switch (aBreak) {
-//                    case SM -> {
-//                        root.flow().remove(drawer);
-//                        root.flow().remove(aside);
-//                        root.wrapper().close();
-//                        layout.setLeft(drawer);
-//                        layout.setRight(aside);
-//                    }
-//                    case MD -> {
-//                        layout.setLeft(null);
-//                        layout.setRight(null);
-//                    }
-//                }
-//            }
-//        };
-
         if (layout.getLeft() != null) drawer = layout.getLeft();
         if (layout.getRight() != null) aside = layout.getRight();
 
@@ -89,6 +72,11 @@ public class BehaviorImpl implements Behavior {
     }
 
     @Override
+    public void setDrawer(Node drawer) {
+        this.drawer = drawer;
+    }
+
+    @Override
     public void openDrawer() {
         if (!isDrawerOpen()) {
             drawerTimeline.getKeyFrames().setAll(
@@ -98,7 +86,12 @@ public class BehaviorImpl implements Behavior {
             drawerTimeline.setOnFinished(null);
             drawerTimeline.setRate(1);
             root.wrapper().show();
-            root.flow().openLeft(drawer);
+            root.flow()
+                    .pos(Pos.CENTER_LEFT)
+                    .content(drawer)
+                    .anchor(Anchor.LEFT)
+                    .insets(Insets.EMPTY)
+                    .show();
             drawerTimeline.play();
         }
     }
@@ -122,7 +115,7 @@ public class BehaviorImpl implements Behavior {
     public void closeAside() {
         if (isAsideOpen()) {
             asideTimeline.setRate(-1);
-            root.wrapper().close();
+            root.wrapper().hide();
             asideTimeline.setOnFinished(e -> {
                 root.flow().remove(aside);
                 aside.setTranslateX(0);
@@ -135,7 +128,7 @@ public class BehaviorImpl implements Behavior {
     public void closeDrawer() {
         if (isDrawerOpen()) {
             drawerTimeline.setRate(-1);
-            root.wrapper().close();
+            root.wrapper().hide();
             drawerTimeline.setOnFinished(e -> {
                 root.flow().remove(drawer);
                 drawer.setTranslateX(0);

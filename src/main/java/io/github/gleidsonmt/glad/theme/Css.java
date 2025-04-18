@@ -6,6 +6,8 @@ package io.github.gleidsonmt.glad.theme;
  */
 public enum Css {
 
+    DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
+
     TOGGLE_SWITCH("toggle-switch.css"),
     TREE_VIEW("tree-view.css"),
     LIST_VIEW("list-view.css"),
