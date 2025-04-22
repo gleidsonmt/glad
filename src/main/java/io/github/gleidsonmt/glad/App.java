@@ -210,14 +210,17 @@ public class App extends Application {
         floatEditor.setPromptText("Float Text");
 //        floatEditor.setText("Text");
 
-        SVGIcon icon = new SVGIcon(Icon.TODAY);
+        SVGIcon icon = new SVGIcon(Icon.ACCOUNT);
         TextBox textBox = new TextBox(icon);
-        textBox.setPromptText("Float Text");
+        textBox.setMinHeight(40);
+        textBox.setPromptText("Insert your name");
+        textBox.setStyle("-fx-animate: true;");
         textBox.setAction(true);
 
-        PasswordBox passBox = new PasswordBox(Icon.TODAY);
-        passBox.setPromptText("Float Text");
+        PasswordBox passBox = new PasswordBox(Icon.VPN_KEY_FILLED);
+        passBox.setPromptText("Insert your Text");
         passBox.setStyle("-fx-animate: true;");
+        passBox.setMinHeight(40);
         passBox.setAction(true);
 
         Badge badge = new Badge();
@@ -304,6 +307,9 @@ public class App extends Application {
                 new AvatarView(Assets.getImage("avatar.jpg"))
         );
 
+
+
+
         Button add = new Button("Add");
         add.setOnAction(e -> {
             stackedAvatar.getAvatarViews().addAll(
@@ -332,7 +338,7 @@ public class App extends Application {
         });
 
 
-        HBox b = new HBox( stackedAvatar, add, remove, update, update1 );
+        VBox b = new VBox( textBox, passBox, update1);
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);

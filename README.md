@@ -9,5 +9,7 @@ news
   <img src="wall/button.png"  />
   <img src="wall/avatar_view.png"  />
   <img src="wall/badge.png"  />
+  <img src="wall/stacked_avatar.png"  />
+  <img src="wall/text_input.png"  />
 
 </p>

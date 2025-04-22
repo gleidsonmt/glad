@@ -150,4 +150,9 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> {
             control.getEditor().resize(edW, control.getHeight());
 
     }
+
+    @Override
+    protected double computeMaxHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
+        return super.computePrefHeight(width, topInset, rightInset, bottomInset, leftInset);
+    }
 }
