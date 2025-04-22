@@ -328,8 +328,7 @@ public class App extends Application {
         update1.setOnAction(e -> {
 //            stackedAvatar.getAvatarViews().set(2, new AvatarView(Assets.getImage("brazil.png")));
 //            stackedAvatar.setMax(3);
-            stackedAvatar.setAvatarSize(80);
-            stackedAvatar.setAvatarRadius(0);
+            stackedAvatar.setAvatarSize(60);
         });
 
 

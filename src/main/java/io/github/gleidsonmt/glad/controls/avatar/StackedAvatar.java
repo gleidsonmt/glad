@@ -32,7 +32,7 @@ public class StackedAvatar extends Group {
     public StackedAvatar() {
         this.max = new SimpleIntegerProperty(-1);
         this.avatarSize = new SimpleDoubleProperty(40);
-        this.avatarRadius = new SimpleDoubleProperty(20);
+        this.avatarRadius = new SimpleDoubleProperty(40);
         this.avatarViews = FXCollections.observableArrayList();
         maxLabel = createLabelMax();
 
