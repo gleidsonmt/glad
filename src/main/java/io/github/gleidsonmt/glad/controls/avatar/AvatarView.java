@@ -23,7 +23,7 @@ public class AvatarView extends Rectangle {
     }
 
     public AvatarView(Image image, double radius) {
-        this(image, radius, 40);
+        this(image, radius, radius);
     }
 
     public AvatarView(Image image, double radius, double size) {

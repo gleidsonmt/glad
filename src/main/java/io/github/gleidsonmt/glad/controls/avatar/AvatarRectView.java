@@ -10,7 +10,7 @@ import javafx.scene.shape.Rectangle;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  05/04/2024
  */
-@Deprecated
+@Deprecated(forRemoval = true)
 public class AvatarRectView extends Rectangle {
 
     private final ObjectProperty<Image> image =  new SimpleObjectProperty<>();

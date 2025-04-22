@@ -8,6 +8,8 @@
 
     -fx-background-color: -fx-background;
 
+    -fx-accent: #0085ff;
+
     /* Bootstrap */
     -primary   : #4285f4;
     -info      : #33B5E5;
@@ -61,6 +63,7 @@
     -light-green   : #8BC34A;
     -light-blue    : #82B1FF;
     -gray          : #8e8e8e;
+
 
 
     -text-color: -dark-gray;

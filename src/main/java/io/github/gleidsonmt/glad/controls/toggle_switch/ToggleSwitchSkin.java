@@ -31,7 +31,8 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
     private final StrokeTransition strokeTransition = new StrokeTransition(Duration.seconds(0.15));
     private final ParallelTransition animation = new ParallelTransition(translateAnimation, fillAnimation, strokeTransition);
 
-    Circle trigger = new Circle(10);
+    private final Rectangle trigger = new Rectangle();
+    private final Rectangle background = new Rectangle(50, 25);
 
     protected ToggleSwitchSkin(ToggleSwitch control) {
         super(control);
@@ -39,11 +40,12 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
         trigger.getStyleClass().add("trigger");
         trigger.setFill(Color.WHITE);
         trigger.setStroke(Color.LIGHTGRAY);
-        trigger.setLayoutX(-30);
-//        trigger.getStyleClass().add("depth-1");
 
+        trigger.setHeight(20);
+        trigger.setWidth(20);
+        trigger.setArcWidth(25);
+        trigger.setArcHeight(25);
 
-        Rectangle background = new Rectangle(50, 25);
         background.setCursor(Cursor.HAND);
         background.getStyleClass().add("foreground");
         background.setArcWidth(25);
@@ -63,12 +65,12 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
         on.bindBidirectional(control.onProperty());
         if (control.isOn()) {
             background.setFill(control.getAnimationColor());
-            trigger.setTranslateX(23);
+            trigger.setTranslateX(25);
         }
 
         control.setOnMouseClicked(e -> {
             translateAnimation.setToX(
-                    control.isOn() ? 0 : 23
+                    control.isOn() ? 0 : 25
             );
 
             fillAnimation.setFromValue(on.get() ? control.getTrackColor() : control.getAnimationColor());
@@ -79,13 +81,32 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
             animation.setOnFinished(_ -> on.set(!on.get()));
             animation.play();
         });
+        
+        registerChangeListener(control.arcProperty(), c -> {
+            if (c.getValue() != null) {
+                double val = (double) c.getValue();
+                if (val >= 25) {
+                    val = 25;
+                }
+                trigger.setArcHeight(val);
+                trigger.setArcWidth(val);
+                background.setArcHeight(val);
+                background.setArcWidth(val);
+            }
+        });
 
-        pane.setMinWidth(50);
+        registerChangeListener(control.trackSizeProperty(), c -> {
+            if (c.getValue() != null) {
+                background.setHeight((double) c.getValue());
+            }
+        });
+
     }
 
     @Override
     protected void layoutChildren(double contentX, double contentY, double contentWidth, double contentHeight) {
-        layoutInArea(trigger, 3, 2, contentWidth, 20,1, HPos.LEFT, VPos.CENTER);
+        layoutInArea(trigger, contentX + 3, contentY, contentWidth, contentHeight, -1, HPos.LEFT, VPos.CENTER);
+        layoutInArea(background, contentX, contentY, contentWidth, contentHeight, -1, HPos.LEFT, VPos.CENTER);
     }
 
     @Override

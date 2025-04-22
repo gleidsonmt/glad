@@ -23,10 +23,16 @@ public class ToggleSwitch extends Control {
 
     // StyleableProperty
     private final StyleableProperty<Color> animationColor =
-            new SimpleStyleableObjectProperty<>(ANIMATION_COLOR, this, "color", Color.RED);
+            new SimpleStyleableObjectProperty<>(ANIMATION_COLOR, this, "animationColor", Color.RED);
 
     private final StyleableProperty<Color> trackColor =
-            new SimpleStyleableObjectProperty<>(TRACK_COLOR, this, "color", Color.WHITE);
+            new SimpleStyleableObjectProperty<>(TRACK_COLOR, this, "trackColor", Color.WHITE);
+
+    private final StyleableProperty<Number> arc =
+            new SimpleStyleableObjectProperty<>(ARC_SIZE, this, "arc", 25D);
+
+    private final StyleableProperty<Number> trackSize =
+            new SimpleStyleableObjectProperty<>(TRACK_SIZE, this, "trackSize", 25D);
 
     public ToggleSwitch() {
         this(false);
@@ -48,6 +54,12 @@ public class ToggleSwitch extends Control {
     private static final CssMetaData<ToggleSwitch, Color> TRACK_COLOR =
             FACTORY.createColorCssMetaData("-fx-track-color", s -> s.trackColor, Color.RED, false);
 
+    private static final CssMetaData<ToggleSwitch, Number> ARC_SIZE =
+            FACTORY.createSizeCssMetaData("-fx-arc-size", s -> s.arc, 25D, false);
+
+    private static final CssMetaData<ToggleSwitch, Number> TRACK_SIZE =
+            FACTORY.createSizeCssMetaData("-fx-track-size", s -> s.trackSize, 25D, false);
+
 
     // Return all CssMetadata information from StyleablePropertyFactory
     public static List<CssMetaData<? extends Styleable, ?>> getClassCssMetaData() {
@@ -65,15 +77,9 @@ public class ToggleSwitch extends Control {
     public Color getAnimationColor() {
         return this.animationColor.getValue();
     }
+
     public void setColor(final Color color) {
         this.animationColor.setValue(color);
-    }
-    public ObjectProperty<Color> animationColorProperty() {
-        return (ObjectProperty<Color>) this.animationColor;
-    }
-
-    public ObjectProperty<Color> trackColorProperty() {
-        return (ObjectProperty<Color>) this.trackColor;
     }
 
     public void setOn(boolean on) {
@@ -86,6 +92,29 @@ public class ToggleSwitch extends Control {
 
     public BooleanProperty onProperty() {
         return on;
+    }
+
+    public StyleableProperty<Number> getArc() {
+        return arc;
+    }
+    public ObjectProperty<Color> animationColorProperty() {
+        return (ObjectProperty<Color>) this.animationColor;
+    }
+
+    public ObjectProperty<Color> trackColorProperty() {
+        return (ObjectProperty<Color>) this.trackColor;
+    }
+
+    public ObjectProperty<Number> arcProperty() {
+        return (ObjectProperty<Number>) this.arc;
+    }
+
+    public ObjectProperty<Number> trackSizeProperty() {
+        return (ObjectProperty<Number>) this.trackSize;
+    }
+
+    public void setArc(final Number number) {
+        this.arc.setValue(number);
     }
 
     @Override

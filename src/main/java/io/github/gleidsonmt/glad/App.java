@@ -3,6 +3,8 @@ package io.github.gleidsonmt.glad;
 import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.base.internal.animations.Animations;
+import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
+import io.github.gleidsonmt.glad.controls.avatar.StackedAvatar;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import io.github.gleidsonmt.glad.controls.button.FabButton;
@@ -17,6 +19,7 @@ import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.controls.text_box.Editor;
 import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
+import io.github.gleidsonmt.glad.controls.toggle_switch.ToggleSwitch;
 import io.github.gleidsonmt.glad.responsive.Break;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
@@ -34,6 +37,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -231,7 +235,7 @@ public class App extends Application {
 
 //        text.getStyleClass().addAll("font-instagram-medium");
 
-        ToggleButton toggleButton = new ToggleButton("WOe");
+        ToggleButton toggleButton = new ToggleButton("Button");
         VBox drawer = new VBox(text, toggleButton);
         drawer.getStyleClass().addAll("bg-yellow-500", "min-size-40");
         drawer.setPrefWidth(280);
@@ -269,7 +273,67 @@ public class App extends Application {
 //                    new Insets(20),
 //                    Animations.APPEAR_FROM_BOTTOM);
         });
-        VBox b = new VBox( ac );
+
+        ToggleSwitch one = new ToggleSwitch(true);
+        one.setStyle("    -fx-arc-size: 25px;\n" +
+                     "    -fx-track-size: 25px;");
+        ToggleSwitch two = new ToggleSwitch(true);
+        two.setStyle("    -fx-arc-size: 0px;\n" +
+                     "    -fx-track-size: 25px;");
+        ToggleSwitch three = new ToggleSwitch(true);
+        three.setStyle("    -fx-arc-size: 0px;\n" +
+                     "    -fx-track-size: 5px;");
+
+        Button button = new Button("Default");
+        Button disable = new Button("Disable");
+        disable.setDisable(true);
+        Button cancel = new Button("Cancel");
+        cancel.setCancelButton(true);
+        Button _flat = new Button("Flat");
+        _flat.getStyleClass().add("flat");
+
+        StackedAvatar stackedAvatar = new StackedAvatar();
+
+        stackedAvatar.setMax(2);
+
+        stackedAvatar.getAvatarViews().addAll(
+                new AvatarView(Assets.getImage("avatar.jpg")),
+                new AvatarView(Assets.getImage("avatar.jpg")),
+                new AvatarView(Assets.getImage("avatar.jpg")),
+                new AvatarView(Assets.getImage("avatar.jpg")),
+                new AvatarView(Assets.getImage("avatar.jpg"))
+        );
+
+        Button add = new Button("Add");
+        add.setOnAction(e -> {
+            stackedAvatar.getAvatarViews().addAll(
+                    new AvatarView(Assets.getImage("avatar.jpg"), 10)
+            );
+        });
+
+        Button remove = new Button("Remove");
+        remove.setOnAction(e -> {
+            stackedAvatar.getAvatarViews().removeLast();
+        });
+
+        Button update = new Button("Update");
+        update.setOnAction(e -> {
+//            stackedAvatar.getAvatarViews().set(2, new AvatarView(Assets.getImage("brazil.png")));
+            stackedAvatar.setMax(4);
+            stackedAvatar.setAvatarRadius(100);
+        });
+
+
+        Button update1 = new Button("Update Max");
+        update1.setOnAction(e -> {
+//            stackedAvatar.getAvatarViews().set(2, new AvatarView(Assets.getImage("brazil.png")));
+//            stackedAvatar.setMax(3);
+            stackedAvatar.setAvatarSize(80);
+            stackedAvatar.setAvatarRadius(0);
+        });
+
+
+        HBox b = new HBox( stackedAvatar, add, remove, update, update1 );
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);
@@ -285,28 +349,28 @@ public class App extends Application {
 
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
         ThemeProvider.install(scene,
-                Css.DEFAULT
-//                Css.COLORS,
-//                Css.TYPOGRAPHIC,
-//                Css.SHAPES,
-//                Css.PROPERTIES,
-//                Css.BOOTSTRAP,
-//                Css.COMBO_BOX,
-//                Css.IMMERSIVE_SCROLL,
-//                Css.TAB_PANE,
-//                Css.PROGRESS_BAR,
-//                Css.HYPERLINK,
-//                Css.LIST_VIEW,
-//                Css.BUTTON,
-//                Css.CONTEXT_MENU,
-//                Css.TOGGLE_BUTTON,
-//                Css.TOGGLE_SWITCH,
-//                Css.TEXT_FIELD,
-//                Css.CHECK_BOX,
-//                Css.TREE_VIEW,
-//                Css.RADIO_BUTTON,
-//                Css.TEXT_BOX,
-//                Css.TABLE_VIEW
+                Css.DEFAULT,
+                Css.COLORS,
+                Css.TYPOGRAPHIC,
+                Css.SHAPES,
+                Css.PROPERTIES,
+                Css.BOOTSTRAP,
+                Css.COMBO_BOX,
+                Css.IMMERSIVE_SCROLL,
+                Css.TAB_PANE,
+                Css.PROGRESS_BAR,
+                Css.HYPERLINK,
+                Css.LIST_VIEW,
+                Css.BUTTON,
+                Css.CONTEXT_MENU,
+                Css.TOGGLE_BUTTON,
+                Css.TOGGLE_SWITCH,
+                Css.TEXT_FIELD,
+                Css.CHECK_BOX,
+                Css.TREE_VIEW,
+                Css.RADIO_BUTTON,
+                Css.TEXT_BOX,
+                Css.TABLE_VIEW
         );
 
 //        label.setStyle("-fx-font-family: \"Instagram Sans Headline\"; -fx-font-size: 22px; ");

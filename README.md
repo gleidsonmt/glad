@@ -7,4 +7,7 @@ news
 <p align="center">
   <img src="./wall/toggle_switch.png"  />
   <img src="wall/button.png"  />
+  <img src="wall/avatar_view.png"  />
+  <img src="wall/badge.png"  />
+
 </p>
