@@ -3,6 +3,7 @@ package io.github.gleidsonmt.glad;
 import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.base.internal.animations.Animations;
+import io.github.gleidsonmt.glad.controls.avatar.AvatarStatus;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.avatar.StackedAvatar;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
@@ -245,100 +246,14 @@ public class App extends Application {
         drawer.setPrefHeight(40);
         root.behavior().setDrawer(drawer);
 
-        badge.getStyleClass().addAll("min-size-50");
-        Button ac = new Button("Action");
-        ac.setOnAction(e -> {
+        AvatarStatus avatarStatus = new AvatarStatus(Assets.getImage("avatar.jpg"));
+        avatarStatus.setMinSize(100,100);
 
-            Root main = (Root) ac.getScene().getRoot();
-            main.behavior().openDrawer();
-//            main.flow()
-////                    .insets(new Insets(20))
-//                    .pos(Pos.TOP_CENTER)
-//                    .content(drawer)
-////                    .anchor(Anchor.RIGHT)/
-//                    .show();
-
-//            Timeline timeline = new Timeline();
-//            Insets insets = StackPane.getMargin(drawer);
-//            timeline.getKeyFrames().setAll(
-//                    new KeyFrame(Duration.ZERO, new KeyValue(
-//                            drawer.translateYProperty(), drawer.getHeight() + insets.getBottom()
-//                    )),
-//                    new KeyFrame(Duration.millis(200), new KeyValue(
-//                            drawer.translateYProperty(), 0
-//                    ))
-//            );
-
-//            timeline.play();
-//            main.flow().openAbsolute(
-//                    Pos.BOTTOM_CENTER,
-//                    drawer,
-//                    new Insets(20),
-//                    Animations.APPEAR_FROM_BOTTOM);
-        });
-
-        ToggleSwitch one = new ToggleSwitch(true);
-        one.setStyle("    -fx-arc-size: 25px;\n" +
-                     "    -fx-track-size: 25px;");
-        ToggleSwitch two = new ToggleSwitch(true);
-        two.setStyle("    -fx-arc-size: 0px;\n" +
-                     "    -fx-track-size: 25px;");
-        ToggleSwitch three = new ToggleSwitch(true);
-        three.setStyle("    -fx-arc-size: 0px;\n" +
-                     "    -fx-track-size: 5px;");
-
-        Button button = new Button("Default");
-        Button disable = new Button("Disable");
-        disable.setDisable(true);
-        Button cancel = new Button("Cancel");
-        cancel.setCancelButton(true);
-        Button _flat = new Button("Flat");
-        _flat.getStyleClass().add("flat");
-
-        StackedAvatar stackedAvatar = new StackedAvatar();
-
-        stackedAvatar.setMax(2);
-
-        stackedAvatar.getAvatarViews().addAll(
-                new AvatarView(Assets.getImage("avatar.jpg")),
-                new AvatarView(Assets.getImage("avatar.jpg")),
-                new AvatarView(Assets.getImage("avatar.jpg")),
-                new AvatarView(Assets.getImage("avatar.jpg")),
-                new AvatarView(Assets.getImage("avatar.jpg"))
-        );
+        avatarStatus.setPrefHeight(40);
+        avatarStatus.setPrefWidth(50);
 
 
-
-
-        Button add = new Button("Add");
-        add.setOnAction(e -> {
-            stackedAvatar.getAvatarViews().addAll(
-                    new AvatarView(Assets.getImage("avatar.jpg"), 10)
-            );
-        });
-
-        Button remove = new Button("Remove");
-        remove.setOnAction(e -> {
-            stackedAvatar.getAvatarViews().removeLast();
-        });
-
-        Button update = new Button("Update");
-        update.setOnAction(e -> {
-//            stackedAvatar.getAvatarViews().set(2, new AvatarView(Assets.getImage("brazil.png")));
-            stackedAvatar.setMax(4);
-            stackedAvatar.setAvatarRadius(100);
-        });
-
-
-        Button update1 = new Button("Update Max");
-        update1.setOnAction(e -> {
-//            stackedAvatar.getAvatarViews().set(2, new AvatarView(Assets.getImage("brazil.png")));
-//            stackedAvatar.setMax(3);
-            stackedAvatar.setAvatarSize(60);
-        });
-
-
-        VBox b = new VBox( textBox, passBox, update1);
+        VBox b = new VBox( avatarStatus );
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);
@@ -355,7 +270,6 @@ public class App extends Application {
         ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
         ThemeProvider.install(scene,
                 Css.DEFAULT,
-                Css.COLORS,
                 Css.TYPOGRAPHIC,
                 Css.SHAPES,
                 Css.PROPERTIES,

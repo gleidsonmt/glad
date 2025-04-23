@@ -30,7 +30,6 @@ public class AvatarView extends Rectangle {
         this(image, radius, size, size);
     }
 
-
     public AvatarView(Image image,  double arc, double width, double height) {
         getStyleClass().add("avatar-view");
         if (image != null)

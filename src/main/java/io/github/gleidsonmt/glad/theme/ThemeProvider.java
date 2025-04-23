@@ -55,6 +55,7 @@ public class ThemeProvider {
                 scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + el.getUrl())).toExternalForm());
             }
         });
+
     }
 
     @ApiStatus.Experimental

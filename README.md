@@ -11,5 +11,6 @@ news
   <img src="wall/badge.png"  />
   <img src="wall/stacked_avatar.png"  />
   <img src="wall/text_input.png"  />
+  <img src="wall/avatar_status.png"  />
 
 </p>
