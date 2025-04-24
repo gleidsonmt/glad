@@ -19,7 +19,7 @@
 
 package io.github.gleidsonmt.glad.controls.badge;
 
-import io.github.gleidsonmt.glad.controls.RegionType;
+import io.github.gleidsonmt.glad.controls.badge.BadgeType;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
@@ -48,8 +48,8 @@ public final class Badge extends IconButton {
     private final StyleableProperty<Color> boxColor =
             new SimpleStyleableObjectProperty<>(BOX_COLOR, this, "color", Color.RED);
 
-    private final StyleableObjectProperty<RegionType> type =
-            new SimpleStyleableObjectProperty<>(REGION_TYPE, this, "type", RegionType.ROUND);
+    private final StyleableObjectProperty<BadgeType> type =
+            new SimpleStyleableObjectProperty<>(REGION_TYPE, this, "type", BadgeType.ROUND);
 
     // StyleablePropertyFactory
     private static final StyleablePropertyFactory<Badge> FACTORY =
@@ -88,9 +88,9 @@ public final class Badge extends IconButton {
     private static final CssMetaData<Badge, Color> BOX_COLOR =
             FACTORY.createColorCssMetaData("-fx-box-color", s -> s.boxColor, Color.RED, false);
 
-    private static final CssMetaData<Badge, RegionType> REGION_TYPE =
+    private static final CssMetaData<Badge, BadgeType> REGION_TYPE =
             FACTORY.createEnumCssMetaData(
-                    RegionType.class, "-fx-type",
+                    BadgeType.class, "-fx-type",
                     g -> g.type);
 
 
@@ -125,16 +125,16 @@ public final class Badge extends IconButton {
         return maxNotifications;
     }
 
-    public RegionType getType() {
+    public BadgeType getType() {
         return this.type.getValue();
     }
 
-    public void setType(final RegionType type) {
+    public void setType(final BadgeType type) {
         this.type.setValue(type);
     }
 
     @Contract(pure = true)
-    public ObjectProperty<RegionType> typeProperty() {
+    public ObjectProperty<BadgeType> typeProperty() {
         return this.type;
     }
 

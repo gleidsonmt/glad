@@ -19,7 +19,6 @@
 
 package io.github.gleidsonmt.glad.controls.badge;
 
-import io.github.gleidsonmt.glad.controls.RegionType;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.HPos;
@@ -83,12 +82,12 @@ public class BadgeSkin extends SkinBase<Badge> {
                 updateBackground((Color) c.getValue(), getSkinnable().getType()));
 
         registerChangeListener(control.typeProperty(), c ->
-                updateBackground(control.getBoxColor(), (RegionType) c.getValue()));
+                updateBackground(control.getBoxColor(), (BadgeType) c.getValue()));
 
         updateBackground(getSkinnable().getBoxColor(), getSkinnable().getType());
     }
 
-    private void updateBackground(Color color, RegionType type) {
+    private void updateBackground(Color color, BadgeType type) {
         if (color != null) {
             lblInfo.setBackground(new Background(new BackgroundFill(color,
                     updateRadi(type),
@@ -96,9 +95,9 @@ public class BadgeSkin extends SkinBase<Badge> {
         }
     }
 
-    private CornerRadii updateRadi(RegionType type) {
-        return type == RegionType.ROUNDED ?  new CornerRadii(3) :
-                type == RegionType.RECT ? new CornerRadii(0) :
+    private CornerRadii updateRadi(BadgeType type) {
+        return type == BadgeType.ROUNDED ?  new CornerRadii(3) :
+                type == BadgeType.RECT ? new CornerRadii(0) :
                         new CornerRadii(10);
     }
 
