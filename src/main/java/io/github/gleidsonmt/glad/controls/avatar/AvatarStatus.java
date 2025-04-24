@@ -19,23 +19,27 @@ import javafx.scene.layout.StackPane;
  */
 public class AvatarStatus extends Region {
 
-    private AvatarView avatarView;
-    private CircleAvatarStatus circleAvatarStatus;
-    private ObjectProperty<Status> status = new SimpleObjectProperty<>(Status.BUSY);
+    private final AvatarView avatarView;
+    private final CircleAvatarStatus circleAvatarStatus;
+    private final ObjectProperty<Status> status = new SimpleObjectProperty<>(Status.BUSY);
 
     public AvatarStatus(Image image) {
         this.circleAvatarStatus = new CircleAvatarStatus(this);
         this.avatarView = new AvatarView(image);
         getChildren().addAll(avatarView, circleAvatarStatus);
 //
-        this.avatarView.heightProperty().bind(this.prefHeightProperty());
-        this.avatarView.heightProperty().bind(this.heightProperty());
-        this.avatarView.widthProperty().bind(this.prefWidthProperty());
-        this.avatarView.widthProperty().bind(this.widthProperty());
+        this.avatarView.heightProperty()
+                .bind(this.prefHeightProperty());
+        this.avatarView.heightProperty()
+                .bind(this.heightProperty());
+        this.avatarView.widthProperty()
+                .bind(this.prefWidthProperty());
+        this.avatarView.widthProperty()
+                .bind(this.widthProperty());
 
-        this.circleAvatarStatus.radiusProperty().bind(
-                this.widthProperty().divide(10)
-        );
+        this.circleAvatarStatus
+                .radiusProperty()
+                .bind(this.widthProperty().divide(10));
 
 //        setWidth(40);
 //        setHeight(40);

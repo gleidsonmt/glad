@@ -55,117 +55,11 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-//        TableView<User> tableView = new TableView<>();
-//        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-//        TableColumn<User, String> firstColumn = new TableColumn<>("First column");
-//        TableColumn<User, String> secondColumn = new TableColumn<>("Second column");
-//
-//        firstColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-//        secondColumn.setCellValueFactory(new PropertyValueFactory<>("legend"));
-//
-//        tableView.getItems().addAll(
-//                new User("Gleidson", "Freelancer"),
-//                new User("Jhon Doe", "Freelancer")
-//        );
-//
-//        tableView.getColumns().addAll(firstColumn, secondColumn);
-
-//        box.getChildren().setAll(tableView);
-//        ListView<String> listView = new ListView<>();
-//        listView.getItems().addAll(
-//                "Line One",
-//                "Line One",
-//                "Line One",
-//                "Line One"
-//        );
-//        box.getChildren().setAll(listView);
-
-//        ProgressBar progressBar = new ProgressBar(0.5);
-//        progressBar.getStyleClass().add("bg-success");
-//        progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
-//
-//        box.getChildren().setAll(progressBar);
-//        Layout container = new Layout(
-//                box
-//        );
-
-//        box.setPadding(new Insets(20));
-
-
-
-//
-//        TextFlow textFlow = new TextFlow(new Text("Lorem ipsum dolor color"));
-//        textFlow.setMinWidth(300);
-//        textFlow.getStyleClass().addAll( "border-warning", "text-warning", "border-l-2", "padding-5");
-//        textFlow.setStyle("-fx-background-color: derive(-warning, 99%);");
-
-//        action.getStyleClass().addAll("bg-danger", "round");
-//        action.setGraphic(new SVGIcon(Icon.CHAT));
-//        action.setCancelButton(true);
-
-//        action.setOnAction(e -> {
-//
-//            Button ok = new Button("Button");
-//            ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
-//            Button cancel = new Button("Cancel");
-//            cancel.setCancelButton(true);
-//
-//            Tooltip tooltip = new Tooltip("I will not die");
-//            Tooltip.install(ok, tooltip);
-//
-//            ButtonBar.setButtonData(cancel, ButtonBar.ButtonData.CANCEL_CLOSE);
-//            TextField textField = new TextField();
-//            textField.getStyleClass().addAll("radius-6", "padding-10");
-//            VBox box = new VBox(textFlow, ok, textField);
-//            box.setPadding(new Insets(20));
-//            root.behavior().alert().open("About", box, AlertType.INFO);
-//
-//            ok.getStyleClass().add("radius-8");
-//            ok.setOnAction(i -> {
-////                root.behavior().dialog().close();
-//                root.wrapper().hide();
-//                root.behavior().alert().close();
-//            });
-//
-////            root.behavior().alert().open("Title", textFlow, AlertType.INFO);
-////            root.behavior().dialog().open(textFlow);
-//        });
-
-    Container ct = new Container();
-    Layout layout = new Layout(ct);
+        Container ct = new Container();
+        Layout layout = new Layout(ct);
         Root root = new Root(layout);
 
-//        ToggleButton left = new ToggleButton("Left");
-//        ToggleButton right = new ToggleButton("Right");
-//        ToggleButton inverse = new ToggleButton("Inverse");
-//        ToggleGroup group = new ToggleGroup();
-//        group.getToggles().addAll(left, right, inverse);
-//
-//        left.getStyleClass().addAll("pill-left", "flat");
-//        right.getStyleClass().addAll("pill-right", "flat");
-//        inverse.getStyleClass().addAll("radius-0", "flat");
-//        ct.getChildren().addAll(new HBox(left, inverse, right));
-
-        javafx.scene.control.Button flat = new javafx.scene.control.Button("Button");
-        flat.setGraphic(new SVGIcon(Icon.TODAY));
-        flat.getStyleClass().add("bg-red border-red border-l-1");
-
-
-
         TextField textField = new TextField("Text Field");
-        VBox box = new VBox(textField, flat);
-        box.setSpacing(20);
-        box.setPadding(new Insets(20));
-        box.setAlignment(Pos.CENTER);
-
-        ct.addPoint(e -> {
-
-        }, Break.LG);
-
-
-//        ComboBox<String> comboBox= new ComboBox<>();
-//        comboBox.setItems(FXCollections.observableArrayList("Item 01", "Item 02"));
-
 
 //        ToggleSwitch _switch = new ToggleSwitch(true);
 //        textField.addClasses("radius-10 border-warning border-2 hover:border-warning focused:border-danger focused:border-5");
@@ -189,11 +83,6 @@ public class App extends Application {
         // set the cell factory
         treeView.setCellFactory(CheckBoxTreeCell.forTreeView());
 //        treeView.setCellFactory(Radio);
-
-        CheckBox checkBox = new CheckBox();
-//        checkBox.setAllowIndeterminate(true);
-//        checkBox.setIndeterminate(true);
-//        checkBox.setSelected(true);
 
         ChoiceBox<String> contextMenu = new ChoiceBox<>();
         contextMenu.setItems(FXCollections.observableArrayList(
@@ -234,9 +123,7 @@ public class App extends Application {
         FabButton iconButton = new FabButton(Icon.TODAY, true);
         iconButton.setStyle("-fx-icon: UNDO;");
 
-//        VBox b = new VBox( badge, editor, floatEditor, textBox, passBox, new Button(), new javafx.scene.control.Button("Button"), iconButton, new IconButton(new SVGIcon(Icon.CALENDAR_MONTH), true));
         Text text = new Text("Texto");
-
 //        text.getStyleClass().addAll("font-instagram-medium");
 
         ToggleButton toggleButton = new ToggleButton("Button");
@@ -247,13 +134,31 @@ public class App extends Application {
         root.behavior().setDrawer(drawer);
 
         AvatarStatus avatarStatus = new AvatarStatus(Assets.getImage("avatar.jpg"));
-        avatarStatus.setMinSize(100,100);
+        avatarStatus.setMinSize(60, 60);
 
         avatarStatus.setPrefHeight(40);
         avatarStatus.setPrefWidth(50);
 
 
-        VBox b = new VBox( avatarStatus );
+        Button toggleSwitch = new Button();
+
+        toggleSwitch.setOnMouseClicked(e -> {
+            System.out.println("toggleSwitch.setOnMouseClicked");
+            root.wrapper().show();
+//            root.wrapper().setOnClick(ev -> {
+//                System.out.println("what");
+//                root.wrapper().hide();
+//            });
+        });
+
+//        toggleSwitch.setStyle("""
+//            -fx-color-animation: -fx-accent;
+//            -fx-track-color:-light-gray;
+//            -fx-arc-size: 20px;
+//            -fx-track-size: 10px;
+//        """);
+
+        VBox b = new VBox(toggleSwitch);
         b.setPadding(new Insets(20));
         b.setSpacing(10);
         b.setAlignment(Pos.CENTER);

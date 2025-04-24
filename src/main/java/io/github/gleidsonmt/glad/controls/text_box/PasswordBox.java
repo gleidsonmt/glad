@@ -1,7 +1,6 @@
 package io.github.gleidsonmt.glad.controls.text_box;
 
 import io.github.gleidsonmt.glad.GladResources;
-import io.github.gleidsonmt.glad.controls.IconButtonOld;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;

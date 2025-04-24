@@ -6,6 +6,9 @@ import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.base.internal.animations.Animations;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -23,8 +26,6 @@ public class FlowImpl implements Flow {
     private Insets insets = Insets.EMPTY;
     private Anchor anchor = null;
     private Node content;
-    private WrapperEffect wrapperEffect;
-
     private final Root root;
 
     public FlowImpl(Root root) {
@@ -60,13 +61,8 @@ public class FlowImpl implements Flow {
         if (container instanceof Region region) {
             if (anchor != null) {
                 switch (anchor) {
-                    case TOP, BOTTOM -> {
-                        region.setMaxHeight(Region.USE_PREF_SIZE);
-                    }
-                    case LEFT, RIGHT -> {
-                        region.setMaxWidth(Region.USE_PREF_SIZE);
-                    }
-
+                    case TOP, BOTTOM -> region.setMaxHeight(Region.USE_PREF_SIZE);
+                    case LEFT, RIGHT -> region.setMaxWidth(Region.USE_PREF_SIZE);
                 }
             } else {
                 region.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
@@ -74,12 +70,10 @@ public class FlowImpl implements Flow {
 
             StackPane.setAlignment(container, position);
             StackPane.setMargin(container, insets);
-//
+
             if (!root.getChildren().contains(container)) {
                 root.getChildren().add(container);
             }
-
-
         }
     }
 
@@ -109,24 +103,42 @@ public class FlowImpl implements Flow {
 
     @Override
     public void openByCursor(Region container, MouseEvent e) {
+        openByCursor(container, e, 0,0);
+    }
+
+    @Override
+    public void openByCursor(Region container, MouseEvent e, double x, double y) {
         if (root.getChildren().contains(container)) return;
-        root.getChildren().add(container);
 
         container.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 
         StackPane.clearConstraints(container);
         StackPane.setAlignment(container, Pos.TOP_LEFT);
+        StackPane.setMargin(container, insets);
 
-        var scene = container.getScene();
+        container.getStyleClass().add("popup");
 
-        double widthNeeded = e.getSceneX() + container.getPrefWidth();
-        double heightNeeded = e.getSceneY() + container.getPrefHeight();
+        container.layoutBoundsProperty().addListener((_, _, newValue) -> {
+            if (newValue != null) {
+                var scene = root;
 
-        double widthAvailable = scene.getWidth();
-        double heightAvailable = scene.getHeight();
+                double width = container.getWidth();
+                double height = container.getHeight();
 
-        container.setTranslateX(widthNeeded > widthAvailable ? widthAvailable - 200 : e.getSceneX());
-        container.setTranslateY(heightNeeded > heightAvailable ? heightAvailable - 200 : e.getSceneY());
+
+                double widthNeeded = e.getSceneX() + width;
+                double heightNeeded = e.getSceneY() + height;
+
+                double widthAvailable = scene.getWidth();
+                double heightAvailable = scene.getHeight();
+
+                container.setTranslateX(widthNeeded > widthAvailable ? (widthAvailable - width) - x : e.getSceneX() - x);
+                container.setTranslateY(heightNeeded > heightAvailable ?(heightAvailable - height) + y : e.getSceneY() + y);
+            }
+        });
+
+        root.getChildren().add(container);
+
     }
 
     @Override
@@ -143,7 +155,7 @@ public class FlowImpl implements Flow {
     @Override
     public void clear() {
         root.getChildren().removeIf(e ->
-                !(e instanceof Layout)
+                !(e instanceof Layout) && (e.getStyleClass().contains("popup"))
         );
     }
 

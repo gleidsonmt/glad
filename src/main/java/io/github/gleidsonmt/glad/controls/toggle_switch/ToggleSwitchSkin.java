@@ -22,7 +22,7 @@ import javafx.util.Duration;
  */
 public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
 
-    private Pane pane = new Pane();
+    protected Pane pane = new Pane();
 
     private BooleanProperty on = new SimpleBooleanProperty(false);
 
@@ -31,8 +31,10 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
     private final StrokeTransition strokeTransition = new StrokeTransition(Duration.seconds(0.15));
     private final ParallelTransition animation = new ParallelTransition(translateAnimation, fillAnimation, strokeTransition);
 
-    private final Rectangle trigger = new Rectangle();
-    private final Rectangle background = new Rectangle(50, 25);
+    protected final Rectangle trigger = new Rectangle();
+    protected final Rectangle background = new Rectangle(50, 25);
+
+    protected double toX = 25;
 
     protected ToggleSwitchSkin(ToggleSwitch control) {
         super(control);
@@ -43,13 +45,18 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
 
         trigger.setHeight(20);
         trigger.setWidth(20);
-        trigger.setArcWidth(25);
-        trigger.setArcHeight(25);
+
+        trigger.setArcWidth(control.getArc().getValue().doubleValue());
+        trigger.setArcHeight(control.getArc().getValue().doubleValue());
 
         background.setCursor(Cursor.HAND);
         background.getStyleClass().add("foreground");
-        background.setArcWidth(25);
-        background.setArcHeight(25);
+
+        background.setArcWidth(control.getArc().getValue().doubleValue());
+        background.setArcHeight(control.getArc().getValue().doubleValue());
+
+        background.setHeight(control.getTrackSize().getValue().doubleValue());
+
         background.setFill(Color.WHITE);
         background.setStroke(Color.LIGHTGRAY);
         getChildren().addAll(background, trigger);
@@ -65,12 +72,12 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
         on.bindBidirectional(control.onProperty());
         if (control.isOn()) {
             background.setFill(control.getAnimationColor());
-            trigger.setTranslateX(25);
+            trigger.setTranslateX(toX);
         }
 
         control.setOnMouseClicked(e -> {
             translateAnimation.setToX(
-                    control.isOn() ? 0 : 25
+                    control.isOn() ? 0 : toX
             );
 
             fillAnimation.setFromValue(on.get() ? control.getTrackColor() : control.getAnimationColor());
@@ -85,8 +92,8 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
         registerChangeListener(control.arcProperty(), c -> {
             if (c.getValue() != null) {
                 double val = (double) c.getValue();
-                if (val >= 25) {
-                    val = 25;
+                if (val >= toX) {
+                    val = toX;
                 }
                 trigger.setArcHeight(val);
                 trigger.setArcWidth(val);

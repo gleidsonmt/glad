@@ -86,12 +86,14 @@ public class BehaviorImpl implements Behavior {
             drawerTimeline.setOnFinished(null);
             drawerTimeline.setRate(1);
             root.wrapper().show();
+
             root.flow()
                     .pos(Pos.CENTER_LEFT)
                     .content(drawer)
                     .anchor(Anchor.LEFT)
                     .insets(Insets.EMPTY)
                     .show();
+
             drawerTimeline.play();
         }
     }
@@ -126,10 +128,11 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public void closeDrawer() {
+        System.out.println("isDrawerOpen() = " + isDrawerOpen());
         if (isDrawerOpen()) {
             drawerTimeline.setRate(-1);
-            root.wrapper().hide();
             drawerTimeline.setOnFinished(e -> {
+                root.wrapper().hide();
                 root.flow().remove(drawer);
                 drawer.setTranslateX(0);
             });

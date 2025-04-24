@@ -8,6 +8,8 @@ import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.layout.StackPane;
 
 /**
@@ -16,9 +18,9 @@ import javafx.scene.layout.StackPane;
  */
 public class Root extends StackPane {
 
-    private final BehaviorImpl behavior;
-    private final Flow flow;
-    private final Wrapper wrapper;
+    private  BehaviorImpl behavior;
+    private  Flow flow;
+    private  Wrapper wrapper;
 
     // Breakpoint, use to change the layout to phone or bigger
     private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
@@ -30,6 +32,11 @@ public class Root extends StackPane {
         this.wrapper = new WrapperImpl(this);
         this.behavior = new BehaviorImpl(this, layout);
         this.getChildren().add(layout);
+
+       widthProperty().addListener((observable, oldValue, newValue) -> {
+           wrapper.hide();
+           flow.clear();
+       });
     }
 
     protected Layout getLayout() {

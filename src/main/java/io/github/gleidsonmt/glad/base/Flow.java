@@ -67,6 +67,9 @@ public interface Flow {
     @ApiStatus.Experimental
     void openByCursor(Region container, MouseEvent e);
 
+    @ApiStatus.Experimental
+    void openByCursor(Region container, MouseEvent e, double x, double y);
+
     // Fixed
     Flow anchor(Anchor anchor);
 

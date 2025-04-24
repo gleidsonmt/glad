@@ -4,12 +4,6 @@
     v. 1.0
 */
 
-.toggle-switch {
-    -fx-arc-size: 25px;
-    -fx-track-size: 25px;
-    -fx-padding: 0px;
-}
-
 .label {
     -fx-shape: none;
 }

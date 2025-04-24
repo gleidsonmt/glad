@@ -3,6 +3,9 @@ package io.github.gleidsonmt.glad.base.internal;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Wrapper;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.effect.BoxBlur;
@@ -21,6 +24,8 @@ public class WrapperImpl implements Wrapper {
 
     private final Root root;
     private final StackPane foreground;
+
+    private EventHandler<MouseEvent> onClick;
 
     public WrapperImpl(Root root) {
         this.root = root;
@@ -56,25 +61,26 @@ public class WrapperImpl implements Wrapper {
                                 Insets.EMPTY)
                 )
         );
+
+        foreground.setOnMousePressed(onClick);
+
     }
 
     @Override
     public void setOnClick(EventHandler<MouseEvent> eventHandler) {
-        foreground.setOnMouseClicked(eventHandler);
+        this.onClick = eventHandler;
     }
 
     @Override
     public void close() {
-        foreground.setOnMouseClicked(null);
         root.getChildren().remove(foreground);
-        root.getChildren().get(0).setEffect(null);
+        root.getChildren().getFirst().setEffect(null);
     }
 
     @Override
     public void hide() {
-        foreground.setOnMouseClicked(null);
         root.getChildren().remove(foreground);
-        root.getChildren().get(0).setEffect(null);
+        root.getChildren().getFirst().setEffect(null);
     }
 
     @Override

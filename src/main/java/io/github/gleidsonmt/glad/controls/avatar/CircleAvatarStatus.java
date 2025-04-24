@@ -20,6 +20,7 @@ public final class CircleAvatarStatus extends Circle {
 
     CircleAvatarStatus(AvatarStatus avatarStatus) {
         setRadius(5);
+        setStrokeWidth(3);
         setStroke(Color.WHITE);
         setFill(Color.RED);
         setCursor(Cursor.HAND);
@@ -34,7 +35,7 @@ public final class CircleAvatarStatus extends Circle {
         for (Status status : Status.values()) {
             MenuItem menuItem = new MenuItem(status.toString());
             Circle graphic = new Circle();
-            graphic.setRadius(5);
+            graphic.setRadius(6);
             menuItem.setGraphic(graphic);
             graphic.setStyle("-fx-fill: -light-gray-2;");
 

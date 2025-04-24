@@ -64,8 +64,6 @@
     -light-blue    : #82B1FF;
     -gray          : #8e8e8e;
 
-
-
     -text-color: -dark-gray;
     -icon-color: -text-color;
     -hover-color: -dark-gray-2;
@@ -76,7 +74,6 @@
     -track-color: -light-gray;
 
     /* Chart Colors */
-
     CHART_COLOR_1: -info;
     CHART_COLOR_2: -mint;
     CHART_COLOR_3: -amber;

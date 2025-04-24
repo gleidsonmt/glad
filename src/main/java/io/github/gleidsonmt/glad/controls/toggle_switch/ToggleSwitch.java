@@ -74,6 +74,10 @@ public class ToggleSwitch extends Control {
         return this.trackColor.getValue();
     }
 
+    public StyleableProperty<Number> getTrackSize() {
+        return trackSize;
+    }
+
     public Color getAnimationColor() {
         return this.animationColor.getValue();
     }

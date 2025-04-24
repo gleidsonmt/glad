@@ -8,13 +8,16 @@ import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.responsive.Break;
 import io.github.gleidsonmt.glad.responsive.sizer.Sizer;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -40,26 +43,38 @@ public class DashDrawerHidden extends Application {
 
         Root root = new Root(container);
 
-        hamb.setOnAction(e -> {
-            root.behavior().openDrawer();
+        HBox nav = new HBox(hamb);
+        nav.setAlignment(Pos.CENTER_RIGHT);
+
+        hamb.setOnMouseClicked(e -> {
+//            root.behavior().openDrawer();
+            System.out.println("what");
+            VBox box = new VBox(new Label("Welcome"));
+            box.getStyleClass().addAll("bg-danger");
+            box.setStyle("-fx-background-color: red;");
+//            box.setMinSize(300, 300);
+            box.setPrefSize(800, 600);
+            root.flow().openByCursor(box, e, 0,40);
         });
 
-        new Sizer<>(root, Break.values()) {
-            @Override
-            public void change(Break aBreak) {
-                if (aBreak == Break.SM) {
-                    container.setTop(hamb);
-                    container.setLeft(null);
-                } else {
-                    container.setLeft(drawer);
-                    container.setTop(null);
-                    root.wrapper().close();
-                }
-            }
-        };
+        container.setTop(nav);
+//        new Sizer<>(root, Break.values()) {
+//            @Override
+//            public void change(Break aBreak) {
+//                if (aBreak == Break.SM) {
+//                    container.setTop(nav);
+//                    container.setLeft(null);
+//                } else {
+//                    container.setLeft(drawer);
+//                    container.setTop(null);
+//                    root.wrapper().close();
+//                }
+//            }
+//        };
 
-        stage.setScene(new Scene(root, 800, 600));
+        stage.setScene(new Scene(root, 800, 400));
         stage.show();
+        ScenicView.show(stage.getScene());
     }
 
     public static void main(String[] args) {

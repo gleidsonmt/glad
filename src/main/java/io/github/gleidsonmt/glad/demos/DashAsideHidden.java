@@ -44,7 +44,7 @@ public class DashAsideHidden extends Application {
         ThemeProvider.install(root, Font.POPPINS);
 //        container.setRight(aside);
         hamb.setOnAction(e -> {
-            root.behavior().openAside();
+//            root.behavior().openAside();
         });
 
         container.addPoint(pt -> {
