@@ -53,7 +53,7 @@ public class DashDrawerHidden extends Application {
             box.getStyleClass().addAll("bg-danger");
             box.setStyle("-fx-background-color: red;");
 //            box.setMinSize(300, 300);
-            box.setPrefSize(800, 600);
+            box.setPrefSize(200, 100);
             root.flow().openByCursor(box, e, 0,40);
         });
 

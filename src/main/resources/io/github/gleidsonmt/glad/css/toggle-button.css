@@ -29,13 +29,12 @@ ToggleButton:armed {
 }
 
 
-
 ToggleButton:selected {
     -fx-background-color : transparent;
 }
 
 ToggleButton .text {
-    -fx-fill: white;
+    -fx-fill: -text-color;
 }
 
 ToggleButton:focused {

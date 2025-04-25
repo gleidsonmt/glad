@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.0.9211'
+version '1.0.93'
 
 repositories {
   mavenCentral()

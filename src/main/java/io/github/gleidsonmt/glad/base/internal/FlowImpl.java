@@ -103,8 +103,35 @@ public class FlowImpl implements Flow {
 
     @Override
     public void openByCursor(Region container, MouseEvent e) {
-        openByCursor(container, e, 0,0);
+        openByCursor(container, e, 0, 0);
     }
+
+    private double width = 0;
+    private double height = 0;
+
+    class UpdateBounds implements ChangeListener<Bounds> {
+
+        private final Region container;
+        private final MouseEvent event;
+        private final double x;
+        private final double y;
+
+        public UpdateBounds(Region container, MouseEvent event, double x, double y) {
+            this.container = container;
+            this.event = event;
+            this.x = x;
+            this.y = y;
+        }
+
+        @Override
+        public void changed(ObservableValue<? extends Bounds> observable, Bounds oldValue, Bounds newValue) {
+            width = container.getWidth();
+            height = container.getHeight();
+            relocate(container, event, x, y);
+        }
+    }
+
+    private UpdateBounds updateBounds;
 
     @Override
     public void openByCursor(Region container, MouseEvent e, double x, double y) {
@@ -117,29 +144,33 @@ public class FlowImpl implements Flow {
         StackPane.setMargin(container, insets);
 
         container.getStyleClass().add("popup");
+        container.setLayoutX(0);
+        container.setLayoutY(0);
 
-        container.layoutBoundsProperty().addListener((_, _, newValue) -> {
-            if (newValue != null) {
-                var scene = root;
-
-                double width = container.getWidth();
-                double height = container.getHeight();
-
-
-                double widthNeeded = e.getSceneX() + width;
-                double heightNeeded = e.getSceneY() + height;
-
-                double widthAvailable = scene.getWidth();
-                double heightAvailable = scene.getHeight();
-
-                container.setTranslateX(widthNeeded > widthAvailable ? (widthAvailable - width) - x : e.getSceneX() - x);
-                container.setTranslateY(heightNeeded > heightAvailable ?(heightAvailable - height) + y : e.getSceneY() + y);
-            }
-        });
-
+        // if layout is not set
+        if (width == 0 || height == 0) {
+            updateBounds = new UpdateBounds(container, e, x, y);
+            container.layoutBoundsProperty().addListener(updateBounds);
+        } else { // if is set
+            container.layoutBoundsProperty().removeListener(updateBounds);
+            relocate(container, e, x, y);
+        }
         root.getChildren().add(container);
+    }
+
+    private void relocate(Region container, MouseEvent e, double x, double y) {
+
+        double widthNeeded = e.getSceneX() + width;
+        double heightNeeded = e.getSceneY() + height;
+
+        double widthAvailable = root.getWidth();
+        double heightAvailable = root.getHeight();
+
+        container.setTranslateX(widthNeeded > widthAvailable ? (widthAvailable - width) - x : e.getSceneX() - x);
+        container.setTranslateY(heightNeeded > heightAvailable ? (heightAvailable - height) + y : e.getSceneY() + y);
 
     }
+
 
     @Override
     public Flow with(WrapperEffect effect) {

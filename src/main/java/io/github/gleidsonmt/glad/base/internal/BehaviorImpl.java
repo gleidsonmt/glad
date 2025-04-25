@@ -128,7 +128,6 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public void closeDrawer() {
-        System.out.println("isDrawerOpen() = " + isDrawerOpen());
         if (isDrawerOpen()) {
             drawerTimeline.setRate(-1);
             drawerTimeline.setOnFinished(e -> {
