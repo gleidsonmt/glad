@@ -18,9 +18,9 @@
 package io.github.gleidsonmt.glad.controls.button;
 
 import javafx.beans.DefaultProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.css.*;
 import javafx.geometry.Pos;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import javafx.scene.paint.Color;
@@ -41,7 +41,7 @@ public class Button extends javafx.scene.control.Button {
             new SimpleStyleableObjectProperty<>(CIRCLE_FILL, this, "circleFill", Color.WHITE);
 
     private static final CssMetaData<Button, Color> CIRCLE_FILL =
-            FACTORY.createColorCssMetaData("-fx-riple-fill",
+            FACTORY.createColorCssMetaData("-fx-ripple-fill",
                     Button::circleFillProperty, Color.WHITE, true);
 
     public Button() {
@@ -55,7 +55,7 @@ public class Button extends javafx.scene.control.Button {
 
     @Override
     protected Skin<?> createDefaultSkin() {
-        return new ButtonSkin(this);
+        return new RippleButtonSkin(this);
     }
 
     @Override
@@ -70,4 +70,6 @@ public class Button extends javafx.scene.control.Button {
     public Color getCircleFill() {
         return circleFill.getValue();
     }
+
+
 }

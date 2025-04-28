@@ -25,8 +25,8 @@ tasks.withType(JavaCompile).configureEach {
 application {
 
   mainModule = 'io.github.gleidsonmt.glad'
-  mainClass = 'io.github.gleidsonmt.glad.demos.DashDrawerHidden'
-//  mainClass = 'io.github.gleidsonmt.glad.App'
+//  mainClass = 'io.github.gleidsonmt.glad.demos.DashDrawerHidden'
+  mainClass = 'io.github.gleidsonmt.glad.App'
 }
 
 

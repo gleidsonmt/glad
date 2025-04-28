@@ -1,4 +1,4 @@
-Button, IconButton {
+.button, Icon.button {
     -fx-text-fill : white;
     -fx-font-weight : bolder;
     -fx-graphic-text-gap : 10;
@@ -12,26 +12,26 @@ Button, IconButton {
     -text-color: white;
 }
 
-IconButton:pressed:focused,
-Button:pressed:focused
+Icon.button:pressed:focused,
+.button:pressed:focused
 {
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
 }
 
-IconButton:hover,
-Button:hover
+Icon.button:hover,
+.button:hover
 {
   -fx-background-color : derive(-fx-accent, -40%);
 }
 
-IconButton:focused,
-Button:focused {
+Icon.button:focused,
+.button:focused {
   -fx-background-color : derive(-fx-accent, -40%), derive(-fx-accent, -40%), -fx-accent;
 }
 
-IconButton:cancel,
-Button:cancel {
+Icon.button:cancel,
+.button:cancel {
     -fx-background-color: transparent;
     -fx-border-color: -fx-accent;
     -fx-border-radius : 10px;
@@ -42,32 +42,32 @@ Button:cancel {
     -text-color: -fx-accent;
 }
 
-IconButton:cancel:hover,
-Button:cancel:hover  {
+Icon.button:cancel:hover,
+.button:cancel:hover  {
     -text-color : derive(-fx-accent, -40%);
 }
 
-IconButton:cancel:focused,
-Button:cancel:focused {
+Icon.button:cancel:focused,
+.button:cancel:focused {
     -fx-background-color: transparent;
     -fx-border-color : -fx-accent;
     -fx-border-width : 2px;
 }
 
-Button:cancel:hover:focused,
-Button:cancel:hover {
+.button:cancel:hover:focused,
+.button:cancel:hover {
     -fx-border-color : derive(-fx-accent, -40%);
 }
 
-Button:cancel:focused:pressed {
+.button:cancel:focused:pressed {
     -fx-border-color : derive(-fx-accent, -90%);
 }
 
-Button .ripple {
+.button .ripple {
     -fx-fill: #ffffff50
 }
 
-Button .text {
+.button .text {
     -fx-fill: -text-color;
 }
 

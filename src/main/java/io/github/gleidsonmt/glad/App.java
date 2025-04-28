@@ -7,8 +7,8 @@ import io.github.gleidsonmt.glad.controls.avatar.AvatarStatus;
 import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
 import io.github.gleidsonmt.glad.controls.avatar.StackedAvatar;
 import io.github.gleidsonmt.glad.controls.badge.Badge;
+import io.github.gleidsonmt.glad.controls.button.*;
 import io.github.gleidsonmt.glad.controls.button.Button;
-import io.github.gleidsonmt.glad.controls.button.FabButton;
 import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
 import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import io.github.gleidsonmt.glad.controls.TextField;
@@ -59,110 +59,31 @@ public class App extends Application {
         Layout layout = new Layout(ct);
         Root root = new Root(layout);
 
-        TextField textField = new TextField("Text Field");
+        SwipeButton button = new SwipeButton();
+        button.setPrefSize(100, 40);
 
-//        ToggleSwitch _switch = new ToggleSwitch(true);
-//        textField.addClasses("radius-10 border-warning border-2 hover:border-warning focused:border-danger focused:border-5");
+        CentralizeButton centralizeButton = new CentralizeButton();
+        centralizeButton.setPrefSize(100, 40);
 
-// create the tree model
-        CheckBoxTreeItem<String> jonathanGiles = new CheckBoxTreeItem<>("Jonathan");
-        jonathanGiles.setIndeterminate(true);
-        CheckBoxTreeItem<String> juliaGiles = new CheckBoxTreeItem<>("Julia");
-        CheckBoxTreeItem<String> mattGiles = new CheckBoxTreeItem<>("Matt");
-        CheckBoxTreeItem<String> sueGiles = new CheckBoxTreeItem<>("Sue");
-        CheckBoxTreeItem<String> ianGiles = new CheckBoxTreeItem<>("Ian");
+        SmoothButton smoothButton = new SmoothButton();
+        smoothButton.setPrefSize(100, 40);
 
-        CheckBoxTreeItem<String> gilesFamily = new CheckBoxTreeItem<>("Giles Family");
-        gilesFamily.setExpanded(true);
-        gilesFamily.getChildren().addAll(jonathanGiles, juliaGiles, mattGiles, sueGiles, ianGiles);
+        AlternateButton alternate = new AlternateButton();
+        alternate.setPrefSize(100, 40);
 
-        // create the treeView
-        final TreeView<String> treeView = new TreeView<>();
-        treeView.setRoot(gilesFamily);
+        SwipeDiagonal swipeDiagonal = new SwipeDiagonal();
+        swipeDiagonal.setPrefSize(100, 40);
 
-        // set the cell factory
-        treeView.setCellFactory(CheckBoxTreeCell.forTreeView());
-//        treeView.setCellFactory(Radio);
+        CornerButton cornerButton = new CornerButton();
+        cornerButton.setPrefSize(100, 40);
 
-        ChoiceBox<String> contextMenu = new ChoiceBox<>();
-        contextMenu.setItems(FXCollections.observableArrayList(
-                "Item 01",
-                "Item 01",
-                "Item 01",
-                "Item 01"
-        ));
+        VBox container = new VBox(button, centralizeButton, smoothButton, alternate, swipeDiagonal, cornerButton);
 
-        Editor editor = new Editor();
-//        editor.setMaskText(true);
-//        editor.setMaxText(12);
-        FloatEditor floatEditor = new FloatEditor();
-        floatEditor.setFloatAlignment(FloatAlignment.TOP);
-        floatEditor.setPromptText("Float Text");
-//        floatEditor.setText("Text");
-
-        SVGIcon icon = new SVGIcon(Icon.ACCOUNT);
-        TextBox textBox = new TextBox(icon);
-        textBox.setMinHeight(40);
-        textBox.setPromptText("Insert your name");
-        textBox.setStyle("-fx-animate: true;");
-        textBox.setAction(true);
-
-        PasswordBox passBox = new PasswordBox(Icon.VPN_KEY_FILLED);
-        passBox.setPromptText("Insert your Text");
-        passBox.setStyle("-fx-animate: true;");
-        passBox.setMinHeight(40);
-        passBox.setAction(true);
-
-        Badge badge = new Badge();
-        badge.setIcon(new SVGIcon(Icon.APPS));
-        badge.setNumberOfNotifications(10);
-        badge.setMaxNotifications(20);
-        badge.setStyle("-fx-box-color: -danger; -fx-type: rounded;");
-//        badge.getStyleClass().add("rounded");
-
-        FabButton iconButton = new FabButton(Icon.TODAY, true);
-        iconButton.setStyle("-fx-icon: UNDO;");
-
-        Text text = new Text("Texto");
-//        text.getStyleClass().addAll("font-instagram-medium");
-
-        ToggleButton toggleButton = new ToggleButton("Button");
-        VBox drawer = new VBox(text, toggleButton);
-        drawer.getStyleClass().addAll("bg-yellow-500", "min-size-40");
-        drawer.setPrefWidth(280);
-        drawer.setPrefHeight(40);
-        root.behavior().setDrawer(drawer);
-
-        AvatarStatus avatarStatus = new AvatarStatus(Assets.getImage("avatar.jpg"));
-        avatarStatus.setMinSize(60, 60);
-
-        avatarStatus.setPrefHeight(40);
-        avatarStatus.setPrefWidth(50);
+        container.setAlignment(Pos.CENTER);
+        container.setSpacing(10);
+        ct.getChildren().addAll(container);
 
 
-        Button toggleSwitch = new Button();
-
-        toggleSwitch.setOnMouseClicked(e -> {
-            System.out.println("toggleSwitch.setOnMouseClicked");
-            root.wrapper().show();
-//            root.wrapper().setOnClick(ev -> {
-//                System.out.println("what");
-//                root.wrapper().hide();
-//            });
-        });
-
-//        toggleSwitch.setStyle("""
-//            -fx-color-animation: -fx-accent;
-//            -fx-track-color:-light-gray;
-//            -fx-arc-size: 20px;
-//            -fx-track-size: 10px;
-//        """);
-
-        VBox b = new VBox(toggleSwitch);
-        b.setPadding(new Insets(20));
-        b.setSpacing(10);
-        b.setAlignment(Pos.CENTER);
-        ct.getChildren().addAll(b);
         Scene scene = new Scene(root, 800, 600);
 
         scene.focusOwnerProperty().addListener(new ChangeListener<Node>() {

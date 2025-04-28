@@ -23,6 +23,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderStroke;
@@ -35,7 +36,7 @@ import javafx.util.Duration;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  25/09/2022
  */
-public class ButtonSkin extends javafx.scene.control.skin.ButtonSkin {
+public class RippleButtonSkin extends ButtonSkin {
 
     private final Timeline timeline = new Timeline();
     private final Circle circle = new Circle();
@@ -44,7 +45,7 @@ public class ButtonSkin extends javafx.scene.control.skin.ButtonSkin {
 
     private final Button control;
 
-    public ButtonSkin(Button _control) {
+    public RippleButtonSkin(Button _control) {
         super(_control);
         this.control = _control;
 
@@ -127,6 +128,4 @@ public class ButtonSkin extends javafx.scene.control.skin.ButtonSkin {
             }
         });
     }
-
-
 }

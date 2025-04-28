@@ -4,6 +4,11 @@
     v. 1.0
 */
 
+.animated-button {
+    -fx-trans-fill: -blue-500;
+    -text-color: -blue-500;
+}
+
 /* @Cursor */
 .cursor-default {
     -fx-cursor: default;
