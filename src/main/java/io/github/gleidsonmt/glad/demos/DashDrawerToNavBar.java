@@ -1,10 +1,9 @@
 package io.github.gleidsonmt.glad.demos;
 
-import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.responsive.Break;
-import io.github.gleidsonmt.glad.responsive.sizer.Sizer;
+import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

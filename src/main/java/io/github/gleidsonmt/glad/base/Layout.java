@@ -1,10 +1,10 @@
 package io.github.gleidsonmt.glad.base;
 
-import io.github.gleidsonmt.glad.responsive.Actionable;
-import io.github.gleidsonmt.glad.responsive.Break;
-import io.github.gleidsonmt.glad.responsive.BreakPoint;
-import io.github.gleidsonmt.glad.responsive.PointEvent;
-import io.github.gleidsonmt.glad.responsive.sizer.Sizer;
+import io.github.gleidsonmt.glad.base.responsive.Actionable;
+import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.BreakPoint;
+import io.github.gleidsonmt.glad.base.responsive.PointEvent;
+import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
@@ -20,6 +20,7 @@ import java.util.List;
 public class Layout extends BorderPane implements LayoutActions, Actionable<Break> {
 
     private final List<BreakPoint> points = new ArrayList<>();
+    private final Sizer<Break> sizer;
 
     public Layout() {
         this(null);
@@ -27,12 +28,25 @@ public class Layout extends BorderPane implements LayoutActions, Actionable<Brea
 
     public Layout(Node node) {
         updateView(node);
-        new Sizer<>(this, Break.values()) {
+        sizer = new Sizer<>(this, Break.values()) {
             @Override
             public void change(Break aBreak) {
                 doAction(aBreak);
             }
         };
+
+    }
+
+    public Break getSize() {
+        return sizer.getSize(getWidth());
+    }
+
+    public boolean biggerThan(Break first, Break second) {
+        return first.getMax() > second.getMax();
+    }
+
+    public boolean lowerThan(Break first, Break second) {
+        return first.getMax() < second.getMax();
     }
 
     @Override
@@ -58,6 +72,7 @@ public class Layout extends BorderPane implements LayoutActions, Actionable<Brea
      * @param event  The event to occurs.
      * @param breaks The breaks/size to event occurs.
      */
+    @Deprecated(forRemoval = true)
     public void addPoint(PointEvent event, Break... breaks) {
         this.points.add(new BreakPoint(event, breaks));
     }

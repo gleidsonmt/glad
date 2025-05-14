@@ -19,8 +19,6 @@ public class Assets {
         return new Image(Objects.requireNonNull(GladResources.class.getResource("img/" + name)).toExternalForm());
     }
 
-
-
     public static InputStream getResourceAsStream(String name) {
         return Objects.requireNonNull(GladResources.class.getResourceAsStream("texts/" + name));
     }

@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.responsive.sizer;
+package io.github.gleidsonmt.glad.base.responsive.sizer;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

@@ -29,13 +29,15 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.shape.*;
 import javafx.util.Pair;
 
-public class CurvedChart<X, Y> extends AreaChart<Number, Number> {
+public class CurvedChart<X, Y> extends AreaChart<X, Y> {
 
         public CurvedChart() {
-            this(new NumberAxis(), new NumberAxis());
+            this((Axis<X>) new NumberAxis(), (Axis<Y>) new NumberAxis());
         }
 
-        public CurvedChart(@NamedArg("xAxis") Axis<Number> numberAxis, @NamedArg("yAxis") Axis<Number> numberAxis2) {
+        public CurvedChart(@NamedArg("xAxis") Axis<X> numberAxis,
+                           @NamedArg("yAxis") Axis<Y> numberAxis2)
+        {
             super(numberAxis, numberAxis2);
         }
 
@@ -52,7 +54,7 @@ public class CurvedChart<X, Y> extends AreaChart<Number, Number> {
         }
 
         private int getDataSize() {
-            ObservableList<Series<Number, Number>> data = this.getData();
+            ObservableList<Series<X, Y>> data = this.getData();
             return data != null ? data.size() : 0;
         }
 
@@ -60,7 +62,7 @@ public class CurvedChart<X, Y> extends AreaChart<Number, Number> {
             Point2D[] dataPoints = new Point2D[strokeElements.size()];
 
             for(int i = 0; i < strokeElements.size(); ++i) {
-                PathElement element = (PathElement)strokeElements.get(i);
+                PathElement element = strokeElements.get(i);
                 if (element instanceof MoveTo) {
                     MoveTo move = (MoveTo)element;
                     dataPoints[i] = new Point2D(move.getX(), move.getY());

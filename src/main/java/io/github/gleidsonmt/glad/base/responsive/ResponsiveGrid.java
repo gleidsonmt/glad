@@ -1,6 +1,6 @@
-package io.github.gleidsonmt.glad.responsive;
+package io.github.gleidsonmt.glad.base.responsive;
 
-import io.github.gleidsonmt.glad.responsive.sizer.Sizer;
+import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
 import org.jetbrains.annotations.ApiStatus;
@@ -52,7 +52,7 @@ public class ResponsiveGrid extends GridPane implements Actionable<Break> {
      * @param event  The event to occurs.
      * @param breaks The breaks/size to event occurs.
      */
-    @Deprecated
+    @Deprecated(forRemoval = true)
     public void addPoint(PointEvent event, Break... breaks) {
 //        if (breaks.length == 0) this.points.add(new BreakPoint(event, Break.ALL));
 //        else

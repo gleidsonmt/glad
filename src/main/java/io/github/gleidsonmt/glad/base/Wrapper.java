@@ -16,10 +16,9 @@ public interface Wrapper {
 
     void setOnClick(EventHandler<MouseEvent> eventHandler);
 
-    @Deprecated(forRemoval = true)
-    void close();
-
     void hide();
+
+    void back();
 
     boolean isShowing();
 }

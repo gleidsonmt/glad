@@ -72,15 +72,14 @@ public class WrapperImpl implements Wrapper {
     }
 
     @Override
-    public void close() {
+    public void hide() {
         root.getChildren().remove(foreground);
         root.getChildren().getFirst().setEffect(null);
     }
 
     @Override
-    public void hide() {
-        root.getChildren().remove(foreground);
-        root.getChildren().getFirst().setEffect(null);
+    public void back() {
+        foreground.toBack();
     }
 
     @Override

@@ -1,11 +1,6 @@
-package io.github.gleidsonmt.glad.responsive;
+package io.github.gleidsonmt.glad.base.responsive;
 
-import io.github.gleidsonmt.glad.responsive.sizer.Size;
-import javafx.event.ActionEvent;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 
 /**
  * Represents a single actionable class.

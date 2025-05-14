@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.responsive.sizer;
+package io.github.gleidsonmt.glad.base.responsive.sizer;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -36,7 +36,7 @@ public abstract class Sizer<T extends Size> {
         });
     }
 
-    private T getSize(double width) {
+    public T getSize(double width) {
         if (width >= this.sizes[this.sizes.length -1].getMax() ) {
             return this.sizes[this.sizes.length -1];
         }

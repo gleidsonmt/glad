@@ -1,6 +1,6 @@
-package io.github.gleidsonmt.glad.responsive;
+package io.github.gleidsonmt.glad.base.responsive;
 
-import io.github.gleidsonmt.glad.responsive.sizer.Size;
+import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import org.jetbrains.annotations.Contract;
 
 /**

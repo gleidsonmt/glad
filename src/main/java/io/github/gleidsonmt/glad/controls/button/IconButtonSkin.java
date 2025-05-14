@@ -38,7 +38,7 @@ import javafx.util.Duration;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  25/09/2022
  */
-@Deprecated
+@Deprecated(forRemoval = true, since = "1.0.0")
 public class IconButtonSkin extends SkinBase<FabButton> {
 
     private final FabButton control;

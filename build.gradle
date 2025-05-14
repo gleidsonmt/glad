@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.0.93'
+version '1.0.944'
 
 repositories {
   mavenCentral()
@@ -23,15 +23,13 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 application {
-
   mainModule = 'io.github.gleidsonmt.glad'
-//  mainClass = 'io.github.gleidsonmt.glad.demos.DashDrawerHidden'
   mainClass = 'io.github.gleidsonmt.glad.App'
+//  mainClass = 'io.github.gleidsonmt.glad.demos.DashDrawerHidden'
 }
 
 
 javafx {
-//  version = '17.0.6'
   version = '23.0.2'
   modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
 }
@@ -43,13 +41,10 @@ dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
-
-  implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to vizualize css when app is running.. so amazing!
-
-//  C:\Users\Gleidson\Desktop\blue_galaxy\presentation\build\libs;
-//  implementation files("C:/");
+  implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
 
 }
 
 test {
-useJUnitPlatform()}
+  useJUnitPlatform()
+}

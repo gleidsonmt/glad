@@ -28,13 +28,13 @@ public class ThemeProvider {
     @ApiStatus.Experimental
     public static void install(Parent parent, Font... css) {
         Arrays.stream(css).forEach(el -> {
-            parent.getStylesheets().add(GladResources.class.getResource("fonts/" + el.getUrl()).toExternalForm());
+            parent.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("fonts/" + el.getUrl())).toExternalForm());
         });
     }
 
-    public static void install(Scene parent, Font... css) {
+    public static void install(Scene scene, Font... css) {
         Arrays.stream(css).forEach(el -> {
-            parent.getStylesheets().add(GladResources.class.getResource("fonts/" + el.getUrl()).toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("fonts/" + el.getUrl())).toExternalForm());
         });
     }
 

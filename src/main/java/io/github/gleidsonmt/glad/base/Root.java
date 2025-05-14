@@ -18,13 +18,14 @@ import javafx.scene.layout.StackPane;
  */
 public class Root extends StackPane {
 
-    private  BehaviorImpl behavior;
-    private  Flow flow;
-    private  Wrapper wrapper;
+    private BehaviorImpl behavior;
+    private final Flow flow;
+    private final Wrapper wrapper;
 
     // Breakpoint, use to change the layout to phone or bigger
     private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
-    private final LayoutActions layout;
+    private Layout layout;
+    private Layout oldLayout;
 
     public Root(Layout layout) {
         this.layout = layout;
@@ -33,13 +34,25 @@ public class Root extends StackPane {
         this.behavior = new BehaviorImpl(this, layout);
         this.getChildren().add(layout);
 
-       widthProperty().addListener((observable, oldValue, newValue) -> {
+       widthProperty().addListener((_, _, _) -> {
            wrapper.hide();
            flow.clear();
        });
     }
 
-    protected Layout getLayout() {
+    public void setLayout(Layout _layout) {
+        this.oldLayout = this.layout;
+        this.getChildren().removeAll(layout);
+        this.layout = _layout;
+        if (!this.getChildren().isEmpty()) {
+            this.getChildren().set(0, layout);
+        } else {
+            this.getChildren().add(layout);
+        }
+
+    }
+
+    public Layout getLayout() {
         return (Layout) this.layout;
     }
 

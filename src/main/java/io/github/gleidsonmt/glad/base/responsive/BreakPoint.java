@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.responsive;
+package io.github.gleidsonmt.glad.base.responsive;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

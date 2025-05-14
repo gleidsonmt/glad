@@ -67,7 +67,6 @@ public class RippleButtonSkin extends ButtonSkin {
             circle.setOpacity(0.5);
             circle.setMouseTransparent(true);
 
-
             if (control.getBorder() != null) {
                 for (BorderStroke stroke : control.getBorder().getStrokes()) {
 //                double arcWidth =
@@ -115,7 +114,7 @@ public class RippleButtonSkin extends ButtonSkin {
 
             timeline.play();
 
-            timeline.setOnFinished(e -> getChildren().remove(circle));
+            timeline.setOnFinished(_ -> getChildren().remove(circle));
         };
 
         control.addEventFilter(MouseEvent.MOUSE_CLICKED, onPressed);

@@ -1,50 +1,33 @@
 package io.github.gleidsonmt.glad;
 
 import fr.brouillard.oss.cssfx.CSSFX;
-import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
-import io.github.gleidsonmt.glad.base.internal.animations.Animations;
-import io.github.gleidsonmt.glad.controls.avatar.AvatarStatus;
-import io.github.gleidsonmt.glad.controls.avatar.AvatarView;
-import io.github.gleidsonmt.glad.controls.avatar.StackedAvatar;
-import io.github.gleidsonmt.glad.controls.badge.Badge;
-import io.github.gleidsonmt.glad.controls.button.*;
-import io.github.gleidsonmt.glad.controls.button.Button;
-import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
-import io.github.gleidsonmt.glad.controls.text_box.TextBox;
-import io.github.gleidsonmt.glad.controls.TextField;
-import io.github.gleidsonmt.glad.controls.enums.FloatAlignment;
-import io.github.gleidsonmt.glad.controls.icon.Icon;
-import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.base.Container;
 import io.github.gleidsonmt.glad.base.Layout;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.controls.text_box.Editor;
-import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
-import io.github.gleidsonmt.glad.controls.toggle_switch.ToggleSwitch;
-import io.github.gleidsonmt.glad.responsive.Break;
+import io.github.gleidsonmt.glad.notifications.CommentNotification;
+import io.github.gleidsonmt.glad.notifications.FollowNotification;
+import io.github.gleidsonmt.glad.notifications.InviteNotification;
+import io.github.gleidsonmt.glad.notifications.component.NotificationItem;
+import io.github.gleidsonmt.glad.notifications.factory.NotificationManager;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.geometry.HPos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTreeCell;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import org.scenicview.ScenicView;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -55,33 +38,52 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Container ct = new Container();
-        Layout layout = new Layout(ct);
+        GridPane navBar = new GridPane();
+        Button button = new Button("Button");
+        navBar.add(button, 0,0);
+        GridPane.setHgrow(button, Priority.ALWAYS);
+        GridPane.setHalignment(button, HPos.RIGHT);
+
+
+
+        Container container = new Container();
+        Layout layout = new Layout(container);
+        layout.setTop(navBar);
         Root root = new Root(layout);
 
-        SwipeButton button = new SwipeButton();
-        button.setPrefSize(100, 40);
+        NotificationManager manager = new NotificationManager();
 
-        CentralizeButton centralizeButton = new CentralizeButton();
-        centralizeButton.setPrefSize(100, 40);
+        manager.addAll(
+                new NotificationItem<>(
+                        new FollowNotification(
+                                new User(
+                                        Assets.getImage("avatar.jpg"),
+                                        "@gleidsonmt", "Gleidson Neves"
+                                ),
+                                LocalDateTime.of(LocalDate.of(2024, 11, 2), LocalTime.of(14, 23)),
+                                false
+                        )
+                ),
+                new NotificationItem<>(
+                        new FollowNotification(new User(Assets.getImage("avatar.jpg"), "@noelly", "Noelly Richards"), LocalDateTime.of(LocalDate.of(2025, 2, 22), LocalTime.of(12, 12)), false)
+                ),
+                new NotificationItem<>(
+                        new CommentNotification(new  User(Assets.getImage("avatar.jpg"), "@noelly", "Noelly Richards"), LocalDateTime.of(LocalDate.of(2025, 2, 22), LocalTime.of(12, 12)), false,
+                                "Love the background on this! Wold love to learn how to create the mesh gradient effect.")
+                ),
+                new NotificationItem<>(
+                        new InviteNotification(new User(Assets.getImage("avatar.jpg"), "@noelly", "Noelly Richards"), LocalDateTime.of(LocalDate.of(2025, 3, 05), LocalTime.of(12, 12)), false)
+                ),
+                new NotificationItem<>(
+                        new FollowNotification(new User(Assets.getImage("avatar.jpg"), "@noelly", "Noelly Richards"), LocalDateTime.of(LocalDate.of(2025, 2, 22), LocalTime.of(12, 12)), false)
+                )
+        );
 
-        SmoothButton smoothButton = new SmoothButton();
-        smoothButton.setPrefSize(100, 40);
-
-        AlternateButton alternate = new AlternateButton();
-        alternate.setPrefSize(100, 40);
-
-        SwipeDiagonal swipeDiagonal = new SwipeDiagonal();
-        swipeDiagonal.setPrefSize(100, 40);
-
-        CornerButton cornerButton = new CornerButton();
-        cornerButton.setPrefSize(100, 40);
-
-        VBox container = new VBox(button, centralizeButton, smoothButton, alternate, swipeDiagonal, cornerButton);
-
-        container.setAlignment(Pos.CENTER);
-        container.setSpacing(10);
-        ct.getChildren().addAll(container);
+        manager.getRoot().setMinWidth(600);
+        button.setOnMouseClicked(e -> {
+            System.out.println("root.flow().fits(manager.getRoot()) = " + root.flow().fits(manager.getRoot()));
+            root.flow().openByCursor(manager.getRoot(), e);
+        });
 
 
         Scene scene = new Scene(root, 800, 600);
@@ -93,7 +95,9 @@ public class App extends Application {
             }
         });
 
-        ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
+        ThemeProvider.install(scene, Font.INSTAGRAM);
+//        ThemeProvider.install(scene, Font.POPPINS, Font.INSTAGRAM);
+
         ThemeProvider.install(scene,
                 Css.DEFAULT,
                 Css.TYPOGRAPHIC,
@@ -125,8 +129,8 @@ public class App extends Application {
 
 //        scene.getStylesheets().add(getClass().getResource("agents/editor.css").toExternalForm());
 
-        CSSFX.start(stage);
-        ScenicView.show(stage.getScene());
+//        CSSFX.start(stage);
+//        ScenicView.show(stage.getScene());
     }
 
 }
