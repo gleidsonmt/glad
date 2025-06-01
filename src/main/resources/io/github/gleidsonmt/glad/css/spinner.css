@@ -1,0 +1,34 @@
+.spinner {
+    -fx-background-color: transparent;
+    -fx-border-color: -medium-gray;
+    -fx-border-radius: 5px;
+    -fx-pref-height: 35px;
+}
+
+.spinner .text-field {
+    -fx-background-color: transparent;
+}
+
+.spinner .decrement-arrow-button,
+.spinner .increment-arrow-button {
+    -fx-background-color: transparent;
+}
+
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-shape: "M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z";
+    -fx-padding: 6px 3px 6px 3px;
+    -fx-rotate: -90;
+}
+
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-background-color: -light-gray;
+    -fx-cursor: hand;
+    -fx-padding: 2px;
+}
+
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-rotate: 90;
+}
+
