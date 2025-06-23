@@ -2,8 +2,8 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Alert;
 import io.github.gleidsonmt.glad.base.Behavior;
-import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.LayoutImpl;
+import io.github.gleidsonmt.glad.base.RootImpl;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.animation.KeyFrame;
@@ -22,8 +22,8 @@ import javafx.util.Duration;
  */
 public class BehaviorImpl implements Behavior {
 
-    private Root root;
-    private Layout layout;
+    private RootImpl rootImpl;
+    private LayoutImpl layout;
 
     private Node drawer;
     private Node aside;
@@ -37,14 +37,14 @@ public class BehaviorImpl implements Behavior {
 
     private BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
-    public BehaviorImpl(Root root, Layout layout) {
-        this.root = root;
+    public BehaviorImpl(RootImpl rootImpl, LayoutImpl layout) {
+        this.rootImpl = rootImpl;
         this.layout = layout;
         drawerTimeline = new Timeline();
         asideTimeline = new Timeline();
 
-        this.alert = new AlertImpl(root);
-        this.dialog = new DialogImpl(root);
+        this.alert = new AlertImpl(rootImpl);
+        this.dialog = new DialogImpl(rootImpl);
 
         if (layout.getLeft() != null) drawer = layout.getLeft();
         if (layout.getRight() != null) aside = layout.getRight();
@@ -61,7 +61,7 @@ public class BehaviorImpl implements Behavior {
             }
         });
 
-//        root.widthProperty().addListener((observableValue, number, newValue) -> {
+//        rootImpl.widthProperty().addListener((observableValue, number, newValue) -> {
 //            Size act = getSize(newValue.doubleValue());
 //            if (size.get() == null || size.get() != act) {
 //                size.set(act);
@@ -85,9 +85,9 @@ public class BehaviorImpl implements Behavior {
             );
             drawerTimeline.setOnFinished(null);
             drawerTimeline.setRate(1);
-            root.wrapper().show();
+            rootImpl.wrapper().show();
 
-            root.flow()
+            rootImpl.flow()
                     .pos(Pos.CENTER_LEFT)
                     .content(drawer)
                     .anchor(Anchor.LEFT)
@@ -107,8 +107,8 @@ public class BehaviorImpl implements Behavior {
             );
             asideTimeline.setOnFinished(null);
             asideTimeline.setRate(1);
-            root.wrapper().show();
-            root.flow().openRight(aside);
+            rootImpl.wrapper().show();
+            rootImpl.flow().openRight(aside);
             asideTimeline.play();
         }
     }
@@ -117,9 +117,9 @@ public class BehaviorImpl implements Behavior {
     public void closeAside() {
         if (isAsideOpen()) {
             asideTimeline.setRate(-1);
-            root.wrapper().hide();
+            rootImpl.wrapper().hide();
             asideTimeline.setOnFinished(e -> {
-                root.flow().remove(aside);
+                rootImpl.flow().remove(aside);
                 aside.setTranslateX(0);
             });
             asideTimeline.play();
@@ -131,8 +131,8 @@ public class BehaviorImpl implements Behavior {
         if (isDrawerOpen()) {
             drawerTimeline.setRate(-1);
             drawerTimeline.setOnFinished(e -> {
-                root.wrapper().hide();
-                root.flow().remove(drawer);
+                rootImpl.wrapper().hide();
+                rootImpl.flow().remove(drawer);
                 drawer.setTranslateX(0);
             });
             drawerTimeline.play();
@@ -159,7 +159,7 @@ public class BehaviorImpl implements Behavior {
     }
 
     private boolean isAsideAbsolute() {
-        return this.root.getChildren().contains(aside);
+        return this.rootImpl.getChildren().contains(aside);
     }
 
     public BooleanProperty drawerOpen() {
@@ -168,11 +168,11 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public boolean isDrawerAbsolute() {
-        return this.root.getChildren().contains(drawer);
+        return this.rootImpl.getChildren().contains(drawer);
     }
 
 //    private Size getSize(double width) {
-//        if (width <= root.getBreakpoint()) return Size.PHONE;
+//        if (width <= rootImpl.getBreakpoint()) return Size.PHONE;
 //        else return Size.TABLET;
 //    }
 

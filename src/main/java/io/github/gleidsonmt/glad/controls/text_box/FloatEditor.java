@@ -17,7 +17,7 @@
 
 package io.github.gleidsonmt.glad.controls.text_box;
 
-import io.github.gleidsonmt.glad.GladResources;
+import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.controls.enums.FloatAlignment;
 import io.github.gleidsonmt.glad.controls.skin.FloatEditorSkin;
 import javafx.beans.DefaultProperty;
@@ -59,7 +59,8 @@ public class FloatEditor extends Editor {
 
     @Override
     public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(GladResources.class.getResource("agents/float-editor.css")).toExternalForm();
+//        return Objects.requireNonNull(Resources.class.getResource("agents/float-editor.css")).toExternalForm();
+        return Objects.requireNonNull(Resources.getAgent("float-editor.css"));
     }
 
     public FloatAlignment getFloatAlignment() {

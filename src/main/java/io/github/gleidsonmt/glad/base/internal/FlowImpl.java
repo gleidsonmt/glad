@@ -1,11 +1,10 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.Flow;
+import io.github.gleidsonmt.glad.base.RootImpl;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.*;
@@ -17,7 +16,6 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Stack;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -29,10 +27,10 @@ public class FlowImpl implements Flow {
     private Insets insets = Insets.EMPTY;
     private Anchor anchor = null;
     private Node content;
-    private final Root root;
+    private final RootImpl rootImpl;
 
-    public FlowImpl(Root root) {
-        this.root = root;
+    public FlowImpl(RootImpl rootImpl) {
+        this.rootImpl = rootImpl;
     }
 
     @Override
@@ -64,8 +62,8 @@ public class FlowImpl implements Flow {
             StackPane.setAlignment(container, position);
             StackPane.setMargin(container, insets);
 
-            if (!root.getChildren().contains(container)) {
-                root.getChildren().add(container);
+            if (!rootImpl.getChildren().contains(container)) {
+                rootImpl.getChildren().add(container);
             }
         }
     }
@@ -96,7 +94,11 @@ public class FlowImpl implements Flow {
 
     @Override
     public void openByCursor(Region container, MouseEvent e) {
-        openByCursor(container, e, 0, 0);
+        openByCursor(container, e, Pos.CENTER, 0, 0);
+    }
+
+    public void openByCursor(Region container, MouseEvent e, Pos pos) {
+        openByCursor(container, e, pos, 0, 0);
     }
 
     private double width = 0;
@@ -118,14 +120,13 @@ public class FlowImpl implements Flow {
             this.y = y;
         }
 
-
-
         @Override
         public void changed(ObservableValue<? extends Bounds> observable, Bounds oldValue, Bounds newValue) {
             // Needs to be reviewed
             // cause if the width is settled before the height given a 2x call
 //            System.out.println("newValue = " + newValue.getHeight());
             if (newValue.getHeight() > 0) {
+//            System.out.println("newValue = " + newValue);
                 width = container.getWidth();
                 height = container.getHeight();
                 relocate(container, event, pos, x, y);
@@ -138,12 +139,12 @@ public class FlowImpl implements Flow {
     @Override
     public boolean fits(Region node) {
 
-        if (node.getPrefWidth() >= root.getWidth()) return false;
-        if (node.getPrefHeight() >= root.getHeight()) return false;
-        if (node.getMinHeight() >= root.getHeight()) return false;
-//        if (node.getHeight() >= root.getHeight()) return false;
-//        if (node.getWidth() >= root.getWidth()) return false;
-        return !(node.getMinWidth() >= root.getWidth());
+        if (node.getPrefWidth() >= rootImpl.getWidth()) return false;
+        if (node.getPrefHeight() >= rootImpl.getHeight()) return false;
+        if (node.getMinHeight() >= rootImpl.getHeight()) return false;
+//        if (node.getHeight() >= rootImpl.getHeight()) return false;
+//        if (node.getWidth() >= rootImpl.getWidth()) return false;
+        return !(node.getMinWidth() >= rootImpl.getWidth());
     }
 
     @Override
@@ -158,40 +159,7 @@ public class FlowImpl implements Flow {
 
     @Override
     public void openByCursor(Region container, MouseEvent e, double x, double y) {
-        if (root.getChildren().contains(container)) return;
-//        if (updateBounds != null) container.layoutBoundsProperty().removeListener(updateBounds);
-
-        container.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-
-        StackPane.clearConstraints(container);
-        StackPane.setAlignment(container, Pos.TOP_LEFT);
-
-        container.getStyleClass().add("popup");
-        container.setLayoutX(0);
-        container.setLayoutY(0);
-
-        // if lay out is not set
-        if (width == 0 || height == 0) {
-            updateBounds = new UpdateBounds(container, e, pos, x, y);
-            container.layoutBoundsProperty().addListener(updateBounds);
-            container.layoutBoundsProperty().addListener(new ChangeListener<Bounds>() {
-                @Override
-                public void changed(ObservableValue<? extends Bounds> observable, Bounds oldValue, Bounds newValue) {
-
-                }
-            });
-//            container.widthProperty().addListener(updateBounds);
-        } else { // if is set
-//            container.layoutBoundsProperty().removeListener(updateBounds);
-            relocate(container, e, pos, x, y);
-        }
-//        root.getChildren().add(container);
-        container.toFront();
-    }
-
-    @Override
-    public void openByCursor(Region container, MouseEvent e, Pos pos, double x, double y) {
-        if (root.getChildren().contains(container)) return;
+        if (rootImpl.getChildren().contains(container)) return;
         if (updateBounds != null) container.layoutBoundsProperty().removeListener(updateBounds);
 
         container.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
@@ -199,18 +167,47 @@ public class FlowImpl implements Flow {
         StackPane.clearConstraints(container);
         StackPane.setAlignment(container, Pos.TOP_LEFT);
 
-        container.getStyleClass().add("popup");
+//        container.getStyleClass().add("popup");
+
+        container.setLayoutX(0);
+        container.setLayoutY(0);
+
+        // if lay out is not set
+        if (width == 0 || height == 0) {
+            updateBounds = new UpdateBounds(container, e, pos, x, y);
+            container.layoutBoundsProperty().addListener(updateBounds);
+//            container.widthProperty().addListener(updateBounds);
+        } else { // if is set
+            container.layoutBoundsProperty().removeListener(updateBounds);
+            relocate(container, e, pos, x, y);
+        }
+//        rootImpl.getChildren().add(container);
+        container.toFront();
+    }
+
+    @Override
+    public void openByCursor(Region container, MouseEvent e, Pos pos, double x, double y) {
+        if (rootImpl.getChildren().contains(container)) return;
+        if (updateBounds != null) container.layoutBoundsProperty().removeListener(updateBounds);
+
+        container.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+
+        StackPane.clearConstraints(container);
+        StackPane.setAlignment(container, Pos.TOP_LEFT);
+
+//        container.getStyleClass().add("popup");
         container.setLayoutX(0);
         container.setLayoutY(0);
 
         // if layout is not set
-        if (width == 0 || height == 0) {
+        if (container.getWidth() == 0 || container.getHeight() == 0) {
             updateBounds = new UpdateBounds(container, e, pos, x, y);
             container.layoutBoundsProperty().addListener(updateBounds);
         } else { // if is set
+            container.layoutBoundsProperty().removeListener(updateBounds);
             relocate(container, e, pos, x, y);
         }
-        root.getChildren().add(container);
+        rootImpl.getChildren().add(container);
         container.toFront();
     }
 
@@ -225,16 +222,15 @@ public class FlowImpl implements Flow {
         container.setLayoutX(0);
         container.setLayoutY(0);
 
-
-        double widthAvailable = root.getWidth();
-        double heightAvailable = root.getHeight();
+        double widthAvailable = rootImpl.getWidth();
+        double heightAvailable = rootImpl.getHeight();
 
         double spaceXAvailable = widthAvailable - width;
         double spaceYAvailable = heightAvailable - height;
 
         // posX and posY <= 0 doesn't fit
-        if (!fitWidth(spaceXAvailable + x)  || !fitHeight(spaceYAvailable + y)) {
-            if (root.getChildren().contains(container)) return;
+        if (!fitWidth(spaceXAvailable + x) || !fitHeight(spaceYAvailable + y)) {
+            if (rootImpl.getChildren().contains(container)) return;
             setLayout(container);
         } else {
             updateLayout(container, e, pos, x, y);
@@ -245,16 +241,16 @@ public class FlowImpl implements Flow {
     private void setLayout(Region container) {
         clearConstraints(container);
 
-        this.oldLayout = root.getLayout();
-        container.getStyleClass().add("popup");
-        root.setLayout(new Layout(container));
-        root.wrapper().back();
+        this.oldLayout = rootImpl.getLayout();
+//        container.getStyleClass().add("popup");
+//        rootImpl.setLayout(new Layout(container));
+        rootImpl.wrapper().back();
 
-        root.widthProperty().addListener(new ChangeListener<>() {
+        rootImpl.widthProperty().addListener(new ChangeListener<>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                root.setLayout(oldLayout);
-                root.widthProperty().removeListener(this);
+                rootImpl.setLayout(oldLayout);
+                rootImpl.widthProperty().removeListener(this);
             }
         });
     }
@@ -270,11 +266,11 @@ public class FlowImpl implements Flow {
         double passX = 0;
         double passY = 0;
 
-        if ((posX + width) > root.getWidth()) {
-            passX = (posX + width) - root.getWidth();
+        if ((posX + width) > rootImpl.getWidth()) {
+            passX = (posX + width) - rootImpl.getWidth();
         }
-        if ((posY + height) > root.getHeight()) {
-            passY = (posY + height) - root.getHeight();
+        if ((posY + height) > rootImpl.getHeight()) {
+            passY = (posY + height) - rootImpl.getHeight();
         }
         container.setTranslateX(posX - passX);
         container.setTranslateY(posY - passY);
@@ -288,7 +284,7 @@ public class FlowImpl implements Flow {
                 return (mousePosX - width) + offsetX;
             }
             case CENTER -> {
-                return (mousePosX - (width  / 2)) + offsetX;
+                return (mousePosX - (width / 2)) + offsetX;
             }
             default -> {
                 return mousePosX + offsetX;
@@ -300,10 +296,10 @@ public class FlowImpl implements Flow {
     private double getPosY(double height, double mousePosY, @NotNull VPos vPos, double offsetY) {
         switch (vPos) {
             case CENTER -> {
-                return (mousePosY - (height  / 2)) + offsetY;
+                return (mousePosY - (height / 2)) + offsetY;
             }
             case TOP -> {
-                return  (mousePosY - height) + offsetY;
+                return (mousePosY - height) + offsetY;
             }
             default -> {
                 return mousePosY + offsetY;
@@ -320,20 +316,79 @@ public class FlowImpl implements Flow {
     }
 
     @Override
+    public void openByNode(Region container, Node node, Pos pos) {
+        openByNode(container, node, pos, 0, 0);
+    }
+
+    public void openByNode(Region container, Node node, Pos pos, double x, double y) {
+        if (rootImpl.getChildren().contains(container)) return;
+        container.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+
+        StackPane.clearConstraints(container);
+        StackPane.setAlignment(container, Pos.TOP_LEFT);
+
+//        var updateBounds = new UpdateBounds(container);
+
+
+        container.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> {
+            Bounds bounds = node.localToScene(node.getLayoutBounds());
+
+            HPos hPos = pos.getHpos();
+            VPos vPos = pos.getVpos();
+
+            switch (hPos) {
+                case LEFT -> {
+                    container.setTranslateX(bounds.getMinX() - bounds.getWidth());
+                }
+                case RIGHT -> {
+                    container.setTranslateX(bounds.getMaxX());
+                }
+                case CENTER -> {
+                    container.setTranslateX( (bounds.getMaxX() - (bounds.getWidth() / 2)) - newValue.getCenterX()  );
+                }
+            }
+
+            container.setTranslateX(container.getTranslateX() + x);
+            switch (vPos) {
+                case TOP -> {
+                    container.setTranslateY(bounds.getMinY() - bounds.getHeight());
+                }
+                case CENTER -> {
+                    container.setTranslateY(bounds.getMaxY() - (bounds.getHeight() / 2) - newValue.getCenterY());
+                }
+                case BOTTOM -> {
+                    container.setTranslateY(bounds.getMaxY());
+                }
+            }
+
+            container.setTranslateY(container.getTranslateY() + y);
+
+        });
+
+
+//        container.setTranslateY(bounds.getMaxY());
+//        container.setTranslateX(bounds.getMaxX());
+        rootImpl.getChildren().add(container);
+
+
+    }
+
+    @Override
     public Flow with(WrapperEffect effect) {
-        root.wrapper().show(effect);
+        rootImpl.wrapper().show(effect);
         return this;
     }
 
     @Override
     public void remove(Node container) {
-        root.getChildren().remove(container);
+        rootImpl.getChildren().remove(container);
     }
 
     @Override
     public void clear() {
-        root.getChildren().removeIf(e ->
-                !(e instanceof Layout) && (e.getStyleClass().contains("popup"))
+        rootImpl.getChildren().removeIf(e ->
+//                !(e instanceof Layout) && (e.getStyleClass().contains("popup"))
+                        !(e instanceof Layout)
         );
     }
 

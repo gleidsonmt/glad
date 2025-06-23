@@ -19,7 +19,7 @@ public enum Break implements Size {
 //    ALL(5000)
     ;
 
-    private final double size;
+    private double size;
 
     Break(double size) {
         this.size = size;

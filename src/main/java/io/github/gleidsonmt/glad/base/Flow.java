@@ -16,28 +16,36 @@ import org.jetbrains.annotations.ApiStatus;
  */
 public interface Flow {
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     void openLeft(Node container);
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     void openLeft(Node container, Insets insets);
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     void openRight(Node container);
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     void openRight(Node container, Insets insets);
 
     // Testing
     @ApiStatus.Experimental
     void openByCursor(Region container, MouseEvent e);
 
-    @Deprecated
     @ApiStatus.Experimental
-    void openByCursor(Region container, MouseEvent e, double x, double y);
+    void openByCursor(Region container, MouseEvent e, Pos pos);
 
     @ApiStatus.Experimental
     void openByCursor(Region container, MouseEvent e, Pos pos, double x, double y);
+
+    @ApiStatus.Experimental
+    void openByNode(Region container, Node node, Pos pos);
+
+    void openByNode(Region container, Node node, Pos pos, double x, double y);
+
+    @Deprecated
+    @ApiStatus.Experimental
+    void openByCursor(Region container, MouseEvent e, double x, double y);
 
     /**
      * If they fit in the root (screen).
@@ -79,6 +87,17 @@ public interface Flow {
      */
     void openAbsolute(Node container);
 
+    void show();
+
+    void remove(Node container);
+
+    void clear();
+
+    /**
+     *
+     *  IMperative Style
+     */
+
     Flow anchor(Anchor anchor);
 
     Flow insets(Insets insets);
@@ -89,9 +108,5 @@ public interface Flow {
 
     Flow with(WrapperEffect effect);
 
-    void show();
 
-    void remove(Node container);
-
-    void clear();
 }

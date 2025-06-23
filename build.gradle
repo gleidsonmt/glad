@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.0.944'
+version '1.0.950'
 
 repositories {
   mavenCentral()
@@ -36,12 +36,12 @@ javafx {
 
 dependencies {
   implementation 'org.jetbrains:annotations:24.0.1'
-  implementation fileTree('vendor') { include '*.jar' }
-  implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
+//  implementation fileTree('vendor') { include '*.jar' }
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+//  implementation fileTree("vendor/scenic.jar")
 
-  implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
+//  implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
 
 }
 

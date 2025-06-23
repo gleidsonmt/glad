@@ -1,7 +1,6 @@
 package io.github.gleidsonmt.glad.demos;
 
-import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.RootImpl;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
 import javafx.application.Application;
@@ -20,31 +19,31 @@ public class DashDrawerToNavBar extends Application {
 
     @Override
     public void start(Stage stage) {
-        Drawer drawer = new Drawer();
-        Layout container = new Layout();
-
-        container.setCenter(new StackPane(new Label("Welcome, Resize this stage.")));
-
-        Root root = new Root(container);
-
-        new Sizer<>(root, Break.values()) {
-            @Override
-            public void change(Break aBreak) {
-                if (aBreak == Break.SM) {
-                    drawer.phoneLayout();
-                    container.getChildren().remove(drawer);
-                    container.setTop(drawer);
-                } else {
-                    container.getChildren().remove(drawer);
-                    container.setLeft(drawer);
-
-                    drawer.tabletLayout();
-                }
-            }
-        };
-
-        stage.setScene(new Scene(root, 800, 600));
-        stage.show();
+//        Drawer drawer = new Drawer();
+//        Layout container = new Layout();
+//
+//        container.setCenter(new StackPane(new Label("Welcome, Resize this stage.")));
+//
+//        RootImpl rootImpl = new RootImpl(container);
+//
+//        new Sizer<>(rootImpl, Break.values()) {
+//            @Override
+//            public void change(Break aBreak) {
+//                if (aBreak == Break.SM) {
+//                    drawer.phoneLayout();
+//                    container.getChildren().remove(drawer);
+//                    container.setTop(drawer);
+//                } else {
+//                    container.getChildren().remove(drawer);
+//                    container.setLeft(drawer);
+//
+//                    drawer.tabletLayout();
+//                }
+//            }
+//        };
+//
+//        stage.setScene(new Scene(rootImpl, 800, 600));
+//        stage.show();
     }
 
 

@@ -8,6 +8,7 @@ import java.time.Period;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  14/03/2025
  */
+@Deprecated(forRemoval = true)
 public class StringUtils {
 
     public static String capitalize(String string) {

@@ -8,9 +8,6 @@ import javafx.scene.Node;
  */
 public interface LayoutActions {
 
-    default Node getRoot() {
-        return (Node) this;
-    }
-
     void updateView(Node view);
+
 }

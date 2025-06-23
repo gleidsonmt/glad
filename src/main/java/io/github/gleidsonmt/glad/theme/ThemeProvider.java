@@ -1,13 +1,11 @@
 package io.github.gleidsonmt.glad.theme;
 
-import io.github.gleidsonmt.glad.GladResources;
-import io.github.gleidsonmt.glad.PresentationDemo;
+import io.github.gleidsonmt.glad.Resources;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -15,50 +13,35 @@ import java.util.Objects;
  */
 public class ThemeProvider {
 
-//    // Testing
-//    public enum Theme {
-//        WHITE, DARK
-//    }
-//
-//    // Testing
-//    public static void set(Parent node, Theme theme) {
-////        node.getStylesheets().addAll(this.c)
-//    }
-
     @ApiStatus.Experimental
     public static void install(Parent parent, Font... css) {
-        Arrays.stream(css).forEach(el -> {
-            parent.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("fonts/" + el.getUrl())).toExternalForm());
-        });
+        Arrays.stream(css).forEach(el -> parent.getStylesheets().add(Resources.getFont(el.getUrl())));
     }
 
     public static void install(Scene scene, Font... css) {
-        Arrays.stream(css).forEach(el -> {
-            scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("fonts/" + el.getUrl())).toExternalForm());
-        });
+        Arrays.stream(css).forEach(el -> scene.getStylesheets().add(Resources.getFont(el.getUrl())));
     }
 
     @ApiStatus.Experimental
     public static void install(Parent parent, Css... css) {
-        Arrays.stream(css).forEach(el -> parent.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + el.getUrl())).toExternalForm()));
+        Arrays.stream(css).forEach(el -> parent.getStylesheets().add(Resources.getCss(el.getUrl())));
     }
 
     public static void install(Scene scene, Css... css) {
-
         Arrays.stream(css).forEach(el -> {
             if (el.toString().toLowerCase().contains("default")) {
                 String[] list = el.getUrl().split(" ");
                 for (String cs : list) {
-                    scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + cs)).toExternalForm());
+                    scene.getStylesheets().add(Resources.getCss(cs));
                 }
             } else {
-                scene.getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/" + el.getUrl())).toExternalForm());
+                scene.getStylesheets().add(Resources.getCss(el.getUrl()));
             }
         });
-
     }
 
     @ApiStatus.Experimental
+    @Deprecated(forRemoval = true)
     public static void install(Parent parent) {
         ThemeProvider.install(parent,
                 Css.COLORS,

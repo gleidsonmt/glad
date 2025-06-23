@@ -17,7 +17,7 @@
 
 package io.github.gleidsonmt.glad.controls.text_box;
 
-import io.github.gleidsonmt.glad.GladResources;
+import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.controls.skin.EditorSkin;
 import javafx.beans.DefaultProperty;
 import javafx.beans.property.BooleanProperty;
@@ -90,7 +90,7 @@ public class Editor extends TextField {
 
     @Override
     public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(GladResources.class.getResource("agents/editor.css")).toExternalForm();
+        return Objects.requireNonNull(Resources.getAgent("editor.css"));
     }
 
     public boolean isMaskText() {

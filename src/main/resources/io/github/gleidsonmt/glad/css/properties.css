@@ -134,6 +134,16 @@
 .align-bottom-right {
     -fx-alignment: bottom_right;
 }
+
+/* @Fit */
+.fit-width {
+    -fx-fit-to-width: true;
+}
+
+.fit-height {
+    -fx-fit-to-height: true;
+}
+
 /* @Size */
 .w-1 {
 	-fx-pref-width: 1px;

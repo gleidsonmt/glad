@@ -4,12 +4,10 @@ module io.github.gleidsonmt.glad {
     requires  javafx.controls;
 
     requires org.jetbrains.annotations;
-    requires io.github.gleidsonmt.blockcode;
+//    requires io.github.gleidsonmt.blockcode;
 
-    requires org.scenicview.scenicview;
-
-    requires org.yaml.snakeyaml;
-    requires fr.brouillard.oss.cssfx;
+//    requires org.scenicview.scenicview;
+//    requires fr.brouillard.oss.cssfx;
 
     opens io.github.gleidsonmt.glad.base to javafx.fxml;
     opens io.github.gleidsonmt.glad.base.internal to javafx.fxml;
@@ -39,4 +37,5 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.charts;
     exports io.github.gleidsonmt.glad.base.internal.animations;
     opens io.github.gleidsonmt.glad.base.internal.animations to javafx.fxml;
+    exports io.github.gleidsonmt.glad.errors;
 }

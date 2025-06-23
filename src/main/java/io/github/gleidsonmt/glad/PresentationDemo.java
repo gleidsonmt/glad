@@ -1,15 +1,12 @@
 package io.github.gleidsonmt.glad;
 
-import fr.brouillard.oss.cssfx.CSSFX;
-import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.RootImpl;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.scenicview.ScenicView;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -20,21 +17,21 @@ public class PresentationDemo extends Application {
     @Override
     public void start(Stage stage) {
 
-        Layout container = new Layout();
-        Root root = new Root(container);
-
-        ThemeProvider.install(root, Font.POPPINS);
-        ThemeProvider.install(root,
-                Css.COLORS,
-                Css.TYPOGRAPHIC,
-                Css.SHAPES,
-                Css.PROPERTIES,
-                Css.BOOTSTRAP,
-                Css.IMMERSIVE_SCROLL,
-                Css.TAB_PANE,
-                Css.PROGRESS_BAR,
-                Css.HYPERLINK
-        );
+//        Layout container = new Layout();
+//        RootImpl rootImpl = new RootImpl(container);
+//
+//        ThemeProvider.install(rootImpl, Font.POPPINS);
+//        ThemeProvider.install(rootImpl,
+//                Css.COLORS,
+//                Css.TYPOGRAPHIC,
+//                Css.SHAPES,
+//                Css.PROPERTIES,
+//                Css.BOOTSTRAP,
+//                Css.IMMERSIVE_SCROLL,
+//                Css.TAB_PANE,
+//                Css.PROGRESS_BAR,
+//                Css.HYPERLINK
+//        );
 
 //        container.setCenter(
 //                new Presentation()
@@ -54,15 +51,13 @@ public class PresentationDemo extends Application {
 //                        .getRoot()
 //        );
 
-        stage.setScene(new Scene(root, 800, 600));
+//        stage.setScene(new Scene(rootImpl, 800, 600));
 
 //        stage.getScene().getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("fonts/poppins.css")).toExternalForm());
 //        stage.getScene().getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/typographic.css")).toExternalForm());
 //        stage.getScene().getStylesheets().add(Objects.requireNonNull(GladResources.class.getResource("css/colors.css")).toExternalForm());
 
-        stage.show();
-        ScenicView.show(stage.getScene());
-        CSSFX.start(stage);
+//        stage.show();
     }
 
     public static void main(String[] args) {

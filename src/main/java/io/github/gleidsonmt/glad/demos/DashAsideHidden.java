@@ -1,7 +1,6 @@
 package io.github.gleidsonmt.glad.demos;
 
-import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.RootImpl;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
@@ -23,36 +22,36 @@ public class DashAsideHidden extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        VBox aside = new VBox(new Label("Aside"));
-        aside.setAlignment(Pos.CENTER);
-        aside.setMinWidth(250);
-        aside.setStyle("-fx-background-color: white");
-
-        Layout container = new Layout();
-        Button hamb = new Button("Open Aside");
-
-        container.updateView(new StackPane(new Label("Welcome, Resize this stage.")));
-
-        Root root = new Root(container);
-        ThemeProvider.install(root, Font.POPPINS);
-//        container.setRight(aside);
-        hamb.setOnAction(e -> {
-//            root.behavior().openAside();
-        });
-
-        container.addPoint(pt -> {
-            container.setRight(null);
-            container.setTop(hamb);
-        }, Break.SM);
-
-        container.addPoint(pt -> {
-            container.setTop(null);
-            container.setRight(aside);
-            root.wrapper().hide();
-        }, Break.values());
-
-        stage.setScene(new Scene(root, 800, 600));
-        stage.show();
+//        VBox aside = new VBox(new Label("Aside"));
+//        aside.setAlignment(Pos.CENTER);
+//        aside.setMinWidth(250);
+//        aside.setStyle("-fx-background-color: white");
+//
+//        Layout container = new Layout();
+//        Button hamb = new Button("Open Aside");
+//
+//        container.updateView(new StackPane(new Label("Welcome, Resize this stage.")));
+//
+//        RootImpl rootImpl = new RootImpl(container);
+//        ThemeProvider.install(rootImpl, Font.POPPINS);
+////        container.setRight(aside);
+//        hamb.setOnAction(e -> {
+////            rootImpl.behavior().openAside();
+//        });
+//
+//        container.addPoint(pt -> {
+//            container.setRight(null);
+//            container.setTop(hamb);
+//        }, Break.SM);
+//
+//        container.addPoint(pt -> {
+//            container.setTop(null);
+//            container.setRight(aside);
+//            rootImpl.wrapper().hide();
+//        }, Break.values());
+//
+//        stage.setScene(new Scene(rootImpl, 800, 600));
+//        stage.show();
     }
 
     public static void main(String[] args) {

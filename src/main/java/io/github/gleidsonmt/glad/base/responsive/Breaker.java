@@ -17,14 +17,19 @@ public interface Breaker extends Actionable<Break> {
 
     @Override
     default void doAction(Break size) {
-        BreakPoint br = points.stream().filter(p -> p.getBreaks().contains(size)).findAny().orElse(null);
+//        BreakPoint br = points.stream().filter(p -> p.getBreaks().contains(size)).findAny().orElse(null);
 
-        if (br == null) {
-            return;
-        }
+        List<BreakPoint> p = points.stream().filter(el -> el.getBreaks().contains(size)).toList();
+//        if (br == null) {
+//            return;
+//        }
+        if (p.isEmpty()) return;
         // Make an action defined by user.
         // This action is convenient to be a new layout based on the scene size
-        br.getEventHandler().handle(new ActionEvent());
+        p.forEach(e -> {
+            e.getEventHandler().handle(new ActionEvent());
+        });
+//        br.getEventHandler().handle(new ActionEvent());
     }
 
     /**

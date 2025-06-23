@@ -30,7 +30,9 @@ public enum Css {
 
 
     PROGRESS_BAR("progress-bar.css"),
-    TEXT_FIELD("text-field.css");
+    TEXT_FIELD("text-field.css"),
+    SPINNER("spinner.css"),
+    DATE_PICKER("date_picker.css");
 
     private String url;
 

@@ -17,7 +17,6 @@
 
 package io.github.gleidsonmt.glad.controls.button;
 
-import io.github.gleidsonmt.glad.GladResources;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.DefaultProperty;
@@ -25,7 +24,6 @@ import javafx.css.*;
 import javafx.scene.control.ContentDisplay;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
