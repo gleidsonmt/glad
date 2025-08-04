@@ -13,7 +13,10 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+
+import javax.swing.*;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -23,7 +26,6 @@ public class BehaviorImpl implements Behavior {
 
     private Root root;
 
-    private Node drawer;
     private Node aside;
 
     private Timeline drawerTimeline;
@@ -70,16 +72,15 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public void setDrawer(Node drawer) {
-        System.out.println("drawer = " + drawer);
-        this.drawer = drawer;
+//        this.drawer = drawer;
     }
 
     @Override
     public void openDrawer() {
         if (!isDrawerOpen()) {
             drawerTimeline.getKeyFrames().setAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(drawer.translateXProperty(), -250)),
-                    new KeyFrame(Duration.millis(200), new KeyValue(drawer.translateXProperty(), 0))
+                    new KeyFrame(Duration.ZERO, new KeyValue(root.getLayout().getDrawer().translateXProperty(), -250)),
+                    new KeyFrame(Duration.millis(200), new KeyValue(root.getLayout().getDrawer().translateXProperty(), 0))
             );
             drawerTimeline.setOnFinished(null);
             drawerTimeline.setRate(1);
@@ -87,7 +88,7 @@ public class BehaviorImpl implements Behavior {
 
             root.flow()
                     .pos(Pos.CENTER_LEFT)
-                    .content(drawer)
+                    .content(root.getLayout().getDrawer())
                     .anchor(Anchor.LEFT)
                     .insets(Insets.EMPTY)
                     .show();
@@ -132,9 +133,9 @@ public class BehaviorImpl implements Behavior {
             drawerTimeline.setRate(-1);
             drawerTimeline.setOnFinished(e -> {
                 root.wrapper().hide();
-                root.flow().remove(drawer);
-                if (drawer != null) {
-                    drawer.setTranslateX(0);
+                root.flow().remove(root.getLayout().getDrawer());
+                if (root.getLayout().getDrawer() != null) {
+                    root.getLayout().getDrawer().setTranslateX(0);
                 }
             });
             drawerTimeline.play();
@@ -153,8 +154,14 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public boolean isDrawerOpen() {
-        return root.getLayout().getDrawer() != null || isDrawerAbsolute();
-//        return isDrawerAbsolute();
+        return isDrawerContained() || isDrawerAbsolute();
+    }
+
+    private boolean isDrawerContained() {
+        if (root.getLayout() instanceof Pane pane) {
+            return pane.getChildren().contains(root.getLayout().getDrawer());
+        }
+        return false;
     }
 
     public boolean isAsideOpen() {
@@ -172,7 +179,7 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public boolean isDrawerAbsolute() {
-        return this.root.getChildren().contains(drawer);
+        return this.root.getChildren().contains(root.getLayout().getDrawer());
     }
 
 //    private Size getSize(double width) {

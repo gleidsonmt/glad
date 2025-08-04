@@ -33,6 +33,7 @@ public interface Behavior {
 
     Dialog dialog();
 
+    @Deprecated(forRemoval = true)
     void setDrawer(Node drawer);
 
     void openDrawer();

@@ -4,6 +4,7 @@ module io.github.gleidsonmt.glad {
     requires  javafx.controls;
 
     requires org.jetbrains.annotations;
+    requires java.desktop;
 //    requires io.github.gleidsonmt.blockcode;
 
 //    requires org.scenicview.scenicview;
