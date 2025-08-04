@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
+import io.github.gleidsonmt.glad.base.Root;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -74,11 +75,12 @@ public class View extends ModuleView implements Module {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("View{");
-        sb.append("\n\tcontent=").append(content);
-        sb.append("\n\tonEnter=").append(onEnter);
-        sb.append("\n\tonExit=").append(onExit);
-        sb.append("\n}");
-        return sb.toString();
+        return "View{" + "\n\tcontent=" + content +
+               "\n\tonEnter=" + onEnter +
+               "\n\tonExit=" + onExit +
+               "\n}";
+    }
+
+    public void getRoot() {
     }
 }

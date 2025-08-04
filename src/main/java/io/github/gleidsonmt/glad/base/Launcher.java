@@ -22,13 +22,13 @@ public abstract class Launcher extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        LayoutImpl layoutImpl = new LayoutImpl();
-        Root root = new RootImpl(layoutImpl);
-        scene  = new Scene((Parent) root, 800, 600);
-        this.stage = stage;
-        build(layoutImpl);
-        stage.setScene(scene);
-        stage.show();
+//        LayoutImpl layoutImpl = new LayoutImpl();
+//        Root root = new Root(layoutImpl);
+//        scene  = new Scene((Parent) root, 800, 600);
+//        this.stage = stage;
+//        build(layoutImpl);
+//        stage.setScene(scene);
+//        stage.show();
 
     }
 

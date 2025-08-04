@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.RootImpl;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Wrapper;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import javafx.event.EventHandler;
@@ -19,18 +19,18 @@ import javafx.scene.paint.Color;
  */
 public class WrapperImpl implements Wrapper {
 
-    private final RootImpl rootImpl;
+    private final Root root;
     private final StackPane foreground;
 
     private EventHandler<MouseEvent> onClick;
 
-    public WrapperImpl(RootImpl rootImpl) {
-        this.rootImpl = rootImpl;
+    public WrapperImpl(Root root) {
+        this.root = root;
         this.foreground = new StackPane();
 
         this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> {
-            rootImpl.behavior().closeDrawer();
-            rootImpl.behavior().closeAside();
+            root.behavior().closeDrawer();
+            root.behavior().closeAside();
         });
 
     }
@@ -42,12 +42,12 @@ public class WrapperImpl implements Wrapper {
 
     @Override
    public void show(WrapperEffect effect) {
-        if (!rootImpl.getChildren().contains(foreground)) {
-            rootImpl.getChildren().add(foreground);
+        if (!root.getChildren().contains(foreground)) {
+            root.getChildren().add(foreground);
         }
 
         if (effect.equals(WrapperEffect.BLUR)) {
-            rootImpl.getChildren().get(0).setEffect(new BoxBlur(2,2,1));
+            root.getChildren().get(0).setEffect(new BoxBlur(2,2,1));
         }
         foreground.setBackground(
                 new Background(
@@ -70,8 +70,8 @@ public class WrapperImpl implements Wrapper {
 
     @Override
     public void hide() {
-        rootImpl.getChildren().remove(foreground);
-        rootImpl.getChildren().getFirst().setEffect(null);
+        root.getChildren().remove(foreground);
+        root.getChildren().getFirst().setEffect(null);
     }
 
     @Override
@@ -81,6 +81,6 @@ public class WrapperImpl implements Wrapper {
 
     @Override
     public boolean isShowing() {
-        return rootImpl.getChildren().contains(foreground);
+        return root.getChildren().contains(foreground);
     }
 }

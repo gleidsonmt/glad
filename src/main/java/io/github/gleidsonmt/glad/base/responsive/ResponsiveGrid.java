@@ -16,7 +16,7 @@ import java.util.List;
 @ApiStatus.Internal
 @ApiStatus.Experimental
 @Deprecated
-public class ResponsiveGrid extends GridPane implements Actionable<Break>, Breaker {
+public class ResponsiveGrid extends GridPane implements Actionable<Break> {
 
 
     public ResponsiveGrid() {
@@ -36,14 +36,19 @@ public class ResponsiveGrid extends GridPane implements Actionable<Break>, Break
     }
 
     @Override
-    public void doAction(Break breaks) {
-        BreakPoint br = points.stream().filter(p -> p.getBreaks().contains(breaks)).findAny().orElse(null);
-        if (br == null) {
-            return;
-        }
-        // Make an action defined by user.
-        // This action is convenient to be a new layout based on the scene size
-        br.getEventHandler().handle(new ActionEvent());
+    public void doAction(Break size) {
+
     }
+
+//    @Override
+//    public void doAction(Break breaks) {
+//        BreakPoint br = points.stream().filter(p -> p.getBreaks().contains(breaks)).findAny().orElse(null);
+//        if (br == null) {
+//            return;
+//        }
+//        // Make an action defined by user.
+//        // This action is convenient to be a new layout based on the scene size
+//        br.getEventHandler().handle(new ActionEvent());
+//    }
 
 }

@@ -1,16 +1,6 @@
 package io.github.gleidsonmt.glad.demos;
 
-import io.github.gleidsonmt.glad.base.RootImpl;
-import io.github.gleidsonmt.glad.controls.icon.Icon;
-import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -35,7 +25,7 @@ public class DashDrawerHidden extends Application {
 //        container.setLeft(drawer);
 //        container.updateView(new StackPane(new Label("Welcome, Resize this stage.")));
 //
-//        RootImpl rootImpl = new RootImpl(container);
+//        Root rootImpl = new Root(container);
 //
 //        HBox nav = new HBox(hamb);
 //        nav.setAlignment(Pos.CENTER_RIGHT);

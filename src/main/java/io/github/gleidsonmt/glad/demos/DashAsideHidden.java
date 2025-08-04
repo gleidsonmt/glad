@@ -1,16 +1,6 @@
 package io.github.gleidsonmt.glad.demos;
 
-import io.github.gleidsonmt.glad.base.RootImpl;
-import io.github.gleidsonmt.glad.base.responsive.Break;
-import io.github.gleidsonmt.glad.theme.Font;
-import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -32,7 +22,7 @@ public class DashAsideHidden extends Application {
 //
 //        container.updateView(new StackPane(new Label("Welcome, Resize this stage.")));
 //
-//        RootImpl rootImpl = new RootImpl(container);
+//        Root rootImpl = new Root(container);
 //        ThemeProvider.install(rootImpl, Font.POPPINS);
 ////        container.setRight(aside);
 //        hamb.setOnAction(e -> {

@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.glad;
 
+import io.github.gleidsonmt.glad.base.Layout;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.View;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -23,4 +25,13 @@ public class Main extends View {
     }
 
 
+    @Override
+    public void onEnter(Layout layout) {
+
+    }
+
+    @Override
+    public void onExit(Layout layout) {
+
+    }
 }

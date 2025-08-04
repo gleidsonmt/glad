@@ -17,25 +17,28 @@ import java.util.Arrays;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/06/2025
  */
-public interface Layout extends Breaker {
+public interface Layout  {
 
-    ObjectProperty<Module> viewProperty();
+    default void setBar(Node node){};
 
-    void setPadding(Insets insets);
-
-    void setView(View view);
-
-    void setBar(Node node);
-
-    void setDrawer(Node node);
+    default void setDrawer(Node node){};
 
     default void setAside(Node node) {}
 
     default void setFooter(Node node) {}
 
-    Root getRoot();
+    default Node getDrawer() { return null; }
 
-    Flow flow();
+//    ObjectProperty<Module> viewProperty();
 
+//    void setPadding(Insets insets);
+
+//    void setView(View view);
+
+//    void updateView(View view);
+
+//    Root getRoot();
+
+//    Flow flow();
 
 }

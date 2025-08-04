@@ -1,14 +1,9 @@
 package io.github.gleidsonmt.glad.demos;
 
-import io.github.gleidsonmt.glad.base.RootImpl;
-import io.github.gleidsonmt.glad.base.responsive.Break;
-import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -24,7 +19,7 @@ public class DashDrawerToNavBar extends Application {
 //
 //        container.setCenter(new StackPane(new Label("Welcome, Resize this stage.")));
 //
-//        RootImpl rootImpl = new RootImpl(container);
+//        Root rootImpl = new Root(container);
 //
 //        new Sizer<>(rootImpl, Break.values()) {
 //            @Override

@@ -1,6 +1,5 @@
 package io.github.gleidsonmt.glad.dialog;
 
-import io.github.gleidsonmt.glad.base.Container;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 

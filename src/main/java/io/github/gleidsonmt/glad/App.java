@@ -1,26 +1,23 @@
 package io.github.gleidsonmt.glad;
 
-import io.github.gleidsonmt.glad.base.Launcher;
-import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.internal.View;
-import io.github.gleidsonmt.glad.theme.Css;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  18/02/2025
  */
-public class App extends Launcher {
+public class App extends Application {
 
-    @Override
-    protected void build(Layout layout) {
-        View main = new Main();
-        layout.setView(main);
 
-        addStyleSheets(Css.DEFAULT, Css.BUTTON);
-    }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
     }
 
 //    @Override
@@ -33,7 +30,7 @@ public class App extends Launcher {
 //        });
 //
 //        Layout layout = new Layout(test);
-//        RootImpl rootImpl = new RootImpl(layout);
+//        Root rootImpl = new Root(layout);
 //
 //        rootImpl.getChildren();
 //

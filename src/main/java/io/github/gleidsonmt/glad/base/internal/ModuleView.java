@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
+import io.github.gleidsonmt.glad.base.Layout;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -71,6 +72,16 @@ public class ModuleView implements Module {
     @Override
     public boolean isAnimated() {
         return animated;
+    }
+
+    @Override
+    public void onEnter(Layout layout) {
+
+    }
+
+    @Override
+    public void onExit(Layout layout) {
+
     }
 
     @Override

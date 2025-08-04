@@ -1,11 +1,6 @@
 package io.github.gleidsonmt.glad;
 
-import io.github.gleidsonmt.glad.base.RootImpl;
-import io.github.gleidsonmt.glad.theme.Css;
-import io.github.gleidsonmt.glad.theme.Font;
-import io.github.gleidsonmt.glad.theme.ThemeProvider;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
@@ -18,7 +13,7 @@ public class PresentationDemo extends Application {
     public void start(Stage stage) {
 
 //        Layout container = new Layout();
-//        RootImpl rootImpl = new RootImpl(container);
+//        Root rootImpl = new Root(container);
 //
 //        ThemeProvider.install(rootImpl, Font.POPPINS);
 //        ThemeProvider.install(rootImpl,

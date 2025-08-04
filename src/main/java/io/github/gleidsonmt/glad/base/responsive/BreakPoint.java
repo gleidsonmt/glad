@@ -1,9 +1,8 @@
 package io.github.gleidsonmt.glad.base.responsive;
 
+import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -14,34 +13,30 @@ import java.util.List;
 @SuppressWarnings("unused")
 public final class BreakPoint {
 
-    private final List<Break> listBreaks;
+    private final List<Size> listBreaks;
     private final EventHandler<ActionEvent> eventHandler;
 
-    @Contract(pure = true)
-    public BreakPoint(EventHandler<ActionEvent> eventHandler, Break _break) {
-        this(eventHandler, new Break[]{_break});
+    public BreakPoint(EventHandler<ActionEvent> eventHandler, Size _break) {
+        this(eventHandler, new Size[]{_break});
     }
 
-    @Contract(pure = true)
-    public BreakPoint(EventHandler<ActionEvent> eventHandler, Break... breaks ) {
+    public BreakPoint(EventHandler<ActionEvent> eventHandler, Size... breaks ) {
         this.listBreaks = List.of(breaks);
         this.eventHandler = eventHandler;
     }
 
-    @Contract(pure = true)
-    public List<Break> getBreaks() {
+    public List<Size> getBreaks() {
         return listBreaks;
     }
 
-    @Contract(pure = true)
     public EventHandler<ActionEvent> getEventHandler() {
         return eventHandler;
     }
 
-    @Contract(pure = true)
     @Override
-    public @NotNull String toString() {
+    public String toString() {
         return "BreakPoint{" + "\n\tbreaks=" + listBreaks +
                "\n}";
     }
 }
+

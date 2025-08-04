@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.glad.base.internal;
 
+import io.github.gleidsonmt.glad.base.Layout;
+import io.github.gleidsonmt.glad.base.Root;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -16,6 +18,12 @@ public interface Module {
 
     Node getGraphic();
 
+    boolean isAnimated();
+
+    default void onEnter(Layout layout){};
+
+    default void onExit(Layout layout){}
+    // Testing
     void setParent(Module parent);
 
     Module getParent();
@@ -23,6 +31,4 @@ public interface Module {
     void setContainer(Pane container) ;
 
     Pane getContainer();
-
-    boolean isAnimated();
 }

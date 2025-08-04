@@ -2,8 +2,7 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Alert;
 import io.github.gleidsonmt.glad.base.Behavior;
-import io.github.gleidsonmt.glad.base.LayoutImpl;
-import io.github.gleidsonmt.glad.base.RootImpl;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.animation.KeyFrame;
@@ -22,8 +21,7 @@ import javafx.util.Duration;
  */
 public class BehaviorImpl implements Behavior {
 
-    private RootImpl rootImpl;
-    private LayoutImpl layout;
+    private Root root;
 
     private Node drawer;
     private Node aside;
@@ -37,31 +35,30 @@ public class BehaviorImpl implements Behavior {
 
     private BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
-    public BehaviorImpl(RootImpl rootImpl, LayoutImpl layout) {
-        this.rootImpl = rootImpl;
-        this.layout = layout;
+    public BehaviorImpl(Root root) {
+        this.root = root;
         drawerTimeline = new Timeline();
         asideTimeline = new Timeline();
 
-        this.alert = new AlertImpl(rootImpl);
-        this.dialog = new DialogImpl(rootImpl);
+        this.alert = new AlertImpl(root);
+        this.dialog = new DialogImpl(root);
 
-        if (layout.getLeft() != null) drawer = layout.getLeft();
-        if (layout.getRight() != null) aside = layout.getRight();
+//        if (layout.getLeft() != null) drawer = layout.getLeft();
+//        if (layout.getRight() != null) aside = layout.getRight();
+//
+//        layout.leftProperty().addListener((observableValue, node, newValue) -> {
+//            if (newValue != null) {
+//                drawer = newValue;
+//            }
+//        });
 
-        layout.leftProperty().addListener((observableValue, node, newValue) -> {
-            if (newValue != null) {
-                drawer = newValue;
-            }
-        });
+//        layout.rightProperty().addListener((observableValue, node, newValue) -> {
+//            if (newValue != null) {
+//                aside = newValue;
+//            }
+//        });
 
-        layout.rightProperty().addListener((observableValue, node, newValue) -> {
-            if (newValue != null) {
-                aside = newValue;
-            }
-        });
-
-//        rootImpl.widthProperty().addListener((observableValue, number, newValue) -> {
+//        root.widthProperty().addListener((observableValue, number, newValue) -> {
 //            Size act = getSize(newValue.doubleValue());
 //            if (size.get() == null || size.get() != act) {
 //                size.set(act);
@@ -73,6 +70,7 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public void setDrawer(Node drawer) {
+        System.out.println("drawer = " + drawer);
         this.drawer = drawer;
     }
 
@@ -85,9 +83,9 @@ public class BehaviorImpl implements Behavior {
             );
             drawerTimeline.setOnFinished(null);
             drawerTimeline.setRate(1);
-            rootImpl.wrapper().show();
+            root.wrapper().show();
 
-            rootImpl.flow()
+            root.flow()
                     .pos(Pos.CENTER_LEFT)
                     .content(drawer)
                     .anchor(Anchor.LEFT)
@@ -107,8 +105,8 @@ public class BehaviorImpl implements Behavior {
             );
             asideTimeline.setOnFinished(null);
             asideTimeline.setRate(1);
-            rootImpl.wrapper().show();
-            rootImpl.flow().openRight(aside);
+            root.wrapper().show();
+            root.flow().openRight(aside);
             asideTimeline.play();
         }
     }
@@ -117,10 +115,12 @@ public class BehaviorImpl implements Behavior {
     public void closeAside() {
         if (isAsideOpen()) {
             asideTimeline.setRate(-1);
-            rootImpl.wrapper().hide();
+            root.wrapper().hide();
             asideTimeline.setOnFinished(e -> {
-                rootImpl.flow().remove(aside);
-                aside.setTranslateX(0);
+                root.flow().remove(aside);
+                if (aside != null) {
+                    aside.setTranslateX(0);
+                }
             });
             asideTimeline.play();
         }
@@ -131,9 +131,11 @@ public class BehaviorImpl implements Behavior {
         if (isDrawerOpen()) {
             drawerTimeline.setRate(-1);
             drawerTimeline.setOnFinished(e -> {
-                rootImpl.wrapper().hide();
-                rootImpl.flow().remove(drawer);
-                drawer.setTranslateX(0);
+                root.wrapper().hide();
+                root.flow().remove(drawer);
+                if (drawer != null) {
+                    drawer.setTranslateX(0);
+                }
             });
             drawerTimeline.play();
         }
@@ -151,15 +153,17 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public boolean isDrawerOpen() {
-        return layout.getLeft() != null || isDrawerAbsolute();
+        return root.getLayout().getDrawer() != null || isDrawerAbsolute();
+//        return isDrawerAbsolute();
     }
 
     public boolean isAsideOpen() {
-        return layout.getRight() != null || isAsideAbsolute();
+//        return layout.getRight() != null || isAsideAbsolute();
+        return true;
     }
 
     private boolean isAsideAbsolute() {
-        return this.rootImpl.getChildren().contains(aside);
+        return this.root.getChildren().contains(aside);
     }
 
     public BooleanProperty drawerOpen() {
@@ -168,11 +172,11 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public boolean isDrawerAbsolute() {
-        return this.rootImpl.getChildren().contains(drawer);
+        return this.root.getChildren().contains(drawer);
     }
 
 //    private Size getSize(double width) {
-//        if (width <= rootImpl.getBreakpoint()) return Size.PHONE;
+//        if (width <= root.getBreakpoint()) return Size.PHONE;
 //        else return Size.TABLET;
 //    }
 
