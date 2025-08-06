@@ -39,7 +39,7 @@ public interface Layout  {
 
 //    void setView(View view);
 
-//    void updateView(View view);
+    void updateView(Module view);
 
 //    Root getRoot();
 
