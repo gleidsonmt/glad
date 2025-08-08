@@ -134,3 +134,7 @@ Text, .text {
 .text-white {
     -text-color: white;
 }
+
+.text-amber {
+    -text-color: -amber;
+}
