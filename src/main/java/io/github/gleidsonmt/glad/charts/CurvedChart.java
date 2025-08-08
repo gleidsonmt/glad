@@ -39,6 +39,7 @@ public class CurvedChart<X, Y> extends AreaChart<X, Y> {
                            @NamedArg("yAxis") Axis<Y> numberAxis2)
         {
             super(numberAxis, numberAxis2);
+            this.getStyleClass().add("curved-chart");
         }
 
         protected void layoutPlotChildren() {

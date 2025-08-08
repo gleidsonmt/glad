@@ -37,6 +37,10 @@ Text, .text {
     -fx-font-family: "Instagram Sans Headline";
 }
 
+.font-poppins {
+    -fx-font-family: "Poppins Regular";
+}
+
 /* @Size */
 .text-10, .btn-small, .text-small, .text-small  .text {
   -fx-font-size : 10px;

@@ -113,9 +113,7 @@
 .align-top-center {
     -fx-alignment: top_center;
 }
-.align-top-center {
-    -fx-alignment: top_right;
-}
+
 .align-center-right {
     -fx-alignment: center_right;
 }

@@ -660,6 +660,12 @@
 }
 .chart-title {
     -fx-font-size: 1.4em;
+
+}
+
+.chart-title .text {
+    -fx-stroke-type: outside;
+    -fx-font-smoothing-type: gray;
 }
 
 .chart-legend {
