@@ -26,6 +26,7 @@ public class StackedAvatar extends Group {
     private DoubleProperty avatarSize;
     private DoubleProperty avatarRadius;
     private ObservableList<AvatarView> avatarViews;
+    private IntegerProperty spacing = new SimpleIntegerProperty(0);
 
     private Label maxLabel;
 
@@ -64,7 +65,7 @@ public class StackedAvatar extends Group {
                     for (AvatarView av : change.getAddedSubList()) {
                         getChildren().remove(change.getFrom(), change.getTo());
                         getChildren().addAll(change.getFrom(), change.getAddedSubList());
-                        av.setLayoutX(change.getTo() * avatarSize.get() / 2);
+                        av.setLayoutX(change.getTo() * getTranslate());
                     }
                     return;
                 }
@@ -88,11 +89,12 @@ public class StackedAvatar extends Group {
         int spaceAvailable = max.get() - getSize();
         int totalCanBeAdded = Math.min(avatars.size(), spaceAvailable);
 
+
         for (int i = 0; i < totalCanBeAdded; i++) {
             avatars.get(i).setSize(avatarSize.get());
             getChildren().add(in, avatars.get(i));
             avatars.get(i).setRadius(avatarRadius.get() );
-            avatars.get(i).setLayoutX(in++ * (avatarSize.get() / 2));
+            avatars.get(i).setLayoutX(in++ * getTranslate());
         }
         updateLabelMax();
     }
@@ -113,7 +115,7 @@ public class StackedAvatar extends Group {
             } else {
                 maxLabel.toFront();
             }
-            maxLabel.setLayoutX(getChildren().indexOf(maxLabel) * avatarSize.get() / 2);
+            maxLabel.setLayoutX(getChildren().indexOf(maxLabel) * getTranslate());
         } else {
             getChildren().remove(maxLabel);
         }
@@ -140,14 +142,30 @@ public class StackedAvatar extends Group {
                 .forEach(node -> {
                     node.setSize(avatarSize.get());
                     node.setRadius(avatarRadius.get() );
-                    node.setLayoutX(getChildren().indexOf(node) * avatarSize.get() / 2);
+                    node.setLayoutX(getChildren().indexOf(node) * getTranslate());
                 });
         maxLabel.setStyle("-fx-font-size: " + avatarSize.get() / 3 + ";");
         maxLabel.setPrefSize(avatarSize.get(), avatarSize.get());
-        maxLabel.setLayoutX(getChildren().indexOf(maxLabel) * avatarSize.get() / 2);
+        maxLabel.setLayoutX(getChildren().indexOf(maxLabel) * getTranslate());
         maxLabel.setStyle("-fx-font-size: " + avatarSize.get() / 3 +
                        "; -fx-background-radius: " + avatarRadius.get()/2 +
                        "; -fx-border-radius: " + avatarRadius.get() / 2);
+    }
+
+    private double getTranslate() {
+        return (avatarSize.get() + spacing.get()) / 2;
+    }
+
+    public int getSpacing() {
+        return spacing.get();
+    }
+
+    public IntegerProperty spacingProperty() {
+        return spacing;
+    }
+
+    public void setSpacing(int spacing) {
+        this.spacing.set(spacing);
     }
 
     @Deprecated(forRemoval = true)
