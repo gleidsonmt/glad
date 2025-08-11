@@ -36,9 +36,8 @@ public class Root extends Container<Break> {
 
     // Breakpoint, use to change the layout to phone or bigger
     private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
-    private Node oldLayout;
 
-    private Layout layout;
+    private final Layout layout;
 
     public Root(Layout layout) {
         this.flow = new FlowImpl(this);
@@ -112,20 +111,8 @@ public class Root extends Container<Break> {
 
     }
 
-//    @Deprecated(forRemoval = true)
-//    public void setLayout(Layout _layout) {
-//        this.oldLayout = this.layout;
-//        this.getChildren().removeAll(layout);
-//        this.layout = (LayoutImpl) _layout;
-//        if (!this.getChildren().isEmpty()) {
-//            this.getChildren().set(0, layout);
-//        } else {
-//            this.getChildren().add(layout);
-//        }
-//    }
-
     public Layout getLayout() {
-        return (Layout) this.layout;
+        return this.layout;
     }
 
     public Flow flow() {
