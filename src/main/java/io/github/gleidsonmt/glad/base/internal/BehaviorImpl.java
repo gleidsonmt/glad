@@ -101,13 +101,18 @@ public class BehaviorImpl implements Behavior {
     public void openAside() {
         if (!isAsideOpen()) {
             asideTimeline.getKeyFrames().setAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(aside.translateXProperty(), 250)),
-                    new KeyFrame(Duration.millis(200), new KeyValue(aside.translateXProperty(), 0))
+                    new KeyFrame(Duration.ZERO, new KeyValue(root.getLayout().getAside().translateXProperty(), 250)),
+                    new KeyFrame(Duration.millis(200), new KeyValue(root.getLayout().getAside().translateXProperty(), 0))
             );
             asideTimeline.setOnFinished(null);
             asideTimeline.setRate(1);
             root.wrapper().show();
-            root.flow().openRight(aside);
+            root.flow()
+                    .pos(Pos.CENTER_RIGHT)
+                    .content(root.getLayout().getAside())
+                    .anchor(Anchor.RIGHT)
+                    .insets(Insets.EMPTY)
+                    .show();
             asideTimeline.play();
         }
     }
@@ -118,9 +123,10 @@ public class BehaviorImpl implements Behavior {
             asideTimeline.setRate(-1);
             root.wrapper().hide();
             asideTimeline.setOnFinished(e -> {
-                root.flow().remove(aside);
-                if (aside != null) {
-                    aside.setTranslateX(0);
+                root.wrapper().hide();
+                root.flow().remove(root.getLayout().getAside());
+                if (root.getLayout().getAside() != null) {
+                    root.getLayout().getAside().setTranslateX(0);
                 }
             });
             asideTimeline.play();
@@ -164,9 +170,15 @@ public class BehaviorImpl implements Behavior {
         return false;
     }
 
+    private boolean isAsideContained() {
+        if (root.getLayout() instanceof Pane pane) {
+            return pane.getChildren().contains(root.getLayout().getAside());
+        }
+        return false;
+    }
+
     public boolean isAsideOpen() {
-//        return layout.getRight() != null || isAsideAbsolute();
-        return true;
+        return isAsideContained() || isAsideAbsolute();
     }
 
     private boolean isAsideAbsolute() {
@@ -181,11 +193,5 @@ public class BehaviorImpl implements Behavior {
     public boolean isDrawerAbsolute() {
         return this.root.getChildren().contains(root.getLayout().getDrawer());
     }
-
-//    private Size getSize(double width) {
-//        if (width <= root.getBreakpoint()) return Size.PHONE;
-//        else return Size.TABLET;
-//    }
-
 
 }
