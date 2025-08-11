@@ -19,30 +19,14 @@ import java.util.Arrays;
  */
 public interface Layout  {
 
-    @Deprecated
-    default void setBar(Node node){};
-
-    @Deprecated
-    default void setAside(Node node) {}
-
-    @Deprecated
-    default void setFooter(Node node) {}
-
-    @Deprecated
-    default void setDrawer(Node node){};
-
     default Node getDrawer() { return null; }
 
-//    ObjectProperty<Module> viewProperty();
+    default Node getAside() { return null; }
 
-//    void setPadding(Insets insets);
+    default Node getBar() { return null; }
 
-//    void setView(View view);
+    default Node getFooter() { return null; }
 
     void updateView(Module oldVal, Module newVal);
-
-//    Root getRoot();
-
-//    Flow flow();
 
 }
