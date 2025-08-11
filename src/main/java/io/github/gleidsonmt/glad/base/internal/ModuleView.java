@@ -28,80 +28,86 @@ public class ModuleView implements Module {
         this.modules = FXCollections.observableArrayList(_modules);
         this.name = name;
 
-        Arrays.stream(_modules).forEach(el -> el.setParent(this));
-
-        modules.addListener((ListChangeListener<Module>) change -> {
-            if (change.next()) {
-                modules.forEach(el -> el.setParent(ModuleView.this));
-            }
+//        if (_modules != null) {
+//        Arrays.stream(_modules).forEach(el -> el.setParent(this));
+        Arrays.stream(_modules).forEach(el -> {
+             el.setParent(this);
         });
 
-    }
 
-    @ApiStatus.Experimental
-    public void setAnimated(boolean animated) {
-        this.animated = animated;
-    }
+        modules.addListener((ListChangeListener<Module>)change ->
 
-    @Override
-    public ObservableList<Module> getModules() {
-        return modules;
-    }
+    {
+        if (change.next()) {
+            modules.forEach(el -> el.setParent(ModuleView.this));
+        }
+    });
 
-    @Override
-    public String getName() {
-        return name;
-    }
+}
 
-    @Override
-    public Module getParent() {
-        return parent;
-    }
+@ApiStatus.Experimental
+public void setAnimated(boolean animated) {
+    this.animated = animated;
+}
 
-    @Override
-    public Pane getContainer() {
-        return container;
-    }
+@Override
+public ObservableList<Module> getModules() {
+    return modules;
+}
 
-    @Override
-    public void setContainer(Pane container) {
-        this.container = container;
-    }
+@Override
+public String getName() {
+    return name;
+}
 
-    @ApiStatus.Experimental
-    @Override
-    public boolean isAnimated() {
-        return animated;
-    }
+@Override
+public Module getParent() {
+    return parent;
+}
 
-    @Override
-    public void onEnter(Layout layout) {
+@Override
+public Pane getContainer() {
+    return container;
+}
 
-    }
+@Override
+public void setContainer(Pane container) {
+    this.container = container;
+}
 
-    @Override
-    public void onExit(Layout layout) {
+@ApiStatus.Experimental
+@Override
+public boolean isAnimated() {
+    return animated;
+}
 
-    }
+@Override
+public void onEnter(Layout layout) {
 
-    @Override
-    public Node getGraphic() {
-        return graphic;
-    }
+}
 
-    @Override
-    public void setParent(Module parent) {
-        this.parent = parent;
-    }
+@Override
+public void onExit(Layout layout) {
+
+}
+
+@Override
+public Node getGraphic() {
+    return graphic;
+}
+
+@Override
+public void setParent(Module parent) {
+    this.parent = parent;
+}
 
 //    public void setGraphic(Node graphic) {
 //        setGraphic(graphic, false);
 //    }
 
 
-
-    @Override
-    public String toString() {
-        return getName();
-    }
+@Override
+public String toString() {
+    return getName();
+}
 }

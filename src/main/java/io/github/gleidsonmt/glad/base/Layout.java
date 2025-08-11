@@ -27,6 +27,6 @@ public interface Layout  {
 
     default Node getFooter() { return null; }
 
-    void updateView(Module oldVal, Module newVal);
+    default void updateView(Module oldVal, Module newVal) {}
 
 }
