@@ -71,11 +71,6 @@ public class BehaviorImpl implements Behavior {
     }
 
     @Override
-    public void setDrawer(Node drawer) {
-//        this.drawer = drawer;
-    }
-
-    @Override
     public void openDrawer() {
         if (!isDrawerOpen()) {
             drawerTimeline.getKeyFrames().setAll(
