@@ -15,6 +15,7 @@
 Text, .text {
     -fx-font-family: Poppins Regular;
     -fx-fill: -text-color;
+    -fx-font-smoothing-type: gray; /* Works better with poppins */
 }
 
 /* @Font */
@@ -31,8 +32,6 @@ Text, .text {
      -fx-font-family: "Instagram Sans Medium";
 }
 
-
-.label .text,
 .font-instagram-headline {
     -fx-font-family: "Instagram Sans Headline";
 }
