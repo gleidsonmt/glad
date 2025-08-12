@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.base;
 
 import io.github.gleidsonmt.glad.dialog.alert.AlertType;
+import javafx.animation.Animation;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import org.jetbrains.annotations.ApiStatus;
@@ -18,6 +19,7 @@ public interface Alert {
     void open(String title, Node node, AlertType alertType, Button... buttons);
 
     void close();
+
 
     @ApiStatus.Experimental
     Snack snack(String message);

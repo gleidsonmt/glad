@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.base;
 
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,24 +21,27 @@ import java.util.TimerTask;
  */
 public class SnackBar extends GridPane implements Snack {
 
-    private Root root;
+    private final Root root;
 
     private Node graphic;
     private final TextFlow textFlow;
     private final Text text = new Text();
     private Node actions;
-    
+
+    private Timeline timeline = new Timeline();
+
     public SnackBar(Root root) {
         this.root = root;
         this.textFlow = createTextFlow();
-        getStyleClass().addAll("min-size-50 bg-white raised align-center rounded".split(" "));
+        getStyleClass().addAll("min-h-50 bg-white raised align-center rounded".split(" "));
+        setPadding(new Insets(5, 20, 5, 20));
         setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
     }
 
     private TextFlow createTextFlow() {
         TextFlow textFlow = new TextFlow(text);
         text.getStyleClass().addAll("bold text-16 ".split(" "));
-        textFlow.getStyleClass().addAll("font-instagram-headline padding-10".split(" "));
+        textFlow.getStyleClass().addAll("padding-10".split(" "));
         return textFlow;
     }
 
@@ -68,7 +73,9 @@ public class SnackBar extends GridPane implements Snack {
         TimerTask hideSnack = new TimerTask() {
             @Override
             public void run() {
-              hide();
+                timeline.setRate(-1);
+                timeline.play();
+                timeline.setOnFinished(_ -> hide());
             }
         };
 
@@ -81,6 +88,20 @@ public class SnackBar extends GridPane implements Snack {
                 .anchor(Anchor.BOTTOM)
                 .insets(new Insets(20))
                 .show();
+
+        timeline.getKeyFrames().setAll(
+                new KeyFrame(Duration.millis(0),
+                        new KeyValue(this.translateYProperty(), this.getBoundsInParent().getHeight(), Interpolator.EASE_BOTH)),
+                new KeyFrame(Duration.millis(500),
+                        new KeyValue(this.translateYProperty(), 0, Interpolator.EASE_BOTH)),
+                new KeyFrame(Duration.ZERO,
+                        new KeyValue(this.opacityProperty(), 0, Interpolator.EASE_IN)),
+                new KeyFrame(Duration.millis(500),
+                        new KeyValue(this.opacityProperty(), 1, Interpolator.EASE_IN))
+        );
+        timeline.setRate(1);
+        timeline.play();
+
     }
 
     @Override

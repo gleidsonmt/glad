@@ -35,6 +35,7 @@ public class BehaviorImpl implements Behavior {
     private Alert alert;
     private Dialog dialog;
 
+
     private BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
     public BehaviorImpl(Root root) {

@@ -5,11 +5,15 @@ import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.*;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import org.jetbrains.annotations.ApiStatus;
@@ -38,7 +42,6 @@ public class FlowImpl implements Flow {
         openAbsolute(container, Pos.CENTER, Insets.EMPTY);
     }
 
-
     @Override
     public void openAbsolute(Node container, Pos pos) {
         openAbsolute(container, pos, Insets.EMPTY);
@@ -65,6 +68,7 @@ public class FlowImpl implements Flow {
             if (!root.getChildren().contains(container)) {
                 root.getChildren().add(container);
             }
+
         }
     }
 

@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.glad.controls.text_box;
 
-import io.github.gleidsonmt.glad.GladResources;
+import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
@@ -79,7 +79,7 @@ public class PasswordBox extends TextBoxBase {
 
     @Override
     public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(GladResources.class.getResource("agents/text-box.css")).toExternalForm();
+        return Objects.requireNonNull(Resources.class.getResource("agents/text-box.css")).toExternalForm();
     }
 
     private Node createRightAction() {

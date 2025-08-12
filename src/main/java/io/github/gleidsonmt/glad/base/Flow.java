@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.base;
 
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
+import javafx.animation.Animation;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -95,7 +96,7 @@ public interface Flow {
 
     /**
      *
-     *  IMperative Style
+     *  Imperative Style
      */
 
     Flow anchor(Anchor anchor);
@@ -107,6 +108,7 @@ public interface Flow {
     Flow content(Node node);
 
     Flow with(WrapperEffect effect);
+
 
 
 }
