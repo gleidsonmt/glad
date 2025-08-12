@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.glad.controls.toggle_switch;
 
-import io.github.gleidsonmt.glad.GladResources;
+import io.github.gleidsonmt.glad.Resources;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -128,6 +128,6 @@ public class ToggleSwitch extends Control {
 
     @Override
     public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(GladResources.class.getResource("css/toggle-switch.css")).toExternalForm();
+        return Objects.requireNonNull(Resources.class.getResource("css/toggle-switch.css")).toExternalForm();
     }
 }

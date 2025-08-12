@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.glad.dialog.alert.layout;
 
-import io.github.gleidsonmt.glad.GladResources;
+import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import io.github.gleidsonmt.glad.dialog.alert.icons.ErrorIcon;
 import io.github.gleidsonmt.glad.dialog.alert.icons.InfoIcon;
@@ -73,7 +73,7 @@ public class AlertRoot extends StackPane {
 
     @Override
     public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(GladResources.class.getResource("css/alerts.css")).toExternalForm();
+        return Objects.requireNonNull(Resources.class.getResource("css/alerts.css")).toExternalForm();
     }
 
     public void setContent(Node content) {
