@@ -1,6 +1,8 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.Snack;
+import io.github.gleidsonmt.glad.base.SnackBar;
 import io.github.gleidsonmt.glad.dialog.alert.layout.AlertRoot;
 import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import io.github.gleidsonmt.glad.base.Alert;
@@ -18,10 +20,10 @@ public class AlertImpl implements Alert {
 
     private Root root;
     private AlertRoot alert;
+    private SnackBar snackBar;
 
     public AlertImpl(Root root) {
         this.root = root;
-
     }
 
     @Override
@@ -56,5 +58,12 @@ public class AlertImpl implements Alert {
     @Override
     public void close() {
         root.flow().remove(alert);
+    }
+
+    @Override
+    public Snack snack(String message) {
+        snackBar = new SnackBar(root);
+        snackBar.setText(message);
+        return snackBar;
     }
 }

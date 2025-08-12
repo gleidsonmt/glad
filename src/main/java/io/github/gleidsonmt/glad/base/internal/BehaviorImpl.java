@@ -3,6 +3,7 @@ package io.github.gleidsonmt.glad.base.internal;
 import io.github.gleidsonmt.glad.base.Alert;
 import io.github.gleidsonmt.glad.base.Behavior;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.SnackBar;
 import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.animation.KeyFrame;
@@ -33,7 +34,6 @@ public class BehaviorImpl implements Behavior {
 
     private Alert alert;
     private Dialog dialog;
-
 
     private BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
