@@ -41,23 +41,28 @@ public class WrapperImpl implements Wrapper {
     }
 
     @Override
-   public void show(WrapperEffect effect) {
+    public void show(WrapperEffect effect) {
         if (!root.getChildren().contains(foreground)) {
             root.getChildren().add(foreground);
         }
 
         if (effect.equals(WrapperEffect.BLUR)) {
-            root.getChildren().get(0).setEffect(new BoxBlur(2,2,1));
-        }
-        foreground.setBackground(
-                new Background(
-                        new BackgroundFill(
+            root.getChildren().getFirst().setEffect(new BoxBlur(2, 2, 1));
+            foreground.setBackground(new Background(
+                    new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)
+            ));
+        } else {
+            root.getChildren().getFirst().setEffect(null);
+            foreground.setBackground(
+                    new Background(
+                            new BackgroundFill(
 //                                Color.gray(0.5, 0.3),
-                                Color.gray(0.5, 0.3),
-                                CornerRadii.EMPTY,
-                                Insets.EMPTY)
-                )
-        );
+                                    Color.gray(0.5, 0.3),
+                                    CornerRadii.EMPTY,
+                                    Insets.EMPTY)
+                    )
+            );
+        }
 
         foreground.setOnMousePressed(onClick);
 
