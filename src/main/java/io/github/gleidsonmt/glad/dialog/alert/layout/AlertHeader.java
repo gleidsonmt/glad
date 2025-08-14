@@ -18,8 +18,8 @@ public class AlertHeader extends Pane {
         switch (type) {
             case ERROR -> this.getStyleClass().add("alert-error");
             case SUCCESS -> this.getStyleClass().add("alert-success");
-            case INFO -> this.getStyleClass().add("alert-info");
             case WARNING -> this.getStyleClass().add("alert-warning");
+            case null, default -> this.getStyleClass().add("alert-info");
 
         }
     }

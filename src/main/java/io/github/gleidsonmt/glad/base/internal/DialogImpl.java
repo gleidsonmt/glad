@@ -1,9 +1,9 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import io.github.gleidsonmt.glad.dialog.DialogContainer;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 
@@ -21,7 +21,13 @@ public class DialogImpl implements Dialog {
 
     @Override
     public void open(Node node) {
-        root.flow().openAbsolute(new DialogContainer(node), Pos.CENTER, Insets.EMPTY);
+//        root.flow().openAbsolute(new DialogContainer(node), Pos.CENTER, Insets.EMPTY);
+        root.flow()
+                .pos(Pos.CENTER)
+//                .anchor(Anchor.BOTTOM)
+//                .with(WrapperEffect.GRAY)
+                .content(new DialogContainer(node))
+                .show();
     }
 
     @Override

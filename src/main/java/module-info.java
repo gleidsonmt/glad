@@ -5,6 +5,7 @@ module io.github.gleidsonmt.glad {
 
     requires org.jetbrains.annotations;
     requires java.desktop;
+    requires javafx.base;
 
 //    requires org.scenicview.scenicview;
 //    requires fr.brouillard.oss.cssfx;
@@ -36,8 +37,6 @@ module io.github.gleidsonmt.glad {
 
     exports io.github.gleidsonmt.glad.controls.enums;
     exports io.github.gleidsonmt.glad.charts;
-    exports io.github.gleidsonmt.glad.base.internal.animations;
-    opens io.github.gleidsonmt.glad.base.internal.animations to javafx.fxml;
     exports io.github.gleidsonmt.glad.base.responsive.sizer;
     exports io.github.gleidsonmt.glad.errors;
 }

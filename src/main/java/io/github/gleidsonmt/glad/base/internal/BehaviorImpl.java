@@ -3,8 +3,7 @@ package io.github.gleidsonmt.glad.base.internal;
 import io.github.gleidsonmt.glad.base.Alert;
 import io.github.gleidsonmt.glad.base.Behavior;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.SnackBar;
-import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
+import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -16,8 +15,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
-
-import javax.swing.*;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -80,7 +77,10 @@ public class BehaviorImpl implements Behavior {
             );
             drawerTimeline.setOnFinished(null);
             drawerTimeline.setRate(1);
-            root.wrapper().show();
+
+            root.wrapper()
+                    .onClick(_ -> closeDrawer())
+                    .show();
 
             root.flow()
                     .pos(Pos.CENTER_LEFT)
@@ -131,9 +131,9 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public void closeDrawer() {
-        if (isDrawerOpen()) {
+        if (isDrawerAbsolute()) {
             drawerTimeline.setRate(-1);
-            drawerTimeline.setOnFinished(e -> {
+            drawerTimeline.setOnFinished(_ -> {
                 root.wrapper().hide();
                 root.flow().remove(root.getLayout().getDrawer());
                 if (root.getLayout().getDrawer() != null) {

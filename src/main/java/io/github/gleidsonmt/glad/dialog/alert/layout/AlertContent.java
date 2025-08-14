@@ -39,14 +39,15 @@ public class AlertContent extends VBox {
                 this.barAction.getStyleClass().add("bar-success");
                 this.title.getStyleClass().add("text-success");
             }
-            case INFO -> {
-                this.barAction.getStyleClass().add("bar-info");
-                this.title.getStyleClass().add("text-info");
-            }
-            default -> {
+            case WARNING -> {
                 this.barAction.getStyleClass().add("bar-warning");
                 this.title.getStyleClass().add("text-warning");
             }
+            case null, default -> {
+                this.barAction.getStyleClass().add("bar-info");
+                this.title.getStyleClass().add("text-info");
+            }
+
         }
     }
 

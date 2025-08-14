@@ -1,19 +1,11 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Flow;
-import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
-import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
-import javafx.animation.Animation;
-import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
+import io.github.gleidsonmt.glad.base.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.*;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import org.jetbrains.annotations.ApiStatus;
@@ -25,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
-public class FlowImpl implements Flow {
+public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 
     private Pos pos = Pos.CENTER;
     private Insets insets = Insets.EMPTY;
@@ -49,18 +41,16 @@ public class FlowImpl implements Flow {
 
     @Override
     public void openAbsolute(Node container, Pos position, Insets insets) {
-
+        System.out.println("container = " + container);
         StackPane.clearConstraints(container);
 
         if (container instanceof Region region) {
-            if (anchor != null) {
                 switch (anchor) {
                     case TOP, BOTTOM -> region.setMaxHeight(Region.USE_PREF_SIZE);
                     case LEFT, RIGHT -> region.setMaxWidth(Region.USE_PREF_SIZE);
+                    case NONE -> region.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+                    case null, default ->  region.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
                 }
-            } else {
-                region.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-            }
 
             StackPane.setAlignment(container, position);
             StackPane.setMargin(container, insets);
@@ -68,8 +58,20 @@ public class FlowImpl implements Flow {
             if (!root.getChildren().contains(container)) {
                 root.getChildren().add(container);
             }
+            reset();
 
         }
+    }
+
+    /**
+     * Every time the properties to avoid getting the same configurations
+     * for other callings.
+     */
+    private void reset() {
+        anchor = null;
+        pos = Pos.CENTER;
+        insets = Insets.EMPTY;
+        effect = null;
     }
 
     @Override
@@ -215,8 +217,6 @@ public class FlowImpl implements Flow {
         container.toFront();
     }
 
-    private Layout oldLayout = null;
-
     @ApiStatus.Experimental
     private void relocate(Region container, MouseEvent e, Pos pos, double x, double y) {
 
@@ -244,19 +244,6 @@ public class FlowImpl implements Flow {
     @ApiStatus.Experimental
     private void setLayout(Region container) {
         clearConstraints(container);
-
-//        this.oldLayout = root.getLayout();
-//        container.getStyleClass().add("popup");
-//        root.setLayout(new Layout(container));
-//        root.wrapper().back();
-
-//        root.widthProperty().addListener(new ChangeListener<>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-//                root.setLayout(oldLayout);
-//                root.widthProperty().removeListener(this);
-//            }
-//        });
     }
 
     @ApiStatus.Experimental
@@ -381,12 +368,6 @@ public class FlowImpl implements Flow {
     }
 
     @Override
-    public Flow with(WrapperEffect effect) {
-        root.wrapper().show(effect);
-        return this;
-    }
-
-    @Override
     public void remove(Node container) {
         root.getChildren().removeAll(container);
     }
@@ -425,5 +406,10 @@ public class FlowImpl implements Flow {
             throw new RuntimeException("Error flow can invoke a null node.");
         }
         openAbsolute(content, pos, insets);
+    }
+
+    @Override
+    public void hide() {
+        remove(content);
     }
 }

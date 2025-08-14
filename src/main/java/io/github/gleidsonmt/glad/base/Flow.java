@@ -1,7 +1,6 @@
 package io.github.gleidsonmt.glad.base;
 
-import io.github.gleidsonmt.glad.base.internal.animations.Anchor;
-import javafx.animation.Animation;
+import io.github.gleidsonmt.glad.base.internal.Anchor;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -15,7 +14,7 @@ import org.jetbrains.annotations.ApiStatus;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
-public interface Flow {
+public interface Flow extends FlowItem<Flow> {
 
     @Deprecated(forRemoval = true)
     void openLeft(Node container);
@@ -42,6 +41,7 @@ public interface Flow {
     @ApiStatus.Experimental
     void openByNode(Region container, Node node, Pos pos);
 
+    @ApiStatus.Experimental
     void openByNode(Region container, Node node, Pos pos, double x, double y);
 
     @Deprecated
@@ -71,6 +71,7 @@ public interface Flow {
      * @param container The node to add.
      * @param position The default pos.
      */
+    @Deprecated(forRemoval = true)
     void openAbsolute(Node container, Pos position);
 
     /**
@@ -79,25 +80,29 @@ public interface Flow {
      * @param position The default pos.
      * @param insets The default insets.
      */
+    @Deprecated(forRemoval = true)
     void openAbsolute(Node container, Pos position, Insets insets);
 
     /**
-     * Open directly in root.
+     * Open directly in the root.
      * Default pos center, and insets 0
      * @param container The node to add.
      */
+    @Deprecated(forRemoval = true)
     void openAbsolute(Node container);
 
     void show();
 
+    /**
+     * Remove a node from the root.
+     * @param container The node to remove.
+     */
     void remove(Node container);
 
-    void clear();
-
     /**
-     *
-     *  Imperative Style
+     * Remove all nodes from root.
      */
+    void clear();
 
     Flow anchor(Anchor anchor);
 
@@ -106,9 +111,5 @@ public interface Flow {
     Flow pos(Pos pos);
 
     Flow content(Node node);
-
-    Flow with(WrapperEffect effect);
-
-
 
 }

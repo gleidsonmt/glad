@@ -46,17 +46,19 @@ public class AlertRoot extends StackPane {
                 this.getStyleClass().add("alert-error");
                 icon = new ErrorIcon();
             }
-            case INFO -> {
-                this.getStyleClass().add("alert-info");
-                icon = new InfoIcon();
-            }
+
             case SUCCESS -> {
                 this.getStyleClass().add("alert-success");
                 icon = new SuccessIcon();
             }
-            default -> {
+            case WARNING -> {
                 this.getStyleClass().add("alert-warn");
                 icon = new WarnIcon();
+            }
+
+            case null, default -> {
+                this.getStyleClass().add("alert-info");
+                icon = new InfoIcon();
             }
         }
 
