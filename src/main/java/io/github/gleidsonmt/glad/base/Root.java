@@ -19,6 +19,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -149,6 +150,8 @@ public class Root extends Container<Break> {
     public DoubleProperty breakpointProperty() {
         return this.breakpoint;
     }
+
+
 
     public void addPoint(EventHandler<ActionEvent> event, Size... breaks) {
         breaker.getPoints().add(new BreakPoint(event, breaks));

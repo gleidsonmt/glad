@@ -7,12 +7,10 @@ import io.github.gleidsonmt.glad.base.WrapperEffect;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 /**
@@ -23,6 +21,8 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
 
     private final Root root;
     private final Foreground foreground;
+
+    private Region with;
 
     private EventHandler<MouseEvent> onClick;
 
@@ -51,6 +51,13 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
                 .content(foreground.restyle(effect, root))
                 .show();
 
+        System.out.println("with = " + with);
+        root.flow()
+                .anchor(anchor)
+                .pos(pos)
+                .content(with)
+                .insets(insets)
+                .show();
 
         foreground.setOnMousePressed(onClick);
 
@@ -81,13 +88,14 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
     }
 
     @Override
-    public void setOnClick(EventHandler<MouseEvent> eventHandler) {
+    public Wrapper onClick(EventHandler<MouseEvent> eventHandler) {
         this.onClick = eventHandler;
+        return this;
     }
 
     @Override
-    public Wrapper onClick(EventHandler<MouseEvent> eventHandler) {
-        this.onClick = eventHandler;
+    public Wrapper with(Region node) {
+        this.with = node;
         return this;
     }
 
@@ -97,10 +105,6 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
         root.getChildren().getFirst().setEffect(null);
     }
 
-    @Override
-    public void back() {
-        foreground.toBack();
-    }
 
     @Override
     public boolean isShowing() {

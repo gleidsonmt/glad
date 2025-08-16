@@ -56,10 +56,7 @@ public interface Flow extends FlowItem<Flow> {
     @ApiStatus.Experimental
     boolean fits(Region node);
 
-    /**
-     * Clear all modifications doing with flow.
-     * @param node The node to change.
-     */
+
     @ApiStatus.Experimental
     void clearConstraints(Region node);
 
@@ -83,15 +80,12 @@ public interface Flow extends FlowItem<Flow> {
     @Deprecated(forRemoval = true)
     void openAbsolute(Node container, Pos position, Insets insets);
 
-    /**
-     * Open directly in the root.
-     * Default pos center, and insets 0
-     * @param container The node to add.
-     */
-    @Deprecated(forRemoval = true)
-    void openAbsolute(Node container);
 
     void show();
+
+    void show(Region node);
+
+    void show(MouseEvent node);
 
     /**
      * Remove a node from the root.
@@ -100,16 +94,30 @@ public interface Flow extends FlowItem<Flow> {
     void remove(Node container);
 
     /**
-     * Remove all nodes from root.
+     * Remove all nodes from the root.
      */
     void clear();
 
-    Flow anchor(Anchor anchor);
 
-    Flow insets(Insets insets);
 
-    Flow pos(Pos pos);
+    /**
+     * Define a content for this flow item.
+     * @param content The content to be added.
+     * @return The FlowItem.
+     */
+    Flow content(Region content);
 
-    Flow content(Node node);
+    Flow width(double width);
+
+    Flow width(double width, double min);
+
+    Flow width(double width, double min, double max);
+
+    Flow height(double height);
+
+    Flow height(double height, double min);
+
+    Flow height(double height, double min, double max);
+
 
 }

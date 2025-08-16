@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.glad.base;
 
+import io.github.gleidsonmt.glad.base.internal.Anchor;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 
@@ -7,24 +9,16 @@ import javafx.scene.Node;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  12/08/2025
  */
-public interface FlowItem<T> {
+public interface FlowItem<T> extends AppearItem {
+
+    T insets(Insets insets);
 
     /**
-     * Method called to put the content on the screen.
-     */
-    void show();
-
-    /**
-     * Method called to remove the content on the screen.
-     */
-    void hide();
-
-    /**
-     * Defin a content for this flow item.
-     * @param content The content to be added.
+     * Anchor your region.
+     * @param anchor The anchor.
      * @return The FlowItem.
      */
-    T content(Node content);
+    T anchor(Anchor anchor);
 
     /**
      * The position of the content.

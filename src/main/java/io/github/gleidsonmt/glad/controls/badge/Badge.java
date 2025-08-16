@@ -73,7 +73,7 @@ public final class Badge extends IconButton {
 
     public Badge(Node node, int number, int max) {
         super(node, true);
-        getStyleClass().addAll(  "size-40", "max-size-40", "min-size-40");
+        getStyleClass().addAll(  "badge", "size-40", "max-size-40", "min-size-40");
         setCursor(Cursor.HAND);
         numberOfNotifications.set(number);
         maxNotifications.set(max);
@@ -164,4 +164,11 @@ public final class Badge extends IconButton {
         this.numberOfNotifications.set(numberOfNotifications);
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Badge{");
+        sb.append("\n\tnumberOfNotifications=").append(numberOfNotifications.get());
+        sb.append("\n}");
+        return sb.toString();
+    }
 }

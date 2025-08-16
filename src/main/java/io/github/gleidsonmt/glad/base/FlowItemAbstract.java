@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.glad.base;
 
+import io.github.gleidsonmt.glad.base.internal.Anchor;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 
@@ -13,16 +15,18 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
     protected Node content;
     protected Pos pos;
     protected WrapperEffect effect = WrapperEffect.GRAY;
+    protected Insets insets = Insets.EMPTY;
+    protected Anchor anchor = Anchor.CENTER;
 
     @Override
-    public abstract void show();
+    public T anchor(Anchor anchor) {
+        this.anchor = anchor;
+        return (T) this;
+    }
 
     @Override
-    public abstract void hide();
-
-    @Override
-    public T content(Node content) {
-        this.content = content;
+    public T insets(Insets insets) {
+        this.insets = insets;
         return (T) this;
     }
 

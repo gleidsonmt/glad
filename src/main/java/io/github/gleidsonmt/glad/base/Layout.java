@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.layout.Region;
 
 import java.util.Arrays;
 
@@ -19,9 +20,9 @@ import java.util.Arrays;
  */
 public interface Layout  {
 
-    default Node getDrawer() { return null; }
+    default Region getDrawer() { return null; }
 
-    default Node getAside() { return null; }
+    default Region getAside() { return null; }
 
     default Node getBar() { return null; }
 

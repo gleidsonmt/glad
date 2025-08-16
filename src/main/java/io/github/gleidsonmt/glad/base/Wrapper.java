@@ -1,7 +1,10 @@
 package io.github.gleidsonmt.glad.base;
 
+import io.github.gleidsonmt.glad.App;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -9,21 +12,13 @@ import org.jetbrains.annotations.ApiStatus;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
-public interface Wrapper extends FlowItem<Wrapper>{
-
-    void show();
+public interface Wrapper extends FlowItem<Wrapper> {
 
     void show(WrapperEffect effect);
 
-    @Deprecated(forRemoval = true)
-    void setOnClick(EventHandler<MouseEvent> eventHandler);
-
     Wrapper onClick(EventHandler<MouseEvent> eventHandler);
 
-    void hide();
-
-    @ApiStatus.Experimental
-    void back();
+    Wrapper with(Region node);
 
     boolean isShowing();
 }
