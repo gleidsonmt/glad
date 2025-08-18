@@ -34,7 +34,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         this.root = root;
     }
 
-
     @Override
     public void openAbsolute(Node container, Pos pos) {
         openAbsolute(container, pos, Insets.EMPTY);
@@ -61,11 +60,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         }
         reset();
 
-    }
-
-    private void reset(Region target) {
-        target.localToSceneTransformProperty().removeListener(move);
-        reset();
     }
 
     /**
@@ -445,7 +439,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, Pos.TOP_LEFT);
 
-
         if (!root.getChildren().contains(content)) {
             root.getChildren().add(content);
         }
@@ -463,12 +456,11 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 
     private void relocateByNode(Region target) {
 
-        pos = Pos.TOP_LEFT;
         double maxX = getMaxPositionX(pos.getHpos(), target);
         double maxY = getMaxPositionY(pos.getVpos(), target);
 
-        double spaceAvailableWidth = root.getWidth() - maxX;
-        double spaceAvailableHeight = root.getHeight() - maxY;
+        double spaceVertical = getSpaceVertical(pos.getVpos(), maxY);
+        double spaceHorizontal = getSpaceHorizontal(pos.getHpos(), maxX);
 
         double height = this.height == -1 ?
                 this.content.prefHeight(-1) : this.height;
@@ -488,19 +480,84 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 //        this.content.requestFocus();
 //        Platform.requestNextPulse();
 
+        System.out.println("pos = " + pos);
+        
         switch (pos.getHpos()) {
-            case LEFT -> x = maxX - width;
-            case RIGHT -> x = maxX;
-            case null, default -> x = maxX - (width / 2);
+            case LEFT ->  {
+                if (width > spaceHorizontal) {
+                    x = maxX - spaceHorizontal;
+                } else x = maxX - width;
+            }
+            case RIGHT -> {
+                if (width > spaceHorizontal) {
+                    double cut = width - spaceHorizontal;
+                    x = maxX - cut;
+                } else x = maxX ;
+            }
+            case null, default -> {
+                if (width / 2 > spaceHorizontal) {
+                    double cut = width - spaceHorizontal;
+                    x = maxX - cut;
+                } else {
+                   x = maxX - (width / 2);
+                }
+            }
         }
 
         switch (pos.getVpos()) {
-            case BOTTOM -> y = maxY;
-            case TOP -> y = maxY - height;
-            case null, default -> y = maxY - (height / 2);
+            case BOTTOM -> {
+                if (height > spaceVertical) {
+                    double cut = height - spaceVertical;
+                     y = maxY - cut;
+                } else {
+                    y = maxY;
+                }
+            }
+            case TOP -> {
+//                y = height > spaceVertical ? maxY - spaceVertical : maxY - height;
+                if (height > spaceVertical) {
+                    y = maxY - spaceVertical;
+                } else {
+                    y = maxY - height;
+                }
+            }
+            case null, default -> {
+//                double cut = (height / 2) - spaceVertical;
+                if (height / 2 > spaceVertical) {
+                    y = maxY - spaceVertical;
+                } else {
+                    y = maxY - (height / 2);
+                }
+            }
         }
         content.setTranslateX(Math.round(x));
         content.setTranslateY(Math.round(y));
+    }
+
+    private double getSpaceHorizontal(HPos pos, double maxX) {
+        switch (pos) {
+            case LEFT -> {
+                return maxX; // Tested
+            }
+            case null, default -> {
+                return root.getWidth() - maxX;
+            }
+        }
+    }
+
+    private double getSpaceVertical(VPos pos, double maxY) {
+        switch (pos) {
+            case TOP -> {
+                return maxY; // Tested
+            }
+            case null, default -> {
+                return root.getHeight() - maxY;
+            }
+        }
+    }
+
+    private double clampY(double spaceNeeded, double spaceAvailable) {
+        return 0;
     }
 
     double boundedSize(double value, double min, double max) {
