@@ -463,7 +463,7 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 
     private void relocateByNode(Region target) {
 
-        pos = Pos.BOTTOM_LEFT;
+        pos = Pos.TOP_LEFT;
         double maxX = getMaxPositionX(pos.getHpos(), target);
         double maxY = getMaxPositionY(pos.getVpos(), target);
 
@@ -503,78 +503,11 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         content.setTranslateY(Math.round(y));
     }
 
-    private void show2() {
-
-    }
-
-    //    private double snapSpaceX(double value, boolean snapToPixel) {
-//        return snapToPixel ? ScaledMath.round(value, getSnapScaleX()) : value;
-//    }
-//    private double snapSpaceY(double value, boolean snapToPixel) {
-//        return snapToPixel ? ScaledMath.round(value, getSnapScaleY()) : value;
-//    }
-    double computeChildMinAreaWidth(Node child, double baselineComplement, Insets margin, double height, boolean fillHeight) {
-        final boolean snap = this.content.isSnapToPixel();
-        double left = margin != null ? margin.getLeft() : 0;
-        double right = margin != null ? margin.getRight() : 0;
-        double alt = -1;
-        if (height != -1 && child.isResizable() && child.getContentBias() == Orientation.VERTICAL) { // width depends on height
-            double top = margin != null ? margin.getTop() : 0;
-            double bottom = (margin != null ? margin.getBottom() : 0);
-            double bo = child.getBaselineOffset();
-            final double contentHeight = bo == BASELINE_OFFSET_SAME_AS_HEIGHT && baselineComplement != -1 ?
-                    height - top - bottom - baselineComplement :
-                    height - top - bottom;
-            if (fillHeight) {
-                alt = boundedSize(
-                        child.minHeight(-1), contentHeight,
-                        child.maxHeight(-1));
-            } else {
-                alt = boundedSize(
-                        child.minHeight(-1),
-                        child.prefHeight(-1),
-                        Math.min(child.maxHeight(-1), contentHeight));
-            }
-        }
-        return left + child.minWidth(alt) + right;
-    }
-
-    protected double computePrefWidth(double height) {
-        double minX = 0;
-        double maxX = 0;
-        for (int i = 0, max = ((Pane) this.content).getChildren().size(); i < max; i++) {
-            Node node = ((Pane) this.content).getChildren().get(i);
-            if (node.isManaged()) {
-                final double x = node.getLayoutBounds().getMinX() + node.getLayoutX();
-                minX = Math.min(minX, x);
-                maxX = Math.max(maxX, x + boundedSize(node.prefWidth(-1), node.minWidth(-1), node.maxWidth(-1)));
-            }
-        }
-        return maxX - minX;
-    }
-
     double boundedSize(double value, double min, double max) {
         // if max < value, return max
         // if min > value, return min
         // if min > max, return min
         return Math.min(Math.max(value, min), Math.max(min, max));
-    }
-
-    private double computePrefHeight(double width) {
-        double minY = 0;
-        double maxY = 0;
-        for (int i = 0, max = ((Pane) this.content).getChildren().size(); i < max; i++) {
-            Node node = ((Pane) this.content).getChildren().get(i);
-            if (node.isManaged()) {
-                final double y = node.getLayoutBounds().getMinY() + node.getLayoutY();
-                minY = Math.min(minY, y);
-                maxY = Math.max(maxY, y + boundedSize(node.prefHeight(-1), node.minHeight(-1), node.maxHeight(-1)));
-            }
-        }
-        System.out.println("maxY = " + maxY);
-        System.out.println("minY = " + minY);
-        System.out.println("height = " + (maxY - minY));
-        return maxY - minY;
     }
 
     private double getMaxPositionY(VPos pos, Region target) {
