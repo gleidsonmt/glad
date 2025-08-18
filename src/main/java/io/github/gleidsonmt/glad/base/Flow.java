@@ -109,15 +109,8 @@ public interface Flow extends FlowItem<Flow> {
 
     Flow width(double width);
 
-    Flow width(double width, double min);
-
-    Flow width(double width, double min, double max);
-
     Flow height(double height);
 
-    Flow height(double height, double min);
-
-    Flow height(double height, double min, double max);
 
 
 }

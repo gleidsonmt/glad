@@ -1,18 +1,23 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.*;
-import io.github.gleidsonmt.glad.controls.button.Button;
+import io.github.gleidsonmt.glad.base.Flow;
+import io.github.gleidsonmt.glad.base.FlowItemAbstract;
+import io.github.gleidsonmt.glad.base.Root;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.*;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Transform;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
+import static javafx.scene.Node.BASELINE_OFFSET_SAME_AS_HEIGHT;
 
 
 /**
@@ -107,8 +112,8 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         openByCursor(container, e, pos, 0, 0);
     }
 
-    private double width = 0;
-    private double height = 0;
+    private double width = -1;
+    private double height = -1;
 
     class UpdateBounds implements ChangeListener<Bounds> {
 
@@ -396,72 +401,24 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 
     @Override
     public Flow width(double width) {
-        width(-1, -1, width);
-        return this;
-    }
-
-    @Override
-    public Flow width(double width, double min) {
-        width(-1, min, width);
-        return null;
-    }
-
-    @Override
-    public Flow width(double width, double min, double max) {
-        this.content.setMaxWidth(max);
+        this.content.setMaxWidth(width);
         this.content.setPrefWidth(width);
-        this.content.setMinWidth(min);
+        this.content.setMinWidth(width);
         return this;
     }
 
     private double getWidth() {
-        if (this.content.getMaxWidth() != -1) {
-            return this.content.getMaxWidth();
-        }
-        if (this.content.getPrefWidth() != -1) {
-            return this.content.getPrefWidth();
-        }
-        if (this.content.getMinWidth() != -1) {
-            return this.content.getMinWidth();
-        }
-
-        return this.content.prefWidth(root.getWidth());
-
+        return width == -1 ? this.content.prefWidth(root.getWidth()) : width;
     }
 
     @Override
     public Flow height(double height) {
-        height(-1,-1, height);
-        return this;
-    }
-
-    @Override
-    public Flow height(double height, double min) {
-        height(-1, min, height);
-        return this;
-    }
-
-    @Override
-    public Flow height(double height, double min, double max) {
-        this.content.setMaxHeight(max);
-        this.content.setPrefHeight(height);
-        this.content.setMinHeight(min);
+        this.height = height;
         return this;
     }
 
     private double getHeight() {
-        if (this.content.getMaxHeight() != -1) {
-            return this.content.getMaxHeight();
-        }
-        if (this.content.getPrefHeight() != -1) {
-            return this.content.getPrefHeight();
-        }
-        if (this.content.getMinHeight() != -1) {
-            return this.content.getMinHeight();
-        }
-
-        return this.content.prefHeight(root.getHeight());
-
+        return height == -1 ? this.content.prefHeight(root.getHeight()) : height;
     }
 
     private class Move implements ChangeListener<Transform> {
@@ -487,94 +444,167 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
     public void show(Region target) {
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, Pos.TOP_LEFT);
-//        content.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-        var innerPos = pos;
 
-//        move = new Move(target, innerPos);
-//        target.localToSceneTransformProperty().addListener(move);
-
-//        translateByTarget(pos, target, target.getLocalToSceneTransform().getTx(), target.getLocalToSceneTransform().getTy());
-//        content.setPrefWidth(500);
-//        content.setMaxWidth(500);
-
-        content.setMaxWidth(getWidth());
-        content.setMaxHeight(getHeight());
-
-        relocateByNode(target, content.getMaxWidth(), content.getMaxHeight() );
 
         if (!root.getChildren().contains(content)) {
             root.getChildren().add(content);
         }
+
         StackPane.setMargin(content, insets);
+
+        this.content.applyCss();
+        relocateByNode(target);
         reset();
+
     }
 
-    private void relocateByNode(Region target, double width, double height) {
-        content.setPickOnBounds(true);
+    double x = 0;
+    double y = 0;
 
-        double spaceWidthNeed = target.getLocalToSceneTransform().getTx() + width ;
-        double spaceHeightNeed = target.getLocalToSceneTransform().getTx() + height;
+    private void relocateByNode(Region target) {
 
-        double spaceWidthAvailable = root.getWidth() - target.getLocalToSceneTransform().getTx();
-        double spaceHeightAvailable = root.getHeight() - target.getLocalToSceneTransform().getTy();
+        pos = Pos.BOTTOM_LEFT;
+        double maxX = getMaxPositionX(pos.getHpos(), target);
+        double maxY = getMaxPositionY(pos.getVpos(), target);
 
-//        double spaceWidthAvailable = spaceWidthNeed > root.getWidth() ? root.getWidth() - width : spaceWidth ;
-//        double spaceHeightAvailable = spaceHeight > root.getHeight() ? root.getHeight() : spaceHeight ;
-        System.out.println("(spaceWidthNeed > root.getWidth()) = " + (spaceWidthNeed > root.getWidth()));
+        double spaceAvailableWidth = root.getWidth() - maxX;
+        double spaceAvailableHeight = root.getHeight() - maxY;
 
-        double x = 0;
-        double y = 0;
+        double height = this.height == -1 ?
+                this.content.prefHeight(-1) : this.height;
+
+        this.content.setMaxHeight(height);
+        this.content.setPrefHeight(height);
+        this.content.setMinHeight(height);
+
+        double width = this.width == -1 ?
+                this.content.prefWidth(-1) : this.width;
+
+        this.content.setMaxWidth(width);
+        this.content.setPrefWidth(width);
+        this.content.setMinWidth(width);
+
+//        this.content.requestLayout();
+//        this.content.requestFocus();
+//        Platform.requestNextPulse();
 
         switch (pos.getHpos()) {
-            case RIGHT -> {
-                 x =   width <= spaceWidthAvailable ?
-                         target.getLocalToSceneTransform().getTx() + target.getWidth()
-                         : root.getWidth() - width ;
-            }
-            case LEFT -> {
-                x =  width <= spaceWidthAvailable ?
-                        target.getLocalToSceneTransform().getTx() - width  : root.getWidth() - width;
-            }
-            case null, default -> {
-                boolean contain = width / 2 <= spaceWidthAvailable;
-                double totalMoveX = (target.getLocalToSceneTransform().getTx() - (width / 2)) + (target.getWidth() / 2);
-
-                x = contain ? // se possui espaco para colocar o node
-                        totalMoveX // entao calculo
-                        :
-                        totalMoveX - // actual move x
-                            ((target.getLocalToSceneTransform().getTx() + (width/2) ) // todo o comprimento excendedo o width do root
-                             - root.getWidth()); // tirando a diferenca
-            }
+            case LEFT -> x = maxX - width;
+            case RIGHT -> x = maxX;
+            case null, default -> x = maxX - (width / 2);
         }
 
         switch (pos.getVpos()) {
-            case BOTTOM -> {
-                y =  height <= spaceHeightAvailable  ?
-                        target.getLocalToSceneTransform().getTy() + target.getHeight() : root.getHeight() - height ;
-            }
-            case TOP -> {
-                y = spaceHeightNeed > spaceHeightAvailable ?
-                        target.getLocalToSceneTransform().getTy() - height : root.getHeight() - height;
-            }
-            case null, default -> {
-                spaceHeightAvailable = target.getLocalToSceneTransform().getTy() - ;
-                boolean contain = height / 2 <= spaceHeightAvailable;
-                double totalMoveY = (target.getLocalToSceneTransform().getTy() - (height / 2)) + (target.getHeight() / 2);
-                System.out.println("contain = " + contain);
-                y = contain ?
-                        totalMoveY
-                        :
-                        totalMoveY + // actual move x
-                        ((target.getLocalToSceneTransform().getTy() + (height/2) ) // todo o comprimento excendedo o width do root
-                         - root.getHeight()); // tirando a diferenca
-            }
+            case BOTTOM -> y = maxY;
+            case TOP -> y = maxY - height;
+            case null, default -> y = maxY - (height / 2);
         }
         content.setTranslateX(Math.round(x));
         content.setTranslateY(Math.round(y));
-//
-//        content.setTranslateX(x);
-//        content.setTranslateY(y);
+    }
+
+    private void show2() {
+
+    }
+
+    //    private double snapSpaceX(double value, boolean snapToPixel) {
+//        return snapToPixel ? ScaledMath.round(value, getSnapScaleX()) : value;
+//    }
+//    private double snapSpaceY(double value, boolean snapToPixel) {
+//        return snapToPixel ? ScaledMath.round(value, getSnapScaleY()) : value;
+//    }
+    double computeChildMinAreaWidth(Node child, double baselineComplement, Insets margin, double height, boolean fillHeight) {
+        final boolean snap = this.content.isSnapToPixel();
+        double left = margin != null ? margin.getLeft() : 0;
+        double right = margin != null ? margin.getRight() : 0;
+        double alt = -1;
+        if (height != -1 && child.isResizable() && child.getContentBias() == Orientation.VERTICAL) { // width depends on height
+            double top = margin != null ? margin.getTop() : 0;
+            double bottom = (margin != null ? margin.getBottom() : 0);
+            double bo = child.getBaselineOffset();
+            final double contentHeight = bo == BASELINE_OFFSET_SAME_AS_HEIGHT && baselineComplement != -1 ?
+                    height - top - bottom - baselineComplement :
+                    height - top - bottom;
+            if (fillHeight) {
+                alt = boundedSize(
+                        child.minHeight(-1), contentHeight,
+                        child.maxHeight(-1));
+            } else {
+                alt = boundedSize(
+                        child.minHeight(-1),
+                        child.prefHeight(-1),
+                        Math.min(child.maxHeight(-1), contentHeight));
+            }
+        }
+        return left + child.minWidth(alt) + right;
+    }
+
+    protected double computePrefWidth(double height) {
+        double minX = 0;
+        double maxX = 0;
+        for (int i = 0, max = ((Pane) this.content).getChildren().size(); i < max; i++) {
+            Node node = ((Pane) this.content).getChildren().get(i);
+            if (node.isManaged()) {
+                final double x = node.getLayoutBounds().getMinX() + node.getLayoutX();
+                minX = Math.min(minX, x);
+                maxX = Math.max(maxX, x + boundedSize(node.prefWidth(-1), node.minWidth(-1), node.maxWidth(-1)));
+            }
+        }
+        return maxX - minX;
+    }
+
+    double boundedSize(double value, double min, double max) {
+        // if max < value, return max
+        // if min > value, return min
+        // if min > max, return min
+        return Math.min(Math.max(value, min), Math.max(min, max));
+    }
+
+    private double computePrefHeight(double width) {
+        double minY = 0;
+        double maxY = 0;
+        for (int i = 0, max = ((Pane) this.content).getChildren().size(); i < max; i++) {
+            Node node = ((Pane) this.content).getChildren().get(i);
+            if (node.isManaged()) {
+                final double y = node.getLayoutBounds().getMinY() + node.getLayoutY();
+                minY = Math.min(minY, y);
+                maxY = Math.max(maxY, y + boundedSize(node.prefHeight(-1), node.minHeight(-1), node.maxHeight(-1)));
+            }
+        }
+        System.out.println("maxY = " + maxY);
+        System.out.println("minY = " + minY);
+        System.out.println("height = " + (maxY - minY));
+        return maxY - minY;
+    }
+
+    private double getMaxPositionY(VPos pos, Region target) {
+        System.out.println("vpos = " + pos);
+        switch (pos) {
+            case TOP -> {
+                return target.getLocalToSceneTransform().getTy();
+            }
+            case BOTTOM -> {
+                return target.getLocalToSceneTransform().getTy() + target.getHeight();
+            }
+            case null, default -> {
+                return target.getLocalToSceneTransform().getTy() + (target.getHeight() / 2);
+            }
+        }
+    }
+
+    private double getMaxPositionX(HPos pos, Region target) {
+        System.out.println("hpos = " + pos);
+        switch (pos) {
+            case LEFT -> {
+                return target.getLocalToSceneTransform().getTx();
+            }
+            case RIGHT -> {
+                return target.getLocalToSceneTransform().getTx() + target.getWidth();
+            }
+            case null, default -> {
+                return target.getLocalToSceneTransform().getTx() + (target.getWidth() / 2);
+            }
+        }
     }
 
     @Override
