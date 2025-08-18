@@ -311,67 +311,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
     }
 
     @Override
-    public void openByNode(Region container, Node node, Pos pos) {
-        openByNode(container, node, pos, 0, 0);
-    }
-
-    public void openByNode(Region container, Node node, Pos pos, double x, double y) {
-//        if (root.getChildren().contains(container)) return;
-        container.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-
-        StackPane.clearConstraints(container);
-        StackPane.setAlignment(container, Pos.TOP_LEFT);
-
-//        var updateBounds = new UpdateBounds(container);
-
-
-//        container.parentProperty().addListener((observable, oldValue, newValue) -> {
-//            Bounds bounds = node.localToScene(node.getLayoutBounds());
-//            HPos hPos = pos.getHpos();
-//            VPos vPos = pos.getVpos();
-////
-//            switch (hPos) {
-//                case LEFT -> {
-//                    container.setTranslateX(bounds.getMinX() - bounds.getWidth());
-//                }
-//                case RIGHT -> {
-////                    container.setTranslateX(bounds.getMaxX());
-//                    container.setTranslateX(bounds.getWidth() - bounds.getMinX());
-//                }
-////                case CENTER -> {
-////                    container.setTranslateX( (bounds.getMaxX() - (bounds.getWidth() / 2)) - newValue.getCenterX()  );
-////                }
-//            }
-////
-//            container.setTranslateX(container.getTranslateX() + x);
-//            switch (vPos) {
-//                case TOP -> {
-//                    container.setTranslateY(bounds.getMinY() - bounds.getHeight());
-//                }
-////                case CENTER -> {
-////                    container.setTranslateY(bounds.getMaxY() - (bounds.getHeight() / 2) - newValue.getCenterY());
-////                }
-//                case BOTTOM -> {
-//                    container.setTranslateY(bounds.getMaxY());
-//                }
-//            }
-////
-//            container.setTranslateY(container.getTranslateY() + y);
-//
-////            updateNodeBound(container, node, x, y);
-//        });
-//        container.toBack();
-
-//        container.setTranslateY(bounds.getMaxY());
-//        container.setTranslateX(bounds.getMaxX());
-//        updateNodeBound(container, node, x, y);
-        if (!root.getChildren().contains(container)) {
-            root.getChildren().add(container);
-        }
-        container.toFront();
-    }
-
-    @Override
     public void remove(Node container) {
         root.getChildren().removeAll(container);
     }
@@ -431,10 +370,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         }
     }
 
-    ;
-
-    private Move move;
-
     public void show(Region target) {
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, Pos.TOP_LEFT);
@@ -451,10 +386,9 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 
     }
 
-    double x = 0;
-    double y = 0;
-
     private void relocateByNode(Region target) {
+        double x = 0;
+        double y = 0;
 
         double maxX = getMaxPositionX(pos.getHpos(), target);
         double maxY = getMaxPositionY(pos.getVpos(), target);
@@ -467,39 +401,37 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 
         this.content.setMaxHeight(height);
         this.content.setPrefHeight(height);
-        this.content.setMinHeight(height);
+//        this.content.setMinHeight(height);
 
         double width = this.width == -1 ?
                 this.content.prefWidth(-1) : this.width;
 
         this.content.setMaxWidth(width);
         this.content.setPrefWidth(width);
-        this.content.setMinWidth(width);
+//        this.content.setMinWidth(width);
 
 //        this.content.requestLayout();
 //        this.content.requestFocus();
 //        Platform.requestNextPulse();
 
-        System.out.println("pos = " + pos);
-        
         switch (pos.getHpos()) {
             case LEFT ->  {
                 if (width > spaceHorizontal) {
-                    x = maxX - spaceHorizontal;
-                } else x = maxX - width;
+                    x = maxX - (spaceHorizontal);
+                } else x = (maxX - width);
             }
             case RIGHT -> {
                 if (width > spaceHorizontal) {
-                    double cut = width - spaceHorizontal;
+                    double cut = width - (spaceHorizontal);
                     x = maxX - cut;
-                } else x = maxX ;
+                } else x = maxX;
             }
             case null, default -> {
                 if (width / 2 > spaceHorizontal) {
                     double cut = width - spaceHorizontal;
                     x = maxX - cut;
                 } else {
-                   x = maxX - (width / 2);
+                   x = (maxX - (width / 2));
                 }
             }
         }
@@ -514,7 +446,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
                 }
             }
             case TOP -> {
-//                y = height > spaceVertical ? maxY - spaceVertical : maxY - height;
                 if (height > spaceVertical) {
                     y = maxY - spaceVertical;
                 } else {
@@ -522,7 +453,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
                 }
             }
             case null, default -> {
-//                double cut = (height / 2) - spaceVertical;
                 if (height / 2 > spaceVertical) {
                     y = maxY - spaceVertical;
                 } else {
@@ -556,19 +486,7 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         }
     }
 
-    private double clampY(double spaceNeeded, double spaceAvailable) {
-        return 0;
-    }
-
-    double boundedSize(double value, double min, double max) {
-        // if max < value, return max
-        // if min > value, return min
-        // if min > max, return min
-        return Math.min(Math.max(value, min), Math.max(min, max));
-    }
-
     private double getMaxPositionY(VPos pos, Region target) {
-        System.out.println("vpos = " + pos);
         switch (pos) {
             case TOP -> {
                 return target.getLocalToSceneTransform().getTy();
@@ -583,7 +501,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
     }
 
     private double getMaxPositionX(HPos pos, Region target) {
-        System.out.println("hpos = " + pos);
         switch (pos) {
             case LEFT -> {
                 return target.getLocalToSceneTransform().getTx();

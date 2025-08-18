@@ -38,11 +38,6 @@ public interface Flow extends FlowItem<Flow> {
     @ApiStatus.Experimental
     void openByCursor(Region container, MouseEvent e, Pos pos, double x, double y);
 
-    @ApiStatus.Experimental
-    void openByNode(Region container, Node node, Pos pos);
-
-    @ApiStatus.Experimental
-    void openByNode(Region container, Node node, Pos pos, double x, double y);
 
     @Deprecated
     @ApiStatus.Experimental
