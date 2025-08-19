@@ -31,7 +31,7 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
 
     @Override
     public void open(String title) {
-         open(title, AlertType.INFO);
+        open(title, AlertType.INFO);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
         alert.setContent(node);
         root.wrapper().show(this.effect);
 
-        if (buttons == null || buttons.length  == 0) {
+        if (buttons == null || buttons.length == 0) {
             Button ok = new Button("Ok");
             ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
             ok.setOnAction(e -> root.behavior().alert().hide());
@@ -58,7 +58,10 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
             alert.getButtonBar().getButtons().addAll(buttons);
         }
 
-        root.flow().openAbsolute(alert, Pos.CENTER, Insets.EMPTY);
+        root.flow()
+                .pos(Pos.CENTER)
+                .content(alert)
+                .show();
         reset();
     }
 

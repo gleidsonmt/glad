@@ -3,21 +3,14 @@ package io.github.gleidsonmt.glad.base.internal;
 import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.FlowItemAbstract;
 import io.github.gleidsonmt.glad.base.Root;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.geometry.*;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
-import javafx.scene.transform.Transform;
-import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
-import static javafx.scene.Node.BASELINE_OFFSET_SAME_AS_HEIGHT;
 
 
 /**
@@ -30,36 +23,11 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
     private Region content;
     private final Root root;
 
+    private double width = -1;
+    private double height = -1;
+
     public FlowImpl(Root root) {
         this.root = root;
-    }
-
-    @Override
-    public void openAbsolute(Node container, Pos pos) {
-        openAbsolute(container, pos, Insets.EMPTY);
-    }
-
-    @Override
-    public void openAbsolute(Node container, Pos position, Insets insets) {
-        StackPane.clearConstraints(container);
-
-        if (container instanceof Region region) {
-            switch (anchor) {
-                case TOP, BOTTOM -> region.setMaxHeight(Region.USE_PREF_SIZE);
-                case LEFT, RIGHT -> region.setMaxWidth(Region.USE_PREF_SIZE);
-                case NONE -> region.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
-                case null, default -> region.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-            }
-        }
-
-        StackPane.setAlignment(container, position);
-        StackPane.setMargin(container, insets);
-
-        if (!root.getChildren().contains(container)) {
-            root.getChildren().add(container);
-        }
-        reset();
-
     }
 
     /**
@@ -72,74 +40,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         insets = Insets.EMPTY;
         effect = null;
     }
-
-    @Override
-    public void openLeft(Node container) {
-        openLeft(container, Insets.EMPTY);
-    }
-
-    @Override
-    public void openLeft(Node container, Insets insets) {
-        openAbsolute(container, Pos.CENTER_LEFT, insets);
-        if (container instanceof Region region)
-            region.setMaxHeight(Region.USE_COMPUTED_SIZE);
-    }
-
-    @Override
-    public void openRight(Node container) {
-        openRight(container, Insets.EMPTY);
-    }
-
-    @Override
-    public void openRight(Node container, Insets insets) {
-        openAbsolute(container, Pos.CENTER_RIGHT, insets);
-        if (container instanceof Region region)
-            region.setMaxHeight(Region.USE_COMPUTED_SIZE);
-    }
-
-    @Override
-    public void openByCursor(Region container, MouseEvent e) {
-        openByCursor(container, e, Pos.CENTER, 0, 0);
-    }
-
-    public void openByCursor(Region container, MouseEvent e, Pos pos) {
-        openByCursor(container, e, pos, 0, 0);
-    }
-
-    private double width = -1;
-    private double height = -1;
-
-    class UpdateBounds implements ChangeListener<Bounds> {
-
-        private final Region container;
-        private final MouseEvent event;
-        private final Pos pos;
-        private final double x;
-        private final double y;
-
-        public UpdateBounds(Region container, MouseEvent event, Pos pos, double x, double y) {
-            this.container = container;
-            this.event = event;
-            this.pos = pos;
-            this.x = x;
-            this.y = y;
-        }
-
-        @Override
-        public void changed(ObservableValue<? extends Bounds> observable, Bounds oldValue, Bounds newValue) {
-            // Needs to be reviewed
-            // cause if the width is settled before the height given a 2x call
-//            System.out.println("newValue = " + newValue.getHeight());
-            if (newValue.getHeight() > 0) {
-//            System.out.println("newValue = " + newValue);
-                width = container.getWidth();
-                height = container.getHeight();
-                relocate(container, event, pos, x, y);
-            }
-        }
-    }
-
-    private UpdateBounds updateBounds;
 
     @Override
     public boolean fits(Region node) {
@@ -168,149 +68,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
     }
 
     @Override
-    public void openByCursor(Region container, MouseEvent e, double x, double y) {
-        if (root.getChildren().contains(container)) return;
-        if (updateBounds != null) container.layoutBoundsProperty().removeListener(updateBounds);
-
-        container.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-
-        StackPane.clearConstraints(container);
-        StackPane.setAlignment(container, Pos.TOP_LEFT);
-
-//        container.getStyleClass().add("popup");
-
-        container.setLayoutX(0);
-        container.setLayoutY(0);
-
-        // if lay out is not set
-        if (width == 0 || height == 0) {
-            updateBounds = new UpdateBounds(container, e, pos, x, y);
-            container.layoutBoundsProperty().addListener(updateBounds);
-//            container.widthProperty().addListener(updateBounds);
-        } else { // if is set
-            container.layoutBoundsProperty().removeListener(updateBounds);
-            relocate(container, e, pos, x, y);
-        }
-//        root.getChildren().add(container);
-        container.toFront();
-    }
-
-    @Override
-    public void openByCursor(Region container, MouseEvent e, Pos pos, double x, double y) {
-        if (root.getChildren().contains(container)) return;
-        if (updateBounds != null) container.layoutBoundsProperty().removeListener(updateBounds);
-
-        container.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-
-        StackPane.clearConstraints(container);
-        StackPane.setAlignment(container, Pos.TOP_LEFT);
-
-//        container.getStyleClass().add("popup");
-        container.setLayoutX(0);
-        container.setLayoutY(0);
-
-        // if layout is not set
-        if (container.getWidth() == 0 || container.getHeight() == 0) {
-            updateBounds = new UpdateBounds(container, e, pos, x, y);
-            container.layoutBoundsProperty().addListener(updateBounds);
-        } else { // if is set
-            container.layoutBoundsProperty().removeListener(updateBounds);
-            relocate(container, e, pos, x, y);
-        }
-        root.getChildren().add(container);
-        container.toFront();
-    }
-
-    @ApiStatus.Experimental
-    private void relocate(Region container, MouseEvent e, Pos pos, double x, double y) {
-
-        container.setTranslateY(0);
-        container.setTranslateX(0);
-
-        container.setLayoutX(0);
-        container.setLayoutY(0);
-
-        double widthAvailable = root.getWidth();
-        double heightAvailable = root.getHeight();
-
-        double spaceXAvailable = widthAvailable - width;
-        double spaceYAvailable = heightAvailable - height;
-
-        // posX and posY <= 0 doesn't fit
-        if (!fitWidth(spaceXAvailable + x) || !fitHeight(spaceYAvailable + y)) {
-            if (root.getChildren().contains(container)) return;
-            setLayout(container);
-        } else {
-            updateLayout(container, e, pos, x, y);
-        }
-    }
-
-    @ApiStatus.Experimental
-    private void setLayout(Region container) {
-        clearConstraints(container);
-    }
-
-    @ApiStatus.Experimental
-    private void updateLayout(@NotNull Region container, @NotNull MouseEvent event, @NotNull Pos pos, double offsetX, double offsetY) {
-        VPos vPos = pos.getVpos();
-        HPos hPos = pos.getHpos();
-
-        double posX = getPosX(container.getWidth(), event.getSceneX(), hPos, offsetX);
-        double posY = getPosY(container.getHeight(), event.getSceneY(), vPos, offsetY);
-
-        double passX = 0;
-        double passY = 0;
-
-        if ((posX + width) > root.getWidth()) {
-            passX = (posX + width) - root.getWidth();
-        }
-        if ((posY + height) > root.getHeight()) {
-            passY = (posY + height) - root.getHeight();
-        }
-        container.setTranslateX(posX - passX);
-        container.setTranslateY(posY - passY);
-//        StackPane.setMargin(container, new Insets(posY - passY, 0, 0, posX - passX));
-    }
-
-    @Contract(pure = true)
-    private double getPosX(double width, double mousePosX, @NotNull HPos hPos, double offsetX) {
-        switch (hPos) {
-            case LEFT -> {
-                return (mousePosX - width) + offsetX;
-            }
-            case CENTER -> {
-                return (mousePosX - (width / 2)) + offsetX;
-            }
-            default -> {
-                return mousePosX + offsetX;
-            }
-        }
-    }
-
-    @Contract(pure = true)
-    private double getPosY(double height, double mousePosY, @NotNull VPos vPos, double offsetY) {
-        switch (vPos) {
-            case CENTER -> {
-                return (mousePosY - (height / 2)) + offsetY;
-            }
-            case TOP -> {
-                return (mousePosY - height) + offsetY;
-            }
-            default -> {
-                return mousePosY + offsetY;
-            }
-        }
-    }
-
-    private boolean fitWidth(double width) {
-        return width >= 0;
-    }
-
-    private boolean fitHeight(double height) {
-        return height >= 0;
-    }
-
-    @Override
     public void remove(Node container) {
         root.getChildren().removeAll(container);
     }
@@ -334,40 +91,14 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 
     @Override
     public Flow width(double width) {
-        this.content.setMaxWidth(width);
-        this.content.setPrefWidth(width);
-        this.content.setMinWidth(width);
+        this.width = width;
         return this;
-    }
-
-    private double getWidth() {
-        return width == -1 ? this.content.prefWidth(root.getWidth()) : width;
     }
 
     @Override
     public Flow height(double height) {
         this.height = height;
         return this;
-    }
-
-    private double getHeight() {
-        return height == -1 ? this.content.prefHeight(root.getHeight()) : height;
-    }
-
-    private class Move implements ChangeListener<Transform> {
-
-        private final Region target;
-        private final Pos pos;
-
-        public Move(Region target, Pos pos) {
-            this.target = target;
-            this.pos = pos;
-        }
-
-        @Override
-        public void changed(ObservableValue<? extends Transform> observable, Transform oldValue, Transform newValue) {
-            translateByTarget(pos, target, newValue.getTx(), newValue.getTy());
-        }
     }
 
     public void show(Region target) {
@@ -387,8 +118,8 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
     }
 
     private void relocateByNode(Region target) {
-        double x = 0;
-        double y = 0;
+        double x;
+        double y;
 
         double maxX = getMaxPositionX(pos.getHpos(), target);
         double maxY = getMaxPositionY(pos.getVpos(), target);
@@ -397,22 +128,18 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         double spaceHorizontal = getSpaceHorizontal(pos.getHpos(), maxX);
 
         double height = this.height == -1 ?
-                this.content.prefHeight(-1) : this.height;
+                this.content.minHeight(-1) : this.height;
 
         this.content.setMaxHeight(height);
         this.content.setPrefHeight(height);
-//        this.content.setMinHeight(height);
+        this.content.setMinHeight(height);
 
         double width = this.width == -1 ?
-                this.content.prefWidth(-1) : this.width;
+                this.content.minWidth(-1) : this.width;
 
         this.content.setMaxWidth(width);
         this.content.setPrefWidth(width);
-//        this.content.setMinWidth(width);
-
-//        this.content.requestLayout();
-//        this.content.requestFocus();
-//        Platform.requestNextPulse();
+        this.content.setMinWidth(width);
 
         switch (pos.getHpos()) {
             case LEFT ->  {
@@ -518,67 +245,40 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
     public void show(MouseEvent event) {
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, Pos.TOP_LEFT);
-        content.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-//        var innerPos = pos;
-//
-//        move = new Move(target, innerPos);
-//        target.localToSceneTransformProperty().addListener(move);
-//
-//        translate(pos, target, target.getLocalToSceneTransform().getTx(), target.getLocalToSceneTransform().getTy());
-//        content.setTranslateX(event.getSceneX());
-//        content.setTranslateY(event.getSceneY());
-
-        StackPane.setMargin(content, insets);
 
         if (!root.getChildren().contains(content)) {
             root.getChildren().add(content);
         }
-        Bounds bounds = content.localToParent(content.getLayoutBounds());
 
-        translateByCursor(pos, content, event.getSceneX(), event.getSceneY());
+        StackPane.setMargin(content, insets);
+
+        this.content.applyCss();
+
+        double height = this.height == -1 ?
+                this.content.minHeight(-1) : this.height;
+
+        this.content.setMaxHeight(height);
+        this.content.setPrefHeight(height);
+        this.content.setMinHeight(height);
+
+        double width = this.width == -1 ?
+                this.content.minWidth(-1) : this.width;
+
+        this.content.setMaxWidth(width);
+        this.content.setPrefWidth(width);
+        this.content.setMinWidth(width);
+
+        switch (pos.getHpos()) {
+            case LEFT -> content.setTranslateX(event.getSceneX() - width);
+            case CENTER -> content.setTranslateX(event.getSceneX() - (width / 2));
+            case null, default -> content.setTranslateX(event.getSceneX());
+        }
+        switch (pos.getVpos()) {
+            case TOP -> content.setTranslateY(event.getSceneY() - height);
+            case CENTER -> content.setTranslateY(event.getSceneY() - (height / 2));
+            case null, default -> content.setTranslateX(event.getSceneX());
+        }
         reset();
-    }
-
-    private void translateByCursor(Pos pos, Region target, double tx, double ty) {
-
-        System.out.println("pos = " + pos);
-        System.out.println("target.getPrefHeight() = " + target.getPrefHeight());
-        System.out.println("target.getPrefHeight() = " + target.getMinHeight());
-        System.out.println("target.getPrefHeight() = " + target.getHeight());
-        System.out.println("target.getPrefHeight() = " + target.getBoundsInLocal());
-        System.out.println("target.getPrefHeight() = " + target.getLayoutBounds());
-        System.out.println("target.getPrefHeight() = " + target.getBoundsInParent());
-        System.out.println("target.getPrefHeight() = " + target.getLocalToParentTransform());
-
-
-        switch (pos.getVpos()) {
-            case TOP -> content.setTranslateY(ty - target.getHeight());
-            case BOTTOM -> content.setTranslateY(ty + target.getHeight());
-            default -> content.setTranslateY((ty - (content.getHeight() / 2)) + (target.getHeight() / 2));
-        }
-        switch (pos.getHpos()) {
-            case LEFT -> content.setTranslateX(tx - target.getWidth());
-            case RIGHT -> content.setTranslateX(tx + target.getWidth());
-            case CENTER -> content.setTranslateX((tx - (content.getWidth() / 2)) + (target.getWidth() / 2));
-        }
-    }
-
-    private void translateByTarget(Pos pos, Region target, double tx, double ty) {
-
-        System.out.println("target.getBoundsInLocal().getWidth() = " + target.getBoundsInLocal().getWidth());
-        System.out.println("target.getBoundsInLocal().getWidth() = " + target.getPrefWidth());
-
-
-        switch (pos.getVpos()) {
-//            case TOP -> content.setTranslateY(ty - target.getBoundsInLocal().getHeight());
-//            case BOTTOM -> content.setTranslateY(ty + target.getBoundsInLocal().getHeight());
-//            default -> content.setTranslateY((ty - (content.getHeight() / 2)) + target.getBoundsInLocal().getCenterY());
-        }
-        switch (pos.getHpos()) {
-//            case LEFT -> content.setTranslateX(tx - target.getBoundsInLocal().getWidth());
-            case RIGHT -> content.setTranslateX((tx + target.getBoundsInLocal().getWidth()) - content.getPrefWidth());
-//            case CENTER -> content.setTranslateX((tx - (content.getWidth() / 2)) + target.getBoundsInLocal().getCenterX());
-        }
     }
 
     @Override

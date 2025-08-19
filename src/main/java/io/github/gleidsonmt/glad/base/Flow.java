@@ -15,34 +15,7 @@ import org.jetbrains.annotations.ApiStatus;
  * Create on  26/01/2025
  */
 public interface Flow extends FlowItem<Flow> {
-
-    @Deprecated(forRemoval = true)
-    void openLeft(Node container);
-
-    @Deprecated(forRemoval = true)
-    void openLeft(Node container, Insets insets);
-
-    @Deprecated(forRemoval = true)
-    void openRight(Node container);
-
-    @Deprecated(forRemoval = true)
-    void openRight(Node container, Insets insets);
-
-    // Testing
-    @ApiStatus.Experimental
-    void openByCursor(Region container, MouseEvent e);
-
-    @ApiStatus.Experimental
-    void openByCursor(Region container, MouseEvent e, Pos pos);
-
-    @ApiStatus.Experimental
-    void openByCursor(Region container, MouseEvent e, Pos pos, double x, double y);
-
-
-    @Deprecated
-    @ApiStatus.Experimental
-    void openByCursor(Region container, MouseEvent e, double x, double y);
-
+    // Utils
     /**
      * If they fit in the root (screen).
      * @param node The node to test.
@@ -51,36 +24,31 @@ public interface Flow extends FlowItem<Flow> {
     @ApiStatus.Experimental
     boolean fits(Region node);
 
-
     @ApiStatus.Experimental
     void clearConstraints(Region node);
 
-    // Fixed
+    // Setting
 
     /**
-     * Open directly in root.
-     * Default insets 0
-     * @param container The node to add.
-     * @param position The default pos.
+     * Define the content for this flow item.
+     * @param content The content to be added.
+     * @return The FlowItem.
      */
-    @Deprecated(forRemoval = true)
-    void openAbsolute(Node container, Pos position);
+    Flow content(Region content);
 
-    /**
-     * Open directly in root.
-     * @param container The node to add.
-     * @param position The default pos.
-     * @param insets The default insets.
-     */
-    @Deprecated(forRemoval = true)
-    void openAbsolute(Node container, Pos position, Insets insets);
+    Flow width(double width);
 
+    Flow height(double height);
+
+    // Showing
 
     void show();
 
     void show(Region node);
 
     void show(MouseEvent node);
+
+    // Removing
 
     /**
      * Remove a node from the root.
@@ -92,20 +60,5 @@ public interface Flow extends FlowItem<Flow> {
      * Remove all nodes from the root.
      */
     void clear();
-
-
-
-    /**
-     * Define a content for this flow item.
-     * @param content The content to be added.
-     * @return The FlowItem.
-     */
-    Flow content(Region content);
-
-    Flow width(double width);
-
-    Flow height(double height);
-
-
 
 }
