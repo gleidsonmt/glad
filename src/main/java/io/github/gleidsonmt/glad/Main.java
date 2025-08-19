@@ -25,13 +25,4 @@ public class Main extends View {
     }
 
 
-    @Override
-    public void onEnter(Layout layout) {
-
-    }
-
-    @Override
-    public void onExit(Layout layout) {
-
-    }
 }

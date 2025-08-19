@@ -51,13 +51,14 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
                 .content(foreground.restyle(effect, root))
                 .show();
 
-        System.out.println("with = " + with);
-        root.flow()
-                .anchor(anchor)
-                .pos(pos)
-                .content(with)
-                .insets(insets)
-                .show();
+        if (with != null) {
+            root.flow()
+                    .anchor(anchor)
+                    .pos(pos)
+                    .content(with)
+                    .insets(insets)
+                    .show();
+        }
 
         foreground.setOnMousePressed(onClick);
 
@@ -104,7 +105,6 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
         root.getChildren().remove(foreground);
         root.getChildren().getFirst().setEffect(null);
     }
-
 
     @Override
     public boolean isShowing() {

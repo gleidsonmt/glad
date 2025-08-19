@@ -10,7 +10,7 @@ import org.jetbrains.annotations.ApiStatus;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  19/07/2024
  */
-@ApiStatus.AvailableSince("2.0.0")
+@ApiStatus.AvailableSince("1.0.0")
 public class View extends ModuleView implements Module {
 
     protected Node content;
@@ -53,6 +53,10 @@ public class View extends ModuleView implements Module {
 
     public Node getContent() {
         return content;
+    }
+
+    public Root getRoot() {
+        return (Root) this.getContainer().getScene().getRoot();
     }
 
     @Override
