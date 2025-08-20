@@ -25,7 +25,6 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     private final Root root;
     private String message;
 
-    private final Timeline timeline = new Timeline();
 
     public SnackImpl(Root root) {
         this.root = root;
@@ -34,14 +33,19 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     @Override
     public void show() {
         var bar = new SnackBar(this.message);
+        final Timeline timeline = new Timeline();
+
 
         TimerTask hideSnack = new TimerTask() {
             @Override
             public void run() {
+
                 timeline.setRate(-1);
                 timeline.play();
-//                timeline.setOnFinished(_ -> hide());
+                timeline.setOnFinished(_ ->  root.flow().remove(bar));
                 System.out.println("Timer");
+
+
             }
         };
 
@@ -56,12 +60,11 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
                 .show();
 
 
-
         System.out.println("bar.getBoundsInLocal().getHeight() = " + bar.getBoundsInLocal().getHeight());
         bar.applyCss();
         timeline.getKeyFrames().setAll(
                 new KeyFrame(Duration.millis(0),
-                        new KeyValue(bar.translateYProperty(), bar.prefHeight(-1) )),
+                        new KeyValue(bar.translateYProperty(), bar.prefHeight(-1))),
                 new KeyFrame(Duration.millis(500),
                         new KeyValue(bar.translateYProperty(), 0))
         );
