@@ -56,7 +56,7 @@ public class View extends ModuleView implements Module {
     }
 
     public Root getRoot() {
-        return (Root) this.getContainer().getScene().getRoot();
+        return (Root) this.getContent().getScene().getRoot();
     }
 
     @Override

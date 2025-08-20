@@ -29,8 +29,7 @@ public interface Alert extends FlowItem<Alert> {
     @ApiStatus.Experimental
     Alert buttons(Button... buttons);
 
-    @ApiStatus.Experimental
-    Snack snack(String message);
+
 
 
 }

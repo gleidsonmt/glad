@@ -6,5 +6,6 @@ package io.github.gleidsonmt.glad.base;
  */
 public interface Snack extends FlowItem<Snack> {
 
+    Snack message(String message);
 
 }

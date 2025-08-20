@@ -20,9 +20,12 @@ public class SnackBar extends GridPane  {
     public SnackBar(String message) {
         this.text = new Text(message);
         this.textFlow = createTextFlow();
-        getStyleClass().addAll("min-h-50 bg-white raised align-center rounded".split(" "));
+        getStyleClass().addAll("min-h-50 bg-white depth-1 align-center rounded border-1 border-light-gray".split(" "));
         setPadding(new Insets(5, 20, 5, 20));
         setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+
+        add(textFlow, 1, 0);
+
     }
 
     private TextFlow createTextFlow() {
@@ -40,7 +43,5 @@ public class SnackBar extends GridPane  {
         return graphic;
     }
 
-    public void build() {
-        add(textFlow, 1, 0);
-    }
+
 }

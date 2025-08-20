@@ -22,26 +22,26 @@ import java.util.TimerTask;
  */
 public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
-    private final SnackBar snackBar;
     private final Root root;
+    private String message;
 
     private final Timeline timeline = new Timeline();
 
-    public SnackImpl(Root root, String message) {
+    public SnackImpl(Root root) {
         this.root = root;
-        this.snackBar = new SnackBar(message);
     }
 
     @Override
     public void show() {
-        snackBar.build();
+        var bar = new SnackBar(this.message);
 
         TimerTask hideSnack = new TimerTask() {
             @Override
             public void run() {
                 timeline.setRate(-1);
                 timeline.play();
-                timeline.setOnFinished(_ -> hide());
+//                timeline.setOnFinished(_ -> hide());
+                System.out.println("Timer");
             }
         };
 
@@ -50,28 +50,36 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
         root.flow()
                 .pos(Pos.BOTTOM_CENTER)
-                .content(snackBar)
+                .content(bar)
                 .anchor(Anchor.BOTTOM)
                 .insets(new Insets(20))
                 .show();
 
+
+
+        System.out.println("bar.getBoundsInLocal().getHeight() = " + bar.getBoundsInLocal().getHeight());
+        bar.applyCss();
         timeline.getKeyFrames().setAll(
                 new KeyFrame(Duration.millis(0),
-                        new KeyValue(snackBar.translateYProperty(), snackBar.getBoundsInParent().getHeight(), Interpolator.EASE_BOTH)),
+                        new KeyValue(bar.translateYProperty(), bar.prefHeight(-1) )),
                 new KeyFrame(Duration.millis(500),
-                        new KeyValue(snackBar.translateYProperty(), 0, Interpolator.EASE_BOTH)),
-                new KeyFrame(Duration.ZERO,
-                        new KeyValue(snackBar.opacityProperty(), 0, Interpolator.EASE_IN)),
-                new KeyFrame(Duration.millis(500),
-                        new KeyValue(snackBar.opacityProperty(), 1, Interpolator.EASE_IN))
+                        new KeyValue(bar.translateYProperty(), 0))
         );
+
         timeline.setRate(1);
         timeline.play();
     }
 
     @Override
     public void hide() {
-        Platform.runLater(() -> root.flow()
-                .remove(snackBar));
+        root.flow().remove(root.getChildren().removeLast());
+//        Platform.runLater(() -> root.flow()
+//                .remove(snackBar));
+    }
+
+    @Override
+    public Snack message(String message) {
+        this.message = message;
+        return this;
     }
 }

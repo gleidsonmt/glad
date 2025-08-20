@@ -39,6 +39,8 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         pos = Pos.CENTER;
         insets = Insets.EMPTY;
         effect = null;
+        width = -1;
+        height = -1;
     }
 
     @Override
@@ -128,14 +130,14 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         double spaceHorizontal = getSpaceHorizontal(pos.getHpos(), maxX);
 
         double height = this.height == -1 ?
-                this.content.minHeight(-1) : this.height;
+                this.content.prefHeight(-1) : this.height;
 
         this.content.setMaxHeight(height);
         this.content.setPrefHeight(height);
         this.content.setMinHeight(height);
 
         double width = this.width == -1 ?
-                this.content.minWidth(-1) : this.width;
+                this.content.prefHeight(-1) : this.width;
 
         this.content.setMaxWidth(width);
         this.content.setPrefWidth(width);

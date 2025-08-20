@@ -17,7 +17,6 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
 
     private Root root;
     private AlertRoot alert;
-    private SnackBar snackBar;
 
     private AlertType type;
     private String title;
@@ -75,11 +74,6 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
         root.wrapper().hide();
     }
 
-    @Override
-    public Snack snack(String message) {
-        this.snack = new SnackImpl(this.root, message);
-        return snack;
-    }
 
     @Override
     public Alert title(String title) {
@@ -110,6 +104,4 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
     public void show() {
         open(title, super.content, type, buttons);
     }
-
-
 }

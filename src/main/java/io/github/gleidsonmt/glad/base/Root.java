@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.base;
 
 
+import io.github.gleidsonmt.glad.base.internal.SnackImpl;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.base.responsive.BreakPoint;
 import io.github.gleidsonmt.glad.base.responsive.Container;

@@ -1,9 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Alert;
-import io.github.gleidsonmt.glad.base.Behavior;
-import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
+import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -31,7 +28,7 @@ public class BehaviorImpl implements Behavior {
 
     private Alert alert;
     private Dialog dialog;
-
+    private Snack snack;
 
     private BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
@@ -42,6 +39,7 @@ public class BehaviorImpl implements Behavior {
 
         this.alert = new AlertImpl(root);
         this.dialog = new DialogImpl(root);
+        this.snack = new SnackImpl(root);
 
 //        if (layout.getLeft() != null) drawer = layout.getLeft();
 //        if (layout.getRight() != null) aside = layout.getRight();
@@ -152,6 +150,11 @@ public class BehaviorImpl implements Behavior {
     @Override
     public Dialog dialog() {
         return this.dialog;
+    }
+
+    @Override
+    public Snack snack() {
+        return this.snack;
     }
 
     @Override

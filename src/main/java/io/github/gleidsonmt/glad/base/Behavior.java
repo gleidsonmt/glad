@@ -33,6 +33,8 @@ public interface Behavior {
 
     Dialog dialog();
 
+    Snack snack();
+
     void openDrawer();
 
     void closeDrawer();
