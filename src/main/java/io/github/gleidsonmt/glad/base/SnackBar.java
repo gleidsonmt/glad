@@ -25,7 +25,6 @@ public class SnackBar extends GridPane  {
         setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 
         add(textFlow, 1, 0);
-
     }
 
     private TextFlow createTextFlow() {
@@ -36,7 +35,7 @@ public class SnackBar extends GridPane  {
     }
 
     public void setGraphic(Node graphic) {
-        this.graphic = graphic;
+        add(graphic, 0, 0);
     }
 
     public Node getGraphic() {

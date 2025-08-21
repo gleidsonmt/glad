@@ -11,6 +11,7 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.util.Duration;
 
 import java.util.Timer;
@@ -24,7 +25,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
     private final Root root;
     private String message;
-
+    private Node graphic;
 
     public SnackImpl(Root root) {
         this.root = root;
@@ -33,19 +34,15 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     @Override
     public void show() {
         var bar = new SnackBar(this.message);
+        if (graphic != null) bar.setGraphic(graphic);
         final Timeline timeline = new Timeline();
-
 
         TimerTask hideSnack = new TimerTask() {
             @Override
             public void run() {
-
                 timeline.setRate(-1);
                 timeline.play();
                 timeline.setOnFinished(_ ->  root.flow().remove(bar));
-                System.out.println("Timer");
-
-
             }
         };
 
@@ -60,7 +57,6 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
                 .show();
 
 
-        System.out.println("bar.getBoundsInLocal().getHeight() = " + bar.getBoundsInLocal().getHeight());
         bar.applyCss();
         timeline.getKeyFrames().setAll(
                 new KeyFrame(Duration.millis(0),
@@ -71,6 +67,11 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
         timeline.setRate(1);
         timeline.play();
+        reset();
+    }
+
+    private void reset() {
+        this.graphic = null;
     }
 
     @Override
@@ -83,6 +84,12 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     @Override
     public Snack message(String message) {
         this.message = message;
+        return this;
+    }
+
+    @Override
+    public Snack graphic(Node graphic) {
+        this.graphic = graphic;
         return this;
     }
 }
