@@ -36,6 +36,11 @@
 
 .list-view  .virtual-flow .clipped-container .sheet .list-cell:selected .text {
     -fx-fill: -fx-accent;
+    -fx-font-weight: bold;
+}
+
+.list-view  .virtual-flow .clipped-container .sheet .list-cell:filled:hover {
+    -fx-background-color: -light-gray;
 }
 
 .transparent-list-view  .virtual-flow .clipped-container .sheet .list-cell .text {

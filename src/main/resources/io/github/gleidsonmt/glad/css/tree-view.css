@@ -20,7 +20,6 @@
     -fx-background-color: white;
 }
 
-
 .tree-cell > .tree-disclosure-node,
 .tree-table-row-cell > .tree-disclosure-node {
     -fx-padding: 14 10 4 8;
@@ -47,4 +46,13 @@
 
 .tree-cell {
     -fx-min-height: 45px;
+}
+
+.tree-cell:selected > .tree-disclosure-node > .arrow {
+    -fx-background-color:-fx-accent;
+}
+
+.tree-cell:selected .text {
+    -fx-fill: -fx-accent;
+    -fx-font-weight: bold;
 }
