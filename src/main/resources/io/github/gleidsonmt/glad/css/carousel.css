@@ -1,0 +1,66 @@
+
+.carousel
+{
+    -fx-background-color : rgba(0,0,0,.2);
+     -fx-auto-ride : false;
+     -fx-transition-velocity : 800ms;
+     -fx-transition-delay : 5000ms;
+}
+
+.carousel > .button
+{
+  -fx-pref-width : 80px;
+  -fx-background-color : transparent;
+}
+
+.carousel .left-button,
+.carousel .right-button
+{
+    -fx-background-color : transparent;
+}
+
+.carousel .left-button:hover
+{
+  -fx-background-color : linear-gradient(to left, transparent, #00000010);
+}
+
+.carousel .right-button:hover{
+  -fx-background-color : linear-gradient(to right, transparent, #00000010);
+}
+
+.carousel .button SVGPath
+{
+  -fx-fill : #ffffff40;
+}
+
+.carousel .button:hover SVGPath,
+.carousel .button:pressed SVGPath,
+.carousel .indicators .toggle-button:selected
+{
+  -fx-background-color : white;
+  -fx-fill : white;
+}
+
+.carousel .wrapper .sub-title
+{
+  -fx-font-size : 14px;
+  -fx-fill : white;
+}
+
+.carousel .wrapper .title
+{
+  -fx-font-size : 20px;
+  -fx-fill : white;
+}
+
+.carousel .indicators > .toggle-button
+{
+    -fx-background-color : #ffffff40;
+    -fx-background-radius : 0px;
+    -fx-border-width : 0px;
+    -fx-min-height : 0px;
+    -fx-pref-height : 10px;
+    -fx-pref-width : 30px;
+    -fx-background-insets  : 3px;
+    -fx-translate-y : -10px;
+}

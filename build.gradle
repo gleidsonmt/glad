@@ -41,7 +41,7 @@ dependencies {
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 //  implementation fileTree("vendor/scenic.jar")
 
-//  implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
+  implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
 
 }
 
