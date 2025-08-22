@@ -4,6 +4,9 @@
     -fx-background-color: transparent;
     -fx-border-color: -medium-gray;
     -fx-border-radius: 5px;
+    -fx-min-height: 40px;
+    -fx-padding: 5px;
+    -fx-cursor: hand;
 }
 
 .combo-box-base .list-cell {
@@ -17,7 +20,7 @@
 .combo-box > .list-cell {
     -fx-background: transparent;
     -fx-background-color: transparent;
-    -fx-text-fill: -fx-text-base-color;
+    -fx-text-fill: red;
 
 }
 .combo-box-base > .arrow-button {

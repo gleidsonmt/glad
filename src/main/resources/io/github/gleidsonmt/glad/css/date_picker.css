@@ -1,0 +1,229 @@
+
+/*******************************************************************************
+ *                                                                             *
+ * @DatePicker                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+
+
+
+.date-picker {
+    -fx-min-height: 40px;
+    -fx-font-family: Poppins Regular;
+    -fx-cursor: hand;
+
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+}
+
+.popup {
+    -fx-border-radius: 100px;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 100px;
+}
+
+.date-picker{
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-padding: 8px; /* 5 5 4 4 */
+    -fx-shape: "M7.9 14q-.425 0-.725-.312-.3-.313-.3-.738 0-.4.3-.713.3-.312.725-.312t.725.312q.3.313.3.713 0 .425-.3.738-.3.312-.725.312Zm4.1 0q-.425 0-.725-.312-.3-.313-.3-.738 0-.4.3-.713.3-.312.725-.312t.725.312q.3.313.3.713 0 .425-.3.738-.3.312-.725.312Zm4.1 0q-.425 0-.725-.312-.3-.313-.3-.738 0-.4.3-.713.3-.312.725-.312t.725.312q.3.313.3.713 0 .425-.3.738-.3.312-.725.312ZM5.15 22.25q-1.025 0-1.737-.712Q2.7 20.825 2.7 19.8V6.1q0-1.025.713-1.738.712-.712 1.737-.712h.6V1.625h2.175V3.65H16.1V1.625h2.15V3.65h.6q1.025 0 1.737.712.713.713.713 1.738v13.7q0 1.025-.713 1.738-.712.712-1.737.712Zm0-2.15h13.7q.1 0 .2-.1t.1-.2v-10H4.85v10q0 .1.1.2t.2.1Zm-.3-12.45h14.3V6.1q0-.1-.1-.2t-.2-.1H5.15q-.1 0-.2.1t-.1.2Zm0 0V5.8v1.85Z";
+    -fx-rotate: 0;
+}
+
+.date-picker-popup {
+     -fx-background-color: -fx-background;
+    -fx-background-radius: 10px;
+    -fx-alignment: CENTER; /* VBox */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 12, 0.0 , 0 , 8 );
+}
+.date-picker-popup > .month-year-pane {
+    -fx-padding: 0.588883em 0.5em 0.666667em 0.5em; /* 7 6 8 6 */
+    -fx-background-color: white;
+    -fx-background-insets: 0 0 0 0, 0 0 1 0;
+}
+.date-picker-popup > * > .spinner {
+    -fx-spacing: 0.9em; /* 3 */
+    -fx-alignment: CENTER;
+    -fx-fill-height: false;
+    -fx-background-color: transparent;
+    -fx-padding: 5px;
+}
+.date-picker-popup > * > .spinner > .button {
+    -fx-background-color: white;
+    -fx-color: transparent;
+    -fx-background-radius: 10px;
+}
+.date-picker-popup > * > .spinner > .button:focused {
+    -fx-color: -fx-hover-base;
+    -fx-background-insets: 0px;
+    -fx-border-color: -light-gray;
+}
+.date-picker-popup > * > .spinner > .button:hover {
+    -fx-color: -fx-hover-base;
+}
+.date-picker-popup > * > .spinner > .button:armed {
+    -fx-color: -fx-pressed-base;
+}
+
+.date-picker-popup > * > .spinner > .left-button,
+.date-picker-popup > * > .spinner > .right-button {
+    -fx-padding: 10px; /* 0 3 0 4 */
+    -fx-border-color: white;
+    -fx-background-color: transparent;
+    -fx-border-width: 1.3px;
+    -fx-border-color: -light-gray-2;
+    -fx-border-radius: 5px;
+}
+.date-picker-popup > * > .spinner > .button > .left-arrow,
+.date-picker-popup > * > .spinner > .button > .right-arrow {
+    -fx-background-color:  -elegant;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 10px; /* 4 2 4 2 */
+}
+
+.date-picker-popup > * > .spinner > .button:pressed > .left-arrow,
+.date-picker-popup > * > .spinner > .button:pressed > .right-arrow {
+    -fx-background-color: white;
+}
+
+.date-picker-popup > * > .spinner > .button:pressed,
+.date-picker-popup > * > .spinner > .button:pressed {
+    -fx-border-color: -medium-gray;
+    -fx-border-radius: 4px;
+}
+
+.date-picker-popup > * > .spinner > .button > .left-arrow {
+    -fx-padding: 0.333333em 0.25em 0.333333em 0.166667em; /* 4 3 4 2 */
+    -fx-shape: "M5.997,5.072L5.995,6.501l-2.998-4l2.998-4l0.002,1.43l-1.976,2.57L5.997,5.072z";
+    -fx-scale-shape: true;
+}
+.date-picker-popup > * > .spinner > .button > .right-arrow {
+    -fx-padding: 0.333333em 0.25em 0.333333em 0.166667em; /* 4 3 4 2 */
+    -fx-shape: "M2.998-0.07L3-1.499l2.998,4L3,6.501l-0.002-1.43l1.976-2.57L2.998-0.07z";
+    -fx-scale-shape: true;
+}
+.date-picker-popup > * > .spinner > .label {
+    -fx-alignment: CENTER;
+}
+.date-picker-popup > .month-year-pane > .secondary-label {
+    -fx-alignment: BASELINE_CENTER;
+    -fx-padding: 0.5em 0 0 0; /* 6 0 0 0 */
+    -fx-text-fill: #f3622d;
+}
+
+.date-picker-popup > .calendar-grid {
+    -fx-background-color: white;
+    /*-fx-background-insets: 1 0 0 0;*/
+    -fx-padding: 0;
+}
+.date-picker-popup > * > .date-cell {
+    -fx-background-color: transparent;
+    -fx-background-insets: 1, 2;
+    -fx-padding: 0;
+    -fx-alignment: BASELINE_CENTER;
+    -fx-opacity: 1.0;
+}
+.date-picker-popup > * > .day-name-cell,
+.date-picker-popup > * > .week-number-cell {
+    -fx-font-size: 10pt;
+}
+.date-picker-popup > * > .week-number-cell {
+    -fx-padding: 0.333333em 0.583333em 0.333333em 0.583333em; /* 4 7 4 7 */
+    -fx-border-color: -fx-control-inner-background;
+    -fx-border-width: 1px;
+    -fx-background: -fx-control-inner-background;
+    -fx-background-color: -fx-background;
+    -fx-text-fill: -fx-accent;
+}
+.date-picker-popup > * > .day-cell {
+    -fx-padding: 0.333333em 0.583333em 0.333333em 0.583333em; /* 4 7 4 7 */
+    -fx-border-color: derive(-fx-selection-bar-non-focused, 60%);
+    -fx-border-width: 1px;
+    -fx-font-size: 1em;
+    -fx-background: -fx-control-inner-background;
+    -fx-background-color: -fx-background;
+    -fx-text-fill: -fx-text-background-color;
+}
+.date-picker-popup > * > .hijrah-day-cell {
+    -fx-alignment: TOP_LEFT;
+    -fx-padding: 0.083333em 0.333333em 0.083333em 0.333333em; /* 1 4 1 4 */
+    -fx-cell-size: 2.75em;
+}
+.date-picker-popup > * > .day-cell > .secondary-text {
+    -fx-fill: #f3622d;
+}
+.date-picker-popup > * > .today {
+    -fx-background-color: -fx-control-inner-background, derive(-fx-selection-bar-non-focused, -20%), -fx-control-inner-background;
+    -fx-background-insets: 1, 2, 3;
+}
+.date-picker-popup > * > .day-cell:hover,
+.date-picker-popup > * > .selected,
+.date-picker-popup > * > .previous-month.selected,
+.date-picker-popup > * > .next-month.selected {
+    -fx-background: -fx-selection-bar;
+}
+
+.date-picker-popup > * > .day-cell:hover .text,
+.date-picker-popup > * > .selected .text,
+.date-picker-popup > * > .previous-month.selected .text,
+.date-picker-popup > * > .next-month.selected  .text {
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+.date-picker-popup > * > .previous-month:hover,
+.date-picker-popup > * > .next-month:hover {
+    -fx-background: -fx-selection-bar-non-focused;
+}
+
+.date-picker-popup > * > .today:hover,
+.date-picker-popup > * > .today.selected {
+    -fx-background-color: -fx-selection-bar, derive(-fx-selection-bar-non-focused, -20%),-fx-selection-bar;
+}
+.date-picker-popup > * > .day-cell:focused,
+.date-picker-popup > * > .today:focused {
+    -fx-background-color: -fx-control-inner-background, -fx-cell-focus-inner-border, -fx-control-inner-background;
+    -fx-background-insets: 1, 2, 3;
+}
+.date-picker-popup > * > .day-cell:focused:hover,
+.date-picker-popup > * > .today:focused:hover,
+.date-picker-popup > * > .selected:focused,
+.date-picker-popup > * > .today.selected:focused {
+    -fx-background-color: -fx-accent, white;
+}
+
+.date-picker-popup > * > .day-cell:focused:hover,
+.date-picker-popup > * > .today:focused:hover,
+.date-picker-popup > * > .selected:focused,
+.date-picker-popup > * > .selected .text,
+.date-picker-popup > * > .today.selected:focused {
+    -fx-text-fill: -text-color;
+    -fx-fill: -text-color;
+}
+.date-picker-popup > * > .previous-month,
+.date-picker-popup > * > .next-month {
+    -fx-background: derive(-fx-control-inner-background, -4%);
+}
+.date-picker-popup > * > .day-cell:hover > .secondary-text,
+.date-picker-popup > * > .previous-month > .secondary-text,
+.date-picker-popup > * > .next-month > .secondary-text,
+.date-picker-popup > * > .selected > .secondary-text {
+    -fx-fill: -fx-text-background-color;
+}
+.date-picker-popup > * > .previous-month.today,
+.date-picker-popup > * > .next-month.today {
+    -fx-background-color: derive(-fx-control-inner-background, -4%), derive(-fx-selection-bar-non-focused, -20%), derive(-fx-control-inner-background, -4%);
+}
+
+.date-picker-popup > * > .previous-month.today:hover,
+.date-picker-popup > * > .next-month.today:hover {
+    -fx-background-color: -fx-selection-bar-non-focused, derive(-fx-selection-bar-non-focused, -20%), -fx-selection-bar-non-focused;
+}
+
+.combo-box-base .text-field  {
+    -fx-text-fill: -text-color;
+}
