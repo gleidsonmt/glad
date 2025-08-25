@@ -4,8 +4,8 @@
     -fx-background-color: transparent;
     -fx-border-color: -medium-gray;
     -fx-border-radius: 5px;
-    -fx-min-height: 40px;
-    -fx-padding: 5px;
+    -fx-pref-height: 40px;
+    -fx-padding: 2px 5px 2px 2px;
     -fx-cursor: hand;
 }
 

@@ -13,7 +13,8 @@ Button, IconButton {
 }
 
 IconButton:pressed:focused,
-Button:pressed:focused
+Button:pressed:focused,
+MenuButton:pressed:focused
 {
     -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;

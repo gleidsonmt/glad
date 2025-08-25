@@ -16,6 +16,8 @@ public enum Css {
     TABLE_VIEW("table-view.css"),
     HYPERLINK("hyperlink.css"),
     CONTEXT_MENU("context-menu.css"),
+    MENU_BUTTON("menu-button.css"),
+    SPLIT_MENU_BUTTON("split-menu-button.css"),
     COMBO_BOX("combo-box.css"),
     CHECK_BOX("check-box.css"),
     RADIO_BUTTON("radio-button.css"),

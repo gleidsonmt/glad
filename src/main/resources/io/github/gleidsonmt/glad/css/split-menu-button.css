@@ -1,0 +1,32 @@
+SplitMenuButton {
+    -fx-pref-height: 40px;
+    -fx-background-color: transparent;
+    -fx-border-color: -light-gray-2;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+SplitMenuButton .label {
+    -fx-background-color: transparent;
+        -fx-border-radius: 10px;
+}
+
+SplitMenuButton .label .text {
+    -fx-fill: -text-color;
+}
+
+SplitMenuButton .menu-item .text {
+    -fx-fill: -text-color;
+}
+
+SplitMenuButton .arrow-button {
+    -fx-background-color: transparent;
+        -fx-background-radius: 5px;
+        -fx-cursor: hand;
+        -fx-border-color: -light-gray-2;
+        -fx-border-width: 0px 0px 0px 2px;
+}
+
+SplitMenuButton .arrow {
+    -fx-background-color: -dark-gray;
+}

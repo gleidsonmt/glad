@@ -1,0 +1,25 @@
+MenuButton {
+    -fx-text-fill : white;
+    -fx-font-weight : bolder;
+    -fx-graphic-text-gap : 10;
+    -fx-cursor : hand;
+    -fx-effect: none;
+    -fx-background-color: -fx-accent;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-pref-height: 40px;
+    -icon-color: white;
+    -fx-padding: 2px 5px 2px 5px;
+}
+
+MenuButton .label .text {
+    -fx-fill: white;
+}
+
+MenuButton .menu-item .text {
+    -fx-fill: -text-color;
+}
+
+MenuButton .arrow {
+    -fx-background-color: white;
+}
