@@ -11,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Arrays;
 
@@ -28,6 +29,15 @@ public interface Layout  {
 
     default Node getFooter() { return null; }
 
+    @ApiStatus.Experimental
     default void updateView(Module oldVal, Module newVal) {}
+
+    @ApiStatus.Experimental
+    ObjectProperty<Module> currentModuleProperty();
+
+    @ApiStatus.Experimental
+    Module getCurrentModule();
+
+    void setCurrentModule(Module module);
 
 }

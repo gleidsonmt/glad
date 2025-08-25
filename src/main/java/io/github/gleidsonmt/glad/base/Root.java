@@ -32,7 +32,7 @@ import java.util.Arrays;
  */
 public class Root extends Container<Break> {
 
-    private Behavior behavior;
+    private final Behavior behavior;
     private final Flow flow;
     private final Wrapper wrapper;
 
@@ -110,7 +110,6 @@ public class Root extends Container<Break> {
                 });
             }
         });
-
     }
 
     public Layout getLayout() {
@@ -151,8 +150,6 @@ public class Root extends Container<Break> {
     public DoubleProperty breakpointProperty() {
         return this.breakpoint;
     }
-
-
 
     public void addPoint(EventHandler<ActionEvent> event, Size... breaks) {
         breaker.getPoints().add(new BreakPoint(event, breaks));

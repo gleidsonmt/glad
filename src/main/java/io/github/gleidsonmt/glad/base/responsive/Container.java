@@ -3,9 +3,12 @@ package io.github.gleidsonmt.glad.base.responsive;
 
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Arrays;
 
@@ -31,6 +34,12 @@ public class Container<T extends Size> extends StackPane {
                 breaker.doAction(size);
             }
         };
+
+    }
+
+    @ApiStatus.Experimental
+    public void init(){
+        breaker.doAction(this.sizer.getSize(this.getWidth()));
     }
 
     public void setSizer(Sizer<T> sizer) {
