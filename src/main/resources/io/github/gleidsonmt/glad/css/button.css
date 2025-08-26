@@ -1,3 +1,4 @@
+
 Button, IconButton {
     -fx-text-fill : white;
     -fx-font-weight : bolder;
@@ -10,6 +11,7 @@ Button, IconButton {
     -fx-pref-height: 40px;
     -icon-color: white;
     -text-color: white;
+    -fx-border-width: 2px;
 }
 
 IconButton:pressed:focused,
@@ -107,4 +109,5 @@ Button .text {
     -fx-border-color: transparent;
     -text-color: -fx-accent;
 }
+
 

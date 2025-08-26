@@ -9,6 +9,7 @@ public enum Css {
     DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
 
     TOGGLE_SWITCH("toggle-switch.css"),
+    CHOICE_BOX("choice-box.css"),
     TREE_VIEW("tree-view.css"),
     LIST_VIEW("list-view.css"),
     TOGGLE_BUTTON("toggle-button.css"),

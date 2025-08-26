@@ -1,18 +1,27 @@
 SplitMenuButton {
     -fx-pref-height: 40px;
-    -fx-background-color: transparent;
-    -fx-border-color: -light-gray-2;
-    -fx-border-width: 2px;
-    -fx-border-radius: 5px;
+    -fx-background-color: -fx-accent;
+    -fx-border-color: -fx-accent;
+    -fx-background-radius: 10px;
+    -fx-border-width: 0px;
+    -fx-padding: 2px;
+    -fx-border-radius: 10px;
+
+        -fx-background-color: transparent;
+        -fx-border-color: -light-gray-2;
+        -fx-border-width: 2px;
 }
 
-SplitMenuButton .label {
+SplitMenuButton > .label {
     -fx-background-color: transparent;
-        -fx-border-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
 }
 
 SplitMenuButton .label .text {
     -fx-fill: -text-color;
+    -fx-font-weight: bold;
+    -fx-font-smoothing: LCD;
 }
 
 SplitMenuButton .menu-item .text {
@@ -20,13 +29,40 @@ SplitMenuButton .menu-item .text {
 }
 
 SplitMenuButton .arrow-button {
+    -fx-background-color: -fx-accent;
+    -fx-background-radius: 10px 10px 10px 10px;
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+    -fx-border-color: -light-gray-2;
+    -fx-border-width: 0px 0px 0px 0px;
+    -fx-background-insets: 1px;
+}
+
+.split-outlined .arrow-button {
     -fx-background-color: transparent;
-        -fx-background-radius: 5px;
-        -fx-cursor: hand;
-        -fx-border-color: -light-gray-2;
-        -fx-border-width: 0px 0px 0px 2px;
+
 }
 
 SplitMenuButton .arrow {
-    -fx-background-color: -dark-gray;
+    -fx-background-color: white;
+}
+
+.split-outlined .arrow {
+    -fx-background-color: transparent;
+}
+
+.split-outlined {
+    -fx-background-color: transparent;
+    -fx-border-color: -light-gray-2;
+    -fx-border-width: 2px;
+}
+
+.split-outlined .label .text {
+    -fx-fill: -text-color;
+}
+.split-outlined .arrow-button {
+    -fx-border-width:  0px 0px 0px 2px;
+}
+.split-outlined .arrow-button .arrow{
+    -fx-background-color: -text-color;
 }
