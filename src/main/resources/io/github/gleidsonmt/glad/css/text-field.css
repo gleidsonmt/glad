@@ -1,5 +1,5 @@
 
-TextField, PasswordField
+TextField, PasswordField, .text-field
 {
     -fx-text-fill: -text-color;
     -fx-background-color: -fx-background;
@@ -11,6 +11,8 @@ TextField, PasswordField
     -fx-min-height: 40px;
     -fx-padding: 0px 5px 0px 5px;
     -fx-faint-focus-color: transparent;
+
+     -fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";
 }
 
 TextField:hover,
