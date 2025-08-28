@@ -1,10 +1,7 @@
 plugins {
   id 'java'
   id 'java-library'
-  id 'org.javamodularity.moduleplugin' version '1.8.12'
   id 'org.openjfx.javafxplugin' version '0.0.13'
-  id 'org.beryx.jlink' version '2.25.0'
-  id 'application'
 }
 
 group 'io.github.gleidsonmt'
@@ -22,13 +19,6 @@ tasks.withType(JavaCompile).configureEach {
   options.encoding = 'UTF-8'
 }
 
-application {
-  mainModule = 'io.github.gleidsonmt.glad'
-  mainClass = 'io.github.gleidsonmt.glad.App'
-//  mainClass = 'io.github.gleidsonmt.glad.demos.DashDrawerHidden'
-}
-
-
 javafx {
   version = '23.0.2'
   modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
@@ -36,13 +26,8 @@ javafx {
 
 dependencies {
   implementation 'org.jetbrains:annotations:24.0.1'
-//  implementation fileTree('vendor') { include '*.jar' }
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-//  implementation fileTree("vendor/scenic.jar")
-
-  implementation 'fr.brouillard.oss:cssfx:11.5.1' // Special lib to visualize css when app is running.. so amazing!
-
 }
 
 test {

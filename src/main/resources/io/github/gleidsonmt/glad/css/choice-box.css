@@ -8,10 +8,9 @@ ChoiceBox {
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
     -fx-pref-height: 40px;
-    -icon-color: white;
     -fx-padding: 2px 5px 2px 5px;
-        -fx-background-insets: 0px;
-        -fx-border-insets: 0px;
+    -fx-background-insets: 0px;
+    -fx-border-insets: 0px;
 }
 
 .choice-outlined {
