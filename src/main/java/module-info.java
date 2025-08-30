@@ -40,4 +40,5 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.charts;
     exports io.github.gleidsonmt.glad.base.responsive.sizer;
     exports io.github.gleidsonmt.glad.errors;
+    exports io.github.gleidsonmt.glad.controls.loaders;
 }
