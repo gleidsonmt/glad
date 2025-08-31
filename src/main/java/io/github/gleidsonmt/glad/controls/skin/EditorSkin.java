@@ -35,7 +35,6 @@ public class EditorSkin extends TextFieldSkin {
     protected String maskText(String txt) {
         if (getSkinnable() instanceof Editor editor) {
             if (editor.isMaskText()) {
-
                 final char BULLET = '\u25cf';
                 int n = txt.length();
 
@@ -44,7 +43,5 @@ public class EditorSkin extends TextFieldSkin {
                 return editor.textProperty().getValueSafe();
             }
         } else return txt;
-
     }
-
 }
