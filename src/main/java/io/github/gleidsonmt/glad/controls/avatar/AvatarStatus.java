@@ -1,17 +1,11 @@
 package io.github.gleidsonmt.glad.controls.avatar;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
-import javafx.geometry.Pos;
 import javafx.geometry.VPos;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.StackPane;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

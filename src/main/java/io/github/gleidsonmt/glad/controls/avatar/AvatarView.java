@@ -42,7 +42,7 @@ public class AvatarView extends Rectangle {
         setArcWidth(arc);
         setArcHeight(arc);
 
-        this.image.addListener((observable, oldValue, newValue) -> {
+        this.image.addListener((_, _, newValue) -> {
             if (newValue != null) {
                 setFill(new ImagePattern(newValue));
             }
