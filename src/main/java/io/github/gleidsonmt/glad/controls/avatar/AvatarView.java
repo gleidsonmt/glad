@@ -60,6 +60,10 @@ public class AvatarView extends Rectangle {
         setArcHeight(s);
     }
 
+    public double getRadius() {
+        return getArcWidth();
+    }
+
     public Image getImage() {
         return image.get();
     }

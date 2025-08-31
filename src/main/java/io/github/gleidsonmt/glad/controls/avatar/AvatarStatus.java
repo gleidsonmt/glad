@@ -28,18 +28,26 @@ public class AvatarStatus extends Region {
         this.avatarView = new AvatarView(image);
         getChildren().addAll(avatarView, circleAvatarStatus);
 //
-        this.avatarView.heightProperty()
-                .bind(this.prefHeightProperty());
+//        this.avatarView.heightProperty()
+//                .bind(this.prefHeightProperty());
         this.avatarView.heightProperty()
                 .bind(this.heightProperty());
-        this.avatarView.widthProperty()
-                .bind(this.prefWidthProperty());
+//
+//        this.avatarView.widthProperty()
+//                .bind(this.prefWidthProperty());
         this.avatarView.widthProperty()
                 .bind(this.widthProperty());
 
+//        this.avatarView.heightProperty()
+//                .bind(this.minHeightProperty());
+////
+//        this.avatarView.widthProperty()
+//                .bind(this.minWidthProperty());
+
+
         this.circleAvatarStatus
                 .radiusProperty()
-                .bind(this.widthProperty().divide(10));
+                .bind(this.widthProperty().divide(8));
 
 //        setWidth(40);
 //        setHeight(40);
