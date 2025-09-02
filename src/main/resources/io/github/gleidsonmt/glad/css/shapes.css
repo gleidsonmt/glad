@@ -13,6 +13,11 @@
   -fx-background-radius : 0px;
 }
 
+.rect {
+  -fx-background-radius : 0px;
+  -fx-border-radius : 0px;
+}
+
 .round {
   -fx-background-radius: 100px;
   -fx-border-radius: 100px;
