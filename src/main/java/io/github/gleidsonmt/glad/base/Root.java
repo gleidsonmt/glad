@@ -103,9 +103,7 @@ public class Root extends Container<Break> {
                         Platform.exit();
                     });
 
-                    behavior()
-                            .alert()
-                            .open("Oops..", container, AlertType.ERROR, ok);
+
 
                 });
             }

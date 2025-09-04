@@ -12,24 +12,27 @@ import org.jetbrains.annotations.ApiStatus;
  */
 public interface Alert extends FlowItem<Alert> {
 
+
     // Fast methods
-    void open(String title);
-
-    void open(String title, AlertType alertType);
-
-    void open(String title, Node node, AlertType alertType, Button... buttons);
+//    void open(String title);
+//
+//    void open(String title, AlertType alertType);
+//
+//    void open(String title, Node node, AlertType alertType, Button... buttons);
 
     // Build methods
     Alert title(String title);
 
+    Alert content(Node node);
+
     Alert type(AlertType alertType);
+
+    Alert type(String alertType);
 
     Alert effect(WrapperEffect effect);
 
     @ApiStatus.Experimental
     Alert buttons(Button... buttons);
-
-
 
 
 }

@@ -3,11 +3,14 @@ package io.github.gleidsonmt.glad.base.internal;
 import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.dialog.alert.layout.AlertRoot;
 import io.github.gleidsonmt.glad.dialog.alert.AlertType;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
+
+import java.util.Arrays;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -18,7 +21,7 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
     private Root root;
     private AlertRoot alert;
 
-    private AlertType type;
+    private AlertType type = AlertType.INFO;
     private String title;
     private Button[] buttons;
 
@@ -28,44 +31,52 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
         this.root = root;
     }
 
-    @Override
-    public void open(String title) {
+    private void open(String title) {
         open(title, AlertType.INFO);
     }
 
-    @Override
-    public void open(String title, AlertType alertType) {
+    private void open(String title, AlertType alertType) {
         open(title, null, alertType);
     }
 
-    @Override
-    public void open(String title, Node node, AlertType alertType, Button... buttons) {
-        alert = new AlertRoot(alertType);
-//        alert.setTitle(title);
-//        if (node == null) {
-//            throw new RuntimeException("Error alert can invoke a null node.");
-//        }
-//        alert.setContent(node);
-//        root.wrapper().show(this.effect);
+    private void open(String title, Node node, AlertType alertType, Button... buttons) {
+        alert = new AlertRoot(title, node, alertType);
+
+        if (node == null) {
+            throw new RuntimeException("Error alert can invoke a null node.");
+        }
+        root.wrapper().show(this.effect);
 //
-//        if (buttons == null || buttons.length == 0) {
-//            Button ok = new Button("Ok");
-//            ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
-//            ok.setOnAction(e -> root.behavior().alert().hide());
-//            alert.getButtonBar().getButtons().addAll(ok);
-//        } else {
-//            alert.getButtonBar().getButtons().addAll(buttons);
-//        }
-//
-//        root.flow()
-//                .pos(Pos.CENTER)
-//                .content(alert)
-//                .show();
+        if (buttons == null || buttons.length == 0) {
+            Button ok = new Button("Ok");
+            ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
+            ok.setOnAction(e -> root.behavior().alert().hide());
+            alert.getButtonBar().getButtons().setAll(ok);
+        } else {
+            alert.getButtonBar().getButtons().setAll(buttons);
+            Arrays.stream(buttons).forEach(button -> {
+                if (button.getText().equalsIgnoreCase("ok")) {
+                    button.setDefaultButton(true);
+                }
+                if (button.getText().equalsIgnoreCase("cancel")) {
+                    button.setCancelButton(true);
+                }
+
+                button.addEventFilter(ActionEvent.ACTION, _-> root.behavior().alert().hide());
+            });
+
+        }
+
+        root.flow()
+                .pos(Pos.CENTER)
+                .content(alert)
+                .show();
         reset();
     }
 
     private void reset() {
         this.effect = WrapperEffect.GRAY;
+        this.buttons = null;
     }
 
     @Override
@@ -74,10 +85,15 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
         root.wrapper().hide();
     }
 
-
     @Override
     public Alert title(String title) {
         this.title = title;
+        return this;
+    }
+
+    @Override
+    public Alert content(Node content) {
+        this.content = content;
         return this;
     }
 
@@ -95,6 +111,12 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
     }
 
     @Override
+    public Alert type(String type) {
+        this.type = AlertType.valueOf(type.toUpperCase());
+        return this;
+    }
+
+    @Override
     public Alert effect(WrapperEffect effect) {
         this.effect = effect;
         return this;
@@ -102,6 +124,8 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
 
     @Override
     public void show() {
-        open(title, super.content, type, buttons);
+        open(title, content, type, buttons);
     }
+
+
 }

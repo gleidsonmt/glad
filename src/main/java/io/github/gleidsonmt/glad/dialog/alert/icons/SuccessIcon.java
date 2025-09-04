@@ -17,15 +17,14 @@ public class SuccessIcon extends StackPane {
         this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         this.getStyleClass().addAll("icon","success-icon");
         this.getChildren().add(createSVG());
-        this.setPrefSize(70,70);
-        this.setTranslateY(-40);
+        this.setPrefSize(40,40);
     }
 
     private Group createSVG() {
         SVGPath pth = new SVGPath();
         pth.setContent("M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z");
-        pth.setScaleX(0.06);
-        pth.setScaleY(0.06);
+        pth.setScaleX(0.03);
+        pth.setScaleY(0.03);
 
         Group group = new Group(pth);
         group.setAutoSizeChildren(true);

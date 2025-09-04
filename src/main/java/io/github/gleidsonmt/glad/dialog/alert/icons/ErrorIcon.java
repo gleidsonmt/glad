@@ -17,15 +17,15 @@ public class ErrorIcon extends StackPane {
         this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         this.getStyleClass().addAll("icon", "error-icon");
         this.getChildren().add(createSVG());
-        this.setPrefSize(70, 70);
-        this.setMaxSize(70, 70);
+        this.setPrefSize(40, 40);
+        this.setMaxSize(40, 40);
     }
 
     private Group createSVG() {
         SVGPath pth = new SVGPath();
         pth.setContent("m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z");
-        pth.setScaleX(0.06);
-        pth.setScaleY(0.06);
+        pth.setScaleX(0.03);
+        pth.setScaleY(0.03);
 
         Group group = new Group(pth);
         group.setAutoSizeChildren(true);

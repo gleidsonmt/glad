@@ -11,12 +11,16 @@ import javafx.css.SimpleStyleableObjectProperty;
 import javafx.css.StyleableObjectProperty;
 import javafx.css.StyleablePropertyFactory;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Control;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.util.Objects;
 
@@ -24,22 +28,24 @@ import java.util.Objects;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  06/11/2024
  */
-public class AlertRoot extends StackPane {
+public class AlertRoot extends VBox {
 
-    private static final StyleablePropertyFactory<AlertRoot> FACTORY =
-            new StyleablePropertyFactory<>(Control.getClassCssMetaData());
+    private final Text title ;
+    private Node content;
+    private final BarAction barAction;
+    private final VBox barContainer;
 
-    private final StyleableObjectProperty<Color> accentColor =
-            new SimpleStyleableObjectProperty<>(ACCENT_COLOR, this, "icon", Color.WHITE);
-
-    private static final CssMetaData<AlertRoot, Color> ACCENT_COLOR =
-            FACTORY.createColorCssMetaData("accent-color", g -> g.accentColor);
-
-    private final AlertWrapper container;
-
-    public AlertRoot(AlertType type) {
+    public AlertRoot(String title, Node node, AlertType type) {
         Node icon;
+        this.title = new Text(title);
+        this.title.getStyleClass().addAll("h3 font-instagram-headline".split(" "));
+        this.content = node;
+        this.barAction = new BarAction();
+        this.barContainer = new VBox(barAction);
+        this.barContainer.getStyleClass().add("bar-container");
         this.getStyleClass().add("alert");
+        setAlignment(Pos.CENTER);
+        VBox.setVgrow( barContainer, Priority.ALWAYS);
 
         switch (type) {
             case ERROR -> {
@@ -66,27 +72,28 @@ public class AlertRoot extends StackPane {
         this.setMinWidth(300);
         this.setMaxHeight(Region.USE_PREF_SIZE);
         this.setPadding(new Insets(20));
-        this.container = new AlertWrapper(type);
+//        this.container = new AlertWrapper(type);
 
 //        this.setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-        this.getChildren().setAll(this.container, icon);
+        this.getChildren().setAll(icon, this.title, content, barContainer);
+        getStylesheets().add(Objects.requireNonNull(Resources.class.getResource("css/alerts.css")).toExternalForm());
 
     }
 
-    @Override
-    public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(Resources.class.getResource("css/alerts.css")).toExternalForm();
-    }
 
-    public void setContent(Node content) {
-        this.container.getContent().setNode(content);
-    }
+//    public void setContent(Node content) {
+//        this.container.getContent().setNode(content);
+//    }
+//
+//    public ButtonBar getButtonBar() {
+//        return this.container.getContent().getButtonBar();
+//    }
+//
+//    public void setTitle(String title) {
+//        this.container.getContent().getTitle().setText(title);
+//    }
 
     public ButtonBar getButtonBar() {
-        return this.container.getContent().getButtonBar();
-    }
-
-    public void setTitle(String title) {
-        this.container.getContent().getTitle().setText(title);
+        return this.barAction;
     }
 }
