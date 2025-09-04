@@ -41,26 +41,26 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
     @Override
     public void open(String title, Node node, AlertType alertType, Button... buttons) {
         alert = new AlertRoot(alertType);
-        alert.setTitle(title);
-        if (node == null) {
-            throw new RuntimeException("Error alert can invoke a null node.");
-        }
-        alert.setContent(node);
-        root.wrapper().show(this.effect);
-
-        if (buttons == null || buttons.length == 0) {
-            Button ok = new Button("Ok");
-            ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
-            ok.setOnAction(e -> root.behavior().alert().hide());
-            alert.getButtonBar().getButtons().addAll(ok);
-        } else {
-            alert.getButtonBar().getButtons().addAll(buttons);
-        }
-
-        root.flow()
-                .pos(Pos.CENTER)
-                .content(alert)
-                .show();
+//        alert.setTitle(title);
+//        if (node == null) {
+//            throw new RuntimeException("Error alert can invoke a null node.");
+//        }
+//        alert.setContent(node);
+//        root.wrapper().show(this.effect);
+//
+//        if (buttons == null || buttons.length == 0) {
+//            Button ok = new Button("Ok");
+//            ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
+//            ok.setOnAction(e -> root.behavior().alert().hide());
+//            alert.getButtonBar().getButtons().addAll(ok);
+//        } else {
+//            alert.getButtonBar().getButtons().addAll(buttons);
+//        }
+//
+//        root.flow()
+//                .pos(Pos.CENTER)
+//                .content(alert)
+//                .show();
         reset();
     }
 
