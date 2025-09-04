@@ -55,18 +55,3 @@ ToggleButton:selected {
 }
 
 
-.container-option .toggle-button {
-    -fx-effect: none;
-    -fx-border-insets: 0px;
-    -fx-background-insets: 0px;
-}
-
-.container-option .toggle-button:selected {
-    -fx-background-color: -fx-accent;
-    -fx-border-width: 0px;
-}
-
-.container-option .toggle-button:selected .text {
-    -text-color: white;
-}
-
