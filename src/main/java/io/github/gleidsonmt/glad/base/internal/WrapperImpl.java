@@ -1,17 +1,13 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.FlowItemAbstract;
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Wrapper;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -46,7 +42,7 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
     public void show(WrapperEffect effect) {
 
         root.flow()
-                .anchor(Anchor.NONE)
+                .anchor(Anchor.FULL)
                 .pos(Pos.CENTER)
                 .content(foreground.restyle(effect, root))
                 .show();

@@ -5,5 +5,5 @@ package io.github.gleidsonmt.glad.base;
  * Create on  14/04/2025
  */
 public enum Anchor {
-    TOP, BOTTOM, RIGHT, LEFT, FULL
+    TOP, BOTTOM, RIGHT, LEFT, FULL, NONE
 }

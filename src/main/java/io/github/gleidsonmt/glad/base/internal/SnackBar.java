@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.base;
+package io.github.gleidsonmt.glad.base.internal;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;

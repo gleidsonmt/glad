@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.base;
+package io.github.gleidsonmt.glad.base.internal;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

@@ -29,9 +29,9 @@ public interface Behavior {
      *
      *****************************************************************/
 
-    Alert alert();
-
     Dialog dialog();
+
+    Alert alert();
 
     Snack snack();
 

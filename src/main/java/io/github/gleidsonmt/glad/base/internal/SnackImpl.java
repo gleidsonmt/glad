@@ -1,14 +1,11 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.FlowItemAbstract;
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.Snack;
-import io.github.gleidsonmt.glad.base.SnackBar;
-import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;

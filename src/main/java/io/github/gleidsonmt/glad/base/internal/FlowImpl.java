@@ -1,7 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Flow;
-import io.github.gleidsonmt.glad.base.FlowItemAbstract;
 import io.github.gleidsonmt.glad.base.Root;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -17,14 +16,10 @@ import javafx.scene.layout.StackPane;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
-public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
+public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     private Pos pos = Pos.CENTER;
-    private Region content;
     private final Root root;
-
-    private double width = -1;
-    private double height = -1;
 
     public FlowImpl(Root root) {
         this.root = root;
@@ -41,6 +36,7 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
         effect = null;
         width = -1;
         height = -1;
+        full = false;
     }
 
     @Override
@@ -82,24 +78,6 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
     @Override
     public Flow pos(Pos pos) {
         this.pos = pos;
-        return this;
-    }
-
-    @Override
-    public Flow content(Region content) {
-        this.content = content;
-        return this;
-    }
-
-    @Override
-    public Flow width(double width) {
-        this.width = width;
-        return this;
-    }
-
-    @Override
-    public Flow height(double height) {
-        this.height = height;
         return this;
     }
 
@@ -285,20 +263,37 @@ public class FlowImpl extends FlowItemAbstract<Flow> implements Flow {
 
     @Override
     public void show() {
+
         if (content == null) {
             throw new RuntimeException("Error flow can invoke a null node.");
         }
         StackPane.clearConstraints(content);
+        this.content.applyCss();
 
-        if (content instanceof Region region) {
-            switch (anchor) {
-                case TOP, BOTTOM -> region.setMaxHeight(Region.USE_PREF_SIZE);
-                case LEFT, RIGHT -> region.setMaxWidth(Region.USE_PREF_SIZE);
-                case NONE -> region.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
-                case null, default -> region.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+        double height = this.height == -1 ?
+                this.content.prefHeight(-1) : this.height;
+
+        this.content.setPrefHeight(height);
+        this.content.setMinHeight(height);
+
+        double width = this.width == -1 ?
+                this.content.prefWidth(-1) : this.width;
+
+        this.content.setPrefWidth(width);
+        this.content.setMinWidth(width);
+
+        switch (anchor) {
+            case TOP, BOTTOM -> {
+                content.setMaxHeight(Region.USE_PREF_SIZE);
+                content.setMaxWidth(-1);
             }
+            case LEFT, RIGHT -> {
+                content.setMaxWidth(Region.USE_PREF_SIZE);
+                content.setMaxHeight(-1);
+            }
+            case FULL -> content.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+            case null, default -> content.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         }
-
         StackPane.setAlignment(content, pos);
         StackPane.setMargin(content, insets);
 

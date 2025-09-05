@@ -4,7 +4,6 @@ import io.github.gleidsonmt.glad.base.*;
 import io.github.gleidsonmt.glad.dialog.alert.layout.AlertRoot;
 import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -16,13 +15,12 @@ import java.util.Arrays;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  21/03/2025
  */
-public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
+public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
     private Root root;
     private AlertRoot alert;
 
     private AlertType type = AlertType.INFO;
-    private String title;
     private Button[] buttons;
 
     private Snack snack;
@@ -41,11 +39,9 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
 
     private void open(String title, Node node, AlertType alertType, Button... buttons) {
         alert = new AlertRoot(title, node, alertType);
-
         if (node == null) {
             throw new RuntimeException("Error alert can invoke a null node.");
         }
-        root.wrapper().show(this.effect);
 //
         if (buttons == null || buttons.length == 0) {
             Button ok = new Button("Ok");
@@ -67,10 +63,15 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
 
         }
 
+        root.wrapper().show(this.effect);
+
         root.flow()
                 .pos(Pos.CENTER)
+                .width(width != -1 ? width : 600)
+                .height(height != -1 ? height : 300)
                 .content(alert)
                 .show();
+
         reset();
     }
 
@@ -92,13 +93,6 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
     }
 
     @Override
-    public Alert content(Node content) {
-        this.content = content;
-        return this;
-    }
-
-
-    @Override
     public Alert buttons(Button... buttons) {
         this.buttons = buttons;
         return this;
@@ -115,12 +109,12 @@ public class AlertImpl extends FlowItemAbstract<Alert> implements Alert {
         this.type = AlertType.valueOf(type.toUpperCase());
         return this;
     }
-
-    @Override
-    public Alert effect(WrapperEffect effect) {
-        this.effect = effect;
-        return this;
-    }
+//
+//    @Override
+//    public Alert effect(WrapperEffect effect) {
+//        this.effect = effect;
+//        return this;
+//    }
 
     @Override
     public void show() {

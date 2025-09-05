@@ -1,7 +1,5 @@
-package io.github.gleidsonmt.glad.base.internal;
+package io.github.gleidsonmt.glad.base;
 
-import io.github.gleidsonmt.glad.base.Layout;
-import io.github.gleidsonmt.glad.base.Root;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;

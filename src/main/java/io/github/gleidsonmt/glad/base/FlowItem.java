@@ -1,9 +1,8 @@
 package io.github.gleidsonmt.glad.base;
 
-import io.github.gleidsonmt.glad.base.internal.Anchor;
+import io.github.gleidsonmt.glad.base.internal.AppearItem;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

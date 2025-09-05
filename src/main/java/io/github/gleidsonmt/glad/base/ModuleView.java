@@ -1,6 +1,5 @@
-package io.github.gleidsonmt.glad.base.internal;
+package io.github.gleidsonmt.glad.base;
 
-import io.github.gleidsonmt.glad.base.Layout;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -14,17 +13,17 @@ import java.util.Arrays;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/06/2025
  */
-public class ModuleView implements Module {
+public class ModuleView implements io.github.gleidsonmt.glad.base.Module {
 
-    private final ObservableList<Module> modules;
+    private final ObservableList<io.github.gleidsonmt.glad.base.Module> modules;
     private final String name;
-    private Module parent;
+    private io.github.gleidsonmt.glad.base.Module parent;
     private Pane container;
     private Node graphic;
 
     private boolean animated;
 
-    public ModuleView(String name, Module... _modules) {
+    public ModuleView(String name, io.github.gleidsonmt.glad.base.Module... _modules) {
         this.modules = FXCollections.observableArrayList(_modules);
         this.name = name;
 
@@ -35,7 +34,7 @@ public class ModuleView implements Module {
         });
 
 
-        modules.addListener((ListChangeListener<Module>) change ->
+        modules.addListener((ListChangeListener<io.github.gleidsonmt.glad.base.Module>) change ->
         {
             if (change.next()) {
                 modules.forEach(el -> el.setParent(ModuleView.this));
@@ -50,7 +49,7 @@ public class ModuleView implements Module {
     }
 
     @Override
-    public ObservableList<Module> getModules() {
+    public ObservableList<io.github.gleidsonmt.glad.base.Module> getModules() {
         return modules;
     }
 
@@ -60,7 +59,7 @@ public class ModuleView implements Module {
     }
 
     @Override
-    public Module getParent() {
+    public io.github.gleidsonmt.glad.base.Module getParent() {
         return parent;
     }
 

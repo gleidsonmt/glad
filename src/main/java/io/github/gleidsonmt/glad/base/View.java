@@ -1,8 +1,5 @@
-package io.github.gleidsonmt.glad.base.internal;
+package io.github.gleidsonmt.glad.base;
 
-import io.github.gleidsonmt.glad.base.Root;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import org.jetbrains.annotations.ApiStatus;
 

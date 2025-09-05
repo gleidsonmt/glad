@@ -1,8 +1,6 @@
 package io.github.gleidsonmt.glad.base;
 
-import io.github.gleidsonmt.glad.base.internal.Anchor;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import io.github.gleidsonmt.glad.base.internal.ContainerBase;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
@@ -14,7 +12,7 @@ import org.jetbrains.annotations.ApiStatus;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
-public interface Flow extends FlowItem<Flow> {
+public interface Flow extends ContainerBase<Flow> {
     // Utils
     /**
      * If they fit in the root (screen).
@@ -29,16 +27,10 @@ public interface Flow extends FlowItem<Flow> {
 
     // Setting
 
-    /**
-     * Define the content for this flow item.
-     * @param content The content to be added.
-     * @return The FlowItem.
-     */
-    Flow content(Region content);
 
-    Flow width(double width);
-
-    Flow height(double height);
+//    Flow width(double width);
+//
+//    Flow height(double height);
 
     // Showing
 
