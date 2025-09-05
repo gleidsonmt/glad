@@ -1,9 +1,9 @@
-package io.github.gleidsonmt.glad.base.internal;
+package io.github.gleidsonmt.glad.base;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  14/04/2025
  */
 public enum Anchor {
-    TOP, BOTTOM, RIGHT, LEFT, CENTER, NONE
+    TOP, BOTTOM, RIGHT, LEFT, FULL
 }
