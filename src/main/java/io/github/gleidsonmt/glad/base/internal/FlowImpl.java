@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.Root;
 import javafx.geometry.HPos;
@@ -267,7 +268,11 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         if (content == null) {
             throw new RuntimeException("Error flow can invoke a null node.");
         }
+
         StackPane.clearConstraints(content);
+        StackPane.setAlignment(content, pos);
+        StackPane.setMargin(content, insets);
+
         this.content.applyCss();
 
         double height = this.height == -1 ?
@@ -282,6 +287,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         this.content.setPrefWidth(width);
         this.content.setMinWidth(width);
 
+
         switch (anchor) {
             case TOP, BOTTOM -> {
                 content.setMaxHeight(Region.USE_PREF_SIZE);
@@ -294,8 +300,6 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
             case FULL -> content.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
             case null, default -> content.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
         }
-        StackPane.setAlignment(content, pos);
-        StackPane.setMargin(content, insets);
 
         if (!root.getChildren().contains(content)) {
             root.getChildren().add(content);

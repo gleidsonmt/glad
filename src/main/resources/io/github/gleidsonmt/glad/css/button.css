@@ -1,4 +1,3 @@
-
 Button, IconButton {
     -fx-text-fill : white;
     -fx-font-weight : bolder;
@@ -6,8 +5,8 @@ Button, IconButton {
     -fx-cursor : hand;
     -fx-effect: none;
     -fx-background-color: -fx-accent;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
+    -fx-background-radius: 12.5px;
+    -fx-border-radius: 12.5px;
     -fx-pref-height: 40px;
     -icon-color: white;
     -text-color: white;
@@ -33,18 +32,11 @@ Button:focused {
   -fx-background-color : derive(-fx-accent, -40%), derive(-fx-accent, -40%), -fx-accent;
 }
 
-
-IconButton:cancel,
-Button:cancel {
-    -fx-border-radius : 10px;
-    -fx-background-radius : 10px;
-}
-
 IconButton:cancel,
 Button:cancel,
 .btn-outlined {
-    -fx-background-color: transparent;
-    -fx-border-color: -fx-accent;
+    -fx-background-color: -light-gray;
+    -fx-border-color: -light-gray-2;
     -fx-border-width : 2px;
     -icon-color: -fx-accent;
     -text-color: -fx-accent;
@@ -67,12 +59,12 @@ Button:cancel:focused {
 .btn-outlined:hover:focused,
 Button:cancel:hover:focused,
 Button:cancel:hover {
-    -fx-border-color : derive(-fx-accent, -40%);
+    -fx-border-color: -medium-gray;
 }
 
 .btn-outlined:focused:pressed,
 Button:cancel:focused:pressed {
-    -fx-border-color : derive(-fx-accent, -90%);
+    -fx-border-color: -medium-gray-2;
 }
 
 Button .ripple {

@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import javafx.scene.layout.Region;
 
@@ -50,7 +51,7 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     @Override
     public T full() {
-        this.full = true;
+        this.anchor = Anchor.FULL;
         return (T) this;
     }
 

@@ -11,7 +11,7 @@
     -fx-min-height: 40px;
     -fx-font-family: Poppins Regular;
     -fx-cursor: hand;
-
+    -fx-font-weight: normal;
 }
 
 .date-picker .text-field {

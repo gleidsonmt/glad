@@ -69,8 +69,6 @@ public class AlertRoot extends VBox {
         }
 
 //        this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-        this.setMinWidth(300);
-        this.setMaxHeight(Region.USE_PREF_SIZE);
         this.setPadding(new Insets(20));
 //        this.container = new AlertWrapper(type);
 

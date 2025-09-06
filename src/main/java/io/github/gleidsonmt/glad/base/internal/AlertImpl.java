@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.*;
+import io.github.gleidsonmt.glad.dialog.DialogContainer;
 import io.github.gleidsonmt.glad.dialog.alert.layout.AlertRoot;
 import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import javafx.event.ActionEvent;
@@ -69,7 +70,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
                 .pos(Pos.CENTER)
                 .width(width != -1 ? width : 600)
                 .height(height != -1 ? height : 300)
-                .content(alert)
+                .content(new DialogContainer(alert))
                 .show();
 
         reset();
@@ -82,7 +83,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
     @Override
     public void hide() {
-        root.flow().remove(alert);
+        root.flow().remove(alert.getParent());
         root.wrapper().hide();
     }
 

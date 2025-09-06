@@ -1,7 +1,7 @@
 package io.github.gleidsonmt.glad.drawer;
 
-import io.github.gleidsonmt.glad.base.internal.Module;
-import io.github.gleidsonmt.glad.base.internal.View;
+import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.property.ReadOnlyObjectProperty;

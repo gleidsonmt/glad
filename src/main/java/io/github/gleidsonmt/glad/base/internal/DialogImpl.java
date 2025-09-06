@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import io.github.gleidsonmt.glad.dialog.DialogContainer;
@@ -13,7 +14,6 @@ import javafx.scene.Node;
 public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
     private final Root root;
-    protected Node content;
 
     public DialogImpl(Root root) {
         this.root = root;
@@ -25,6 +25,9 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
                 .pos(Pos.CENTER)
 //                .anchor(Anchor.BOTTOM)
 //                .with(WrapperEffect.GRAY)
+                .width(600)
+                .height(400)
+//                .anchor(Anchor.NONE)
                 .content(new DialogContainer(node))
                 .show();
     }
@@ -32,7 +35,7 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
     @Override
     public void show() {
-
+        open(super.content);
     }
 
     @Override

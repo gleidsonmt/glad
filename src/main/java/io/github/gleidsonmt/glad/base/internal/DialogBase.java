@@ -4,6 +4,7 @@ import io.github.gleidsonmt.glad.base.FlowItem;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -21,5 +22,6 @@ public interface DialogBase<T> extends FlowItem<T> {
 
     T effect(WrapperEffect effect);
 
+    @ApiStatus.Experimental
     T full();
 }
