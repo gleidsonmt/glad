@@ -23,14 +23,14 @@ public class BehaviorImpl implements Behavior {
 
     private Node aside;
 
-    private Timeline drawerTimeline;
-    private Timeline asideTimeline;
+    private final Timeline drawerTimeline;
+    private final Timeline asideTimeline;
 
-    private Alert alert;
-    private Dialog dialog;
-    private Snack snack;
+    private final Alert alert;
+    private final Dialog dialog;
+    private final Snack snack;
 
-    private BooleanProperty drawerOpen = new SimpleBooleanProperty();
+    private final BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
     public BehaviorImpl(Root root) {
         this.root = root;

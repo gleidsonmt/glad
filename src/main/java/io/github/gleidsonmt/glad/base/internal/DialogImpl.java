@@ -1,11 +1,9 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.dialog.Dialog;
 import io.github.gleidsonmt.glad.dialog.DialogContainer;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 
 /**
@@ -13,9 +11,6 @@ import javafx.scene.Node;
  * Create on  22/03/2025
  */
 public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
-
-//    private final Root root;
-//    private final Foreground foreground;
 
     public DialogImpl(Root root) {
         super(root);
@@ -27,8 +22,6 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
             root.getChildren().add(foreground.restyle(wrapperEffect, root));
         }
 
-        System.out.println("anchor = " + anchor);
-        System.out.println("pos = " + pos);
         root.flow()
                 .pos(pos)
                 .width(width == -1 ? 600 : width)
@@ -53,10 +46,7 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
     public void hide() {
         root.flow().remove(super.content.getParent());
         root.flow().remove(this.foreground);
-        // linha para ser removida
-        root.wrapper().hide();
     }
-
 
     @Override
     public Dialog effect() {

@@ -1,16 +1,14 @@
 package io.github.gleidsonmt.glad.base;
 
 
-import io.github.gleidsonmt.glad.base.internal.SnackImpl;
+import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
+import io.github.gleidsonmt.glad.base.internal.FlowImpl;
+import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
 import io.github.gleidsonmt.glad.base.responsive.Break;
 import io.github.gleidsonmt.glad.base.responsive.BreakPoint;
 import io.github.gleidsonmt.glad.base.responsive.Container;
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
-import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
-import io.github.gleidsonmt.glad.base.internal.FlowImpl;
-import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
-import io.github.gleidsonmt.glad.dialog.alert.AlertType;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -20,7 +18,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
