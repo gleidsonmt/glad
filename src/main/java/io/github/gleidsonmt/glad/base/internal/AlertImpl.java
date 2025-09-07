@@ -18,7 +18,6 @@ import java.util.Arrays;
  */
 public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
-    private Root root;
     private AlertRoot alert;
 
     private AlertType type = AlertType.INFO;
@@ -27,7 +26,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     private Snack snack;
 
     public AlertImpl(Root root) {
-        this.root = root;
+        super(root);
     }
 
     private void open(String title) {
@@ -40,10 +39,11 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
     private void open(String title, Node node, AlertType alertType, Button... buttons) {
         alert = new AlertRoot(title, node, alertType);
+
         if (node == null) {
             throw new RuntimeException("Error alert can invoke a null node.");
         }
-//
+
         if (buttons == null || buttons.length == 0) {
             Button ok = new Button("Ok");
             ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
@@ -59,12 +59,12 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
                     button.setCancelButton(true);
                 }
 
-                button.addEventFilter(ActionEvent.ACTION, _-> root.behavior().alert().hide());
+                button.addEventFilter(ActionEvent.ACTION, _ -> root.behavior().alert().hide());
             });
 
         }
 
-        root.wrapper().show(WrapperEffect.GRAY);
+        root.getChildren().add(foreground.restyle(wrapperEffect == null ? WrapperEffect.GRAY : wrapperEffect, root));
 
         root.flow()
                 .pos(Pos.CENTER)
@@ -84,6 +84,8 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     @Override
     public void hide() {
         root.flow().remove(alert.getParent());
+        root.flow().remove(foreground);
+        // Remover a linhade baixo
         root.wrapper().hide();
     }
 

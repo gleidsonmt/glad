@@ -1,7 +1,9 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Anchor;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.WrapperEffect;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 
 /**
@@ -18,6 +20,19 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
     protected double width = -1;
     protected double height = -1;
     protected boolean full = false;
+    protected Foreground foreground;
+
+    protected final Root root;
+
+    public DialogAbstract(Root root) {
+        this.foreground = new Foreground();
+        this.root = root;
+
+        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
+            root.behavior().closeDrawer();
+            root.behavior().closeAside();
+        });
+    }
 
     @Override
     public T width(double width) {

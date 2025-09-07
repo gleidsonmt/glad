@@ -14,35 +14,33 @@ import javafx.scene.Node;
  */
 public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
-    private final Root root;
-    private boolean effect = false;
+//    private final Root root;
+//    private final Foreground foreground;
 
     public DialogImpl(Root root) {
-        this.root = root;
+        super(root);
     }
 
     public void open(Node node) {
 
-        var alert = root.flow()
-                .pos(Pos.CENTER)
+        if(this.wrapperEffect != null) {
+            root.getChildren().add(foreground.restyle(wrapperEffect, root));
+        }
+
+        root.flow()
+                .pos(pos)
+                .anchor(anchor)
                 .width(width == -1 ? 600 : width)
                 .height(height == -1 ? 400 : height)
                 .anchor(anchor)
                 .content(new DialogContainer(node))
-                ;
-
-        if (wrapperEffect != null) {
-            root.wrapper()
-                    .with(alert)
-                    .show();
-        } else  {
-            alert.show();
-        }
-
-
-
+                .show();
+        reset();
     }
 
+    private void reset() {
+        wrapperEffect = null;
+    }
 
     @Override
     public void show() {
@@ -52,13 +50,15 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
     @Override
     public void hide() {
         root.flow().remove(super.content.getParent());
+        root.flow().remove(this.foreground);
+        // linha para ser removida
         root.wrapper().hide();
     }
 
 
     @Override
     public Dialog effect() {
-        this.effect = true;
+        this.wrapperEffect = WrapperEffect.GRAY;
         return this;
     }
 }

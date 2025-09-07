@@ -20,10 +20,10 @@ import javafx.scene.layout.StackPane;
 public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     private Pos pos = Pos.CENTER;
-    private final Root root;
+
 
     public FlowImpl(Root root) {
-        this.root = root;
+        super(root);
     }
 
     /**
