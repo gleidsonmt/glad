@@ -69,23 +69,22 @@ public class BehaviorImpl implements Behavior {
     @Override
     public void openDrawer() {
         if (!isDrawerOpen()) {
-            drawerTimeline.getKeyFrames().setAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(root.getLayout().getDrawer().translateXProperty(), -250)),
-                    new KeyFrame(Duration.millis(200), new KeyValue(root.getLayout().getDrawer().translateXProperty(), 0))
-            );
-            drawerTimeline.setOnFinished(null);
-            drawerTimeline.setRate(1);
-
-            root.wrapper()
-                    .onClick(_ -> closeDrawer())
-                    .show();
-
-            root.flow()
+            root.behavior()
+                    .dialog()
                     .pos(Pos.CENTER_LEFT)
+                    .effect(WrapperEffect.GRAY)
                     .content(root.getLayout().getDrawer())
                     .anchor(Anchor.LEFT)
                     .insets(Insets.EMPTY)
+                    .width(250)
                     .show();
+
+            drawerTimeline.getKeyFrames().setAll(
+                    new KeyFrame(Duration.ZERO, new KeyValue(root.getLayout().getDrawer().getParent().translateXProperty(), -250)),
+                    new KeyFrame(Duration.millis(200), new KeyValue(root.getLayout().getDrawer().getParent().translateXProperty(), 0))
+            );
+            drawerTimeline.setOnFinished(null);
+            drawerTimeline.setRate(1);
 
             drawerTimeline.play();
         }

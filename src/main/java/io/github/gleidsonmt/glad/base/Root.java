@@ -118,6 +118,7 @@ public class Root extends Container<Break> {
         return this.flow;
     }
 
+    @Deprecated(forRemoval = true)
     public Wrapper wrapper() {
         return this.wrapper;
     }

@@ -27,14 +27,16 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
             root.getChildren().add(foreground.restyle(wrapperEffect, root));
         }
 
+        System.out.println("anchor = " + anchor);
+        System.out.println("pos = " + pos);
         root.flow()
                 .pos(pos)
-                .anchor(anchor)
                 .width(width == -1 ? 600 : width)
                 .height(height == -1 ? 400 : height)
                 .anchor(anchor)
                 .content(new DialogContainer(node))
                 .show();
+        
         reset();
     }
 
