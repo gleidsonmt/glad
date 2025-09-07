@@ -1,9 +1,8 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
-import io.github.gleidsonmt.glad.dialog.Dialog;
-import io.github.gleidsonmt.glad.dialog.DialogContainer;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
+import io.github.gleidsonmt.glad.base.dialog.Dialog;
 import javafx.scene.Node;
 
 /**

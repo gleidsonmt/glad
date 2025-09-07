@@ -1,9 +1,6 @@
-package io.github.gleidsonmt.glad.dialog;
+package io.github.gleidsonmt.glad.base.dialog;
 
-import io.github.gleidsonmt.glad.base.FlowItem;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.DialogBase;
-import javafx.scene.Node;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
@@ -14,7 +11,6 @@ public interface Dialog extends DialogBase<Dialog> {
 
     @ApiStatus.Experimental
     Dialog effect();
-
 
 
 }

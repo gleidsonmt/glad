@@ -1,5 +1,6 @@
-package io.github.gleidsonmt.glad.base;
+package io.github.gleidsonmt.glad.base.dialog.snack;
 
+import io.github.gleidsonmt.glad.base.FlowItem;
 import javafx.scene.Node;
 
 /**

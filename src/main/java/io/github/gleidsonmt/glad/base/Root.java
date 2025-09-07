@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.base;
 
 
+import io.github.gleidsonmt.glad.base.dialog.Wrapper;
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.internal.WrapperImpl;

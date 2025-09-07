@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.dialog.alert.icons;
+package io.github.gleidsonmt.glad.base.dialog.alert.icons;
 
 import javafx.geometry.Pos;
 import javafx.scene.Group;

@@ -1,6 +1,8 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.*;
+import io.github.gleidsonmt.glad.base.dialog.Wrapper;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;

@@ -1,9 +1,7 @@
-package io.github.gleidsonmt.glad.base;
+package io.github.gleidsonmt.glad.base.dialog;
 
 import io.github.gleidsonmt.glad.base.internal.DialogBase;
-import io.github.gleidsonmt.glad.dialog.Dialog;
-import io.github.gleidsonmt.glad.dialog.alert.AlertType;
-import javafx.scene.Node;
+import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
 import javafx.scene.control.Button;
 import org.jetbrains.annotations.ApiStatus;
 

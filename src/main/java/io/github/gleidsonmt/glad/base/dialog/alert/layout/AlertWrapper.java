@@ -1,7 +1,7 @@
-package io.github.gleidsonmt.glad.dialog.alert.layout;
+package io.github.gleidsonmt.glad.base.dialog.alert.layout;
 
-import io.github.gleidsonmt.glad.dialog.DialogContainer;
-import io.github.gleidsonmt.glad.dialog.alert.AlertType;
+import io.github.gleidsonmt.glad.base.internal.DialogContainer;
+import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/11/2024
  */
+@Deprecated(forRemoval = true)
 public class AlertWrapper extends VBox {
 
     private final AlertContent content;

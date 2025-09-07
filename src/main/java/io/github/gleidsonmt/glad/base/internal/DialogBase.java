@@ -1,8 +1,7 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.FlowItem;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
-import javafx.scene.Node;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.scene.layout.Region;
 import org.jetbrains.annotations.ApiStatus;
 

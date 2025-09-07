@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.dialog.alert;
+package io.github.gleidsonmt.glad.base.dialog.alert;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com

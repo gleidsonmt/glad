@@ -2,7 +2,7 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 

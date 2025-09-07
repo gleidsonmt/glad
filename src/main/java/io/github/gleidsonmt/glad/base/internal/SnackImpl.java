@@ -2,7 +2,7 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.Snack;
+import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -49,10 +49,8 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
         root.flow()
                 .pos(Pos.BOTTOM_CENTER)
                 .content(bar)
-                .anchor(Anchor.BOTTOM)
                 .insets(new Insets(20))
                 .show();
-
 
         bar.applyCss();
         timeline.getKeyFrames().setAll(

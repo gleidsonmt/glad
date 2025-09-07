@@ -16,12 +16,12 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.base.responsive;
     exports io.github.gleidsonmt.glad.demos;
 
-    exports io.github.gleidsonmt.glad.dialog;
-    exports io.github.gleidsonmt.glad.dialog.alert;
+
 
     exports io.github.gleidsonmt.glad;
 
     exports io.github.gleidsonmt.glad.base;
+    exports io.github.gleidsonmt.glad.base.dialog.alert;
     exports io.github.gleidsonmt.glad.theme;
 
     exports io.github.gleidsonmt.glad.controls;
@@ -40,4 +40,8 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.base.responsive.sizer;
     exports io.github.gleidsonmt.glad.errors;
     exports io.github.gleidsonmt.glad.controls.loaders;
+    exports io.github.gleidsonmt.glad.base.dialog;
+    opens io.github.gleidsonmt.glad.base.dialog to javafx.fxml;
+    exports io.github.gleidsonmt.glad.base.dialog.snack;
+    opens io.github.gleidsonmt.glad.base.dialog.snack to javafx.fxml;
 }

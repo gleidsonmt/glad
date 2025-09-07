@@ -1,7 +1,10 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.*;
-import io.github.gleidsonmt.glad.dialog.Dialog;
+import io.github.gleidsonmt.glad.base.dialog.Alert;
+import io.github.gleidsonmt.glad.base.dialog.Dialog;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
+import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;

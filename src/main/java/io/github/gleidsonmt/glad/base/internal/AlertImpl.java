@@ -1,9 +1,11 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.*;
-import io.github.gleidsonmt.glad.dialog.DialogContainer;
-import io.github.gleidsonmt.glad.dialog.alert.layout.AlertRoot;
-import io.github.gleidsonmt.glad.dialog.alert.AlertType;
+import io.github.gleidsonmt.glad.base.dialog.Alert;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
+import io.github.gleidsonmt.glad.base.dialog.alert.layout.AlertLayout;
+import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
+import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -18,7 +20,7 @@ import java.util.Arrays;
  */
 public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
-    private AlertRoot alert;
+    private AlertLayout alert;
 
     private AlertType type = AlertType.INFO;
     private Button[] buttons;
@@ -38,7 +40,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     }
 
     private void open(String title, Node node, AlertType alertType, Button... buttons) {
-        alert = new AlertRoot(title, node, alertType);
+        alert = new AlertLayout(title, node, alertType);
 
         if (node == null) {
             throw new RuntimeException("Error alert can invoke a null node.");

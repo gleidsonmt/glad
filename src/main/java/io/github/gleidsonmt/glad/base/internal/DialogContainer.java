@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.dialog;
+package io.github.gleidsonmt.glad.base.internal;
 
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;

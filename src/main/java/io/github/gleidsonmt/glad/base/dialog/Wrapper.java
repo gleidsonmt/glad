@@ -1,11 +1,10 @@
-package io.github.gleidsonmt.glad.base;
+package io.github.gleidsonmt.glad.base.dialog;
 
-import io.github.gleidsonmt.glad.App;
+import io.github.gleidsonmt.glad.base.Flow;
+import io.github.gleidsonmt.glad.base.FlowItem;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
-import org.jetbrains.annotations.ApiStatus;
 
 /**
  * The wrapper interface disposes a region with color to focus on the element stacked.

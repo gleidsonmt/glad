@@ -1,12 +1,13 @@
-package io.github.gleidsonmt.glad.dialog.alert.layout;
+package io.github.gleidsonmt.glad.base.dialog.alert.layout;
 
-import io.github.gleidsonmt.glad.dialog.alert.AlertType;
+import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
 import javafx.scene.layout.Pane;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/11/2024
  */
+@Deprecated(forRemoval = true)
 public class AlertHeader extends Pane {
 
     public AlertHeader(AlertType type) {

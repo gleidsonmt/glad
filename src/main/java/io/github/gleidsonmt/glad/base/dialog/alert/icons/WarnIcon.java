@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.dialog.alert.icons;
+package io.github.gleidsonmt.glad.base.dialog.alert.icons;
 
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -10,22 +10,22 @@ import javafx.scene.shape.SVGPath;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/11/2024
  */
-public class ErrorIcon extends StackPane {
+public class WarnIcon extends StackPane {
 
-    public ErrorIcon() {
+    public WarnIcon() {
         StackPane.setAlignment(this, Pos.TOP_CENTER);
         this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-        this.getStyleClass().addAll("icon", "error-icon");
+        this.getStyleClass().addAll("icon","warn-icon");
         this.getChildren().add(createSVG());
-        this.setPrefSize(40, 40);
-        this.setMaxSize(40, 40);
+        this.setPrefSize(40,40);
+        SVGPath svg = new SVGPath();
+        svg.setContent("M 200 350 L 350 100 L 500 350 L 200 350");
+        getChildren().add(createSVG());
     }
 
     private Group createSVG() {
         SVGPath pth = new SVGPath();
-        pth.setContent("m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z");
-        pth.setScaleX(0.03);
-        pth.setScaleY(0.03);
+        pth.setContent("m40-120 440-760 440 760H40Zm138-80h604L480-720 178-200Zm302-40q17 0 28.5-11.5T520-280q0-17-11.5-28.5T480-320q-17 0-28.5 11.5T440-280q0 17 11.5 28.5T480-240Zm-40-120h80v-200h-80v200Zm40-100Z");
 
         Group group = new Group(pth);
         group.setAutoSizeChildren(true);

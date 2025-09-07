@@ -25,15 +25,7 @@ public interface Flow extends ContainerBase<Flow> {
     @ApiStatus.Experimental
     void clearConstraints(Region node);
 
-    // Setting
-
-
-//    Flow width(double width);
-//
-//    Flow height(double height);
-
     // Showing
-
     void show();
 
     void show(Region node);

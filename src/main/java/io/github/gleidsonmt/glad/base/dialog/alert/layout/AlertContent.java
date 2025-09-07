@@ -1,6 +1,6 @@
-package io.github.gleidsonmt.glad.dialog.alert.layout;
+package io.github.gleidsonmt.glad.base.dialog.alert.layout;
 
-import io.github.gleidsonmt.glad.dialog.alert.AlertType;
+import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  07/11/2024
  */
+@Deprecated(forRemoval = true)
 public class AlertContent extends VBox {
 
     private final Text title;
