@@ -12,6 +12,7 @@ import org.jetbrains.annotations.ApiStatus;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
+@Deprecated
 public interface Wrapper extends FlowItem<Wrapper> {
 
     void show(WrapperEffect effect);

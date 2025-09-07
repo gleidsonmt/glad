@@ -32,6 +32,10 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
             root.behavior().closeDrawer();
             root.behavior().closeAside();
         });
+
+        this.foreground.addEventFilter(MouseEvent.MOUSE_CLICKED, e -> {
+           this.hide();
+        });
     }
 
     @Override

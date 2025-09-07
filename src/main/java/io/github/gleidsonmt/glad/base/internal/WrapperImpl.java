@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
+@Deprecated
 public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
 
     private final Root root;
