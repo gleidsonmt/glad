@@ -16,7 +16,6 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
 
     protected Node content;
     protected Pos pos;
-    protected WrapperEffect effect = WrapperEffect.GRAY;
     protected Insets insets = Insets.EMPTY;
     protected Anchor anchor = Anchor.NONE;
 

@@ -34,7 +34,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         anchor = null;
         pos = Pos.CENTER;
         insets = Insets.EMPTY;
-        effect = null;
+        wrapperEffect = null;
         width = -1;
         height = -1;
         full = false;

@@ -64,7 +64,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
         }
 
-        root.wrapper().show(this.effect);
+        root.wrapper().show(WrapperEffect.GRAY);
 
         root.flow()
                 .pos(Pos.CENTER)
@@ -77,7 +77,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     }
 
     private void reset() {
-        this.effect = WrapperEffect.GRAY;
+        this.wrapperEffect = null;
         this.buttons = null;
     }
 

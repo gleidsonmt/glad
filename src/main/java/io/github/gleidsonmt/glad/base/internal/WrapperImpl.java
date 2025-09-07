@@ -1,9 +1,6 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Anchor;
-import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.Wrapper;
-import io.github.gleidsonmt.glad.base.WrapperEffect;
+import io.github.gleidsonmt.glad.base.*;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +15,8 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
     private final Root root;
     private final Foreground foreground;
 
+    private Flow flow;
+
     private Region with;
 
     private EventHandler<MouseEvent> onClick;
@@ -26,7 +25,7 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
         this.root = root;
         this.foreground = new Foreground();
 
-        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, e -> {
+        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
             root.behavior().closeDrawer();
             root.behavior().closeAside();
         });
@@ -95,6 +94,13 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
         this.with = node;
         return this;
     }
+
+    @Override
+    public Wrapper with(Flow node) {
+        this.flow = node;
+        return this;
+    }
+
 
     @Override
     public void hide() {

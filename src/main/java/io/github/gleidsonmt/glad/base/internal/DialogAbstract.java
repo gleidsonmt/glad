@@ -14,7 +14,7 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     protected String title;
     protected Region content;
-    protected WrapperEffect effect = WrapperEffect.GRAY;
+    protected WrapperEffect wrapperEffect = null;
     protected double width = -1;
     protected double height = -1;
     protected boolean full = false;
@@ -45,7 +45,7 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     @Override
     public T effect(WrapperEffect effect) {
-        this.effect = effect;
+        this.wrapperEffect = effect;
         return (T) this;
     }
 

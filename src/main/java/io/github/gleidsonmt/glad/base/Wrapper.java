@@ -20,5 +20,7 @@ public interface Wrapper extends FlowItem<Wrapper> {
 
     Wrapper with(Region node);
 
+    Wrapper with(Flow node);
+
     boolean isShowing();
 }
