@@ -49,7 +49,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
         if (buttons == null || buttons.length == 0) {
             Button ok = new Button("Ok");
             ButtonBar.setButtonData(ok, ButtonBar.ButtonData.OK_DONE);
-            ok.setOnAction(e -> root.behavior().alert().hide());
+            ok.setOnAction(_ -> root.behavior().alert().hide());
             alert.getButtonBar().getButtons().setAll(ok);
         } else {
             alert.getButtonBar().getButtons().setAll(buttons);
@@ -63,7 +63,6 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
                 button.addEventFilter(ActionEvent.ACTION, _ -> root.behavior().alert().hide());
             });
-
         }
 
         root.getChildren().add(foreground.restyle(wrapperEffect == null ? WrapperEffect.GRAY : wrapperEffect, root));
@@ -87,8 +86,6 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     public void hide() {
         root.flow().remove(alert.getParent());
         root.flow().remove(foreground);
-        // Remover a linhade baixo
-        root.wrapper().hide();
     }
 
     @Override

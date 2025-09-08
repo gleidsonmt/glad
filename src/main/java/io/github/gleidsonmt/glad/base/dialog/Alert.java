@@ -19,5 +19,4 @@ public interface Alert extends DialogBase<Alert> {
     @ApiStatus.Experimental
     Alert buttons(Button... buttons);
 
-
 }
