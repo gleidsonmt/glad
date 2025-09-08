@@ -269,14 +269,19 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
             throw new RuntimeException("Error flow can invoke a null node.");
         }
 
+        if (!root.getChildren().contains(content)) {
+            root.getChildren().add(content);
+        }
+
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, pos);
         StackPane.setMargin(content, insets);
 
         this.content.applyCss();
+        this.content.layout();
 
         double height = this.height == -1 ?
-                this.content.prefHeight(-1) : this.height;
+                this.content.prefHeight(-1)  : this.height;
 
         this.content.setPrefHeight(height);
         this.content.setMinHeight(height);
@@ -287,23 +292,22 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         this.content.setPrefWidth(width);
         this.content.setMinWidth(width);
 
-
         switch (anchor) {
             case TOP, BOTTOM -> {
-                content.setMaxHeight(Region.USE_PREF_SIZE);
+                content.setMaxHeight(height);
                 content.setMaxWidth(-1);
             }
             case LEFT, RIGHT -> {
-                content.setMaxWidth(Region.USE_PREF_SIZE);
+                content.setMaxWidth(width);
                 content.setMaxHeight(-1);
             }
-            case FULL -> content.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
-            case null, default -> content.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+            case FULL -> content.setMaxSize(-1, -1);
+            case null, default -> {
+                content.setMaxWidth(width);
+                content.setMaxHeight(height);
+            }
         }
 
-        if (!root.getChildren().contains(content)) {
-            root.getChildren().add(content);
-        }
         reset();
     }
 

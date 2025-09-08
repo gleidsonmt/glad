@@ -2,9 +2,12 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 /**
@@ -20,11 +23,15 @@ public class SnackBar extends GridPane  {
     public SnackBar(String message) {
         this.text = new Text(message);
         this.textFlow = createTextFlow();
+        setHgap(10);
         getStyleClass().addAll("min-h-50 bg-white depth-1 align-center rounded border-1 border-light-gray".split(" "));
         setPadding(new Insets(5, 20, 5, 20));
-        setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+        textFlow.setTextAlignment(TextAlignment.CENTER);
 
-        add(textFlow, 1, 0);
+        add(textFlow, 1, 0,1,1);
+        GridPane.setHgrow(textFlow, Priority.ALWAYS);
+        GridPane.setVgrow(textFlow, Priority.ALWAYS);
+
     }
 
     private TextFlow createTextFlow() {
@@ -36,6 +43,8 @@ public class SnackBar extends GridPane  {
 
     public void setGraphic(Node graphic) {
         add(graphic, 0, 0);
+        GridPane.setHgrow(graphic, Priority.ALWAYS);
+
     }
 
     public Node getGraphic() {

@@ -1,16 +1,23 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
+import io.github.gleidsonmt.glad.base.dialog.snack.SnackAction;
+import io.github.gleidsonmt.glad.base.dialog.snack.SnackItem;
+import io.github.gleidsonmt.glad.controls.button.Button;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Separator;
 import javafx.util.Duration;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,6 +31,8 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     private String message;
     private Node graphic;
 
+    private List<SnackItem> actions;
+
     public SnackImpl(Root root) {
         this.root = root;
     }
@@ -32,6 +41,20 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     public void show() {
         var bar = new SnackBar(this.message);
         if (graphic != null) bar.setGraphic(graphic);
+        if(actions != null) {
+            var ref = new Object() {
+                int count = graphic != null ? 2 : 1;
+            };
+            actions.forEach(item -> {
+                Button button = new Button(item.message());
+                button.setOnAction(item.action());
+                button.getStyleClass().addAll("btn-outlined", "snack-action");
+                bar.add(button, ref.count++, 0);
+                bar.add(new Separator(Orientation.VERTICAL), ref.count++, 0);
+            });
+            bar.getChildren().removeLast();
+
+        }
         final Timeline timeline = new Timeline();
 
         TimerTask hideSnack = new TimerTask() {
@@ -48,14 +71,15 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
         root.flow()
                 .pos(Pos.BOTTOM_CENTER)
+                .width(-1)
+                .height(-1)
                 .content(bar)
                 .insets(new Insets(20))
                 .show();
 
-        bar.applyCss();
         timeline.getKeyFrames().setAll(
                 new KeyFrame(Duration.millis(0),
-                        new KeyValue(bar.translateYProperty(), bar.prefHeight(-1))),
+                        new KeyValue(bar.translateYProperty(), bar.getPrefHeight())),
                 new KeyFrame(Duration.millis(500),
                         new KeyValue(bar.translateYProperty(), 0))
         );
@@ -67,6 +91,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
     private void reset() {
         this.graphic = null;
+        this.actions = null;
     }
 
     @Override
@@ -85,6 +110,12 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     @Override
     public Snack graphic(Node graphic) {
         this.graphic = graphic;
+        return this;
+    }
+
+    @Override
+    public final Snack action(SnackItem... actions) {
+        this.actions = List.of(actions);
         return this;
     }
 }
