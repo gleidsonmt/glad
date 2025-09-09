@@ -40,6 +40,7 @@ public class SimpleDrawer extends VBox {
 
         ScrollPane scroll = new ScrollPane(drawerContent);
         scroll.setFitToWidth(true);
+        drawerItems.setItems();
 
         for (Module module : modules) {
             if (module instanceof View view) {

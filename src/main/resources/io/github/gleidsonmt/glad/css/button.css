@@ -50,18 +50,10 @@ Button:cancel:hover  {
 
 .btn-outlined:focused,
 IconButton:cancel:focused,
-Button:cancel:focused {
-    -fx-background-color: transparent;
-    -fx-border-color : -fx-accent;
-    -fx-border-width : 2px;
-}
-
+Button:cancel:focused ,
 .btn-outlined:hover:focused,
 Button:cancel:hover:focused,
-Button:cancel:hover {
-    -fx-border-color: -medium-gray;
-}
-
+Button:cancel:hover,
 .btn-outlined:focused:pressed,
 Button:cancel:focused:pressed {
     -fx-border-color: -medium-gray-2;
