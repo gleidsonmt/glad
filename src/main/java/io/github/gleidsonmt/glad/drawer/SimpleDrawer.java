@@ -20,9 +20,9 @@ import javafx.util.Callback;
  */
 public class SimpleDrawer extends VBox {
 
-    private ListView<DrawerItem> drawerItems = new ListView<>();
+    private final ListView<Module> drawerItems = new ListView<>();
 
-    public SimpleDrawer(Module... modules) {
+    public SimpleDrawer() {
 
         GridPane drawerHeader = new GridPane();
         Label logo = new Label("Drawer, CO");
@@ -40,17 +40,16 @@ public class SimpleDrawer extends VBox {
 
         ScrollPane scroll = new ScrollPane(drawerContent);
         scroll.setFitToWidth(true);
-        drawerItems.setItems();
 
-        for (Module module : modules) {
-            if (module instanceof View view) {
-                drawerItems.getItems().add(
-                        new SimpleDrawerItem(
-                                module.getName(), module.getGraphic(), view.getContent()
-                        )
-                );
-            }
-        }
+//        for (Module module : modules) {
+//            if (module instanceof View view) {
+//                drawerItems.getItems().add(
+//                        new SimpleDrawerItem(
+//                                module.getName(), module.getGraphic(), view.getContent()
+//                        )
+//                );
+//            }
+//        }
 
 //        drawerItems.setItems(FXCollections.observableArrayList(
 //                new NotificationDrawerItem("Orders", new SVGIcon(Icon.ORDERS), createCustomLabel(),
@@ -65,7 +64,7 @@ public class SimpleDrawer extends VBox {
 
         drawerItems.setCellFactory(new Callback<>() {
             @Override
-            public ListCell<DrawerItem> call(ListView<DrawerItem> drawerItemListView) {
+            public ListCell<Module> call(ListView<Module> drawerItemListView) {
                 return new ListCell<>() {
                     {
                         selectedProperty().addListener((_, _, newVal) -> {
@@ -80,7 +79,7 @@ public class SimpleDrawer extends VBox {
                     }
 
                     @Override
-                    protected void updateItem(DrawerItem item, boolean empty) {
+                    protected void updateItem(Module item, boolean empty) {
                         super.updateItem(item, empty);
                         if (item != null && !empty) {
                             DrawerCell cell = new DrawerCell(item);
@@ -102,8 +101,12 @@ public class SimpleDrawer extends VBox {
         getStyleClass().addAll("bg-background", "border-r-2", "border-light-gray-2", "padding-10", "min-w-300");
     }
 
-    public ReadOnlyObjectProperty<DrawerItem> selectedProperty() {
+    public ReadOnlyObjectProperty<Module> selectedProperty() {
         return drawerItems.getSelectionModel().selectedItemProperty();
+    }
+
+    public final void setCellFactory(Callback<ListView<Module>, ListCell<Module>> value) {
+        drawerItems.setCellFactory(value);
     }
 
     private Node createCustomLabel() {
@@ -114,7 +117,7 @@ public class SimpleDrawer extends VBox {
         return label;
     }
 
-    public ObservableList<DrawerItem> getDrawerItems() {
+    public ObservableList<Module> getDrawerItems() {
         return drawerItems.getItems();
     }
 }

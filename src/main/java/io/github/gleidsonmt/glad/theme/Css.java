@@ -6,6 +6,7 @@ package io.github.gleidsonmt.glad.theme;
  */
 public enum Css {
 
+//    DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
     DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
 
     TOGGLE_SWITCH("toggle-switch.css"),
@@ -35,7 +36,8 @@ public enum Css {
     PROGRESS_BAR("progress-bar.css"),
     TEXT_FIELD("text-field.css"),
     SPINNER("spinner.css"),
-    DATE_PICKER("date_picker.css");
+    DATE_PICKER("date_picker.css"),
+    TITLED_PANE("titled-pane.css");
 
     private String url;
 

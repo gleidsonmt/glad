@@ -2,7 +2,6 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
-import io.github.gleidsonmt.glad.base.dialog.snack.SnackAction;
 import io.github.gleidsonmt.glad.base.dialog.snack.SnackItem;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import javafx.animation.KeyFrame;

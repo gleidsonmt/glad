@@ -19,6 +19,7 @@ module io.github.gleidsonmt.glad {
 
 
     exports io.github.gleidsonmt.glad;
+    exports io.github.gleidsonmt.glad.base.internal;
 
     exports io.github.gleidsonmt.glad.base;
     exports io.github.gleidsonmt.glad.base.dialog.alert;

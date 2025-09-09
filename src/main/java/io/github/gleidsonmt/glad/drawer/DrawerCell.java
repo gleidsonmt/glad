@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.drawer;
 
+import io.github.gleidsonmt.glad.base.Module;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -14,7 +15,7 @@ public class DrawerCell extends GridPane {
 
     private final Pane pane;
 
-    public DrawerCell(DrawerItem item) {
+    public DrawerCell(Module item) {
         Text text = new Text(item.getName());
         pane = new Pane();
         pane.setMinWidth(5);
@@ -26,7 +27,7 @@ public class DrawerCell extends GridPane {
         add(pane, 0, 0, 1, REMAINING);
         if (item.getGraphic() != null) add(item.getGraphic(), 1, 0);
         add(text, item.getGraphic() != null ? 2 : 1, 0);
-        if (item.getIcon() != null) add(item.getIcon(), 3, 0);
+//        if (item.getIcon() != null) add(item.getIcon(), 3, 0);
 
         setHgap(10);
         getStyleClass().addAll("rounded", "border-2", "border-transparent", "padding-5");
