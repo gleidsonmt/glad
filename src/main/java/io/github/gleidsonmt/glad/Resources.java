@@ -26,4 +26,8 @@ public interface Resources {
         return new Image(Objects.requireNonNull(Resources.class.getResource("img/" + name)).toExternalForm());
     }
 
+    static String getDrawer(String name) {
+        return Objects.requireNonNull(Resources.class.getResource("drawer/" + name)).toExternalForm();
+    }
+
 }

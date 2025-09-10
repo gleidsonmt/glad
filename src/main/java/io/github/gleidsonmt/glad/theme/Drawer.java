@@ -2,19 +2,21 @@ package io.github.gleidsonmt.glad.theme;
 
 import org.jetbrains.annotations.Contract;
 
+import javax.xml.crypto.Data;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  01/02/2025
+ * Create on  10/09/2025
  */
-public enum Font implements Neutral {
+public enum Drawer implements Neutral {
 
-    INSTAGRAM("instagram.css"),
-    POPPINS("poppins.css");
+    DEFAULT("drawer.css"),
+    DRAWER1("drawer-plus.css");
 
     private final String url;
 
     @Contract(pure = true)
-    Font(String url) {
+    Drawer(String url) {
         this.url = url;
     }
 
@@ -23,5 +25,4 @@ public enum Font implements Neutral {
     public String getUrl() {
         return url;
     }
-
 }

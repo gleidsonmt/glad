@@ -3,6 +3,7 @@ package io.github.gleidsonmt.glad.theme;
 import io.github.gleidsonmt.glad.Resources;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.Arrays;
 
@@ -23,9 +24,53 @@ public class ThemeProvider {
         Arrays.stream(css).forEach(el -> parent.getStylesheets().add(Resources.getCss(el.getUrl())));
     }
 
+    @Deprecated(forRemoval = true)
+    public static void install(Parent parent) {
+        ThemeProvider.install(parent,
+                Css.COLORS,
+                Css.TYPOGRAPHIC,
+                Css.SHAPES,
+                Css.PROPERTIES,
+                Css.BOOTSTRAP,
+                Css.IMMERSIVE_SCROLL,
+                Css.TAB_PANE,
+                Css.PROGRESS_BAR,
+                Css.HYPERLINK,
+                Css.COMBO_BOX,
+                Css.PROGRESS_BAR
+        );
+    }
+
+//    @ApiStatus.Experimental
+//    public static void install(Scene scene, Neutral... css) {
+//        Arrays.stream(css).forEach(el -> scene.getStylesheets().add(Resources.getFont(el.getUrl())));
+//    }
+
+    /**
+     * Install the css in the scene.
+     * @param scene the scene to install the css.
+     * @param css the css to install.
+     */
+    @ApiStatus.Experimental
+    public static void install(Scene scene, Neutral... css) {
+        Arrays.stream(css).forEach(el -> {
+            switch (el) {
+                case Font font -> install(scene, font);
+                case Css cs -> install(scene, cs);
+                case Drawer drawer -> install(scene, drawer);
+                default -> throw new IllegalArgumentException("Invalid type of css: " + el.getClass().getName());
+            }
+        });
+    }
+
+    public static void install(Scene scene, Drawer... css) {
+        Arrays.stream(css).forEach(el -> scene.getStylesheets().add(Resources.getDrawer(el.getUrl())));
+    }
+
     public static void install(Scene scene, Font... css) {
         Arrays.stream(css).forEach(el -> scene.getStylesheets().add(Resources.getFont(el.getUrl())));
     }
+
     /**
      * Install the css in the scene.
      * @param scene the scene to install the css.
@@ -44,21 +89,6 @@ public class ThemeProvider {
         });
     }
 
-    @Deprecated(forRemoval = true)
-    public static void install(Parent parent) {
-        ThemeProvider.install(parent,
-                Css.COLORS,
-                Css.TYPOGRAPHIC,
-                Css.SHAPES,
-                Css.PROPERTIES,
-                Css.BOOTSTRAP,
-                Css.IMMERSIVE_SCROLL,
-                Css.TAB_PANE,
-                Css.PROGRESS_BAR,
-                Css.HYPERLINK,
-                Css.COMBO_BOX,
-                Css.PROGRESS_BAR
-        );
-    }
+
 
 }

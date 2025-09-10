@@ -18,6 +18,7 @@ import javafx.util.Callback;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  17/04/2025
  */
+@Deprecated
 public class SimpleDrawer extends VBox {
 
     private final ListView<Module> drawerItems = new ListView<>();

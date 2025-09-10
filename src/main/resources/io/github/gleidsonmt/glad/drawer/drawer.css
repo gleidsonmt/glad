@@ -1,0 +1,158 @@
+#drawer {
+    -fx-padding: 5px;
+    -fx-effect: none;
+    -fx-border-color: -medium-gray;
+    -fx-border-width: 0px 1px 0px 0px;
+    -fx-background-color: -fx-background;
+}
+
+#drawer .text {
+    -fx-font-family: "Instagram Sans";
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+}
+
+#drawer .drawer-item {
+    -fx-background-radius: 6px;
+    -text-color: -dark-gray;
+}
+
+#drawer .module-selected .title .text,
+#drawer .drawer-item:selected .text {
+    -fx-font-weight: bold;
+}
+
+#drawer .drawer-item:selected {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+}
+
+#drawer .drawer-item:selected .text,
+#drawer .drawer-item:selected:hover .text {
+    -fx-fill: white;
+}
+
+#drawer .drawer-item .text {
+    -fx-fill: -text-color;
+}
+
+#drawer .drawer-item:hover .text {
+    -fx-fill: -fx-accent;
+}
+
+#drawer .drawer-menu {
+    -fx-background-color: transparent;
+}
+
+#drawer .drawer-item,
+#drawer .titled-pane .title {
+    -fx-pref-height: 40px;
+    -fx-min-height: 40px;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+}
+
+
+#drawer .titled-pane .title {
+    -fx-padding: 10px 5px 10px 10px;
+}
+
+#drawer .titled-pane .title .text {
+    -fx-fill: -text-color;
+}
+
+#drawer .titled-pane .content {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-effect: none;
+    -fx-padding: 0px 1px 0px 0px;
+}
+
+#drawer .titled-pane .content .container {
+    -fx-padding: 10px 10px 10px 10px;
+}
+
+
+#drawer > .module-selected > .title,
+#drawer > .module-selected:focused:expanded > .title,
+#drawer > .module-selected:expanded > .title,
+#drawer > .titled-pane > .title {
+    -fx-padding: 10px;
+}
+
+#drawer > .module-selected:expanded  .title .arrow-button .arrow,
+#drawer > .module-selected  .title .arrow-button .arrow,
+#drawer > .module-selected > .title .text {
+    -fx-fill: white;
+    -fx-background-color: white;
+}
+
+#drawer > .module-selected > .title .icon-container .icon {
+    -fx-fill: white;
+}
+
+.titled-pane .title .arrow-button .arrow {
+    -fx-shape : "M11.1808 15.8297L6.54199 9.20285C5.89247 8.27496 6.55629 7 7.68892 7L16.3111 7C17.4437 7 18.1075 8.27496 17.458 9.20285L12.8192 15.8297C12.4211 16.3984 11.5789 16.3984 11.1808 15.8297Z";
+
+    -fx-min-width : 6px;
+    -fx-pref-width : 9px;
+    -fx-pref-height : 7px;
+    -fx-min-height : 0px;
+
+    -fx-background-color: -text-color;
+
+}
+
+.titled-pane:focused .title .arrow-button .arrow,
+.titled-pane:expanded .title .arrow-button .arrow {
+    -fx-effect : none;
+    -fx-focus-color : transparent;
+}
+
+#drawer > .module-selected:focused:expanded > .title .arrow {
+    -fx-max-height: 1px;
+    -fx-min-height: 1px;
+}
+
+#drawer .drawer-menu  .drawer-item {
+    -fx-background-color: transparent;
+}
+
+#drawer .drawer-menu .drawer-item:hover:selected,
+#drawer .drawer-menu .drawer-item:selected:hover,
+#drawer .drawer-menu .drawer-item:selected {
+    -fx-background-color: derive(-fx-accent, 110%);
+}
+
+#drawer .drawer-menu .drawer-item:hover {
+    -fx-background-color: transparent;
+}
+
+#drawer .drawer-menu .drawer-item:hover .text {
+    -fx-fill: -fx-accent;
+}
+
+#drawer .drawer-menu .drawer-item:hover:selected .text {
+    -fx-fill: -fx-accent;
+}
+
+#drawer .drawer-menu .drawer-item:selected .text {
+    -fx-fill: -fx-accent;
+}
+
+#drawer .drawer-menu-selected .title  {
+    -fx-background-color: -fx-accent;
+}
+
+#drawer .module-selected .title {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+}
+
+#drawer .module-selected .title .icon,
+#drawer .module-selected .title .arrow,
+#drawer .module-selected .title .text {
+    -fx-fill: white;
+    -fx-background-color: white;
+}

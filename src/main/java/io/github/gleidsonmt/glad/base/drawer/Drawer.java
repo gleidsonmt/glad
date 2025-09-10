@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -280,11 +281,14 @@ public class Drawer extends VBox {
         return b;
     }
 
+    public void build() {
+        System.out.println("cellFactoryProperty().get() = " + cellFactoryProperty().get().call(this));
+
+    }
+
     public void makeFirstLevel(Module module) {
-        System.out.println("module = " + (module instanceof ModuleSeparator));
-        System.out.println("module = " + module);
+
         if (module instanceof ModuleSeparator moduleSeparator) {
-            System.out.println("box = " + moduleSeparator);
 
             Label label = new Label(moduleSeparator.getText());
             label.setGraphic(moduleSeparator.getIcon());
@@ -409,5 +413,19 @@ public class Drawer extends VBox {
     public ObjectProperty<Module> currentModuleProperty() {
         return currentModule;
     }
+
+    private ObjectProperty<Callback<Drawer, ListCell<Module>>> cellFactory;
+
+    public final ObjectProperty<Callback<Drawer, ListCell<Module>>> cellFactoryProperty() {
+        if (cellFactory == null) {
+            cellFactory = new SimpleObjectProperty<>(this, "cellFactory");
+        }
+        return cellFactory;
+    }
+
+    public final void setCellFactory(Callback<Drawer, ListCell<Module>> value) {
+        cellFactoryProperty().set(value);
+    }
+
 
 }

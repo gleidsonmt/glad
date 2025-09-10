@@ -6,6 +6,7 @@ module io.github.gleidsonmt.glad {
     requires org.jetbrains.annotations;
     requires java.desktop;
     requires javafx.base;
+    requires java.xml.crypto;
 
 //    requires org.scenicview.scenicview;
 //    requires fr.brouillard.oss.cssfx;

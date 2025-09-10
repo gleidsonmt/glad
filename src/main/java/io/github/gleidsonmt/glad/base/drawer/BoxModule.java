@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
  */
 public class  BoxModule extends VBox {
 
-    private String name;
+    private final String name;
 
     public BoxModule(String name, ToggleButton toggleButton) {
         this.name = name;

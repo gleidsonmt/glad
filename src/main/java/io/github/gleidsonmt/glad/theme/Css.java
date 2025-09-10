@@ -4,7 +4,7 @@ package io.github.gleidsonmt.glad.theme;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  31/01/2025
  */
-public enum Css {
+public enum Css implements Neutral {
 
 //    DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
     DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
@@ -39,12 +39,13 @@ public enum Css {
     DATE_PICKER("date_picker.css"),
     TITLED_PANE("titled-pane.css");
 
-    private String url;
+    private final String url;
 
     Css(String url) {
         this.url = url;
     }
 
+    @Override
     public String getUrl() {
         return url;
     }
