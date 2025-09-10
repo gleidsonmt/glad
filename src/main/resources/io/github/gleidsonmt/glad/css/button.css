@@ -5,12 +5,15 @@ Button, IconButton {
     -fx-cursor : hand;
     -fx-effect: none;
     -fx-background-color: -fx-accent;
-    -fx-background-radius: 12.5px;
-    -fx-border-radius: 12.5px;
-    -fx-pref-height: 40px;
     -icon-color: white;
     -text-color: white;
     -fx-border-width: 2px;
+}
+
+Button {
+    -fx-background-radius: 12.5px;
+    -fx-border-radius: 12.5px;
+    -fx-pref-height: 40px;
 }
 
 IconButton:pressed:focused,

@@ -19,6 +19,10 @@ public interface Layout  {
 
     default Node getFooter() { return null; }
 
+    default Node setDrawer() {
+        return null;
+    }
+
     @ApiStatus.Experimental
     default void updateView(Module oldVal, Module newVal) {}
 

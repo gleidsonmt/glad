@@ -20,7 +20,7 @@ import java.util.Objects;
  * Create on  04/04/2025
  * Ultimate.
  */
-public final class TextBox extends TextBoxBase {
+public class TextBox extends TextBoxBase {
 
     private final IconButton clearButton;
     private BooleanProperty action;
