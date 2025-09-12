@@ -8,16 +8,11 @@ module io.github.gleidsonmt.glad {
     requires javafx.base;
     requires java.xml.crypto;
 
-//    requires org.scenicview.scenicview;
-//    requires fr.brouillard.oss.cssfx;
-
     opens io.github.gleidsonmt.glad.base to javafx.fxml;
     opens io.github.gleidsonmt.glad.base.internal to javafx.fxml;
 
     exports io.github.gleidsonmt.glad.base.responsive;
     exports io.github.gleidsonmt.glad.demos;
-
-
 
     exports io.github.gleidsonmt.glad;
     exports io.github.gleidsonmt.glad.base.internal;

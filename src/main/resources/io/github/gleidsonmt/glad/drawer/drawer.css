@@ -144,15 +144,15 @@
     -fx-background-color: -fx-accent;
 }
 
-#drawer .module-selected .title {
+#drawer .module-selected > .title {
     -fx-background-color: -fx-accent;
     -fx-text-fill: white;
     -fx-background-radius: 8px;
 }
 
-#drawer .module-selected .title .icon,
-#drawer .module-selected .title .arrow,
-#drawer .module-selected .title .text {
+#drawer .module-selected > .title .icon,
+#drawer .module-selected > .title .arrow,
+#drawer .module-selected > .title .text {
     -fx-fill: white;
     -fx-background-color: white;
 }

@@ -10,7 +10,6 @@ import javafx.scene.layout.Pane;
  */
 public interface Module {
 
-    ObservableList<Module> getModules();
 
     String getName();
 
@@ -21,12 +20,15 @@ public interface Module {
     default void onEnter(Layout layout){};
 
     default void onExit(Layout layout){}
+
     // Testing
-    void setParent(Module parent);
+    default ObservableList<Module> getModules(){return null;}
 
-    Module getParent();
+    default void setParent(Module parent) {}
 
-    void setContainer(Pane container) ;
+    default Module getParent() {return null;}
 
-    Pane getContainer();
+    default void setContainer(Pane container) {};
+
+    default Pane getContainer() {return null;}
 }

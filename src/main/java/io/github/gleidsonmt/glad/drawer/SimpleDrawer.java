@@ -1,7 +1,6 @@
 package io.github.gleidsonmt.glad.drawer;
 
 import io.github.gleidsonmt.glad.base.Module;
-import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.property.ReadOnlyObjectProperty;
@@ -69,12 +68,12 @@ public class SimpleDrawer extends VBox {
                 return new ListCell<>() {
                     {
                         selectedProperty().addListener((_, _, newVal) -> {
-                            DrawerCell cell = (DrawerCell) getGraphic();
+//                            DrawerCellL cell = (DrawerCellL) getGraphic();
 
                             if (newVal) {
-                                cell.getPane().setStyle("-fx-background: -fx-accent; -text-color: white;");
+//                                cell.getPane().setStyle("-fx-background: -fx-accent; -text-color: white;");
                             } else {
-                                cell.getPane().setStyle("-fx-background: transparent;");
+//                                cell.getPane().setStyle("-fx-background: transparent;");
                             }
                         });
                     }
@@ -83,8 +82,8 @@ public class SimpleDrawer extends VBox {
                     protected void updateItem(Module item, boolean empty) {
                         super.updateItem(item, empty);
                         if (item != null && !empty) {
-                            DrawerCell cell = new DrawerCell(item);
-                            setGraphic(cell);
+//                            DrawerCellL cell = new DrawerCellL(item);
+//                            setGraphic(cell);
                             setText(null);
                             setMouseTransparent(false);
                         } else {

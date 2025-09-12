@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 public class DrawerContainer extends ScrollPane {
 
     public DrawerContainer(VBox container) {
+        setId("drawer-container");
         this.setContent(container);
         this.setFitToWidth(true);
         this.setFitToHeight(true);

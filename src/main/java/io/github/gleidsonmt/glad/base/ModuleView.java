@@ -23,7 +23,7 @@ public class ModuleView implements io.github.gleidsonmt.glad.base.Module {
 
     private boolean animated;
 
-    public ModuleView(String name, io.github.gleidsonmt.glad.base.Module... _modules) {
+    public ModuleView(String name, Module... _modules) {
         this.modules = FXCollections.observableArrayList(_modules);
         this.name = name;
 
