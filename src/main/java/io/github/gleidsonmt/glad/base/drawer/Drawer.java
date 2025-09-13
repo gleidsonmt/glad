@@ -2,7 +2,6 @@ package io.github.gleidsonmt.glad.base.drawer;
 
 import io.github.gleidsonmt.glad.base.Module;
 import io.github.gleidsonmt.glad.base.ModuleView;
-import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.View;
 import io.github.gleidsonmt.glad.drawer.DrawerItem;
 import io.github.gleidsonmt.glad.drawer.DrawerMenu;
@@ -11,17 +10,14 @@ import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.TitledPane;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
@@ -47,7 +43,7 @@ public class Drawer extends VBox {
     private ObjectProperty<Callback<Module, Node>> cellFactory;
     private ObjectProperty<ObservableList<Module>> items;
 
-    private DrawerContainer drawerContainer = null;
+    private final DrawerContainer drawerContainer;
     private final ToggleGroup group = new ToggleGroup();
 
     private final VBox searchBox = new VBox();
@@ -70,88 +66,68 @@ public class Drawer extends VBox {
 
     }
 
-    public Drawer(@NotNull ObservableList<Module> modules,  @NotNull Callback<Module, Node> cellFactory) {
+    public Drawer(@NotNull ObservableList<Module> modules, @NotNull Callback<Module, Node> cellFactory) {
         this.setId("drawer");
         this.drawerContainer = new DrawerContainer(defaultBox);
         defaultBox.setId("drawer-content");
-
-        cellFactoryProperty().addListener((_, _, newCellFactory) -> {
-            if (newCellFactory != null) {
-//                defaultBox.getChildren().clear();
-//                Objects.requireNonNull(itemsProperty().get()).forEach(this::recursivePopulate);
-            }
-        });
 
         itemsProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
                 defaultBox.getChildren().clear();
                 Objects.requireNonNull(newValue).forEach(this::recursivePopulate);
 
-//                newValue.addListener(new ListChangeListener<Module>() {
-//                    @Override
-//                    public void onChanged(Change<? extends Module> c) {
-//                        if (c.next()) {
-//                            if (c.wasAdded()) {
-//                                c.getAddedSubList().forEach(Drawer.this::recursivePopulate);
-//                            } else if (c.wasRemoved()) {
-//                                System.out.println("c.getRemoved() = " + c.getRemoved());
-//                                c.getRemoved().forEach(module -> {
-//                                    Module exclude = find((List<Module>) c.getRemoved(), module.getName());
-////                                    find(c.get().get), module.getName().toLowerCase());
-//                                    defaultBox.getChildren().remove(module);
-//                                    if (module.getContainer() != null) {
-//                                        module.getContainer().getChildren().clear();
-//                                    }
-//                                });
-//                            }
-//                        }
-//                    }
-//                });
+                newValue.addListener((ListChangeListener<Module>) c -> {
+                    if (c.next()) {
+                        if (c.wasAdded()) {
+                            c.getAddedSubList().forEach(Drawer.this::recursivePopulate);
+                        } else if (c.wasRemoved()) {
+                            c.getRemoved().forEach(module ->
+                                    defaultBox.getChildren().remove(findNode(defaultBox.getChildren(), module)));
+                        }
+                    }
+                });
             }
         });
-
-
 
         cellFactoryProperty().set(cellFactory);
         itemsProperty().set(modules);
 
         this.getChildren().addAll(drawerContainer);
-//
         setAlignment(Pos.TOP_CENTER);
         VBox.setVgrow(drawerContainer, Priority.ALWAYS);
         this.setPrefWidth(250);
 //
-//        currentModule.addListener((_, _, newValue) -> group.getToggles().forEach(e -> {
-//            if (e.getUserData() == newValue) {
-//                group.selectToggle(e);
-//            }
-//        }));
+        currentModule.addListener((_, _, newValue) -> group.getToggles().forEach(e -> {
+            if (e.getUserData() == newValue) {
+                group.selectToggle(e);
+            }
+        }));
 //
-//        group.selectedToggleProperty().addListener((_, oldValue, newValue) -> {
-//            if (newValue != null) {
-//                r((ToggleButton) newValue, true);
-//            }
-//            if (oldValue != null) {
-//                Node oldParent = getRoot(((ToggleButton) oldValue));
-//                Node newParent = getRoot(((ToggleButton) newValue));
-//                if (oldParent != newParent) {
-//                    r((ToggleButton) oldValue, false);
-//                    Platform.runLater(() -> {
-//                        if (newParent instanceof DrawerMenu parent) {
-//                            parent.setExpanded(true);
-//                        }
-//                        if (oldParent instanceof DrawerMenu p) {
-//                            p.setExpanded(false);
-//                        }
-//                    });
-//                }
-//            }
-//        });
+        group.selectedToggleProperty().addListener((_, oldValue, newValue) -> {
+            if (newValue != null) {
+                r((ToggleButton) newValue, true);
+            }
+            if (oldValue != null) {
+                Node oldParent = getRoot(((ToggleButton) oldValue));
+                Node newParent = getRoot(((ToggleButton) newValue));
+                if (oldParent != newParent) {
+                    r((ToggleButton) oldValue, false);
+                    Platform.runLater(() -> {
+                        if (newParent instanceof DrawerMenu parent) {
+                            parent.setExpanded(true);
+                        }
+                        if (oldParent instanceof DrawerMenu p) {
+                            p.setExpanded(false);
+                        }
+                    });
+                }
+            }
+        });
 //
-//        if (!group.getToggles().isEmpty()) {
-//            group.selectToggle(group.getToggles().getFirst());
-//            currentModule.setValue((ModuleView) group.getToggles().get(1).getUserData());
-//        }
+        if (!group.getToggles().isEmpty()) {
+            group.selectToggle(group.getToggles().getFirst());
+            currentModule.setValue((ModuleView) group.getToggles().get(1).getUserData());
+        }
     }
 
     public void setSearchable(StringProperty property, Predicate<String> predicate) {
@@ -159,16 +135,16 @@ public class Drawer extends VBox {
             if (!newVal.isEmpty()) {
                 drawerContainer.setContainer(searchBox);
                 searchBox.getChildren().clear();
-//
+
                 find(predicate)
                         .forEach(e -> {
-                            Optional<BoxModule> opt = findModuleInSearchBox(e); // verify if box has e
-                            if (opt.isEmpty() && e.getParent() != null) { // if box doesn't have a module and module has a parent
+                            Optional<BoxModule> opt = findModuleInSearchBox(e); // verify if a box has e
+                            if (opt.isEmpty() && e.getParent() != null) { // if the box doesn't have a module and module has a parent
                                 // add a new BoxModule with module
                                 searchBox.getChildren().add(new BoxModule(e.getParent().getName(), createToggle(e)));
                             } else if (e.getParent() != null && opt.isPresent()) { // if module already in search box and module has a parent
-                                // find, and add to a BoxModule already in search box.
-                                getBoxModule(e).get().getChildren().add(createToggle(e));
+                                // find, and add to a BoxModule already in the search box.
+                                getBoxModule(e).ifPresent(boxModule -> boxModule.getChildren().add(createToggle(e)));
                             }
                         });
             } else {
@@ -179,10 +155,9 @@ public class Drawer extends VBox {
     }
 
     /**
-     * If drawer is in mode of search, find a moduleImpl.
-     *
-     * @param module The moduleImpl in the SearchBox.
-     * @return The BoxModule (VBox) that is equal to the moduleImpl name.
+     * If drawer is in mode of search, find a module.
+     * @param module The module in the SearchBox.
+     * @return The BoxModule (VBox) that is equal to the module name.
      */
     private @NotNull Optional<BoxModule> findModuleInSearchBox(Module module) {
         return searchBox
@@ -195,6 +170,11 @@ public class Drawer extends VBox {
                 .findAny();
     }
 
+    /**
+     * If drawer is in mode of search, find a a bom module.
+     * @param e The module in the SearchBox.
+     * @return The BoxModule (VBox) that is equal to the module name.
+     */
     private @NotNull Optional<BoxModule> getBoxModule(Module e) {
         return searchBox.getChildren()
                 .stream()
@@ -203,7 +183,6 @@ public class Drawer extends VBox {
                 .filter(el -> e.getParent().getName().equals(el.getName()))
                 .findAny();
     }
-
 
     private @NotNull List<Module> find(Predicate<String> predicate) {
         List<Module> findedList = new ArrayList<>();
@@ -283,165 +262,28 @@ public class Drawer extends VBox {
         }
     }
 
-    public ToggleButton createToggle(Module moduleImpl) {
-        ToggleButton b = new ToggleButton(moduleImpl.getName());
-//        b.setCache(true);
-//        b.setCacheHint(CacheHint.QUALITY);
-        b.setUserData(moduleImpl);
-        b.getStyleClass().add("drawer-item");
-        b.setAlignment(Pos.CENTER_LEFT);
-        b.setPrefWidth(Double.MAX_VALUE);
-        b.setOnMouseClicked(e -> currentModule.set(moduleImpl));
-
-        b.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
-            Root root = (Root) getScene().getRoot();
-            root.behavior().closeDrawer();
-        });
-
-        if (moduleImpl.getGraphic() != null) {
-            b.setGraphic(moduleImpl.getGraphic());
-        }
-
-        group.getToggles().add(b);
-        return b;
-    }
-
-
-
-    public void makeFirstLevel(Module module) {
-
-//        var callback = cellFactory.get().call(module);
-//        if (callback instanceof DrawerMenu menu) {
-//            if (module.getModules() == null && module.getModules().isEmpty()) return;
-//            menu.getStyleClass().add("module-first");
-//            ((VBox) this.drawerContainer.getContent()).getChildren().add(menu);
-//
-//            module.getModules().forEach(el -> { // o q esta dentro do menu
-////                System.out.println("el = " + el);
-////                System.out.println("(el instanceof View) = " + (el instanceof View));
-////                System.out.println("(el instanceof View) = " + (el instanceof ModuleView));
-//                if (!el.getModules().isEmpty()) {
-//                    el.getModules().forEach(e -> {
-//                        e.setContainer((Pane) menu.getContent());
-//                        System.out.println("e = " + e);
-//                        recurse(e);
-//                    });
-//
-////                    if (el instanceof View) {
-////                        ToggleButton button = createToggle(el);
-////                        ((Pane) menu.getContent()).getChildren().add(button);
-////                        button.setOnMouseClicked(e -> currentModule.set(el));
-////                    } else {
-//////                        System.out.println("fugg");
-////                        ((Pane) menu.getContent()).getChildren().add(cellFactory.get().call(el));
-////                        el.getModules().forEach(e -> {
-////                            e.setContainer((Pane) menu.getContent());
-////                            recurse(e);
-////                        });
-////                    }
-////
-//
-//                } else {
-//                    ((Pane) menu.getContent()).getChildren().add(cellFactory.get().call(el));
-//                }
-//
-//            });
-//
-////                ((VBox) this.drawerContainer.getContent()).getChildren().add(callback);
-//        } else {
-//            ((VBox) this.drawerContainer.getContent()).getChildren().add(callback);
-//        }
-
-//        if (module instanceof ModuleView moduleView) {
-//            if (module.getModules() == null) return;
-////            DrawerMenu container = (DrawerMenu) cellFactory.get().call(module);
-//            System.out.println("cellFactory = " + cellFactory.get().call(module));
-////            container.getStyleClass().add("module-first");
-////
-////            if (module.getModules() != null || !module.getModules().isEmpty()) {
-////                module.getModules().forEach(el -> {
-////                    if (el != null && !el.getModules().isEmpty()) {
-////                        TitledPane pane = (TitledPane) cellFactory.get().call(module);
-////                        ((Pane) container.getContent()).getChildren().add(pane);
-////                        el.setContainer((Pane) container.getContent());
-////                        el.getModules().forEach(e -> {
-////                            e.setContainer((Pane) pane.getContent());
-////                            recurse(e);
-////                        });
-////                    }
-////                });
-//            if (module.getModules() != null || !module.getModules().isEmpty()) {
-//////            VBox.setMargin(b, new Insets(0, 0, 0, 10));
-////                module.getModules().forEach(el -> {
-//////                    if (el instanceof View view) {
-////                    if (el != null && !el.getModules().isEmpty()) {
-////                        TitledPane pane = createPanel(el);
-////                        ((Pane) container.getContent()).getChildren().add(pane);
-////                        el.setContainer((Pane) container.getContent());
-////                        el.getModules().forEach(e -> {
-////                            e.setContainer((Pane) pane.getContent());
-////                            recurse(e);
-////                        });
-////                    } else {
-////                        ToggleButton button = createToggle(el);
-////
-////                        ((Pane) container.getContent()).getChildren().add(button);
-////                        button.setOnMouseClicked(e -> currentModule.set(el));
-////                    }
-////                });
-//            }
-//        }
-
-    }
-
-    public void makeFirstLevelOld(Module module) {
-
-        if (module instanceof ModuleSeparator moduleSeparator) {
-
-            Label label = new Label(moduleSeparator.getName());
-            label.setGraphic(moduleSeparator.getGraphic());
-            label.getStyleClass().add("font-instagram-headline");
-//            label.setStyle("-fx-font-family: \"Instagram Sans\"; -fx-font-size: 12px;");
-//            label.setCache(true);
-//            label.setCacheHint(CacheHint.QUALITY);
-            VBox box = new VBox(label, new Separator());
-//            box.setPadding(new Insets(0, 5,0,5));
-            VBox.setMargin(box, new Insets(10, 5, 0, 5));
-            box.setSpacing(10);
-            defaultBox.getChildren().addAll(box);
-        }
-
-        if (module.getModules() == null) return;
-
-        if (module.getModules().isEmpty()) {
-//            this.getChildren().add(createToggle(moduleImpl));
-            ((VBox) this.drawerContainer.getContent()).getChildren().add(createToggle(module));
-        } else {
-            TitledPane container = createPanel(module, true);
-            container.getStyleClass().add("module-first");
-//            this.getChildren().add(container);
-            ((VBox) this.drawerContainer.getContent()).getChildren().add(container);
-            if (module.getModules() != null || !module.getModules().isEmpty()) {
-//            VBox.setMargin(b, new Insets(0, 0, 0, 10));
-                module.getModules().forEach(el -> {
-//                    if (el instanceof View view) {
-                    if (el != null && !el.getModules().isEmpty()) {
-                        TitledPane pane = createPanel(el);
-                        ((Pane) container.getContent()).getChildren().add(pane);
-                        el.setContainer((Pane) container.getContent());
-                        el.getModules().forEach(e -> {
-                            e.setContainer((Pane) pane.getContent());
-                            recursivePopulate(e);
-                        });
-                    } else {
-                        ToggleButton button = createToggle(el);
-
-                        ((Pane) container.getContent()).getChildren().add(button);
-                        button.setOnMouseClicked(e -> currentModule.set(el));
+    private Node findNode(List<Node> nodes, Module module) {
+        for (Node node : nodes) {
+            if (node.getUserData() == module) {
+                return node;
+            } else {
+                if (node instanceof Pane pane) {
+                    if (pane.getChildren() != null) {
+                        Node found = findNode(pane.getChildren(), module);
+                        if (found != null) return found;
                     }
-                });
+
+                }
             }
         }
+        return null;
+    }
+
+    public ToggleButton createToggle(Module module) {
+        var item = new DrawerItem(module);
+        group.getToggles().add(item);
+        item.setOnMouseClicked(_ -> currentModule.set(module));
+        return item;
     }
 
     private Node call(Module module) {
@@ -453,22 +295,24 @@ public class Drawer extends VBox {
 
             ToggleButton b = (ToggleButton) call(view);
             group.getToggles().add(b);
-            b.setOnMouseClicked(e -> currentModule.set(moduleImpl));
+            b.setOnMouseClicked(_ -> currentModule.set(moduleImpl));
+            moduleImpl.setNode(b);
 
             if (view.getContainer() != null) {
                 view.getContainer().getChildren().add(b);
             } else {
-                ((VBox) this.drawerContainer.getContent()).getChildren().add(b);
+                defaultBox.getChildren().add(b);
             }
         } else if (moduleImpl instanceof ModuleSeparator moduleSeparator) {
-            ((VBox) this.drawerContainer.getContent()).getChildren().add(call(moduleSeparator));
+            defaultBox.getChildren().add(call(moduleSeparator));
 
         } else if (moduleImpl instanceof ModuleView moduleView) {
             TitledPane container = (TitledPane) call(moduleImpl);
 
             if (moduleView.getContainer() == null) {
                 container.getStyleClass().add("module-first");
-                ((VBox) this.drawerContainer.getContent()).getChildren().add(container);
+                defaultBox.getChildren().add(container);
+
                 if (moduleView.getModules() != null && !moduleView.getModules().isEmpty()) {
                     moduleView.getModules().forEach(el -> {
                         el.setContainer((Pane) container.getContent());
@@ -485,54 +329,7 @@ public class Drawer extends VBox {
         }
     }
 
-    private @NotNull TitledPane createPanel(Module module) {
-        return createPanel(module, false);
-    }
-
-    private @NotNull TitledPane createPanel(@NotNull Module module, boolean first) {
-        VBox content = new VBox();
-        content.getStyleClass().add("container");
-        TitledPane titledPane = new TitledPane(module.getName(), content);
-
-        if (module.getGraphic() != null) {
-            titledPane.setGraphic(module.getGraphic());
-        }
-        titledPane.setExpanded(false);
-
-        titledPane.setContentDisplay(ContentDisplay.RIGHT);
-        titledPane.setAlignment(Pos.TOP_RIGHT);
-        titledPane.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-
-        titledPane.getStyleClass().add("drawer-menu");
-        content.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-
-        if (!module.isAnimated() && !first) {
-            ToggleButton b = new ToggleButton(module.getName());
-            b.setUserData(module);
-            b.getStyleClass().add("drawer-item");
-            b.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            b.setAlignment(Pos.CENTER_LEFT);
-            b.setPrefWidth(230);
-            group.getToggles().add(b);
-            titledPane.getStyleClass().add("module-item");
-
-            titledPane.setGraphic(b);
-            titledPane.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-
-            titledPane.setCollapsible(false);
-            titledPane.setAnimated(false);
-
-            b.setOnMouseClicked(e ->
-            {
-                if (!(e.getTarget() instanceof VBox)) {
-                    currentModule.set(module);
-                }
-            });
-        }
-
-        return titledPane;
-    }
-
+    @SuppressWarnings("unused")
     public Module getCurrentModule() {
         return currentModule.get();
     }
@@ -540,7 +337,6 @@ public class Drawer extends VBox {
     public ObjectProperty<Module> currentModuleProperty() {
         return currentModule;
     }
-
 
     public final ObjectProperty<Callback<Module, Node>> cellFactoryProperty() {
         if (cellFactory == null) {
@@ -553,6 +349,7 @@ public class Drawer extends VBox {
         cellFactoryProperty().set(value);
     }
 
+    @SuppressWarnings("unused")
     public final void setItems(ObservableList<Module> value) {
         itemsProperty().set(value);
     }
@@ -567,6 +364,4 @@ public class Drawer extends VBox {
         }
         return items;
     }
-
-
 }

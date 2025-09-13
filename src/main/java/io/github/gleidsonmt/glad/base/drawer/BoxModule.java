@@ -8,6 +8,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 /**
+ * Box module is a contente for drawer menus.
+ * With them they have a name of that module and a toggle button.
+ * The drawer shows up a vbox with a text as name and toggle button representing the view.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  31/03/2025
  */

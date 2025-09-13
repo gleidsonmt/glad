@@ -13,11 +13,11 @@ import java.util.Arrays;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  10/06/2025
  */
-public class ModuleView implements io.github.gleidsonmt.glad.base.Module {
+public class ModuleView implements Module {
 
-    private final ObservableList<io.github.gleidsonmt.glad.base.Module> modules;
+    private final ObservableList<Module> modules;
     private final String name;
-    private io.github.gleidsonmt.glad.base.Module parent;
+    private Module parent;
     private Pane container;
     private Node graphic;
 
@@ -34,7 +34,7 @@ public class ModuleView implements io.github.gleidsonmt.glad.base.Module {
         });
 
 
-        modules.addListener((ListChangeListener<io.github.gleidsonmt.glad.base.Module>) change ->
+        modules.addListener((ListChangeListener<Module>) change ->
         {
             if (change.next()) {
                 modules.forEach(el -> el.setParent(ModuleView.this));

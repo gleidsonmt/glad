@@ -20,6 +20,7 @@ public class DrawerMenu extends TitledPane {
         content.getStyleClass().add("container");
         setText(module.getName());
         setContent(content);
+        setUserData(module);
 //
         if (module.getGraphic() != null) {
             this.setGraphic(module.getGraphic());

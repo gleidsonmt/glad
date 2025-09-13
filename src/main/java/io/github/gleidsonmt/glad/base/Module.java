@@ -10,11 +10,15 @@ import javafx.scene.layout.Pane;
  */
 public interface Module {
 
-
     String getName();
 
     Node getGraphic();
 
+    default Node getNode() {return null;}
+
+    default void setNode(Node node){};
+
+    @Deprecated
     boolean isAnimated();
 
     default void onEnter(Layout layout){};
