@@ -20,5 +20,4 @@ public interface Snack extends FlowItem<Snack> {
 
     Snack action(SnackItem... events);
 
-
 }
