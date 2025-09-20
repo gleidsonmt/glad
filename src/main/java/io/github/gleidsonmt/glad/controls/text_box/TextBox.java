@@ -81,6 +81,10 @@ public class TextBox extends TextBoxBase {
         });
     }
 
+    public void setIcon(Node node) {
+        setLeftNode(node);
+    }
+
     @Override
     public String getUserAgentStylesheet() {
         return Objects.requireNonNull(Resources.class.getResource("agents/text-box.css")).toExternalForm();

@@ -121,27 +121,27 @@ public abstract class TextBoxBase extends Control {
         this.editor.set(editor);
     }
 
-    public Node getLeftNode() {
+    protected Node getLeftNode() {
         return leftNode.get();
     }
 
-    public ObjectProperty<Node> leftNodeProperty() {
+    protected ObjectProperty<Node> leftNodeProperty() {
         return leftNode;
     }
 
-    public void setLeftNode(Node leftNode) {
+    protected void setLeftNode(Node leftNode) {
         this.leftNode.set(leftNode);
     }
 
-    public Node getRightNode() {
+    protected Node getRightNode() {
         return rightNode.get();
     }
 
-    public ObjectProperty<Node> rightNodeProperty() {
+    protected ObjectProperty<Node> rightNodeProperty() {
         return rightNode;
     }
 
-    public void setRightNode(Node rightNode) {
+    protected void setRightNode(Node rightNode) {
         this.rightNode.set(rightNode);
     }
 

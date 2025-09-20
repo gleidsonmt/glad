@@ -2,13 +2,11 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
-import io.github.gleidsonmt.glad.base.dialog.snack.SnackItem;
+import io.github.gleidsonmt.glad.base.dialog.snack.SnackOption;
 import io.github.gleidsonmt.glad.controls.button.Button;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -30,7 +28,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     private String message;
     private Node graphic;
 
-    private List<SnackItem> actions;
+    private List<SnackOption> actions;
 
     public SnackImpl(Root root) {
         this.root = root;
@@ -113,7 +111,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     }
 
     @Override
-    public final Snack action(SnackItem... actions) {
+    public final Snack action(SnackOption... actions) {
         this.actions = List.of(actions);
         return this;
     }
