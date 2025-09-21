@@ -55,3 +55,11 @@ ToggleButton:selected {
 }
 
 
+.btn-outlined:selected {
+    -fx-background-color : -fx-accent;
+    -text-color: white;
+    -fx-border-color: -fx-accent;
+    -fx-border-insets: 0px;
+    -fx-background-insets: 0px;
+}
+
