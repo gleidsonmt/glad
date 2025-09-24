@@ -7,9 +7,15 @@
 }
 
 #drawer .text {
+    -fx-font-smoothing: gray;
+    -fx-font-weight: normal;
+}
+
+#drawer .drawer-item:selected .text {
     -fx-font-family: "Instagram Sans";
     -fx-font-size: 14px;
-    -fx-font-weight: normal;
+    -fx-font-smoothing: lcd;
+    -fx-font-weight: bold;
 }
 
 #drawer .drawer-item {

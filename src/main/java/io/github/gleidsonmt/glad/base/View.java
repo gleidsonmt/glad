@@ -58,11 +58,7 @@ public class View extends ModuleView implements Module {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("View{");
-        sb.append("\n\tname=").append(getName());
-        sb.append("\n\tcontent=").append(content);
-        sb.append("\n\ticon=").append(icon);
-        sb.append("\n}");
-        return sb.toString();
+        return "View{" + "\n\tname=" + getName() +
+               "\n}";
     }
 }
