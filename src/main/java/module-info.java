@@ -6,7 +6,6 @@ module io.github.gleidsonmt.glad {
     requires org.jetbrains.annotations;
     requires java.desktop;
     requires javafx.base;
-    requires java.xml.crypto;
 
     opens io.github.gleidsonmt.glad.base to javafx.fxml;
     opens io.github.gleidsonmt.glad.base.internal to javafx.fxml;
@@ -42,4 +41,7 @@ module io.github.gleidsonmt.glad {
     opens io.github.gleidsonmt.glad.base.dialog to javafx.fxml;
     exports io.github.gleidsonmt.glad.base.dialog.snack;
     opens io.github.gleidsonmt.glad.base.dialog.snack to javafx.fxml;
+    opens io.github.gleidsonmt.glad to
+            javafx.fxml, javafx.controls,
+            javafx.graphics, javafx.base;
 }

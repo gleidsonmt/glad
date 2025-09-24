@@ -54,6 +54,10 @@ public class Drawer extends VBox {
         this(FXCollections.observableArrayList());
     }
 
+    public Drawer(@NotNull Module... modules) {
+        this(FXCollections.observableArrayList(modules));
+    }
+
     public Drawer(@NotNull ObservableList<Module> modules) {
         this(modules, module -> switch (module) {
             case View view -> new DrawerItem(view);

@@ -30,8 +30,9 @@ public interface Layout  {
     ObjectProperty<Module> currentModuleProperty();
 
     @ApiStatus.Experimental
-    Module getCurrentModule();
+    default Module getCurrentModule() { return currentModuleProperty().get(); }
 
-    void setCurrentModule(Module module);
+    @ApiStatus.Experimental
+    default void setCurrentModule(Module module) { currentModuleProperty().set(module); }
 
 }

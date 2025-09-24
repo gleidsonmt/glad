@@ -1,5 +1,7 @@
 package io.github.gleidsonmt.glad.theme;
 
+import java.util.Arrays;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  31/01/2025
@@ -37,7 +39,9 @@ public enum Css implements Neutral {
     TEXT_FIELD("text-field.css"),
     SPINNER("spinner.css"),
     DATE_PICKER("date_picker.css"),
-    TITLED_PANE("titled-pane.css");
+    TITLED_PANE("titled-pane.css"),
+    ALL("ALL")
+    ;
 
     private final String url;
 

@@ -27,6 +27,10 @@
     -fx-text-fill: white;
 }
 
+#drawer .drawer-item:selected .icon-container .icon {
+    -fx-fill: white;
+}
+
 #drawer .drawer-item:selected .text,
 #drawer .drawer-item:selected:hover .text {
     -fx-fill: white;
@@ -127,6 +131,8 @@
 #drawer .drawer-menu .drawer-item:hover {
     -fx-background-color: transparent;
 }
+
+
 
 #drawer .drawer-menu .drawer-item:hover .text {
     -fx-fill: -fx-accent;
