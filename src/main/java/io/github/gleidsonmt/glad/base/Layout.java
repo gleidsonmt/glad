@@ -1,6 +1,7 @@
 package io.github.gleidsonmt.glad.base;
 
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
 import javafx.scene.layout.Region;
 import org.jetbrains.annotations.ApiStatus;
@@ -11,6 +12,8 @@ import org.jetbrains.annotations.ApiStatus;
  */
 public interface Layout  {
 
+    ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
+
     default Region getDrawer() { return null; }
 
     default Region getAside() { return null; }
@@ -19,20 +22,16 @@ public interface Layout  {
 
     default Node getFooter() { return null; }
 
-    default Node setDrawer() {
-        return null;
-    }
-
     @ApiStatus.Experimental
     default void updateView(Module oldVal, Module newVal) {}
 
     @ApiStatus.Experimental
-    ObjectProperty<Module> currentModuleProperty();
+    default ObjectProperty<Module> currentModuleProperty() { return currentModule; }
 
     @ApiStatus.Experimental
-    default Module getCurrentModule() { return currentModuleProperty().get(); }
+    default Module getCurrentModule() { return currentModule.get(); }
 
     @ApiStatus.Experimental
-    default void setCurrentModule(Module module) { currentModuleProperty().set(module); }
+    default void setCurrentModule(Module module) { currentModule.set(module); }
 
 }
