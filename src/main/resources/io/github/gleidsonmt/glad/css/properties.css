@@ -2252,6 +2252,13 @@
 .padding-20 {
     -fx-padding: 20px;
 }
+
+.padding-30 {
+    -fx-padding: 30px;
+}
+.padding-40 {
+    -fx-padding: 40px;
+}
 /* @Stroke Width */
 .stroke-primary {
     -fx-stroke: -primary;
