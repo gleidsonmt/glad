@@ -56,53 +56,6 @@ public class Root extends AbstractContainer<DefaultBreak> {
             if (newValue != null) {
                 newValue.addEventFilter(ExecutionEventError.ACTION_ERROR, e -> {
                     // testing
-
-//                    System.out.println("e.getSource() = " + e.getSource());
-//                    System.out.println("e.getClass() = " + e.getClass());
-//                    System.out.println("e.getTarget() = " + e.getTarget());
-//                    System.out.println("e.getEventType() = " + e.getEventType());
-
-                    Text text = new Text();
-                    TextFlow flow = new TextFlow(text);
-                    flow.setPadding(new Insets(10));
-                    flow.getStyleClass().addAll("border-l-2", "border-danger");
-                    flow.setStyle("-fx-background-color: derive(-danger, 115%); ");
-                    text.setStyle("-fx-fill: -danger; -fx-font-weight: bold;");
-//                    text.getStyleClass().addAll("font-instagram-headline");
-
-                    ScrollPane container = new ScrollPane(flow);
-                    container.setFitToWidth(true);
-                    container.setFitToHeight(true);
-                    container.setMaxWidth(300);
-                    container.setMaxHeight(400);
-
-//                    -fx-vbar-policy
-                    container.setStyle("-fx-vbar-policy: always;");
-
-                    /**
-                     * Source: javafx.scene.Scene@446a4378,
-                     * Class: io.github.gleidsonmt.glad.errors.ExecutionEventError
-                     * Target: Button@3f5d6955[styleClass=button]'Test'
-                     * EventType: ACTION_ERROR
-                     * Error {
-                     *
-                     * }
-                     *
-                     */
-
-                    StringBuilder builder = new StringBuilder();
-                    builder.append("Cause: ").append(e.getError().getCause());
-                    builder.append("\nMessage: ").append(e.getError().getMessage());
-                    builder.append("\n").append(e.getAdditionMessage());
-                    text.setText(builder.toString());
-
-                    Button ok = new Button("Fechar");
-                    ok.setOnAction(_ -> {
-                        Platform.exit();
-                    });
-
-
-
                 });
             }
         });
@@ -148,14 +101,16 @@ public class Root extends AbstractContainer<DefaultBreak> {
         return this.breakpoint;
     }
 
+    @Deprecated(forRemoval = true)
     public void addPoint(EventHandler<ActionEvent> event, Size... breaks) {
 //        breaker.getPoints().add(new BreakPoint(event, breaks));
     }
 
+    @Deprecated(forRemoval = true)
     public void addPoints(BreakPoint... points) {
 //        breaker.getPoints().addAll(Arrays.stream(points).toList());
     }
-
+    @Deprecated(forRemoval = true)
     public void clearPoints() {
 //        breaker.getPoints().clear();
     }
