@@ -32,13 +32,13 @@ public class DashAsideHidden extends Application {
 //        container.addPoint(pt -> {
 //            container.setRight(null);
 //            container.setTop(hamb);
-//        }, Break.SM);
+//        }, DefaultBreak.SM);
 //
 //        container.addPoint(pt -> {
 //            container.setTop(null);
 //            container.setRight(aside);
 //            rootImpl.wrapper().hide();
-//        }, Break.values());
+//        }, DefaultBreak.values());
 //
 //        stage.setScene(new Scene(rootImpl, 800, 600));
 //        stage.show();

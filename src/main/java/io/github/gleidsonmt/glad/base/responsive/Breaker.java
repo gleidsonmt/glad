@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The breaker does the action and maintains the breakpoints.
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  20/03/2025
  */
@@ -20,7 +21,7 @@ public class Breaker<T extends Size> implements Actionable<T> {
         Platform.runLater(() -> {
             List<BreakPoint> p = points.stream().filter(el -> el.getBreaks().contains(size)).toList();
             if (p.isEmpty()) return;
-            // Make an action defined by user.
+            // Make an action defined by the user.
             // This action is convenient to be a new layout based on the scene size
             p.forEach(e -> e.getEventHandler().handle(new ActionEvent()));
         });

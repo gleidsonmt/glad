@@ -54,7 +54,6 @@ ToggleButton:selected {
 
 }
 
-
 .btn-outlined:selected {
     -fx-background-color : -fx-accent;
     -text-color: white;
@@ -62,4 +61,3 @@ ToggleButton:selected {
     -fx-border-insets: 0px;
     -fx-background-insets: 0px;
 }
-

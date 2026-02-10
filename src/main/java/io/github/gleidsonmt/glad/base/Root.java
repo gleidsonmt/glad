@@ -5,9 +5,9 @@ import io.github.gleidsonmt.glad.base.dialog.Wrapper;
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
-import io.github.gleidsonmt.glad.base.responsive.Break;
+import io.github.gleidsonmt.glad.base.responsive.AbstractContainer;
+import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.base.responsive.BreakPoint;
-import io.github.gleidsonmt.glad.base.responsive.Container;
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
 import javafx.application.Platform;
@@ -28,7 +28,7 @@ import java.util.Arrays;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
-public class Root extends Container<Break> {
+public class Root extends AbstractContainer<DefaultBreak> {
 
     private final Behavior behavior;
     private final Flow flow;
@@ -149,14 +149,14 @@ public class Root extends Container<Break> {
     }
 
     public void addPoint(EventHandler<ActionEvent> event, Size... breaks) {
-        breaker.getPoints().add(new BreakPoint(event, breaks));
+//        breaker.getPoints().add(new BreakPoint(event, breaks));
     }
 
     public void addPoints(BreakPoint... points) {
-        breaker.getPoints().addAll(Arrays.stream(points).toList());
+//        breaker.getPoints().addAll(Arrays.stream(points).toList());
     }
 
     public void clearPoints() {
-        breaker.getPoints().clear();
+//        breaker.getPoints().clear();
     }
 }

@@ -42,10 +42,10 @@ public class DashDrawerHidden extends Application {
 //        });
 //
 //        container.setTop(nav);
-//        new Sizer<>(rootImpl, Break.values()) {
+//        new Sizer<>(rootImpl, DefaultBreak.values()) {
 //            @Override
-//            public void change(Break aBreak) {
-//                if (aBreak == Break.SM) {
+//            public void change(DefaultBreak aBreak) {
+//                if (aBreak == DefaultBreak.SM) {
 //                    container.setTop(nav);
 //                    container.setLeft(null);
 //                } else {

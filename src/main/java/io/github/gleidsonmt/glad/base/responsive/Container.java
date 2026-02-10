@@ -1,58 +1,74 @@
 package io.github.gleidsonmt.glad.base.responsive;
 
-
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
-import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
-import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+import javafx.scene.Node;
 import org.jetbrains.annotations.ApiStatus;
-
-import java.util.Arrays;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  19/03/2025
+ * Create on  03/02/2026
  */
-public class Container<T extends Size> extends StackPane {
+public class Container extends AbstractContainer<Size> {
 
-    protected Breaker<T> breaker;
-    protected Sizer<T> sizer;
-
-    @SuppressWarnings("unchecked")
     public Container() {
-        this((T[]) Break.values());
     }
 
-    public Container(T[] values) {
-        this.breaker = new Breaker<>();
-        this.sizer = new Sizer<T>(this, values) {
-            @Override
-            public void change(T size) {
-                breaker.doAction(size);
-            }
-        };
-
+    public Container(Size[] values) {
+        super(values);
+//        this.getChildren().addListener(new ListChangeListener<Node>() {
+//            @Override
+//            public void onChanged(Change<? extends Node> change) {
+//                if (change.next()) {
+//                    change.getList().forEach(el -> {
+//                    var w = sizer.getSize(getWidth());
+//                        System.out.println("el = " + w);
+//                        System.out.println("el = " + el.getStyleClass());
+//                        el.setStyle(el.getStyle() + el);
+//                        getBreakpoints().add(new BreakPoint((_) -> {
+//                            if (el.getStyleClass().stream().anyMatch(e -> e.contains(":"))) {
+//
+//                            }
+//                            System.out.println("jababa");
+//                            System.out.println(w.toString());
+//                        }, w));
+////                        System.out.println("breaker.getPoints() = " + breaker.getPoints());
+////                        breaker.getPoints().add(new BreakPoint(_ -> {
+////
+////                            System.out.println(" you're a bitch ");
+////                        }, DefaultBreak.MOBILE));
+//
+////                        el.getStyleClass().stream().map(String::toLowerCase).filter(s -> s.contains("size")).findFirst().ifPresent(s -> {})
+//                    });
+//                }
+//            }
+//        });
     }
 
-    @ApiStatus.Experimental
-    public void init(){
-        breaker.doAction(this.sizer.getSize(this.getWidth()));
-    }
+//    public Container() {
+//        this.getChildren().addListener(new ListChangeListener<Node>() {
+//            @Override
+//            public void onChanged(Change<? extends Node> change) {
+//                if (change.next()) {
+//                    change.getList().forEach(el -> {
+//                        var w = sizer.getSize(getWidth());
+//                        System.out.println("el = " + w);
+//                        System.out.println("el = " + el.getStyleClass());
+//                        el.setStyle(el.getStyle() + el);
+////                        System.out.println("breaker.getPoints() = " + breaker.getPoints());
+////                        breaker.getPoints().add(new BreakPoint(_ -> {
+////
+////                            System.out.println(" you're a bitch ");
+////                        }, DefaultBreak.MOBILE));
+//
+////                        el.getStyleClass().stream().map(String::toLowerCase).filter(s -> s.contains("size")).findFirst().ifPresent(s -> {})
+//                    });
+//                }
+//            }
+//        });
+//    }
 
-    public void setSizer(Sizer<T> sizer) {
-        this.sizer.clear(this);
-        this.sizer = sizer;
-    }
-
-    /**
-     * See the values and the width relation.
-     * [ < number] - Size
-     */
-    public void log() {
-        this.sizer.setLog(true);
-    }
 
 }

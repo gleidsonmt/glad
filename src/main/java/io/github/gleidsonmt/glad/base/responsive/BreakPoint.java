@@ -1,9 +1,12 @@
 package io.github.gleidsonmt.glad.base.responsive;
 
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
+import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -35,8 +38,7 @@ public final class BreakPoint {
 
     @Override
     public String toString() {
-        return "BreakPoint{" + "\n\tbreaks=" + listBreaks +
-               "\n}";
+        return "BreakPoint{" + "points=" + listBreaks +
+               "}";
     }
 }
-

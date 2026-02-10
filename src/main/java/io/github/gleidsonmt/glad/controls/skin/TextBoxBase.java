@@ -27,6 +27,7 @@ import javafx.css.*;
 import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
 
@@ -145,14 +146,17 @@ public abstract class TextBoxBase extends Control {
         this.rightNode.set(rightNode);
     }
 
+    @ApiStatus.Experimental
     public boolean isAnimate() {
         return animated.get();
     }
 
+    @ApiStatus.Experimental
     public ObservableValue<Boolean> animateProperty() {
         return animated;
     }
 
+    @ApiStatus.Experimental
     public void setAnimate(boolean animate) {
         this.animated.set(animate);
     }

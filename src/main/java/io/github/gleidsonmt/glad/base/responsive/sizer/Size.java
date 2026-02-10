@@ -8,4 +8,5 @@ public interface Size {
 
     double getMax();
 
+    String name();
 }

@@ -10,6 +10,7 @@ import java.util.Arrays;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  23/06/2025
  */
+@Deprecated(forRemoval = true)
 public interface PontEvents<T extends Size> {
 
     /**

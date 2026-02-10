@@ -21,10 +21,10 @@ public class DashDrawerToNavBar extends Application {
 //
 //        Root rootImpl = new Root(container);
 //
-//        new Sizer<>(rootImpl, Break.values()) {
+//        new Sizer<>(rootImpl, DefaultBreak.values()) {
 //            @Override
-//            public void change(Break aBreak) {
-//                if (aBreak == Break.SM) {
+//            public void change(DefaultBreak aBreak) {
+//                if (aBreak == DefaultBreak.SM) {
 //                    drawer.phoneLayout();
 //                    container.getChildren().remove(drawer);
 //                    container.setTop(drawer);

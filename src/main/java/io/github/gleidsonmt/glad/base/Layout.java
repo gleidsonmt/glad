@@ -12,14 +12,19 @@ import org.jetbrains.annotations.ApiStatus;
  */
 public interface Layout  {
 
+    @ApiStatus.Experimental
     ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
 
+    @ApiStatus.Experimental
     default Region getDrawer() { return null; }
 
+    @ApiStatus.Experimental
     default Region getAside() { return null; }
 
+    @ApiStatus.Experimental
     default Node getBar() { return null; }
 
+    @ApiStatus.Experimental
     default Node getFooter() { return null; }
 
     @ApiStatus.Experimental
