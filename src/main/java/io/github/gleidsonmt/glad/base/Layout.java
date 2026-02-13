@@ -12,14 +12,20 @@ import org.jetbrains.annotations.ApiStatus;
  */
 public interface Layout  {
 
+    void setLeft(Node node);
+
+    Node getLeft();
+
+    void setRight(Node node);
+
+    void setTop(Node node);
+
+    void setBottom(Node node);
+
+    void setCenter(Node node);
+
     @ApiStatus.Experimental
     ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
-
-    @ApiStatus.Experimental
-    default Region getDrawer() { return null; }
-
-    @ApiStatus.Experimental
-    default Region getAside() { return null; }
 
     @ApiStatus.Experimental
     default Node getBar() { return null; }

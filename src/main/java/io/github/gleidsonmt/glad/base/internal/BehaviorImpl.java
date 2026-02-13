@@ -43,30 +43,6 @@ public class BehaviorImpl implements Behavior {
         this.alert = new AlertImpl(root);
         this.dialog = new DialogImpl(root);
         this.snack = new SnackImpl(root);
-
-//        if (layout.getLeft() != null) drawer = layout.getLeft();
-//        if (layout.getRight() != null) aside = layout.getRight();
-//
-//        layout.leftProperty().addListener((observableValue, node, newValue) -> {
-//            if (newValue != null) {
-//                drawer = newValue;
-//            }
-//        });
-
-//        layout.rightProperty().addListener((observableValue, node, newValue) -> {
-//            if (newValue != null) {
-//                aside = newValue;
-//            }
-//        });
-
-//        root.widthProperty().addListener((observableValue, number, newValue) -> {
-//            Size act = getSize(newValue.doubleValue());
-//            if (size.get() == null || size.get() != act) {
-//                size.set(act);
-//                _switch(act);
-//            }
-//        });
-
     }
 
     @Override
@@ -76,15 +52,15 @@ public class BehaviorImpl implements Behavior {
                     .dialog()
                     .pos(Pos.CENTER_LEFT)
                     .effect(WrapperEffect.GRAY)
-                    .content(root.getLayout().getDrawer())
+//                    .content(root.getLayout().getDrawer())
                     .anchor(Anchor.LEFT)
                     .insets(Insets.EMPTY)
                     .width(250)
                     .show();
 
             drawerTimeline.getKeyFrames().setAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(root.getLayout().getDrawer().getParent().translateXProperty(), -250)),
-                    new KeyFrame(Duration.millis(200), new KeyValue(root.getLayout().getDrawer().getParent().translateXProperty(), 0))
+//                    new KeyFrame(Duration.ZERO, new KeyValue(root.getLayout().getDrawer().getParent().translateXProperty(), -250)),
+//                    new KeyFrame(Duration.millis(200), new KeyValue(root.getLayout().getDrawer().getParent().translateXProperty(), 0))
             );
             drawerTimeline.setOnFinished(null);
             drawerTimeline.setRate(1);
@@ -97,17 +73,19 @@ public class BehaviorImpl implements Behavior {
     public void openAside() {
         if (!isAsideOpen()) {
             asideTimeline.getKeyFrames().setAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(root.getLayout().getAside().translateXProperty(), 250)),
-                    new KeyFrame(Duration.millis(200), new KeyValue(root.getLayout().getAside().translateXProperty(), 0))
+//                    new KeyFrame(Duration.ZERO, new KeyValue(root.getLayout().getAside().translateXProperty(), 250)),
+//                    new KeyFrame(Duration.millis(200), new KeyValue(root.getLayout().getAside().translateXProperty(), 0))
             );
             asideTimeline.setOnFinished(null);
             asideTimeline.setRate(1);
-            root.wrapper().show();
-            root.flow()
+            root.behavior()
+                    .dialog()
                     .pos(Pos.CENTER_RIGHT)
-                    .content(root.getLayout().getAside())
+//                    .content(root.getLayout().getAside())
                     .anchor(Anchor.RIGHT)
                     .insets(Insets.EMPTY)
+                    .width(400)
+                    .effect()
                     .show();
             asideTimeline.play();
         }
@@ -118,12 +96,13 @@ public class BehaviorImpl implements Behavior {
         if (isAsideOpen()) {
             asideTimeline.setRate(-1);
             root.wrapper().hide();
+//            root.behavior().dialog().hide();
             asideTimeline.setOnFinished(e -> {
                 root.wrapper().hide();
-                root.flow().remove(root.getLayout().getAside());
-                if (root.getLayout().getAside() != null) {
-                    root.getLayout().getAside().setTranslateX(0);
-                }
+//                root.flow().remove(root.getLayout().getAside());
+//                if (root.getLayout().getAside() != null) {
+//                    root.getLayout().getAside().setTranslateX(0);
+//                }
             });
             asideTimeline.play();
         }
@@ -135,10 +114,10 @@ public class BehaviorImpl implements Behavior {
             drawerTimeline.setRate(-1);
             drawerTimeline.setOnFinished(_ -> {
                 root.wrapper().hide();
-                root.flow().remove(root.getLayout().getDrawer());
-                if (root.getLayout().getDrawer() != null) {
-                    root.getLayout().getDrawer().setTranslateX(0);
-                }
+//                root.flow().remove(root.getLayout().getDrawer());
+//                if (root.getLayout().getDrawer() != null) {
+//                    root.getLayout().getDrawer().setTranslateX(0);
+//                }
             });
             drawerTimeline.play();
         }
@@ -166,14 +145,14 @@ public class BehaviorImpl implements Behavior {
 
     private boolean isDrawerContained() {
         if (root.getLayout() instanceof Pane pane) {
-            return pane.getChildren().contains(root.getLayout().getDrawer());
+//            return pane.getChildren().contains(root.getLayout().getDrawer());
         }
         return false;
     }
 
     private boolean isAsideContained() {
         if (root.getLayout() instanceof Pane pane) {
-            return pane.getChildren().contains(root.getLayout().getAside());
+//            return pane.getChildren().contains(root.getLayout().getAside());
         }
         return false;
     }
@@ -192,7 +171,8 @@ public class BehaviorImpl implements Behavior {
 
     @Override
     public boolean isDrawerAbsolute() {
-        return this.root.getChildren().contains(root.getLayout().getDrawer());
+//        return this.root.getChildren().contains(root.getLayout().getDrawer());
+        return false;
     }
 
 }

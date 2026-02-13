@@ -62,10 +62,7 @@ public class App extends Application {
         primaryStage.show();
 
 
-        container.log();
-
-
-//        ScenicView.show(scene.getRoot());
+        ScenicView.show(scene.getRoot());
     }
 
     private Node createTile() {

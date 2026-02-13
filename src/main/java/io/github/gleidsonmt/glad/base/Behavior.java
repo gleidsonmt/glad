@@ -12,32 +12,28 @@ import org.jetbrains.annotations.ApiStatus;
  */
 public interface Behavior {
 
-    @ApiStatus.Experimental
-    void closeAside();
-
-    @ApiStatus.Experimental
-    boolean isDrawerOpen();
-
-    @ApiStatus.Experimental
-    void openAside();
-
-    @ApiStatus.Experimental
-    boolean isDrawerAbsolute();
-
-    /******************************************************************
-     *
-     *                          Fixed
-     *
-     *****************************************************************/
-
     Dialog dialog();
 
     Alert alert();
 
     Snack snack();
 
+    @Deprecated(forRemoval = true)
     void openDrawer();
 
+    @Deprecated(forRemoval = true)
     void closeDrawer();
+
+    @Deprecated(forRemoval = true)
+    void closeAside();
+
+    @Deprecated(forRemoval = true)
+    boolean isDrawerOpen();
+
+    @Deprecated(forRemoval = true)
+    void openAside();
+
+    @Deprecated(forRemoval = true)
+    boolean isDrawerAbsolute();
 
 }

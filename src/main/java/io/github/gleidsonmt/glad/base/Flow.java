@@ -45,4 +45,6 @@ public interface Flow extends ContainerBase<Flow> {
      */
     void clear();
 
+    boolean has(Node node);
+
 }

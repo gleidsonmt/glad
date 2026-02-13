@@ -48,8 +48,8 @@ public class Root extends AbstractContainer<DefaultBreak> {
         this.layout = layout;
 
         widthProperty().addListener((_, _, _) -> {
-            wrapper.hide();
-            flow.clear();
+//            wrapper.hide();
+//            flow.clear();
         });
 
         sceneProperty().addListener((_, _, newValue) -> {

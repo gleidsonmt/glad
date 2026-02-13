@@ -64,6 +64,8 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         container.setLayoutY(0);
         container.setLayoutX(0);
         container.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+        container.setMinSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+        container.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
     }
 
     @Override
@@ -73,7 +75,14 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     @Override
     public void clear() {
-        root.getChildren().remove(1, root.getChildren().size());
+        if (root.getChildren().size() > 1) {
+            root.getChildren().remove(1, root.getChildren().size());
+        }
+    }
+
+    @Override
+    public boolean has(Node node) {
+        return root.getChildren().contains(node);
     }
 
     @Override
