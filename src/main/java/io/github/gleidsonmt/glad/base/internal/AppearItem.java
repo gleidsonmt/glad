@@ -14,4 +14,6 @@ public interface AppearItem {
      * Method called to remove the content on the screen.
      */
     void hide();
+
+    boolean isShowing();
 }

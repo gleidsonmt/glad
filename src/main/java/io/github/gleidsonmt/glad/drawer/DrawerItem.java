@@ -17,7 +17,7 @@ import javafx.scene.text.Text;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  17/04/2025
  */
-public class DrawerItem extends ToggleButton  {
+public class DrawerItem extends ToggleButton {
 
     public DrawerItem(Module item) {
         super(item.getName());
@@ -26,9 +26,11 @@ public class DrawerItem extends ToggleButton  {
         setAlignment(Pos.CENTER_LEFT);
         setPrefWidth(Double.MAX_VALUE);
 
-        addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
+        addEventFilter(MouseEvent.MOUSE_CLICKED, _ -> {
             Root root = (Root) getScene().getRoot();
-            root.behavior().closeDrawer();
+            if (root.behavior().dialog().isShowing()) {
+                root.behavior().dialog().hide();
+            }
         });
 
         if (item.getGraphic() != null) {

@@ -18,22 +18,4 @@ public interface Behavior {
 
     Snack snack();
 
-    @Deprecated(forRemoval = true)
-    void openDrawer();
-
-    @Deprecated(forRemoval = true)
-    void closeDrawer();
-
-    @Deprecated(forRemoval = true)
-    void closeAside();
-
-    @Deprecated(forRemoval = true)
-    boolean isDrawerOpen();
-
-    @Deprecated(forRemoval = true)
-    void openAside();
-
-    @Deprecated(forRemoval = true)
-    boolean isDrawerAbsolute();
-
 }

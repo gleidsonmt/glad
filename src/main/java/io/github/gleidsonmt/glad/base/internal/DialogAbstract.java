@@ -28,10 +28,10 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
         this.foreground = new Foreground();
         this.root = root;
 
-        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
-            root.behavior().closeDrawer();
-            root.behavior().closeAside();
-        });
+//        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
+////            root.behavior().closeDrawer();
+////            root.behavior().closeAside();
+//        });
 
         this.foreground.addEventFilter(MouseEvent.MOUSE_CLICKED, _ -> {
            this.hide();
@@ -77,11 +77,13 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     @Override
     public void show() {
-
+        showing = true;
     }
 
     @Override
     public void hide() {
-
+        showing = false;
     }
+
+
 }

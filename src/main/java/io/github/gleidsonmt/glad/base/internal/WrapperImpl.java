@@ -29,10 +29,7 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
         this.foreground = new Foreground();
 
         this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
-            root.behavior().closeDrawer();
-            root.behavior().closeAside();
         });
-
     }
 
     @Override
