@@ -22,7 +22,7 @@ import javafx.util.Duration;
  */
 public class BehaviorImpl implements Behavior {
 
-    private Root root;
+    private final Root root;
 
     private Node aside;
 
@@ -45,6 +45,7 @@ public class BehaviorImpl implements Behavior {
         this.snack = new SnackImpl(root);
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public void openDrawer() {
         if (!isDrawerOpen()) {
@@ -69,6 +70,7 @@ public class BehaviorImpl implements Behavior {
         }
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public void openAside() {
         if (!isAsideOpen()) {
@@ -91,6 +93,7 @@ public class BehaviorImpl implements Behavior {
         }
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public void closeAside() {
         if (isAsideOpen()) {
@@ -108,6 +111,7 @@ public class BehaviorImpl implements Behavior {
         }
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public void closeDrawer() {
         if (isDrawerAbsolute()) {
@@ -138,11 +142,13 @@ public class BehaviorImpl implements Behavior {
         return this.snack;
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public boolean isDrawerOpen() {
         return isDrawerContained() || isDrawerAbsolute();
     }
 
+    @Deprecated(forRemoval = true)
     private boolean isDrawerContained() {
         if (root.getLayout() instanceof Pane pane) {
 //            return pane.getChildren().contains(root.getLayout().getDrawer());
@@ -150,6 +156,7 @@ public class BehaviorImpl implements Behavior {
         return false;
     }
 
+    @Deprecated(forRemoval = true)
     private boolean isAsideContained() {
         if (root.getLayout() instanceof Pane pane) {
 //            return pane.getChildren().contains(root.getLayout().getAside());
@@ -157,18 +164,22 @@ public class BehaviorImpl implements Behavior {
         return false;
     }
 
+    @Deprecated(forRemoval = true)
     public boolean isAsideOpen() {
         return isAsideContained() || isAsideAbsolute();
     }
 
+    @Deprecated(forRemoval = true)
     private boolean isAsideAbsolute() {
         return this.root.getChildren().contains(aside);
     }
 
+    @Deprecated(forRemoval = true)
     public BooleanProperty drawerOpen() {
         return this.drawerOpen;
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public boolean isDrawerAbsolute() {
 //        return this.root.getChildren().contains(root.getLayout().getDrawer());

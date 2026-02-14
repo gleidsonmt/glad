@@ -7,22 +7,10 @@ import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
 import io.github.gleidsonmt.glad.base.responsive.AbstractContainer;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
-import io.github.gleidsonmt.glad.base.responsive.BreakPoint;
-import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
-import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-
-import java.util.Arrays;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -49,7 +37,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
         widthProperty().addListener((_, _, _) -> {
 //            wrapper.hide();
-//            flow.clear();
+            flow.clear();
         });
 
         sceneProperty().addListener((_, _, newValue) -> {
@@ -76,42 +64,5 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     public Behavior behavior() {
         return this.behavior;
-    }
-
-    /**
-     * Get in which width the view will change to phone size.
-     *
-     * @return The width.
-     */
-    @Deprecated(forRemoval = true)
-    public double getBreakpoint() {
-        return breakpoint.get();
-    }
-
-    /**
-     * Set in which width the view will change to phone size.
-     */
-    @Deprecated(forRemoval = true)
-    public void setBreakpoint(double breakpoint) {
-        this.breakpoint.set(breakpoint);
-    }
-
-    @Deprecated(forRemoval = true)
-    public DoubleProperty breakpointProperty() {
-        return this.breakpoint;
-    }
-
-    @Deprecated(forRemoval = true)
-    public void addPoint(EventHandler<ActionEvent> event, Size... breaks) {
-//        breaker.getPoints().add(new BreakPoint(event, breaks));
-    }
-
-    @Deprecated(forRemoval = true)
-    public void addPoints(BreakPoint... points) {
-//        breaker.getPoints().addAll(Arrays.stream(points).toList());
-    }
-    @Deprecated(forRemoval = true)
-    public void clearPoints() {
-//        breaker.getPoints().clear();
     }
 }
