@@ -29,7 +29,6 @@ javafx {
 application {
     mainModule = 'io.github.gleidsonmt.glad'
     mainClass = 'io.github.gleidsonmt.glad.App'
-
 }
 
 dependencies {

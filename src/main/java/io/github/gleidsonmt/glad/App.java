@@ -6,6 +6,7 @@ import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.responsive.*;
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import io.github.gleidsonmt.glad.base.responsive.sizer.Sizer;
+import io.github.gleidsonmt.glad.controls.avatar_crop.AvatarCrop;
 import io.github.gleidsonmt.glad.theme.Css;
 import io.github.gleidsonmt.glad.theme.Font;
 import io.github.gleidsonmt.glad.theme.ThemeProvider;
@@ -44,6 +45,8 @@ public class App extends Application {
             title.getStyleClass().remove("bg-red-500");
         }, DefaultBreak.MD);
 
+        container.getChildren().add(new AvatarCrop(Resources.getImage("avatar.jpg")));
+
         container.addBreakpoint(_ -> {
             title.getStyleClass().remove("bg-red-500");
         }, "LG");
@@ -62,7 +65,7 @@ public class App extends Application {
         primaryStage.show();
 
 
-        ScenicView.show(scene.getRoot());
+//        ScenicView.show(scene.getRoot());
     }
 
     private Node createTile() {
