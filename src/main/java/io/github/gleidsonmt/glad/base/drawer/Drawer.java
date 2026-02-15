@@ -131,7 +131,7 @@ public class Drawer extends VBox {
 //
         if (!group.getToggles().isEmpty()) {
             group.selectToggle(group.getToggles().getFirst());
-            currentModule.setValue((ModuleView) group.getToggles().get(1).getUserData());
+            currentModule.setValue((ModuleView) group.getToggles().getFirst().getUserData());
         }
     }
 

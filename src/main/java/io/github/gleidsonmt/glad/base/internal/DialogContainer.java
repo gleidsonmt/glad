@@ -12,7 +12,5 @@ public class DialogContainer extends StackPane {
     public DialogContainer(Node... node) {
         if (node != null) this.getChildren().setAll(node);
         this.getStyleClass().addAll("dialog-container","bg-white", "radius-5", "depth-2");
-
     }
-
 }

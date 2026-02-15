@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.controls.avatar_crop;
 
+import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.controls.avatar_crop.footer.Footer;
 import io.github.gleidsonmt.glad.controls.avatar_crop.header.Header;
 import io.github.gleidsonmt.glad.controls.avatar_crop.image_container.ImageContainer;
@@ -8,6 +9,7 @@ import io.github.gleidsonmt.glad.controls.icon.Icon;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SnapshotParameters;
@@ -31,17 +33,15 @@ public class AvatarCrop extends Region {
     private final VBox container = new VBox();
     private final StringProperty imageFormat = new SimpleStringProperty("png");
 
-
     public AvatarCrop(Image image) {
-        this.getStyleClass().add("avatar-crop-container");
+        this.setId("avatar-crop-container");
         this.container.setSpacing(10);
         this.container.setAlignment(Pos.CENTER);
-
-        container.setMaxWidth(500);
 
         header = new Header(Icon.RE_CENTER, "Crop and adjust image position");
         imageContainer = new ImageContainer(image);
         Footer footer = new Footer(imageContainer);
+        setPadding(new Insets(20));
 
         this.container.getChildren().addAll(header, imageContainer, footer);
 
@@ -54,6 +54,8 @@ public class AvatarCrop extends Region {
         footer.getButtonBar().getCancelButton().setOnAction(e -> {
             if (onClose != null) onClose.close();
         });
+
+        getStylesheets().add(Resources.getCss("avatar-crop.css"));
     }
 
     private WritableImage createImage(ScrollView content) {

@@ -35,6 +35,7 @@ public class CustomSliderSkin  extends SliderSkin {
         label.setVisible(false);
         control.setOnMousePressed(e -> {
 //            control.requestLayout();
+            control.requestLayout();
             this.width = e.getX();
             label.relocate(e.getX(), e.getY());
             label.setVisible(true);
@@ -67,6 +68,7 @@ public class CustomSliderSkin  extends SliderSkin {
 //            region.setLayoutX(thumb.getLayoutX());
 //            System.out.println("this.getSkinnable().lookup(\".thumb\") = " + this.getSkinnable().lookup(".thumb"));
         });
+//        region.minWidthProperty().bind(thumb.translateXProperty());
 //        positionInArea(trackClicked);
     }
 
@@ -78,7 +80,7 @@ public class CustomSliderSkin  extends SliderSkin {
 
     @Override
     protected void layoutChildren(double x, double y, double w, double h) {
-        super.layoutChildren(x, y, w, h);
+       super.layoutChildren(x, y, w, h);
         region.relocate(5, h/2 -3);
         region.resize( width, 5);
 //        label.resize( width, 5);

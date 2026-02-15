@@ -54,11 +54,6 @@ public class App extends Application {
             title.getStyleClass().add("bg-red-500");
         }, ">MD");
 
-
-//        container.getBreakpoints().add(new BreakPoint(_ -> System.out.println("\"uluu\" = " + "uluu"), "MD"));
-//        container.getBreakpoints().add(new BreakPoint(_ -> System.out.println("\"uluu\" = " + "uluu"), "MD LG SM"));
-//        container.getBreakpoints().add(new BreakPoint(_ -> System.out.println("\"uluu\" = " + "uluu"), "MD:CLASS LG SM"));
-
         Scene scene = new Scene(container);
         ThemeProvider.install(scene, Css.BOOTSTRAP, Font.POPPINS, Css.DEFAULT);
         primaryStage.setScene(scene);

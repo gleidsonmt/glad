@@ -32,6 +32,7 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.controls.badge;
     exports io.github.gleidsonmt.glad.controls.button;
     exports io.github.gleidsonmt.glad.controls.carousel;
+    exports io.github.gleidsonmt.glad.controls.avatar_crop;
     exports io.github.gleidsonmt.glad.drawer;
 
     exports io.github.gleidsonmt.glad.controls.enums;

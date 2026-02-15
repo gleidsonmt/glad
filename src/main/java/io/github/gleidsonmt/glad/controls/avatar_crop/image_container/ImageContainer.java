@@ -17,7 +17,6 @@ public class ImageContainer extends StackPane {
 
     private ScrollView scrollView;
 
-
     private StackPane one = new StackPane();
 
     private Rectangle rectangle;
@@ -38,12 +37,12 @@ public class ImageContainer extends StackPane {
 
         double max = 500;
         this.setMaxWidth(max);
+        this.setMaxHeight(max);
         this.setMinWidth(max);
         this.setMinHeight(max);
-        this.setMaxHeight(max);
 
-        scrollView.setFitToWidth(true);
-        scrollView.setFitToHeight(true);
+//        scrollView.setFitToWidth(true);
+//        scrollView.setFitToHeight(true);
 
         one.setStyle("-fx-background-color: #c0c7ff;");
     }

@@ -23,12 +23,13 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
         root.flow()
                 .pos(pos)
-                .width(width == -1 ? 600 : width)
-                .height(height == -1 ? 400 : height)
+//                .width(width == -1 ? 600 : width)
+//                .height(height == -1 ? 400 : height)
+                .width(width)
+                .height(height)
                 .anchor(anchor)
                 .content(new DialogContainer(node))
                 .show();
-
 
         reset();
     }
