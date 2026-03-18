@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.base.dialog.alert.layout;
+package io.github.gleidsonmt.testfx.glad.base.dialog.alert.layout;
 
 import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
 import javafx.geometry.Insets;

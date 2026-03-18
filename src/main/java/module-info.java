@@ -7,8 +7,6 @@ module io.github.gleidsonmt.glad {
     requires java.desktop;
     requires javafx.base;
 
-    requires org.scenicview.scenicview;
-
     opens io.github.gleidsonmt.glad.base to javafx.fxml;
     opens io.github.gleidsonmt.glad.base.internal to javafx.fxml;
 
@@ -24,6 +22,7 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.theme;
 
     exports io.github.gleidsonmt.glad.controls;
+    exports io.github.gleidsonmt.glad.controls.form;
     exports io.github.gleidsonmt.glad.controls.icon;
     exports io.github.gleidsonmt.glad.controls.avatar;
     exports io.github.gleidsonmt.glad.controls.toggle_switch;

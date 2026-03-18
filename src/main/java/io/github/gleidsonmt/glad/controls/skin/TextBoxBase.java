@@ -17,6 +17,7 @@
 
 package io.github.gleidsonmt.glad.controls.skin;
 
+import io.github.gleidsonmt.glad.controls.form.FormField;
 import io.github.gleidsonmt.glad.controls.text_box.Editor;
 import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
 import javafx.beans.DefaultProperty;
@@ -38,7 +39,8 @@ import java.util.List;
  * Create on  15/09/2022
  */
 @DefaultProperty("children")
-public abstract class TextBoxBase extends Control {
+@SuppressWarnings("unused")
+public abstract class TextBoxBase extends Control implements FormField {
 
     private final ObjectProperty<Editor> editor = new SimpleObjectProperty<>();
     private final ObjectProperty<Node> leftNode = new SimpleObjectProperty<>();
@@ -46,7 +48,6 @@ public abstract class TextBoxBase extends Control {
 
     private static final StyleablePropertyFactory<TextBoxBase> FACTORY =
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
-
 
     private final StyleableObjectProperty<Boolean> animated =
             new SimpleStyleableObjectProperty<>(ANIMATE, this, "animate", false);
@@ -56,6 +57,11 @@ public abstract class TextBoxBase extends Control {
                     "-fx-animate",
                     g -> g.animated, true);
 
+    private static final PseudoClass PSEUDO_CLASS_ERROR = PseudoClass.getPseudoClass("error");
+    private static final PseudoClass PSEUDO_CLASS_SUCCESS = PseudoClass.getPseudoClass("success");
+
+    private final StringProperty helperText = new SimpleStringProperty();
+    private final BooleanProperty valid = new SimpleBooleanProperty(this, "valid", true);
 
     private static final PseudoClass PSEUDO_CLASS_ANIMATE = PseudoClass.getPseudoClass("animate");
 
@@ -72,11 +78,11 @@ public abstract class TextBoxBase extends Control {
     }
 
     protected TextBoxBase(boolean mask) {
-
+        editor.set(new Editor());
         maskText.set(mask);
         getStyleClass().add("text-box-base");
 
-        editorProperty().addListener((observable, oldValue, newValue) -> {
+        editorProperty().addListener((_, oldValue, newValue) -> {
 
             if (newValue != null) {
 
@@ -91,23 +97,57 @@ public abstract class TextBoxBase extends Control {
 
         });
 
+
     }
 
     @Override
     protected Skin<?> createDefaultSkin() {
-        if (animated.get()) {
-            editor.set(new FloatEditor());
-            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, true);
-        } else {
-            editor.set(new Editor());
-            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, false);
-        }
+//        if (animated.get()) {
+//            editor.set(new FloatEditor());
+//            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, true);
+//        } else {
+//            editor.set(new Editor());
+//            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, false);
+//        }
         return new TextBoxBaseSkin(this);
     }
 
     @Override
     public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
         return FACTORY.getCssMetaData();
+    }
+
+    public String getHelperText() {
+        return helperText.get();
+    }
+
+    public StringProperty helperTextProperty() {
+        return helperText;
+    }
+
+    public void setHelperText(String helperText) {
+        this.helperText.set(helperText);
+    }
+
+    @Override
+    public void validate() {
+        pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !isValid());
+        ((TextBoxBaseSkin) getSkin()).validate(isValid());
+        valid.addListener((_, _, newValue) -> pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !newValue));
+    }
+
+    @Override
+    public boolean isValid() {
+        return valid.get();
+    }
+
+    public void setValid(boolean valid) {
+        this.valid.set(valid);
+    }
+
+    @Override
+    public BooleanProperty validProperty() {
+        return valid;
     }
 
     public Editor getEditor() {

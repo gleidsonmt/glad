@@ -16,7 +16,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     private final Behavior behavior;
     private final Flow flow;
-    private final Layout layout;
+    private  Layout layout;
 
     /**
      * Initializes layout, flow, behavior; adds listeners for dynamic adjustments
@@ -24,9 +24,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
     public Root(Layout layout) {
         this.flow = new FlowImpl(this);
         this.behavior = new BehaviorImpl(this);
-        this.getChildren().add((Node) layout);
-
-        this.layout = layout;
+        setLayout(layout);
 
         // removes any node with absolute position, like alerts, dialogs, etc.
         widthProperty().addListener((_, _, _) -> flow.clear());
@@ -38,6 +36,11 @@ public class Root extends AbstractContainer<DefaultBreak> {
                 });
             }
         });
+    }
+
+    public void setLayout(Layout layout) {
+        this.getChildren().setAll((Node) layout);
+        this.layout = layout;
     }
 
     public Layout getLayout() {

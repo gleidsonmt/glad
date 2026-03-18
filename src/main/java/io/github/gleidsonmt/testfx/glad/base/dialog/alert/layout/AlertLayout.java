@@ -1,4 +1,4 @@
-package io.github.gleidsonmt.glad.base.dialog.alert.layout;
+package io.github.gleidsonmt.testfx.glad.base.dialog.alert.layout;
 
 import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
@@ -6,7 +6,6 @@ import io.github.gleidsonmt.glad.base.dialog.alert.icons.ErrorIcon;
 import io.github.gleidsonmt.glad.base.dialog.alert.icons.InfoIcon;
 import io.github.gleidsonmt.glad.base.dialog.alert.icons.SuccessIcon;
 import io.github.gleidsonmt.glad.base.dialog.alert.icons.WarnIcon;
-import io.github.gleidsonmt.testfx.glad.base.dialog.alert.layout.BarAction;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -19,7 +18,7 @@ import java.util.Objects;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  20/02/2026
+ * Create on  06/11/2024
  */
 public class AlertLayout extends VBox {
 

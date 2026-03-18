@@ -105,11 +105,11 @@ public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
         if (items != null && items.isEmpty()) { // view sample
             for (int i = 0; i < 3; i++) {
                 ToggleButton btn = new ToggleButton();
-                btn.setId(String.valueOf(i));
                 btn.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                 btn.setToggleGroup(group);
 
-                btn.getStyleClass().add("ind-" + i);
+                btn.getStyleClass().add("dot");
+                btn.setId(String.valueOf(i));
                 indicators.getChildren().add(btn);
             }
         }
@@ -310,6 +310,7 @@ public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
 
             ToggleButton btn = new ToggleButton();
             btn.setId(String.valueOf(i));
+            btn.getStyleClass().add("dot");
             btn.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             btn.setToggleGroup(group);
 

@@ -14,10 +14,21 @@ import org.jetbrains.annotations.ApiStatus;
 public class Container extends AbstractContainer<Size> {
 
     public Container() {
+        this(null, DefaultBreak.values());
+    }
+
+    public Container(Node node) {
+        this(node, DefaultBreak.values());
     }
 
     public Container(Size[] values) {
+        this(null, values);
+    }
+
+    public Container(Node node, Size[] values) {
         super(values);
+        if (node != null) this.getChildren().add(node);
+
 //        this.getChildren().addListener(new ListChangeListener<Node>() {
 //            @Override
 //            public void onChanged(Change<? extends Node> change) {

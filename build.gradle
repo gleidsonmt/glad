@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.1.12'
+version '1.1.223'
 
 repositories {
     mavenCentral()
@@ -33,9 +33,9 @@ application {
 
 dependencies {
     implementation 'org.jetbrains:annotations:24.0.1'
-    implementation files("vendor/scenicview.jar")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 }
 
 test {

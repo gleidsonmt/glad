@@ -19,7 +19,7 @@ public interface Module {
 
     default void setNode(Node node){ };
 
-    @Deprecated
+    @Deprecated(forRemoval = true)
     boolean isAnimated();
 
     @ApiStatus.Experimental

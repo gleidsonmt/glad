@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
@@ -44,11 +45,11 @@ public class Drawer extends VBox {
     private ObjectProperty<Callback<Module, Node>> cellFactory;
     private ObjectProperty<ObservableList<Module>> items;
 
-    private final DrawerContainer drawerContainer;
-    private final ToggleGroup group = new ToggleGroup();
-
     private final VBox searchBox = new VBox();
     private final VBox defaultBox = new VBox();
+
+    protected final DrawerContainer container;
+    protected final ToggleGroup group = new ToggleGroup();
 
     public Drawer() {
         this(FXCollections.observableArrayList());
@@ -68,12 +69,11 @@ public class Drawer extends VBox {
                 yield new DrawerItem(module);
             }
         });
-
     }
 
     public Drawer(@NotNull ObservableList<Module> modules, @NotNull Callback<Module, Node> cellFactory) {
         this.setId("drawer");
-        this.drawerContainer = new DrawerContainer(defaultBox);
+        this.container = new DrawerContainer(defaultBox);
         defaultBox.setId("drawer-content");
 
         itemsProperty().addListener((_, _, newValue) -> {
@@ -97,16 +97,17 @@ public class Drawer extends VBox {
         cellFactoryProperty().set(cellFactory);
         itemsProperty().set(modules);
 
-        this.getChildren().addAll(drawerContainer);
+        this.getChildren().addAll(container);
         setAlignment(Pos.TOP_CENTER);
-        VBox.setVgrow(drawerContainer, Priority.ALWAYS);
+        VBox.setVgrow(container, Priority.ALWAYS);
         this.setPrefWidth(250);
+
 //
-        currentModule.addListener((_, _, newValue) -> group.getToggles().forEach(e -> {
-            if (e.getUserData() == newValue) {
-                group.selectToggle(e);
-            }
-        }));
+//        currentModule.addListener((_, _, newValue) -> group.getToggles().forEach(e -> {
+//            if (e.getUserData() == newValue) {
+//                group.selectToggle(e);
+//            }
+//        }));
 //
         group.selectedToggleProperty().addListener((_, oldValue, newValue) -> {
             if (newValue != null) {
@@ -129,16 +130,53 @@ public class Drawer extends VBox {
             }
         });
 //
-        if (!group.getToggles().isEmpty()) {
-            group.selectToggle(group.getToggles().getFirst());
-            currentModule.setValue((ModuleView) group.getToggles().getFirst().getUserData());
-        }
+//        Platform.runLater(() -> {
+//testing
+//        if (!group.getToggles().isEmpty()) {
+//            currentModule.bind(group.selectedToggleProperty().map(e -> (Module) e.getUserData()));
+//            group.selectToggle(group.getToggles().getFirst());
+//            currentModule.setValue((ModuleView) group.getToggles().getFirst().getUserData());
+//        }
+//        });
+
+    }
+
+    public void select(Module module) {
+        group.selectToggle(group.getToggles().stream().filter(e -> e.getUserData() == module).findFirst().orElse(null));
+    }
+
+    public void selectFirst() {
+        group.selectToggle(group.getToggles().getFirst());
+    }
+
+    public void selectLast() {
+        group.selectToggle(group.getToggles().getLast());
+    }
+
+    public void selectNext() {
+        group.selectToggle(group.getToggles().get(group.getToggles().indexOf(group.getSelectedToggle()) + 1));
+    }
+
+    public void selectPrevious() {
+        group.selectToggle(group.getToggles().get(group.getToggles().indexOf(group.getSelectedToggle()) - 1));
+    }
+
+    public void select(int index) {
+        group.selectToggle(group.getToggles().get(index));
+    }
+
+    public Toggle getSelected() {
+        return group.getSelectedToggle();
+    }
+
+    public ObservableList<Toggle> getToggles() {
+        return group.getToggles();
     }
 
     public void setSearchable(StringProperty property, Predicate<String> predicate) {
         property.addListener((_, _, newVal) -> {
             if (!newVal.isEmpty()) {
-                drawerContainer.setContainer(searchBox);
+                container.setContainer(searchBox);
                 searchBox.getChildren().clear();
 
                 find(predicate)
@@ -153,8 +191,8 @@ public class Drawer extends VBox {
                             }
                         });
             } else {
-                drawerContainer.setContainer(defaultBox);
-                VBox.setVgrow(drawerContainer, Priority.ALWAYS);
+                container.setContainer(defaultBox);
+                VBox.setVgrow(container, Priority.ALWAYS);
             }
         });
     }

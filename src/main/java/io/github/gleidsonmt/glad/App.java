@@ -19,7 +19,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import org.scenicview.ScenicView;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
