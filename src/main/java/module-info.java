@@ -3,7 +3,7 @@ module io.github.gleidsonmt.glad {
     requires  javafx.graphics;
     requires  javafx.controls;
 
-    requires org.jetbrains.annotations;
+    requires static org.jetbrains.annotations;
     requires java.desktop;
     requires javafx.base;
 
