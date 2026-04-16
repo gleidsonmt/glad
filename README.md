@@ -4,6 +4,7 @@ news
 <h1></h1>
 
 # 💗 Wall
+
 <p align="center">
   <img src="wall/toggle_switch.png"  />
   <img src="wall/button.png"  />

@@ -17,7 +17,7 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
     public void open(Node node) {
 
-        if(this.wrapperEffect != null) {
+        if (this.wrapperEffect != null) {
             root.getChildren().add(foreground.restyle(wrapperEffect, root));
         }
 
@@ -25,8 +25,8 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
                 .pos(pos)
 //                .width(width == -1 ? 600 : width)
 //                .height(height == -1 ? 400 : height)
-                .width(width)
-                .height(height)
+                .width(width.get())
+                .height(height.get())
                 .anchor(anchor)
                 .content(new DialogContainer(node))
                 .show();

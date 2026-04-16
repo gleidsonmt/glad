@@ -4,8 +4,8 @@
     -fx-padding: 20px;
 }
 
-#avatar-crop-container  .picture-select-scroll {
-    -fx-vbar-policy : never;
-    -fx-hbar-policy : never;
+#avatar-crop-container .picture-select-scroll {
+    -fx-vbar-policy: never;
+    -fx-hbar-policy: never;
 }
 

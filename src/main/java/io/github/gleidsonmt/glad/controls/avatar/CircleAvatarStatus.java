@@ -28,8 +28,8 @@ public final class CircleAvatarStatus extends Circle {
         ContextMenu contextMenu = new ContextMenu();
         ThemeProvider.install(contextMenu.getScene(), Css.DEFAULT);
 
-        avatarStatus. setOnMouseClicked(e -> {
-            contextMenu.show(this, Side.BOTTOM, 0,0);
+        avatarStatus.setOnMouseClicked(e -> {
+            contextMenu.show(this, Side.BOTTOM, 0, 0);
         });
 
         for (Status status : Status.values()) {
@@ -48,6 +48,7 @@ public final class CircleAvatarStatus extends Circle {
             contextMenu.getItems().add(menuItem);
         }
     }
+
     private void _switch(Circle circle, Status status) {
         if (status == Status.BUSY) {
             circle.setStyle("-fx-fill: -danger;");

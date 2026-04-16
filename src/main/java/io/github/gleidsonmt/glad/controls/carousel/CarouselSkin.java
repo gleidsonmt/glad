@@ -117,7 +117,7 @@ public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
         initListener();
         init();
         if (getSkinnable().isAutoRide()) {
-             // add first view
+            // add first view
 //            control.addEventHandler(MouseEvent.MOUSE_EXITED, exited);
 //            control.addEventHandler(MouseEvent.MOUSE_ENTERED, entered);
         }
@@ -184,8 +184,8 @@ public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
         overLeft(left_button);
         overRight(right_button);
 
-        registerChangeListener(control.arrowsProperty(),  c -> {
-            removeArrows (((boolean) c.getValue()));
+        registerChangeListener(control.arrowsProperty(), c -> {
+            removeArrows(((boolean) c.getValue()));
         });
 
 //        registerChangeListener(control.arrowsProperty(), "VISIBLE_ARROWS");

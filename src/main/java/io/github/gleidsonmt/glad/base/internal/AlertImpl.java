@@ -69,8 +69,8 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
         root.flow()
                 .pos(Pos.CENTER)
-                .width(width != -1 ? width : 600)
-                .height(height != -1 ? height : 300)
+                .width(width.get() != -1 ? width.get() : 600)
+                .height(height.get() != -1 ? height.get() : 300)
                 .content(new DialogContainer(alert))
                 .show();
 

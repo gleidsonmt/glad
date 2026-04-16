@@ -7,7 +7,7 @@ import java.util.EventListener;
  * Create on  19/11/2024
  */
 @FunctionalInterface
-public interface CloseAction  extends EventListener {
+public interface CloseAction extends EventListener {
 
     void close();
 

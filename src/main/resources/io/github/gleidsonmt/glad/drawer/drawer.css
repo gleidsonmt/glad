@@ -90,8 +90,8 @@
     -fx-padding: 10px;
 }
 
-#drawer > .module-selected:expanded  .title .arrow-button .arrow,
-#drawer > .module-selected  .title .arrow-button .arrow,
+#drawer > .module-selected:expanded .title .arrow-button .arrow,
+#drawer > .module-selected .title .arrow-button .arrow,
 #drawer > .module-selected > .title .text {
     -fx-fill: white;
     -fx-background-color: white;
@@ -102,12 +102,12 @@
 }
 
 .titled-pane .title .arrow-button .arrow {
-    -fx-shape : "M11.1808 15.8297L6.54199 9.20285C5.89247 8.27496 6.55629 7 7.68892 7L16.3111 7C17.4437 7 18.1075 8.27496 17.458 9.20285L12.8192 15.8297C12.4211 16.3984 11.5789 16.3984 11.1808 15.8297Z";
+    -fx-shape: "M11.1808 15.8297L6.54199 9.20285C5.89247 8.27496 6.55629 7 7.68892 7L16.3111 7C17.4437 7 18.1075 8.27496 17.458 9.20285L12.8192 15.8297C12.4211 16.3984 11.5789 16.3984 11.1808 15.8297Z";
 
-    -fx-min-width : 6px;
-    -fx-pref-width : 9px;
-    -fx-pref-height : 7px;
-    -fx-min-height : 0px;
+    -fx-min-width: 6px;
+    -fx-pref-width: 9px;
+    -fx-pref-height: 7px;
+    -fx-min-height: 0px;
 
     -fx-background-color: -text-color;
 
@@ -115,8 +115,8 @@
 
 .titled-pane:focused .title .arrow-button .arrow,
 .titled-pane:expanded .title .arrow-button .arrow {
-    -fx-effect : none;
-    -fx-focus-color : transparent;
+    -fx-effect: none;
+    -fx-focus-color: transparent;
 }
 
 #drawer > .module-selected:focused:expanded > .title .arrow {
@@ -124,7 +124,7 @@
     -fx-min-height: 1px;
 }
 
-#drawer .drawer-menu  .drawer-item {
+#drawer .drawer-menu .drawer-item {
     -fx-background-color: transparent;
 }
 
@@ -139,7 +139,6 @@
 }
 
 
-
 #drawer .drawer-menu .drawer-item:hover .text {
     -fx-fill: -fx-accent;
 }
@@ -152,7 +151,7 @@
     -fx-fill: -fx-accent;
 }
 
-#drawer .drawer-menu-selected .title  {
+#drawer .drawer-menu-selected .title {
     -fx-background-color: -fx-accent;
 }
 

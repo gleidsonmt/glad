@@ -41,7 +41,7 @@ public class TechCircle extends CircleLoader implements SuspenseLoader {
         circles.get(2).setRadius(85);
 
         // start with diferent angles per circle and speed
-        rotate(circles.get(0), 180, 18 );
+        rotate(circles.get(0), 180, 18);
         rotate(circles.get(1), 360, 10);
         rotate(circles.get(2), 60, 22);
 

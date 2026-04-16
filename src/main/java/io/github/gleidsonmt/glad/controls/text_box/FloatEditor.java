@@ -36,8 +36,8 @@ import java.util.Objects;
 @DefaultProperty("children")
 public class FloatEditor extends Editor {
 
-    private final ObjectProperty<FloatAlignment>   floatAlignment   = new SimpleObjectProperty<>(); // top of aligment
-    private final DoubleProperty                  distanceX       = new SimpleDoubleProperty(); // distance x for the prompt label
+    private final ObjectProperty<FloatAlignment> floatAlignment = new SimpleObjectProperty<>(); // top of aligment
+    private final DoubleProperty distanceX = new SimpleDoubleProperty(); // distance x for the prompt label
 
     public FloatEditor() {
         this(null, FloatAlignment.BASELINE);

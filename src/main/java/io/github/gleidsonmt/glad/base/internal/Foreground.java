@@ -28,7 +28,7 @@ public class Foreground extends StackPane {
             root.getChildren().getFirst().setEffect(new BoxBlur(2, 2, 1));
 //            getScene().getRoot().setEffect(new BoxBlur(2, 2, 1));
             this.setBackground(new Background(
-                    new BackgroundFill(Color.rgb(255,255,255,0.1), CornerRadii.EMPTY, Insets.EMPTY)
+                    new BackgroundFill(Color.rgb(255, 255, 255, 0.1), CornerRadii.EMPTY, Insets.EMPTY)
             ));
         } else {
             root.getChildren().getFirst().setEffect(null);

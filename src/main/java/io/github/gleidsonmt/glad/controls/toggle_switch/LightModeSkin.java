@@ -49,7 +49,7 @@ public class LightModeSkin extends ToggleSwitchSkin {
     protected void layoutChildren(double contentX, double contentY, double contentWidth, double contentHeight) {
         super.layoutChildren(contentX, contentY, contentWidth, contentHeight);
 
-        layoutInArea(dark, contentX+5, contentY, contentWidth, contentHeight, -1, HPos.LEFT, VPos.CENTER);
+        layoutInArea(dark, contentX + 5, contentY, contentWidth, contentHeight, -1, HPos.LEFT, VPos.CENTER);
         layoutInArea(light, contentX, contentY, contentWidth - 25, contentHeight, -1, HPos.RIGHT, VPos.CENTER);
 //        layoutInArea(background, contentX, contentY, contentWidth, contentHeight, -1, HPos.LEFT, VPos.CENTER);
     }

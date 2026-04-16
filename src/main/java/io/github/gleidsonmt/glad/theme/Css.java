@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public enum Css implements Neutral {
 
-//    DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
+    //    DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
     DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
 
     TOGGLE_SWITCH("toggle-switch.css"),
@@ -40,8 +40,7 @@ public enum Css implements Neutral {
     SPINNER("spinner.css"),
     DATE_PICKER("date_picker.css"),
     TITLED_PANE("titled-pane.css"),
-    ALL("ALL")
-    ;
+    ALL("ALL");
 
     private final String url;
 

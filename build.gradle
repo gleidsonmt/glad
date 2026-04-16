@@ -1,9 +1,6 @@
 plugins {
     id 'java'
-    id 'application'
-    id 'org.javamodularity.moduleplugin' version '1.8.12'
     id 'org.openjfx.javafxplugin' version '0.0.13'
-    id 'org.beryx.jlink' version '2.25.0'
 }
 
 group 'io.github.gleidsonmt'
@@ -26,16 +23,10 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
 }
 
-application {
-    mainModule = 'io.github.gleidsonmt.glad'
-    mainClass = 'io.github.gleidsonmt.glad.App'
-}
-
 dependencies {
     compileOnly('org.jetbrains:annotations:24.0.1')
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-
 }
 
 test {

@@ -23,7 +23,7 @@ public final class BreakPoint {
         this(eventHandler, new Size[]{_break});
     }
 
-    public BreakPoint(EventHandler<ActionEvent> eventHandler, Size... breaks ) {
+    public BreakPoint(EventHandler<ActionEvent> eventHandler, Size... breaks) {
         this.listBreaks = List.of(breaks);
         this.eventHandler = eventHandler;
     }

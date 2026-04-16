@@ -12,7 +12,7 @@ public class Footer extends VBox {
 
     private final Buttons buttons;
 
-    public Footer( ImageContainer imageContainer) {
+    public Footer(ImageContainer imageContainer) {
         this.setMaxWidth(500);
         AvatarCropImageView cropImageView = imageContainer.getScrollView().getScrollViewContent();
         Controls controls = new Controls(cropImageView);

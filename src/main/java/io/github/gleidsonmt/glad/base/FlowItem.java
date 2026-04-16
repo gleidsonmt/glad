@@ -14,6 +14,7 @@ public interface FlowItem<T> extends AppearItem {
 
     /**
      * Anchor your region.
+     *
      * @param anchor The anchor.
      * @return The FlowItem.
      */
@@ -21,6 +22,7 @@ public interface FlowItem<T> extends AppearItem {
 
     /**
      * The position of the content.
+     *
      * @param pos The position.
      * @return The FlowItem.
      */

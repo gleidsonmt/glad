@@ -38,7 +38,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     public void show() {
         var bar = new SnackBar(this.message);
         if (graphic != null) bar.setGraphic(graphic);
-        if(actions != null) {
+        if (actions != null) {
             var ref = new Object() {
                 int count = graphic != null ? 2 : 1;
             };
@@ -59,7 +59,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
             public void run() {
                 timeline.setRate(-1);
                 timeline.play();
-                timeline.setOnFinished(_ ->  root.flow().remove(bar));
+                timeline.setOnFinished(_ -> root.flow().remove(bar));
             }
         };
 

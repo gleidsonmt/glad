@@ -13,7 +13,7 @@ import javafx.scene.shape.Circle;
 @Deprecated(forRemoval = true)
 public class AvatarCircleView extends Circle {
 
-    private final ObjectProperty<Image> image =  new SimpleObjectProperty<>();
+    private final ObjectProperty<Image> image = new SimpleObjectProperty<>();
 
     public AvatarCircleView() {
         this(null);

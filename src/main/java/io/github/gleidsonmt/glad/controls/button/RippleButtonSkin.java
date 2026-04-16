@@ -75,7 +75,7 @@ public class RippleButtonSkin extends ButtonSkin {
 //                        + stroke.getRadii().getTopRightHorizontalRadius()
 //                        + stroke.getRadii().getTopLeftVerticalRadius();
 
-                    double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() +  stroke.getRadii().getTopLeftVerticalRadius();
+                    double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() + stroke.getRadii().getTopLeftVerticalRadius();
 
                     clip.setArcWidth(arcWidth);
                     clip.setArcHeight(arcWidth);
@@ -89,7 +89,7 @@ public class RippleButtonSkin extends ButtonSkin {
 //                        + stroke.getRadii().getTopRightHorizontalRadius()
 //                        + stroke.getRadii().getTopLeftVerticalRadius();
 
-                    double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() +  stroke.getRadii().getTopLeftVerticalRadius();
+                    double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() + stroke.getRadii().getTopLeftVerticalRadius();
 
                     clip.setArcWidth(arcWidth);
                     clip.setArcHeight(arcWidth);

@@ -8,6 +8,7 @@ import javafx.scene.layout.Region;
 
 /**
  * The wrapper interface disposes a region with color to focus on the element stacked.
+ *
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */

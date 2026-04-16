@@ -49,9 +49,10 @@ public class FabButton extends Button {
     public FabButton(Icon icon) {
         this(icon, false);
     }
+
     public FabButton(Icon icon, boolean inside) {
         setIcon(icon);
-        getStyleClass().addAll("round", inside ? "inside-button" : "icon-button", "padding-0" );
+        getStyleClass().addAll("round", inside ? "inside-button" : "icon-button", "padding-0");
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         setGraphic(new SVGIcon());
 

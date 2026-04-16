@@ -91,7 +91,8 @@ public class AvatarCrop extends Region {
         return imageFormat;
     }
 
-    @Override public void layoutChildren() {
+    @Override
+    public void layoutChildren() {
         super.layoutChildren();
         container.resize(
                 this.getWidth(),

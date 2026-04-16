@@ -13,7 +13,7 @@ import javafx.scene.shape.Rectangle;
 @Deprecated(forRemoval = true)
 public class AvatarRectView extends Rectangle {
 
-    private final ObjectProperty<Image> image =  new SimpleObjectProperty<>();
+    private final ObjectProperty<Image> image = new SimpleObjectProperty<>();
 
     public AvatarRectView() {
         this(null);

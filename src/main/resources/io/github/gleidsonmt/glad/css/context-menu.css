@@ -21,8 +21,8 @@
 
 .menu-item {
     -fx-padding: 8px 15px 8px 15px;
-    -fx-border-insets:0px;
-    -fx-background-insets:0px;
+    -fx-border-insets: 0px;
+    -fx-background-insets: 0px;
 }
 
 .menu-item .label {
@@ -30,11 +30,11 @@
     -fx-graphic-text-gap: 30px;
 }
 
-.menu-item  {
+.menu-item {
     -fx-graphic-text-gap: 30px;
     -fx-border-width: 1px;
-     -fx-border-color: transparent;
-     -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
 }
 
 .menu-item:focused,
@@ -54,6 +54,7 @@
 .menu-item-first:hover {
     -fx-border-color: transparent transparent -medium-gray transparent;
 }
+
 .menu-item-last {
     -fx-border-color: transparent;
 }
@@ -64,7 +65,7 @@
 
 .arrow {
     -fx-rotate: 90;
-    -fx-padding: 5px 3px 5px 3px ;
+    -fx-padding: 5px 3px 5px 3px;
     -fx-shape: "M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z";
 }
 
@@ -73,7 +74,7 @@
     -fx-background-radius: 5px;
     -fx-background-insets: 0;
     -fx-padding: 15px; /* 10px */
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.2) , 10, 0.0 , 0 , 3 );
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0.0, 0, 3);
     -fx-font-size: 0.95em;
 }
 

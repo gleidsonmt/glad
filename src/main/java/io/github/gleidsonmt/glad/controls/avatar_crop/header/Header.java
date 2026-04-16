@@ -24,7 +24,9 @@ public class Header extends GridPane {
         btnClose.getStyleClass().addAll("border-button");
         btnClose.setMaxSize(40, 30);
 
-        btnClose.setOnAction(_ -> {if (onClose != null)  onClose.close();});
+        btnClose.setOnAction(_ -> {
+            if (onClose != null) onClose.close();
+        });
 
         btnClose.setCancelButton(true);
         btnClose.setGraphic(new SVGIcon(Icon.CLEAR));

@@ -16,7 +16,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     private final Behavior behavior;
     private final Flow flow;
-    private  Layout layout;
+    private Layout layout;
 
     /**
      * Initializes layout, flow, behavior; adds listeners for dynamic adjustments

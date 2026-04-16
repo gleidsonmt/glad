@@ -1,9 +1,9 @@
 ToggleButton {
-    -fx-text-fill : white;
-    -fx-font-weight : bolder;
-    -fx-graphic-text-gap : 10;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+    -fx-graphic-text-gap: 10;
 
-    -fx-cursor : hand;
+    -fx-cursor: hand;
     -fx-effect: none;
     -fx-background-color: -fx-accent;
     -fx-background-radius: 10px;
@@ -25,12 +25,12 @@ ToggleButton:pressed:focused {
 }
 
 ToggleButton:armed {
-  -fx-background-color : derive(-fx-accent, -40%), derive(-fx-accent, -40%), -fx-accent;
+    -fx-background-color: derive(-fx-accent, -40%), derive(-fx-accent, -40%), -fx-accent;
 }
 
 
 ToggleButton:selected {
-    -fx-background-color : transparent;
+    -fx-background-color: transparent;
 }
 
 ToggleButton .text {
@@ -44,18 +44,17 @@ ToggleButton:focused {
 
 ToggleButton:selected {
     -fx-background-insets: 0px 0px -1px 0px;
-    -fx-background-color:
-            -fx-shadow-highlight-color,
-            linear-gradient(to bottom, derive(-fx-accent, -20%), -fx-accent),
-            linear-gradient(to bottom,
-                    derive(-fx-accent, -22%) 0%,
-                    derive(-fx-accent, -13%) 20%,
-                    derive(-fx-accent, -11%) 50%);
+    -fx-background-color: -fx-shadow-highlight-color,
+    linear-gradient(to bottom, derive(-fx-accent, -20%), -fx-accent),
+    linear-gradient(to bottom,
+            derive(-fx-accent, -22%) 0%,
+            derive(-fx-accent, -13%) 20%,
+            derive(-fx-accent, -11%) 50%);
 
 }
 
 .btn-outlined:selected {
-    -fx-background-color : -fx-accent;
+    -fx-background-color: -fx-accent;
     -text-color: white;
     -fx-border-color: -fx-accent;
     -fx-border-insets: 0px;

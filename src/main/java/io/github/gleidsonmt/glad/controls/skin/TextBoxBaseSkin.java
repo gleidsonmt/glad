@@ -63,7 +63,7 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
 
         control.editorProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
-                if (!getChildren().contains(newValue)){
+                if (!getChildren().contains(newValue)) {
                     getChildren().add(newValue);
 //                    newValue.setFakeFocus(true);
                 }
@@ -90,8 +90,8 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
 
         control.rightNodeProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue == null) {
-                    getChildren().remove(oldValue);
-            }  else {
+                getChildren().remove(oldValue);
+            } else {
                 if (!getChildren().contains(newValue))
                     getChildren().add(getChildren().size(), newValue);
             }
@@ -99,7 +99,7 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
 
         if (control.getLeftNode() != null) {
             control.getLeftNode().setManaged(false);
-            getChildren().add( _control.getLeftNode());
+            getChildren().add(_control.getLeftNode());
         }
 
         registerChangeListener(_control.focusWithinProperty(), c -> {
@@ -161,16 +161,16 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
         double edX;
         double edW;
 
-       if (getChildren().contains(control.getRightNode()) && getChildren().contains(control.getLeftNode())) {
+        if (getChildren().contains(control.getRightNode()) && getChildren().contains(control.getLeftNode())) {
 
-            edX = x +  control.getLeftNode().getBoundsInLocal().getWidth();
+            edX = x + control.getLeftNode().getBoundsInLocal().getWidth();
             edW = w - (control.getRightNode().getBoundsInLocal().getWidth() +
-                    control.getLeftNode().getBoundsInLocal().getWidth() );
+                       control.getLeftNode().getBoundsInLocal().getWidth());
 
         } else if (getChildren().contains(control.getLeftNode())) {
 
-            edX = x +  control.getLeftNode().getBoundsInLocal().getWidth() ;
-            edW = w -  control.getLeftNode().getBoundsInLocal().getWidth() ;
+            edX = x + control.getLeftNode().getBoundsInLocal().getWidth();
+            edW = w - control.getLeftNode().getBoundsInLocal().getWidth();
 
         } else if (getChildren().contains(control.getRightNode())) {
 
@@ -185,11 +185,11 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
         }
 
         if (getChildren().contains(control.getEditor())) {
-           positionInArea(control.getEditor(), edX , y , edW, h, -1, HPos.LEFT, VPos.CENTER);
+            positionInArea(control.getEditor(), edX, y, edW, h, -1, HPos.LEFT, VPos.CENTER);
         }
 
         if (getChildren().contains(control.getLeftNode()))
-            layoutInArea(control.getLeftNode(), x , y , w , h, -1, HPos.LEFT, VPos.CENTER);
+            layoutInArea(control.getLeftNode(), x, y, w, h, -1, HPos.LEFT, VPos.CENTER);
 
         if (getChildren().contains(control.getRightNode())) {
             layoutInArea(control.getRightNode(), x, y, w, h, -1, HPos.RIGHT, VPos.CENTER);

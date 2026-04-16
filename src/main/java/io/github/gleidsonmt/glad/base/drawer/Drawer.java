@@ -133,7 +133,7 @@ public class Drawer extends VBox {
 //        Platform.runLater(() -> {
 //testing
 //        if (!group.getToggles().isEmpty()) {
-            currentModule.bind(group.selectedToggleProperty().map(e -> (Module) e.getUserData()));
+        currentModule.bind(group.selectedToggleProperty().map(e -> (Module) e.getUserData()));
 //            group.selectToggle(group.getToggles().getFirst());
 //            currentModule.setValue((ModuleView) group.getToggles().getFirst().getUserData());
 //        }
@@ -199,6 +199,7 @@ public class Drawer extends VBox {
 
     /**
      * If drawer is in mode of search, find a module.
+     *
      * @param module The module in the SearchBox.
      * @return The BoxModule (VBox) that is equal to the module name.
      */
@@ -215,6 +216,7 @@ public class Drawer extends VBox {
 
     /**
      * If drawer is in mode of search, find a a bom module.
+     *
      * @param e The module in the SearchBox.
      * @return The BoxModule (VBox) that is equal to the module name.
      */

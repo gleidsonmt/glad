@@ -1,11 +1,14 @@
 module io.github.gleidsonmt.glad {
 
-    requires  javafx.graphics;
-    requires  javafx.controls;
+    requires javafx.graphics;
+    requires javafx.controls;
 
     requires static org.jetbrains.annotations;
     requires java.desktop;
     requires javafx.base;
+    requires javafx.web;
+
+    requires java.logging;
 
     opens io.github.gleidsonmt.glad.base to javafx.fxml;
     opens io.github.gleidsonmt.glad.base.internal to javafx.fxml;

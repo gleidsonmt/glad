@@ -4,6 +4,7 @@ import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 
 /**
  * A single triggered action.
+ *
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  05/03/2025
  */

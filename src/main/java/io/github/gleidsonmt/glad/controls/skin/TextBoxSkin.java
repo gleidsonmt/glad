@@ -26,7 +26,7 @@ public class TextBoxSkin extends TextBoxBaseSkin {
 //        _control.actionProperty().addListener((_, _, newValue) -> setRightNode(newValue  ? createRightAction() : null));
 
         ChangeListener<Number> hideAction = (_, _, newVal) -> {
-            _control.setRightNode(newVal.intValue() > 0 ? this.clearButton : null );
+            _control.setRightNode(newVal.intValue() > 0 ? this.clearButton : null);
         };
 
         if (_control.isAction()) _control.getEditor().lengthProperty().addListener(hideAction);

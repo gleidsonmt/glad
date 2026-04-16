@@ -1,4 +1,3 @@
-
 /** @height **/
 
 .flat {
@@ -26,6 +25,7 @@
     -text-color: -fx-accent;
     -fx-background-insets: 2px;
 }
+
 .inverse-toggle:selected .text {
     -fx-fill: -fx-accent;
 }

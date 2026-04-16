@@ -39,7 +39,7 @@ public class ShapeIcon extends Label {
 //        setMinSize(size.get(), size.get());
     }
 
-    private void init(Icon icon){
+    private void init(Icon icon) {
         shape = createShape(icon);
         setShape(shape);
     }
@@ -52,7 +52,7 @@ public class ShapeIcon extends Label {
         return shape;
     }
 
-    public void setSize(double size){
+    public void setSize(double size) {
         this.size.set(size);
     }
 

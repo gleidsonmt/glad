@@ -65,7 +65,7 @@ public class DonutChart extends PieChart {
     private void updateInnerCircleLayout() {
         double minX = Double.MAX_VALUE, minY = Double.MAX_VALUE;
         double maxX = Double.MIN_VALUE, maxY = Double.MIN_VALUE;
-        for (Data data: getData()) {
+        for (Data data : getData()) {
             Node node = data.getNode();
 
             Bounds bounds = node.getBoundsInParent();

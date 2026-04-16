@@ -31,9 +31,9 @@ public class ScrollView extends ScrollPane {
 //        this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 //        this.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
 
-            double max = 500;
-            this.setMaxWidth(max);
-            this.setMinWidth(max);
+        double max = 500;
+        this.setMaxWidth(max);
+        this.setMinWidth(max);
 //            this.setMaxHeight(max);
 //        this.setMinHeight(max);
 
@@ -41,16 +41,16 @@ public class ScrollView extends ScrollPane {
 //        setFitToWidth(true);
 //        this.setFitToHeight(true);
 //
-            this.setPannable(true);
+        this.setPannable(true);
 //        this.setHbarPolicy(ScrollBarPolicy.NEVER);
 //        this.setVbarPolicy(ScrollBarPolicy.NEVER);
 //
-            this.getStyleClass().add("picture-select-scroll");
+        this.getStyleClass().add("picture-select-scroll");
 //
 //        VBox.setVgrow(this, Priority.ALWAYS);
-        }
-
-        public AvatarCropImageView getScrollViewContent() {
-            return scrollViewContent;
-        }
     }
+
+    public AvatarCropImageView getScrollViewContent() {
+        return scrollViewContent;
+    }
+}

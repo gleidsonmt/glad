@@ -43,7 +43,7 @@ public class AtomicLoader extends StackPane {
         group.setAutoSizeChildren(false);
 
         Circle circle = createCircle();
-        circle.setStroke(Color.TRANSPARENT  );
+        circle.setStroke(Color.TRANSPARENT);
         circle.setRadius(30);
         circle.setFill(Color.web("#007deb"));
 
@@ -64,7 +64,7 @@ public class AtomicLoader extends StackPane {
 //        AnchorPane.layoutInArea(group, 80, 80,
 //                500, 500, 0, Insets.EMPTY, false, false, HPos.LEFT,  VPos.TOP, true);
         AnchorPane.positionInArea(group, 145, 145,
-                205, 205, 0, Insets.EMPTY,  HPos.CENTER,  VPos.CENTER, true);
+                205, 205, 0, Insets.EMPTY, HPos.CENTER, VPos.CENTER, true);
 //        AnchorPane.setTopAnchor(group, 200D);
 //        AnchorPane.setLeftAnchor(circleTwo, 150D);
 //        StackPane.setAlignment(circleTwo, Pos.CENTER_LEFT);
@@ -81,7 +81,6 @@ public class AtomicLoader extends StackPane {
 //        rotate(pathThree, rectangle, 3600);
 
 
-
 //        pathTwo.setStyle("-fx-stroke-dash-array: 18; -fx-stroke-dash-offset: 20");
 
 //       circleThree.setCenterX(450);
@@ -92,7 +91,7 @@ public class AtomicLoader extends StackPane {
     }
 
     protected void rotate(Node node) {
-        System.out.println(" eh a sua mae " );
+        System.out.println(" eh a sua mae ");
         RotateTransition rotate = new RotateTransition(Duration.seconds(10), this);
 
 //        rotate.setAutoReverse(true);
@@ -166,7 +165,7 @@ public class AtomicLoader extends StackPane {
         circle.setRadius(10);
         circle.setFill(Color.WHITE);
         circle.setStroke(Color.web("#007deb"));
-        return  circle;
+        return circle;
     }
 }
 

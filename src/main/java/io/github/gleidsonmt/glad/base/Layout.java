@@ -10,46 +10,72 @@ import org.jetbrains.annotations.ApiStatus;
  * Create on  10/06/2025
  */
 @SuppressWarnings("unused")
-public interface Layout  {
+public interface Layout {
 
     @ApiStatus.Experimental
     ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
 
-    default void setLeft(Node node){}
+    default void setLeft(Node node) {
+    }
 
-    default Node getLeft(){return null;}
+    default Node getLeft() {
+        return null;
+    }
 
-    default void setRight(Node node){}
+    default void setRight(Node node) {
+    }
 
-    default Node getRight() {return null;}
+    default Node getRight() {
+        return null;
+    }
 
-    default void setTop(Node node){}
+    default void setTop(Node node) {
+    }
 
-    default Node getTop() {return null;}
+    default Node getTop() {
+        return null;
+    }
 
-    default void setBottom(Node node){}
+    default void setBottom(Node node) {
+    }
 
-    default Node getBottom(){return null;}
+    default Node getBottom() {
+        return null;
+    }
 
-    default void setCenter(Node node) {}
+    default void setCenter(Node node) {
+    }
 
-    default Node getCenter() {return null;}
+    default Node getCenter() {
+        return null;
+    }
 
     @ApiStatus.Experimental
-    default Node getBar() { return null; }
+    default Node getBar() {
+        return null;
+    }
 
     @ApiStatus.Experimental
-    default Node getFooter() { return null; }
+    default Node getFooter() {
+        return null;
+    }
 
     @ApiStatus.Experimental
-    default void updateView(Module oldVal, Module newVal) {}
+    default void updateView(Module oldVal, Module newVal) {
+    }
 
     @ApiStatus.Experimental
-    default ObjectProperty<Module> currentModuleProperty() { return currentModule; }
+    default ObjectProperty<Module> currentModuleProperty() {
+        return currentModule;
+    }
 
     @ApiStatus.Experimental
-    default Module getModule() { return currentModule.get(); }
+    default Module getModule() {
+        return currentModule.get();
+    }
 
     @ApiStatus.Experimental
-    default void setModule(Module module) { currentModule.set(module); }
+    default void setModule(Module module) {
+        currentModule.set(module);
+    }
 }

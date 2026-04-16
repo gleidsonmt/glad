@@ -25,7 +25,6 @@ public class Buttons extends ButtonBar {
     }
 
 
-
     public Button getSaveButton() {
         return saveButton;
     }

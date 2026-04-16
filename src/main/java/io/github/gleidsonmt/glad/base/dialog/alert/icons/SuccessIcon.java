@@ -15,9 +15,9 @@ public class SuccessIcon extends StackPane {
     public SuccessIcon() {
         StackPane.setAlignment(this, Pos.TOP_CENTER);
         this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-        this.getStyleClass().addAll("icon","success-icon");
+        this.getStyleClass().addAll("icon", "success-icon");
         this.getChildren().add(createSVG());
-        this.setPrefSize(40,40);
+        this.setPrefSize(40, 40);
     }
 
     private Group createSVG() {

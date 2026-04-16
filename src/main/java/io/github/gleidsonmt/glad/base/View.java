@@ -33,7 +33,7 @@ public class View extends ModuleView implements Module {
         this.content = content;
     }
 
-    public View(String name, Node icon, Node content, ModuleView... children ) {
+    public View(String name, Node icon, Node content, ModuleView... children) {
         super(name, children);
         this.content = content;
         this.icon = icon;

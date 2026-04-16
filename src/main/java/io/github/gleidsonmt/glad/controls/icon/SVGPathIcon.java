@@ -27,7 +27,7 @@ public class SVGPathIcon extends Group {
         setAutoSizeChildren(true);
     }
 
-    private void setContentAndResize( SVGPath icon, double size) {
+    private void setContentAndResize(SVGPath icon, double size) {
         path.setContent(icon.getContent());
         this.getChildren().add(path);
         setScale(size);
@@ -38,7 +38,7 @@ public class SVGPathIcon extends Group {
 //        this.layoutChildren();
     }
 
-    public void setScale(double size){
+    public void setScale(double size) {
         path.setScaleX(0.023 * size);
         path.setScaleY(0.023 * size);
     }

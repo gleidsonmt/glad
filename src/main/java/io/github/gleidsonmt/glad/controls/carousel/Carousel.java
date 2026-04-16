@@ -13,6 +13,7 @@ import javafx.scene.control.Skin;
 
 /**
  * Carousel it's a region that can slide nodes with indicators and arrows to move through the children.
+ *
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  21/08/2025
  */
@@ -22,12 +23,12 @@ public class Carousel<T extends Node> extends CarouselBase {
     private ObjectProperty<ObservableList<T>> items;
     private final BooleanProperty arrows = new SimpleBooleanProperty(this, "arrows", true);
 
-    public Carousel(){
+    public Carousel() {
         this(FXCollections.observableArrayList());
     }
 
     @SafeVarargs
-    public Carousel(T... items){
+    public Carousel(T... items) {
         this(FXCollections.observableArrayList(items));
     }
 
@@ -43,7 +44,7 @@ public class Carousel<T extends Node> extends CarouselBase {
         return new CarouselSkin<>(this);
     }
 
-    private void initialize(){
+    private void initialize() {
         this.getStyleClass().add(DEFAULT_STYLE_CLASS);
     }
 
@@ -64,6 +65,7 @@ public class Carousel<T extends Node> extends CarouselBase {
 
     /**
      * When the arrows are visible.
+     *
      * @return If the arrow are visible.
      */
     public boolean isArrows() {

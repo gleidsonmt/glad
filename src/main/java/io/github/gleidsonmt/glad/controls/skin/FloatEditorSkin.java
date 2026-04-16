@@ -49,7 +49,7 @@ public class FloatEditorSkin extends EditorSkin {
                     up();
                 }
             } else {
-                if (_control.getText() == null ) {
+                if (_control.getText() == null) {
                     down();
                     return;
                 }

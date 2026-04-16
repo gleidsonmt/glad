@@ -37,7 +37,7 @@ import javafx.util.StringConverter;
 public class BadgeSkin extends SkinBase<Badge> {
 
     private final Label lblInfo = new Label();
-    private final SVGIcon icon ;
+    private final SVGIcon icon;
 
     public BadgeSkin(Badge control) {
         super(control);
@@ -45,9 +45,9 @@ public class BadgeSkin extends SkinBase<Badge> {
         icon = (SVGIcon) control.getGraphic();
 
         lblInfo.setAlignment(Pos.CENTER);
-        lblInfo.setMinSize(20,20);
-        lblInfo.setPrefSize(10,10);
-        lblInfo.setMaxSize(10,10);
+        lblInfo.setMinSize(20, 20);
+        lblInfo.setPrefSize(10, 10);
+        lblInfo.setMaxSize(10, 10);
         lblInfo.setMouseTransparent(true);
 
         lblInfo.setCache(true);
@@ -76,7 +76,7 @@ public class BadgeSkin extends SkinBase<Badge> {
         Bindings.bindBidirectional(lblInfo.textProperty(), control.numberOfNotificationsProperty(), converter);
 
         this.getChildren().addAll(icon, lblInfo);
-        lblInfo.getStyleClass().addAll(   "text-white");
+        lblInfo.getStyleClass().addAll("text-white");
 
         registerChangeListener(control.boxColorProperty(), c ->
                 updateBackground((Color) c.getValue(), getSkinnable().getType()));
@@ -96,15 +96,15 @@ public class BadgeSkin extends SkinBase<Badge> {
     }
 
     private CornerRadii updateRadi(BadgeType type) {
-        return type == BadgeType.ROUNDED ?  new CornerRadii(3) :
+        return type == BadgeType.ROUNDED ? new CornerRadii(3) :
                 type == BadgeType.RECT ? new CornerRadii(0) :
-                        new CornerRadii(10);
+                new CornerRadii(10);
     }
 
     @Override
     protected void layoutChildren(double x, double y, double w, double h) {
-        layoutInArea(icon,x, y, w, h, -1, HPos.CENTER, VPos.CENTER);
-        layoutInArea(lblInfo, x,y+5, getSkinnable().getWidth()-10, h, -1, HPos.RIGHT,  VPos.BASELINE);
+        layoutInArea(icon, x, y, w, h, -1, HPos.CENTER, VPos.CENTER);
+        layoutInArea(lblInfo, x, y + 5, getSkinnable().getWidth() - 10, h, -1, HPos.RIGHT, VPos.BASELINE);
     }
 
     @Override

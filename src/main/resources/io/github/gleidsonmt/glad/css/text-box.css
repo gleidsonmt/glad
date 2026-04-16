@@ -16,8 +16,7 @@
 }
 
 .text-box .editor:focused,
-.text-box .editor
-{
+.text-box .editor {
     -fx-text-fill: -text-color;
     -fx-background-color: transparent;
     -fx-border-color: transparent;

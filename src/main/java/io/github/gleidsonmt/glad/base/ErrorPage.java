@@ -43,7 +43,7 @@ public class ErrorPage extends ScrollPane {
     private final Text info = new Text();
 
     private final TextFlow titleFlow = new TextFlow(title);
-//    private final Hyperlink see = new Hyperlink("See Routes");
+    //    private final Hyperlink see = new Hyperlink("See Routes");
     private final TextFlow infoFlow = new TextFlow(info);
 
     public ErrorPage(String name) {
@@ -62,7 +62,7 @@ public class ErrorPage extends ScrollPane {
         title.getStyleClass().addAll("text-bold", "h1");
         title.getStyleClass().addAll("-fx-fill: -text-color;");
         legend.getStyleClass().addAll("-fx-fill: -text-color;");
-        info.getStyleClass().addAll( "h6");
+        info.getStyleClass().addAll("h6");
         info.setStyle("-fx-fill: -text-color;");
         titleFlow.setTextAlignment(TextAlignment.CENTER);
         infoFlow.setTextAlignment(TextAlignment.CENTER);

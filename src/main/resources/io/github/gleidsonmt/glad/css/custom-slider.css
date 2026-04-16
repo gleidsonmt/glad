@@ -1,5 +1,5 @@
 .slider {
-    -track-color: -fx-accent ;
+    -track-color: -fx-accent;
     -fx-cursor: hand;
 }
 
@@ -10,7 +10,7 @@
     -fx-border-width: 3px;
     -fx-background-insets: 1px;
     -fx-padding: 6px;
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.3) , 5, 0 , 0 , 1 );
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .3), 5, 0, 0, 1);
 }
 
 .slider .track {
@@ -20,6 +20,6 @@
 .slider .label {
     -fx-background-color: white;
     -fx-padding: 8px;
-      -fx-background-radius : 100px 100px 100px 0px;
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.3) , 5, 0 , 0 , 1 );
+    -fx-background-radius: 100px 100px 100px 0px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .3), 5, 0, 0, 1);
 }

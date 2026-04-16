@@ -14,7 +14,7 @@
     -fx-pref-height: 30px;
 }
 
-.float-editor:focused .moveable-prompt  {
+.float-editor:focused .moveable-prompt {
     -text-color: -fx-accent;
 }
 

@@ -9,7 +9,7 @@ import javafx.scene.Node;
 public interface Component<T extends Node> extends ComponentAction {
 
     default void addClasses(String classes) {
-         retrieveClasses((Node) this, classes);
+        retrieveClasses((Node) this, classes);
     }
 
 }

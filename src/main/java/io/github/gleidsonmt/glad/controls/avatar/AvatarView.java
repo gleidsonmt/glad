@@ -12,7 +12,7 @@ import javafx.scene.shape.Rectangle;
  */
 public class AvatarView extends Rectangle {
 
-    private final ObjectProperty<Image> image =  new SimpleObjectProperty<>();
+    private final ObjectProperty<Image> image = new SimpleObjectProperty<>();
 
     public AvatarView() {
         this(null);
@@ -30,7 +30,7 @@ public class AvatarView extends Rectangle {
         this(image, radius, size, size);
     }
 
-    public AvatarView(Image image,  double arc, double width, double height) {
+    public AvatarView(Image image, double arc, double width, double height) {
         getStyleClass().add("avatar-view");
         if (image != null)
             this.setFill(new ImagePattern(image));

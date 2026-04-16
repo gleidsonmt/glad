@@ -88,7 +88,7 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
             animation.setOnFinished(_ -> on.set(!on.get()));
             animation.play();
         });
-        
+
         registerChangeListener(control.arcProperty(), c -> {
             if (c.getValue() != null) {
                 double val = (double) c.getValue();

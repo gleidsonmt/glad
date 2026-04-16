@@ -7,9 +7,9 @@ SplitMenuButton {
     -fx-padding: 2px;
     -fx-border-radius: 10px;
 
-        -fx-background-color: transparent;
-        -fx-border-color: -light-gray-2;
-        -fx-border-width: 2px;
+    -fx-background-color: transparent;
+    -fx-border-color: -light-gray-2;
+    -fx-border-width: 2px;
 }
 
 SplitMenuButton > .label {
@@ -60,9 +60,11 @@ SplitMenuButton .arrow {
 .split-outlined .label .text {
     -fx-fill: -text-color;
 }
+
 .split-outlined .arrow-button {
-    -fx-border-width:  0px 0px 0px 2px;
+    -fx-border-width: 0px 0px 0px 2px;
 }
-.split-outlined .arrow-button .arrow{
+
+.split-outlined .arrow-button .arrow {
     -fx-background-color: -text-color;
 }

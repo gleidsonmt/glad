@@ -37,26 +37,26 @@ public class StackedAvatar extends Group {
         this.avatarViews = FXCollections.observableArrayList();
         maxLabel = createLabelMax();
 
-       this.maxProperty().addListener((_, oldVal, newVal) -> {
-           if (oldVal.intValue() == -1) {
-               return;
-           }
+        this.maxProperty().addListener((_, oldVal, newVal) -> {
+            if (oldVal.intValue() == -1) {
+                return;
+            }
 
-           if (newVal.intValue() > oldVal.intValue()) {
-               int spaceAvailable = newVal.intValue() - oldVal.intValue();
-               int index = getSize();
-               List<AvatarView> avatars = avatarViews.subList(index, spaceAvailable + index);
-               addAvatarViews(index, avatars);
-           } else {
-               int spaceAvailable =  oldVal.intValue() - newVal.intValue();
-               int index = getSize();
-               getChildren().remove(index-spaceAvailable, index);
-               updateLabelMax();
-           }
-       });
+            if (newVal.intValue() > oldVal.intValue()) {
+                int spaceAvailable = newVal.intValue() - oldVal.intValue();
+                int index = getSize();
+                List<AvatarView> avatars = avatarViews.subList(index, spaceAvailable + index);
+                addAvatarViews(index, avatars);
+            } else {
+                int spaceAvailable = oldVal.intValue() - newVal.intValue();
+                int index = getSize();
+                getChildren().remove(index - spaceAvailable, index);
+                updateLabelMax();
+            }
+        });
 
-       this.avatarSizeProperty().addListener((_, _, _) -> resize());
-       this.avatarRadiusProperty().addListener((_, _, _) -> resize());
+        this.avatarSizeProperty().addListener((_, _, _) -> resize());
+        this.avatarRadiusProperty().addListener((_, _, _) -> resize());
 
         this.avatarViews.addListener((ListChangeListener<AvatarView>) change -> {
             if (change.next()) {
@@ -93,7 +93,7 @@ public class StackedAvatar extends Group {
         for (int i = 0; i < totalCanBeAdded; i++) {
             avatars.get(i).setSize(avatarSize.get());
             getChildren().add(in, avatars.get(i));
-            avatars.get(i).setRadius(avatarRadius.get() );
+            avatars.get(i).setRadius(avatarRadius.get());
             avatars.get(i).setLayoutX(in++ * getTranslate());
         }
         updateLabelMax();
@@ -129,7 +129,7 @@ public class StackedAvatar extends Group {
         label.getStyleClass().addAll("display-center", "border-white", "border-2", "bg-accent", "bg-insets-1", "text-white", "padding-5", "bold");
 
         label.setStyle("-fx-font-size: " + avatarSize.get() / 3 +
-                       "; -fx-background-radius: " + avatarRadius.get()/2 +
+                       "; -fx-background-radius: " + avatarRadius.get() / 2 +
                        "; -fx-border-radius: " + avatarRadius.get() / 2);
         return label;
     }
@@ -141,15 +141,15 @@ public class StackedAvatar extends Group {
                 .map(node -> (AvatarView) node)
                 .forEach(node -> {
                     node.setSize(avatarSize.get());
-                    node.setRadius(avatarRadius.get() );
+                    node.setRadius(avatarRadius.get());
                     node.setLayoutX(getChildren().indexOf(node) * getTranslate());
                 });
         maxLabel.setStyle("-fx-font-size: " + avatarSize.get() / 3 + ";");
         maxLabel.setPrefSize(avatarSize.get(), avatarSize.get());
         maxLabel.setLayoutX(getChildren().indexOf(maxLabel) * getTranslate());
         maxLabel.setStyle("-fx-font-size: " + avatarSize.get() / 3 +
-                       "; -fx-background-radius: " + avatarRadius.get()/2 +
-                       "; -fx-border-radius: " + avatarRadius.get() / 2);
+                          "; -fx-background-radius: " + avatarRadius.get() / 2 +
+                          "; -fx-border-radius: " + avatarRadius.get() / 2);
     }
 
     private double getTranslate() {

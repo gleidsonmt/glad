@@ -11,5 +11,5 @@
     -fx-faint-focus-color: transparent;
     -fx-pref-height: 30px;
 
-     -fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";
+    -fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";
 }

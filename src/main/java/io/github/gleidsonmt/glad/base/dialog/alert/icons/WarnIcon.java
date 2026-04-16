@@ -15,9 +15,9 @@ public class WarnIcon extends StackPane {
     public WarnIcon() {
         StackPane.setAlignment(this, Pos.TOP_CENTER);
         this.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
-        this.getStyleClass().addAll("icon","warn-icon");
+        this.getStyleClass().addAll("icon", "warn-icon");
         this.getChildren().add(createSVG());
-        this.setPrefSize(40,40);
+        this.setPrefSize(40, 40);
         SVGPath svg = new SVGPath();
         svg.setContent("M 200 350 L 350 100 L 500 350 L 200 350");
         getChildren().add(createSVG());

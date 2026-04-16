@@ -20,10 +20,10 @@ public interface ComponentAction {
 
         node.getPseudoClassStates().addListener((SetChangeListener<PseudoClass>) change -> {
             for (String state : pseudos) {
-                String opt =  state.substring( state.indexOf(":") +1);
+                String opt = state.substring(state.indexOf(":") + 1);
 
                 List<String> list = new ArrayList<>(List.of(state.split(":")));
-                list.remove(list.size() -1);
+                list.remove(list.size() - 1);
 //                    System.out.println("change.getSet() = " + change.getSet());
 
                 for (String item : list) {

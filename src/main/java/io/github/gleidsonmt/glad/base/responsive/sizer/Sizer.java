@@ -29,11 +29,12 @@ public class Sizer<T extends Size> {
     public Sizer(Region region, T[] sizes) {
         this(region, sizes, false);
     }
+
     public Sizer(Region region, T[] sizes, boolean _log) {
         this(region, sizes, new Breaker<>(), _log);
     }
 
-    public Sizer(Region region, T[] sizes,  Breaker<T> breaker) {
+    public Sizer(Region region, T[] sizes, Breaker<T> breaker) {
         this(region, sizes, breaker, false);
     }
 
@@ -106,7 +107,7 @@ public class Sizer<T extends Size> {
     }
 
     @ApiStatus.Experimental
-    public void change(T t){
+    public void change(T t) {
         this.breaker.doAction(t);
     }
 

@@ -39,11 +39,11 @@ public class SVGIcon extends SVGPathIcon {
     }
 
     public SVGIcon(Icon icon) {
-        this(icon,null, 1);
+        this(icon, null, 1);
     }
 
     public SVGIcon(Icon icon, double size) {
-        this(icon,null, size);
+        this(icon, null, size);
     }
 
     public SVGIcon(Icon icon, Color color, double size) {

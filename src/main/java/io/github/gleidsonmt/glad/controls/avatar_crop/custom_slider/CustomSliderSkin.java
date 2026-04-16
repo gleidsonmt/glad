@@ -10,7 +10,7 @@ import javafx.scene.layout.Region;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  18/11/2024
  */
-public class CustomSliderSkin  extends SliderSkin {
+public class CustomSliderSkin extends SliderSkin {
 
     Region region = new Region();
     private double width = 0;
@@ -25,8 +25,8 @@ public class CustomSliderSkin  extends SliderSkin {
         region.setMaxWidth(0);
         region.setMouseTransparent(true);
 
-        getChildren().add(  1, region);
-        getChildren().add(  label);
+        getChildren().add(1, region);
+        getChildren().add(label);
 //        label.setManaged(false);
         label.toFront();
 
@@ -80,9 +80,9 @@ public class CustomSliderSkin  extends SliderSkin {
 
     @Override
     protected void layoutChildren(double x, double y, double w, double h) {
-       super.layoutChildren(x, y, w, h);
-        region.relocate(5, h/2 -3);
-        region.resize( width, 5);
+        super.layoutChildren(x, y, w, h);
+        region.relocate(5, h / 2 - 3);
+        region.resize(width, 5);
 //        label.resize( width, 5);
         layoutInArea(label, thumb.getBoundsInParent().getMinX() + 20, y - 30, w, h, 0, HPos.LEFT, VPos.CENTER);
 //        label.relocate(x, y);

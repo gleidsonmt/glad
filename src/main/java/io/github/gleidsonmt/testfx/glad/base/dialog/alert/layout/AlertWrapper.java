@@ -27,7 +27,7 @@ public class AlertWrapper extends VBox {
 
     }
 
-    public AlertContent getContent(){
+    public AlertContent getContent() {
         return this.content;
     }
 

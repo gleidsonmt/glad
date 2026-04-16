@@ -15,27 +15,46 @@ public interface Module {
 
     Node getGraphic();
 
-    default Node getNode() {return null;}
+    default Node getNode() {
+        return null;
+    }
 
-    default void setNode(Node node){ };
+    default void setNode(Node node) {
+    }
+
+    ;
 
     @Deprecated(forRemoval = true)
     boolean isAnimated();
 
     @ApiStatus.Experimental
-    default void onExit(Layout layout){}
+    default void onExit(Layout layout) {
+    }
 
     @ApiStatus.Experimental
-    default void onEnter(Layout layout){};
+    default void onEnter(Layout layout) {
+    }
+
+    ;
 
     // Testing
-    default ObservableList<Module> getModules(){return null;}
+    default ObservableList<Module> getModules() {
+        return null;
+    }
 
-    default void setParent(Module parent) {}
+    default void setParent(Module parent) {
+    }
 
-    default Module getParent() {return null;}
+    default Module getParent() {
+        return null;
+    }
 
-    default void setContainer(Pane container) {};
+    default void setContainer(Pane container) {
+    }
 
-    default Pane getContainer() {return null;}
+    ;
+
+    default Pane getContainer() {
+        return null;
+    }
 }

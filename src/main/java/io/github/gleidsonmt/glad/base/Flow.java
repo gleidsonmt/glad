@@ -9,13 +9,16 @@ import org.jetbrains.annotations.ApiStatus;
 /**
  * Flow has the methods add children in the stack in the root.
  * This can be very useful to add animations, dialogs, alerts, etc.
+ *
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  26/01/2025
  */
 public interface Flow extends ContainerBase<Flow> {
     // Utils
+
     /**
      * If they fit in the root (screen).
+     *
      * @param node The node to test.
      * @return true if fits.
      */
@@ -34,8 +37,11 @@ public interface Flow extends ContainerBase<Flow> {
 
     // Removing
 
+    void reset();
+
     /**
      * Remove a node from the root.
+     *
      * @param container The node to remove.
      */
     void remove(Node container);

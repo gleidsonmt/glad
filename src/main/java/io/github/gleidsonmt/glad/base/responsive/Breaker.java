@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * The breaker does the action and maintains the breakpoints.
+ *
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  20/03/2025
  */

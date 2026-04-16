@@ -114,7 +114,7 @@ public class IconButtonSkin extends SkinBase<FabButton> {
 //                        + stroke.getRadii().getTopRightHorizontalRadius()
 //                        + stroke.getRadii().getTopLeftVerticalRadius();
 
-                double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() +  stroke.getRadii().getTopLeftVerticalRadius();
+                double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() + stroke.getRadii().getTopLeftVerticalRadius();
 
 
                 clip.setArcWidth(arcWidth);
@@ -133,14 +133,14 @@ public class IconButtonSkin extends SkinBase<FabButton> {
 
             timeline.getKeyFrames().setAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(circle.radiusProperty(), 0)),
-                    new KeyFrame(Duration.millis(250), new KeyValue(circle.radiusProperty(), radius *2 ))
+                    new KeyFrame(Duration.millis(250), new KeyValue(circle.radiusProperty(), radius * 2))
             );
 
 
             timeline.play();
 
 
-            timeline.setOnFinished( (e) -> getChildren().remove(circle));
+            timeline.setOnFinished((e) -> getChildren().remove(circle));
         }
     };
 

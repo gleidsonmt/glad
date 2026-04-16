@@ -27,7 +27,7 @@ public class PasswordBoxSkin extends TextBoxBaseSkin {
 //        _control.actionProperty().addListener((_, _, newValue) -> setRightNode(newValue  ? createRightAction() : null));
 
         ChangeListener<Number> hideAction = (_, _, newVal) -> {
-            _control.setRightNode(newVal.intValue() > 0 ? this.viewButton : null );
+            _control.setRightNode(newVal.intValue() > 0 ? this.viewButton : null);
         };
         if (_control.isAction()) _control.getEditor().lengthProperty().addListener(hideAction);
         _control.editorProperty().addListener((_, oldVal, newVal) -> {
