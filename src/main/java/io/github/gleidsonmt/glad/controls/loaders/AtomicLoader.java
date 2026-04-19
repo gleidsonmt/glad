@@ -91,7 +91,6 @@ public class AtomicLoader extends StackPane {
     }
 
     protected void rotate(Node node) {
-        System.out.println(" eh a sua mae ");
         RotateTransition rotate = new RotateTransition(Duration.seconds(10), this);
 
 //        rotate.setAutoReverse(true);
@@ -101,7 +100,6 @@ public class AtomicLoader extends StackPane {
         rotate.setCycleCount(Timeline.INDEFINITE);
         rotate.play();
 
-        rotate.setOnFinished(e -> System.out.println("what"));
 
     }
 

@@ -33,7 +33,6 @@ public class TextField extends javafx.scene.control.TextField implements Compone
                         if (change.getSet().contains(PseudoClass.getPseudoClass(item))) {
                             getStyleClass().addAll(opt);
                         } else {
-                            System.out.println("opt = " + opt);
                             getStyleClass().removeAll(opt);
                         }
                     }
