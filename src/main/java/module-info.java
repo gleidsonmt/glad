@@ -1,12 +1,13 @@
 module io.github.gleidsonmt.glad {
 
+    requires java.desktop;
+
     requires javafx.graphics;
     requires javafx.controls;
-
-    requires static org.jetbrains.annotations;
-    requires java.desktop;
     requires javafx.base;
     requires javafx.web;
+
+    requires static org.jetbrains.annotations;
 
     requires java.logging;
 
