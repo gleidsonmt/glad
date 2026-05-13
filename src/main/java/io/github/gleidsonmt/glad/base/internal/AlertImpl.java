@@ -1,11 +1,10 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.*;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.Alert;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
-import io.github.gleidsonmt.glad.base.dialog.alert.layout.AlertLayout;
 import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
-import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
+import io.github.gleidsonmt.glad.base.dialog.alert.layout.AlertLayout;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -24,8 +23,6 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
     private AlertType type = AlertType.INFO;
     private Button[] buttons;
-
-    private Snack snack;
 
     public AlertImpl(Root root) {
         super(root);
@@ -74,12 +71,15 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
                 .content(new DialogContainer(alert))
                 .show();
 
+        if (this.block) blockForeground();
+//
         reset();
     }
 
     private void reset() {
         this.wrapperEffect = null;
         this.buttons = null;
+        this.block = false;
     }
 
     @Override
