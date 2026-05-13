@@ -23,4 +23,7 @@ public interface DialogBase<T> extends FlowItem<T> {
 
     @ApiStatus.Experimental
     T full();
+
+    @ApiStatus.Experimental
+    T block();
 }

@@ -5,8 +5,10 @@ import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
+
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -18,13 +20,14 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     protected String title;
     protected Region content;
+    protected boolean block = false;
     protected WrapperEffect wrapperEffect = null;
     protected DoubleProperty width = new SimpleDoubleProperty(-1);
     protected DoubleProperty height = new SimpleDoubleProperty(-1);
     protected boolean full = false;
     protected Foreground foreground;
 
-    protected final Root root;
+    protected Root root;
 
     public DialogAbstract(Root root) {
         this.foreground = new Foreground();
@@ -35,10 +38,16 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 ////            root.behavior().closeAside();
 //        });
 
-        this.foreground.addEventFilter(MouseEvent.MOUSE_CLICKED, _ -> {
-            this.hide();
-            foreground.restyle(null, root);
-        });
+        this.foreground.addEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
+    }
+
+    private final EventHandler<MouseEvent> hideEvent = _ -> {
+        foreground.restyle(null, root);
+        hide();
+    };
+
+    protected void blockForeground() {
+        this.foreground.removeEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
     }
 
     @Override
@@ -78,8 +87,17 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
     }
 
     @Override
+    public T block() {
+        this.block = true;
+        return (T) this;
+    }
+
+    @Override
     public void show() {
         showing = true;
+        if (this.block) {
+            this.foreground.removeEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
+        }
     }
 
     @Override
