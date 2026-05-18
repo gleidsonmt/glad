@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base;
 
 import javafx.collections.ObservableList;
@@ -6,7 +8,7 @@ import javafx.scene.layout.Pane;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  10/06/2025
  */
 public interface Module {

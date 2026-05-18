@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
 import javafx.geometry.Insets;
@@ -11,7 +13,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  12/08/2025
  */
 public class SnackBar extends GridPane {

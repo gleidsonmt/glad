@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Anchor;
@@ -11,7 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  13/08/2025
  */
 @SuppressWarnings("unchecked")

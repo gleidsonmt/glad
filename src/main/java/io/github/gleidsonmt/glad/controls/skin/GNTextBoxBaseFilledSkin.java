@@ -30,7 +30,7 @@
 //import javafx.util.Duration;
 //
 ///**
-// * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+// * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
 // * Create on  16/09/2022
 // */
 //public class GNTextBoxBaseFilledSkin extends TextBoxBaseSkin {

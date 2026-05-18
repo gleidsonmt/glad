@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.toggle_switch;
 
 import javafx.animation.FillTransition;
@@ -17,7 +19,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  29/03/2025
  */
 public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {

@@ -1,9 +1,11 @@
+
+
 package io.github.gleidsonmt.glad.controls;
 
 import javafx.scene.control.Control;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  30/03/2024
  */
 public interface ComponentSkin<T extends Control> {

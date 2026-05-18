@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.icon;
 
 import javafx.beans.property.DoubleProperty;
@@ -7,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.shape.SVGPath;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  12/10/2024
  */
 public class ShapeIcon extends Label {

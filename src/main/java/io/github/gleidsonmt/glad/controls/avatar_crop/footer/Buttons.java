@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.avatar_crop.footer;
 
 import io.github.gleidsonmt.glad.controls.avatar_crop.image_container.ImageContainer;
@@ -5,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  17/11/2024
  */
 public class Buttons extends ButtonBar {

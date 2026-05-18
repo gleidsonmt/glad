@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.toggle_switch;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -15,7 +17,7 @@ import java.util.Objects;
 /**
  * A toggle specialized in turning off and on action.
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  29/03/2025
  */
 public class ToggleSwitch extends Control {

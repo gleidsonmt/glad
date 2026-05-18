@@ -16,12 +16,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * The class created for using a model to the main container.
- *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  19/03/2025
- */
+/// The class created for using a model to the main container.
+///
+/// @author Gleidson Neves da Silveira | [gleidisonmt@gmail.com](mailto:gleidisonmt@gmail.com)
+/// Create on  19/03/2025
 @SuppressWarnings("unused")
 public class AbstractContainer<T extends Size> extends StackPane {
 

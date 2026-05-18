@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.text_box;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -19,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  04/04/2025
  * Ultimate.
  */

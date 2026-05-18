@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.testfx.glad.base.dialog.alert.layout;
 
 import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
@@ -10,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  07/11/2024
  */
 @Deprecated(forRemoval = true)

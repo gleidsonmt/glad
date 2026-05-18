@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.avatar_crop.image_container;
 
 import io.github.gleidsonmt.glad.controls.avatar_crop.BorderClip;
@@ -10,7 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  14/11/2024
  */
 public class ImageContainer extends StackPane {

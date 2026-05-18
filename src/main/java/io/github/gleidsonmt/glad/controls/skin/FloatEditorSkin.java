@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.skin;
 
 import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
@@ -13,7 +15,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  04/04/2025
  */
 public class FloatEditorSkin extends EditorSkin {

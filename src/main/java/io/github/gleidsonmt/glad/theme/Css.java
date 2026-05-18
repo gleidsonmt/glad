@@ -1,9 +1,11 @@
+
+
 package io.github.gleidsonmt.glad.theme;
 
 import java.util.Arrays;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  31/01/2025
  */
 public enum Css implements Neutral {

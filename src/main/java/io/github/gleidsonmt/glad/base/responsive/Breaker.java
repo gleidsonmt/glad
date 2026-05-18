@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.responsive;
 
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
@@ -10,7 +12,7 @@ import java.util.List;
 /**
  * The breaker does the action and maintains the breakpoints.
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  20/03/2025
  */
 public class Breaker<T extends Size> implements Actionable<T> {

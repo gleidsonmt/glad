@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.loaders;
 
 import javafx.animation.Interpolator;
@@ -17,7 +19,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  16/03/2026
  */
 public class AtomicLoader extends StackPane {

@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.avatar_crop.header;
 
 import io.github.gleidsonmt.glad.controls.avatar_crop.CloseAction;
@@ -9,7 +11,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  14/11/2024
  */
 public class Header extends GridPane {

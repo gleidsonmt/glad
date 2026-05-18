@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.dialog.alert.icons;
 
 import javafx.geometry.Pos;
@@ -7,7 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.SVGPath;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  07/11/2024
  */
 public class InfoIcon extends StackPane {

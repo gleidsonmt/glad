@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.drawer;
 
 import io.github.gleidsonmt.glad.base.Module;
@@ -34,7 +36,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  21/07/2024
  * Revised 2
  */

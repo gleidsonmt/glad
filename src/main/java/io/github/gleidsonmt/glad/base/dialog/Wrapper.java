@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.dialog;
 
 import io.github.gleidsonmt.glad.base.Flow;
@@ -9,7 +11,7 @@ import javafx.scene.layout.Region;
 /**
  * The wrapper interface disposes a region with color to focus on the element stacked.
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  26/01/2025
  */
 @Deprecated

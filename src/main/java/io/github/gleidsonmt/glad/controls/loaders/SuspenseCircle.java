@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.loaders;
 
 import javafx.scene.layout.StackPane;
@@ -5,7 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  13/09/2024
  */
 @SuppressWarnings("unused")

@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.dialog.alert.layout;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -18,7 +20,7 @@ import javafx.scene.text.Text;
 import java.util.Objects;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  20/02/2026
  */
 public class AlertLayout extends VBox {

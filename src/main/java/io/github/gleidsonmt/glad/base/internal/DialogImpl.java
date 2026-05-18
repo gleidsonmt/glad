@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
@@ -6,7 +8,7 @@ import io.github.gleidsonmt.glad.base.dialog.Dialog;
 import javafx.scene.Node;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  22/03/2025
  */
 public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {

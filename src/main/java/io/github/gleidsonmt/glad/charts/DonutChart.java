@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.charts;
 
 import javafx.collections.FXCollections;
@@ -11,7 +13,7 @@ import javafx.scene.shape.Circle;
 
 /**
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  13/03/2025
  */
 public class DonutChart extends PieChart {

@@ -1,10 +1,12 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  21/03/2025
  */
 public class DialogContainer extends StackPane {

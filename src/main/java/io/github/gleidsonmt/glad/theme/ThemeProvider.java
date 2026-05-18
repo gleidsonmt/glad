@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.theme;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -10,7 +12,7 @@ import java.util.Arrays;
 /**
  * This class provides all the css to the scene.
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  29/01/2025
  */
 public class ThemeProvider {

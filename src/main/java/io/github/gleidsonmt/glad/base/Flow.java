@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base;
 
 import io.github.gleidsonmt.glad.base.internal.ContainerBase;
@@ -10,7 +12,7 @@ import org.jetbrains.annotations.ApiStatus;
  * Flow has the methods add children in the stack in the root.
  * This can be very useful to add animations, dialogs, alerts, etc.
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  26/01/2025
  */
 public interface Flow extends ContainerBase<Flow> {

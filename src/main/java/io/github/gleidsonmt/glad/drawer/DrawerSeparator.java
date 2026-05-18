@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.drawer;
 
 import io.github.gleidsonmt.glad.base.Module;
@@ -7,7 +9,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  10/09/2025
  */
 public class DrawerSeparator extends VBox {

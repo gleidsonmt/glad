@@ -1,4 +1,6 @@
 
+
+
 TextField, PasswordField, .text-field {
     -fx-text-fill: -text-color;
     -fx-background-color: -fx-background;

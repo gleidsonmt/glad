@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.carousel;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -14,7 +16,7 @@ import javafx.scene.control.Skin;
 /**
  * Carousel it's a region that can slide nodes with indicators and arrows to move through the children.
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  21/08/2025
  */
 public class Carousel<T extends Node> extends CarouselBase {

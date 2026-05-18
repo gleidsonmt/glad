@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls;
 
 import javafx.collections.SetChangeListener;
@@ -8,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  01/04/2025
  */
 public class TextField extends javafx.scene.control.TextField implements Component {

@@ -1,10 +1,12 @@
+
+
 package io.github.gleidsonmt.glad.base.drawer;
 
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  11/03/2025
  */
 public class DrawerContainer extends ScrollPane {

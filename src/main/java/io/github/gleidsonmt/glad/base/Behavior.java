@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base;
 
 
@@ -7,7 +9,7 @@ import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  01/02/2025
  */
 public interface Behavior {

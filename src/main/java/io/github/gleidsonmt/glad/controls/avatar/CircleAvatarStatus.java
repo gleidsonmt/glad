@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.avatar;
 
 import io.github.gleidsonmt.glad.theme.Css;
@@ -13,7 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  22/04/2025
  */
 public final class CircleAvatarStatus extends Circle {

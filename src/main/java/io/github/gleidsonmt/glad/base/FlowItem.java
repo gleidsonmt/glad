@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base;
 
 import io.github.gleidsonmt.glad.base.internal.AppearItem;
@@ -5,7 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  12/08/2025
  */
 public interface FlowItem<T> extends AppearItem {

@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.skin;
 
 import io.github.gleidsonmt.glad.controls.button.IconButton;
@@ -12,7 +14,7 @@ import javafx.scene.input.MouseEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  24/02/2026
  */
 public class PasswordBoxSkin extends TextBoxBaseSkin {

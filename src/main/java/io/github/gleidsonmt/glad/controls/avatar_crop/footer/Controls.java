@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.avatar_crop.footer;
 
 import io.github.gleidsonmt.glad.controls.avatar_crop.custom_slider.CustomSlider;
@@ -12,7 +14,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  17/11/2024
  */
 public class Controls extends HBox {

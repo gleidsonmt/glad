@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.avatar_crop.custom_slider;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -7,7 +9,7 @@ import javafx.scene.control.Slider;
 import java.util.Objects;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  18/11/2024
  */
 public class CustomSlider extends Slider {

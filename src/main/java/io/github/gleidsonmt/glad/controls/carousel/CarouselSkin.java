@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.carousel;
 
 import javafx.animation.Animation;
@@ -28,7 +30,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  21/08/2025
  */
 public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {

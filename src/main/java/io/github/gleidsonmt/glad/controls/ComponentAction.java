@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls;
 
 import javafx.collections.SetChangeListener;
@@ -9,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  10/04/2025
  */
 public interface ComponentAction {

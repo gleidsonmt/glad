@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
@@ -19,7 +21,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  13/08/2025
  */
 public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {

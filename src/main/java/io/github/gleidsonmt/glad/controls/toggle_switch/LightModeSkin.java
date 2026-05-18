@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.toggle_switch;
 
 import io.github.gleidsonmt.glad.controls.icon.Icon;
@@ -8,7 +10,7 @@ import javafx.geometry.VPos;
 import javafx.scene.paint.Color;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  23/04/2025
  */
 public class LightModeSkin extends ToggleSwitchSkin {

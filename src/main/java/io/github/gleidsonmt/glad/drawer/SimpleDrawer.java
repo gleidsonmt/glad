@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.drawer;
 
 import io.github.gleidsonmt.glad.base.Module;
@@ -14,7 +16,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  17/04/2025
  */
 @Deprecated

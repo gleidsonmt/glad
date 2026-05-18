@@ -1,10 +1,12 @@
+
+
 package io.github.gleidsonmt.glad.base;
 
 import javafx.scene.Node;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  19/07/2024
  */
 @ApiStatus.AvailableSince("1.0.0")
