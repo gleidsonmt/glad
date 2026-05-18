@@ -19,7 +19,7 @@ import javafx.scene.text.Text;
 import java.util.Objects;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  06/11/2024
  */
 public class AlertLayout extends VBox {

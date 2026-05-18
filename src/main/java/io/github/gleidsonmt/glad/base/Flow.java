@@ -12,7 +12,7 @@ import org.jetbrains.annotations.ApiStatus;
  * Flow has the methods add children in the stack in the root.
  * This can be very useful to add animations, dialogs, alerts, etc.
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/01/2025
  */
 public interface Flow extends ContainerBase<Flow> {

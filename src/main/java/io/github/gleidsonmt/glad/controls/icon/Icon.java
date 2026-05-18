@@ -3,7 +3,7 @@
 package io.github.gleidsonmt.glad.controls.icon;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  12/10/2024
  */
 @SuppressWarnings("unused")

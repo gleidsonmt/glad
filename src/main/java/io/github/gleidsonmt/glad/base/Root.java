@@ -11,7 +11,7 @@ import io.github.gleidsonmt.glad.errors.ExecutionEventError;
 import javafx.scene.Node;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/01/2025
  */
 public class Root extends AbstractContainer<DefaultBreak> {

@@ -9,7 +9,7 @@ import javafx.scene.control.Slider;
 import java.util.Objects;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  18/11/2024
  */
 public class CustomSlider extends Slider {

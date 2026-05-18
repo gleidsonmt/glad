@@ -13,7 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  13/08/2025
  */
 @SuppressWarnings("unchecked")

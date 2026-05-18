@@ -11,7 +11,7 @@ import javafx.scene.control.ContentDisplay;
 import java.util.List;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  25/09/2022
  */
 @DefaultProperty("control")

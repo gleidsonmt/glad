@@ -22,7 +22,7 @@ import java.util.Objects;
  * Editor is a wrapper of TextField it aims to be used inside a control.
  * Usually a box control, like (PasswordBox,  {@link TextBox}) etc.
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  20/09/2022
  */
 @SuppressWarnings("unused")

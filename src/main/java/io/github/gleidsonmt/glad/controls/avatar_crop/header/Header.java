@@ -11,7 +11,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  14/11/2024
  */
 public class Header extends GridPane {

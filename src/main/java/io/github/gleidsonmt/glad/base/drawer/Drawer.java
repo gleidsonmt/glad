@@ -36,7 +36,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  21/07/2024
  * Revised 2
  */

@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  17/11/2024
  */
 public class Buttons extends ButtonBar {

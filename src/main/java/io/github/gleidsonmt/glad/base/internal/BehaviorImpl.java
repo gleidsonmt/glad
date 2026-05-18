@@ -19,7 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  27/01/2025
  */
 public class BehaviorImpl implements Behavior {

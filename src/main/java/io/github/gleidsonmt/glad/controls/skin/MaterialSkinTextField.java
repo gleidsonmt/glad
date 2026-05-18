@@ -16,7 +16,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  05/05/2024
  */
 public class MaterialSkinTextField extends EditorSkin {

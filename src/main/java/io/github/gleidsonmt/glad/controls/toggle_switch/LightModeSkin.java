@@ -10,7 +10,7 @@ import javafx.geometry.VPos;
 import javafx.scene.paint.Color;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  23/04/2025
  */
 public class LightModeSkin extends ToggleSwitchSkin {

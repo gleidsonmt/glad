@@ -8,7 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.Region;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  05/09/2025
  */
 public interface ContainerBase<T> extends FlowItem<T> {

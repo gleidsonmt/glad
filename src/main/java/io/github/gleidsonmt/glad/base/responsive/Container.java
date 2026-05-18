@@ -10,7 +10,7 @@ import javafx.scene.Node;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  03/02/2026
  */
 public class Container extends AbstractContainer<Size> {

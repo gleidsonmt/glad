@@ -7,7 +7,7 @@ import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 /**
  * A single triggered action.
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  05/03/2025
  */
 @FunctionalInterface

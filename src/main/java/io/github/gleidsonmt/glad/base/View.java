@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  19/07/2024
  */
 @ApiStatus.AvailableSince("1.0.0")

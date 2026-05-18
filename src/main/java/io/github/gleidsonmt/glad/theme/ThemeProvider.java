@@ -12,7 +12,7 @@ import java.util.Arrays;
 /**
  * This class provides all the css to the scene.
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  29/01/2025
  */
 public class ThemeProvider {

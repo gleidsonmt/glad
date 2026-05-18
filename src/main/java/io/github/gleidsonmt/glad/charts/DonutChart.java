@@ -13,7 +13,7 @@ import javafx.scene.shape.Circle;
 
 /**
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  13/03/2025
  */
 public class DonutChart extends PieChart {

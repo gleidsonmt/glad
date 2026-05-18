@@ -16,7 +16,7 @@ import javafx.scene.control.Skin;
 /**
  * Carousel it's a region that can slide nodes with indicators and arrows to move through the children.
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  21/08/2025
  */
 public class Carousel<T extends Node> extends CarouselBase {

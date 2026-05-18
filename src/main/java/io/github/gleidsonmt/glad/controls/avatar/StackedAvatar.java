@@ -18,7 +18,7 @@ import javafx.scene.text.Font;
 import java.util.List;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  10/04/2025
  */
 @SuppressWarnings("unused")

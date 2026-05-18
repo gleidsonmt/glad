@@ -16,7 +16,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  17/09/2024
  */
 public abstract class CircleLoader extends VBox implements SuspenseLoader {

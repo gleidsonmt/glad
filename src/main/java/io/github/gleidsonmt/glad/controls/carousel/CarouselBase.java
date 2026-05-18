@@ -9,7 +9,7 @@ import javafx.util.Duration;
 import java.util.List;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  21/08/2025
  */
 public class CarouselBase extends Control {

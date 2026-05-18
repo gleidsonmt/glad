@@ -13,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  24/02/2026
  */
 public class TextBoxSkin extends TextBoxBaseSkin {

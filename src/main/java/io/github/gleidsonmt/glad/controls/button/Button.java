@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 import java.util.List;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  29/09/2022
  */
 @DefaultProperty("control")

@@ -16,7 +16,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.text.Text;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  17/04/2025
  */
 public class DrawerItem extends ToggleButton {

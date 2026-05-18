@@ -14,7 +14,7 @@ import javafx.scene.text.Text;
  * With them they have a name of that module and a toggle button.
  * The drawer shows up a vbox with a text as name and toggle button representing the view.
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  31/03/2025
  */
 public class BoxModule extends VBox {

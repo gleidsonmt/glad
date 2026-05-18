@@ -16,7 +16,7 @@ import javafx.scene.control.ButtonBar;
 import java.util.Arrays;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  21/03/2025
  */
 public class AlertImpl extends DialogAbstract<Alert> implements Alert {

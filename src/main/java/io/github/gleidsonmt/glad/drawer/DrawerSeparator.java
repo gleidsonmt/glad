@@ -9,7 +9,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  10/09/2025
  */
 public class DrawerSeparator extends VBox {

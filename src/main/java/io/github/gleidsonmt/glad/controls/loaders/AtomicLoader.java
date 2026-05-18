@@ -19,7 +19,7 @@ import javafx.scene.shape.SVGPath;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  16/03/2026
  */
 public class AtomicLoader extends StackPane {

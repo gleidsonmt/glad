@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  22/04/2025
  */
 public class AvatarStatus extends Region {

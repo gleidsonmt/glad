@@ -8,7 +8,7 @@ import javafx.scene.layout.Region;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  05/09/2025
  */
 public interface DialogBase<T> extends FlowItem<T> {

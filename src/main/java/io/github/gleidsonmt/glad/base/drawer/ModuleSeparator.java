@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  10/04/2025
  */
 public record ModuleSeparator(Node graphic, String name) implements Module {

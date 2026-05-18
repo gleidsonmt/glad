@@ -15,7 +15,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  04/04/2025
  */
 public class FloatEditorSkin extends EditorSkin {

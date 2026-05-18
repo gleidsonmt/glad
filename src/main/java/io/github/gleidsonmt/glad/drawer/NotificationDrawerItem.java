@@ -3,7 +3,7 @@
 //import javafx.scene.Node;
 //
 /// **
-// * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+// * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
 // * Create on  17/04/2025
 // */
 //public class NotificationDrawerItem extends DrawerItemBase {

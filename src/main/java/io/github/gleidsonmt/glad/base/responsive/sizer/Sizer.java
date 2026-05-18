@@ -14,7 +14,7 @@ import org.jetbrains.annotations.ApiStatus;
 /**
  * This class acts like an observer for size/width changes on the panel.
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  05/03/2025
  */
 public class Sizer<T extends Size> {

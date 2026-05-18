@@ -11,7 +11,7 @@ import javafx.scene.layout.Region;
 /**
  * The wrapper interface disposes a region with color to focus on the element stacked.
  *
- * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/01/2025
  */
 @Deprecated
