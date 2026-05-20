@@ -5,6 +5,7 @@ package io.github.gleidsonmt.glad.base.internal;
 import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.HPos;
@@ -38,7 +39,6 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         anchor = null;
         pos = Pos.CENTER;
         insets = Insets.EMPTY;
-        wrapperEffect = null;
         width.unbind();
         height.unbind();
         height.set(-1);
@@ -93,6 +93,8 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         return root.getChildren().contains(node);
     }
 
+
+
     @Override
     public Flow pos(Pos pos) {
         this.pos = pos;
@@ -101,6 +103,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     // Revised
     public void show(Region target) {
+
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, Pos.TOP_LEFT);
 
@@ -113,6 +116,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         this.content.applyCss();
         relocateByNode(target);
 
+        super.show();
     }
 
     private void relocateByNode(Region target) {
@@ -294,6 +298,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
             case CENTER -> content.setTranslateY(event.getSceneY() - (height / 2));
             case null, default -> content.setTranslateX(event.getSceneX());
         }
+        super.show();
         reset();
     }
 
@@ -344,6 +349,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
             }
         }
 
+        super.show();
         reset();
     }
 

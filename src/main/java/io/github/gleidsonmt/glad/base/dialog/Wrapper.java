@@ -14,7 +14,7 @@ import javafx.scene.layout.Region;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a>
  * Create on  26/01/2025
  */
-@Deprecated
+@Deprecated(forRemoval = true)
 public interface Wrapper extends FlowItem<Wrapper> {
 
     void show(WrapperEffect effect);

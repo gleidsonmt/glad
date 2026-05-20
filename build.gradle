@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.1.225'
+version '1.1.226'
 
 repositories {
     mavenCentral()

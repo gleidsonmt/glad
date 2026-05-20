@@ -2,6 +2,7 @@
 
 package io.github.gleidsonmt.glad.base;
 
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.ContainerBase;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
@@ -18,15 +19,17 @@ import org.jetbrains.annotations.ApiStatus;
 public interface Flow extends ContainerBase<Flow> {
     // Utils
 
-    /**
+   /**
      * If they fit in the root (screen).
      *
      * @param node The node to test.
      * @return true if fits.
      */
-    @ApiStatus.Experimental
+   @Deprecated
+   @ApiStatus.Experimental
     boolean fits(Region node);
 
+    @Deprecated
     @ApiStatus.Experimental
     void clearConstraints(Region node);
 
@@ -53,6 +56,9 @@ public interface Flow extends ContainerBase<Flow> {
      */
     void clear();
 
+
+
     boolean has(Node node);
+
 
 }
