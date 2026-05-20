@@ -100,7 +100,6 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 //                .remove(snackBar));
     }
 
-
     @Override
     public Snack message(String message) {
         this.message = message;
