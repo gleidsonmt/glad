@@ -28,6 +28,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
     public AlertImpl(Root root) {
         super(root);
+        with = WrapperEffect.GRAY;
     }
 
     private void open(String title) {
@@ -64,7 +65,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
             });
         }
 
-        root.getChildren().add(foreground.restyle(wrapperEffect == null ? WrapperEffect.GRAY : wrapperEffect, root));
+        root.getChildren().add(foreground.restyle(with == null ? WrapperEffect.GRAY : with, root));
 
         root.flow()
                 .pos(Pos.CENTER)
@@ -79,7 +80,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     }
 
     private void reset() {
-        this.wrapperEffect = null;
+        this.with = null;
         this.buttons = null;
         this.block = false;
     }

@@ -4,6 +4,7 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.FlowItem;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -25,6 +26,9 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
     protected Anchor anchor = Anchor.NONE;
     protected boolean showing = false;
 
+    protected boolean block = false;
+    protected WrapperEffect with = null;
+
     @Override
     public T anchor(Anchor anchor) {
         this.anchor = anchor;
@@ -40,6 +44,18 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
     @Override
     public T pos(Pos pos) {
         this.pos = pos;
+        return (T) this;
+    }
+
+    @Override
+    public T block() {
+        this.block = true;
+        return (T) this;
+    }
+
+    @Override
+    public T with(WrapperEffect wrapperEffect) {
+        this.with = wrapperEffect;
         return (T) this;
     }
 

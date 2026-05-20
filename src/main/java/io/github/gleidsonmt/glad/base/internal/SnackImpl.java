@@ -3,6 +3,7 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
 import io.github.gleidsonmt.glad.base.dialog.snack.SnackOption;
 import io.github.gleidsonmt.glad.controls.button.Button;
@@ -36,6 +37,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
         this.root = root;
     }
 
+
     @Override
     public void show() {
         var bar = new SnackBar(this.message);
@@ -51,7 +53,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
                 bar.add(button, ref.count++, 0);
                 bar.add(new Separator(Orientation.VERTICAL), ref.count++, 0);
             });
-            bar.getChildren().removeLast();
+            if (actions.size() == 1) bar.getChildren().removeLast();
 
         }
         final Timeline timeline = new Timeline();
@@ -86,7 +88,33 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
         timeline.setRate(1);
         timeline.play();
         reset();
+
     }
+
+    @Override
+    public void show(String message) {
+        show(null, message);
+    }
+
+    @Override
+    public void show(Node graphic, String message, SnackOption... options) {
+        this.graphic = graphic;
+        this.message = message;
+        this.actions = List.of(options);
+        show();
+    }
+
+    @Override
+    public Snack with(WrapperEffect wrapperEffect) {
+        throw new UnsupportedOperationException("This method is not supported by this child component.");
+    }
+
+
+    @Override
+    public Snack block() {
+        throw new UnsupportedOperationException("This method is not supported by this child component.");
+    }
+
 
     private void reset() {
         this.graphic = null;

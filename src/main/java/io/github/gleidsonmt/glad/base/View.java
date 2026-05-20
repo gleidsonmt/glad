@@ -10,7 +10,7 @@ import org.jetbrains.annotations.ApiStatus;
  * Create on  19/07/2024
  */
 @ApiStatus.AvailableSince("1.0.0")
-public class View extends ModuleView implements Module {
+public class View extends ModuleView {
 
     protected Node content;
     protected Node icon;

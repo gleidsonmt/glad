@@ -15,12 +15,13 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
     public DialogImpl(Root root) {
         super(root);
+        with = WrapperEffect.GRAY;
     }
 
     public void open(Node node) {
 
-        if (this.wrapperEffect != null) {
-            root.getChildren().add(foreground.restyle(wrapperEffect, root));
+        if (this.with != null) {
+            root.getChildren().add(foreground.restyle(with, root));
         }
 
         root.flow()
@@ -37,7 +38,7 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
     }
 
     private void reset() {
-        wrapperEffect = null;
+        with = null;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
     @Override
     public Dialog effect() {
-        this.wrapperEffect = WrapperEffect.GRAY;
+        this.with = WrapperEffect.GRAY;
         return this;
     }
 

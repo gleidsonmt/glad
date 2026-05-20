@@ -3,6 +3,7 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Anchor;
+import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.beans.property.DoubleProperty;
@@ -22,8 +23,6 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     protected String title;
     protected Region content;
-    protected boolean block = false;
-    protected WrapperEffect wrapperEffect = null;
     protected DoubleProperty width = new SimpleDoubleProperty(-1);
     protected DoubleProperty height = new SimpleDoubleProperty(-1);
     protected boolean full = false;
@@ -45,6 +44,7 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     private final EventHandler<MouseEvent> hideEvent = _ -> {
         foreground.restyle(null, root);
+        root.getChildren().remove(foreground);
         hide();
     };
 
@@ -78,7 +78,7 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     @Override
     public T effect(WrapperEffect effect) {
-        this.wrapperEffect = effect;
+        this.with = effect;
         return (T) this;
     }
 
@@ -89,16 +89,13 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
     }
 
     @Override
-    public T block() {
-        this.block = true;
-        return (T) this;
-    }
-
-    @Override
     public void show() {
         showing = true;
         if (this.block) {
             this.foreground.removeEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
+            root.getChildren().add(foreground.restyle(with, root));
+        } else if (with != null) {
+            root.getChildren().add(foreground.restyle(with, root));
         }
     }
 

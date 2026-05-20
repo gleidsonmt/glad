@@ -17,5 +17,8 @@ public interface AppearItem {
      */
     void hide();
 
+    /**
+     * @return if the item is showing on root.
+     */
     boolean isShowing();
 }
