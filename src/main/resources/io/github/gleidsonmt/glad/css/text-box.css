@@ -29,3 +29,15 @@
     -fx-background-color: transparent;
     -fx-border-color: red;
 }
+
+.text-box .icon-container {
+    -fx-padding: 10px;
+}
+
+.text-box:error:hover {
+    -fx-border-color: -danger;
+}
+
+.text-box:error .helper-label .text {
+    -fx-fill: -danger;
+}

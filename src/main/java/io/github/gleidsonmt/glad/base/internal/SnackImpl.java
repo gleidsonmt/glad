@@ -85,7 +85,6 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
         timeline.setRate(1);
         timeline.play();
-        reset();
     }
 
     private void reset() {
@@ -96,6 +95,8 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     @Override
     public void hide() {
         root.flow().remove(root.getChildren().removeLast());
+        reset();
+
 //        Platform.runLater(() -> root.flow()
 //                .remove(snackBar));
     }

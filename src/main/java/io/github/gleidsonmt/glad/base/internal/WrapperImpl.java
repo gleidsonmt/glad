@@ -14,7 +14,7 @@ import javafx.scene.layout.*;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/01/2025
  */
-@Deprecated
+@Deprecated(forRemoval = true)
 public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
 
     private final Root root;

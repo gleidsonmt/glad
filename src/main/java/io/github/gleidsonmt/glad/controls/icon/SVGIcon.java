@@ -42,6 +42,7 @@ public class SVGIcon extends SVGPathIcon {
                 setContent(newValue);
             }
         });
+        setPickOnBounds(true);
         setAutoSizeChildren(true);
         setMouseTransparent(true);
     }

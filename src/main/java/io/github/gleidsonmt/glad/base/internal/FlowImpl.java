@@ -24,6 +24,7 @@ import javafx.scene.layout.StackPane;
 public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     private Pos pos = Pos.CENTER;
+    protected boolean cu = false;
 
     public FlowImpl(Root root) {
         super(root);
@@ -74,11 +75,15 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         container.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
     }
 
-    // Revised
     @Override
     public void remove(Node container) {
         reset();
         root.getChildren().removeAll(container);
+    }
+
+    @Override
+    public boolean isBlocked() {
+        return this.block;
     }
 
     @Override
@@ -112,7 +117,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
         this.content.applyCss();
         relocateByNode(target);
-
+        super.show();
     }
 
     private void relocateByNode(Region target) {
@@ -139,7 +144,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         this.width.addListener((_, _, _) -> translateBasedOnNodeX(target));
     }
 
-    // needs to be cut in two other methods to calcalute x and y.
+    // needs to be cut in two other methods to calculate x and y.
     private void translateBasedOnNodeX(Region target) {
         double x;
         double maxX = getMaxPositionX(pos.getHpos(), target);
@@ -294,7 +299,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
             case CENTER -> content.setTranslateY(event.getSceneY() - (height / 2));
             case null, default -> content.setTranslateX(event.getSceneX());
         }
-        reset();
+        super.show();
     }
 
     // needs to be revised
@@ -343,8 +348,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
                 content.setMaxHeight(height);
             }
         }
-
-        reset();
+        super.show();
     }
 
     @Override
@@ -352,4 +356,6 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         root.getChildren().remove(this.content);
         reset();
     }
+
+
 }

@@ -73,9 +73,11 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
                 .content(new DialogContainer(alert))
                 .show();
 
+        System.out.println("this.block = " + this.block);
         if (this.block) blockForeground();
+//        System.out.println("this.block = " + this.block);
+
 //
-        reset();
     }
 
     private void reset() {
@@ -88,6 +90,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     public void hide() {
         root.flow().remove(alert.getParent());
         root.flow().remove(foreground);
+        reset();
     }
 
     @Override

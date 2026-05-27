@@ -22,7 +22,7 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
 
     protected String title;
     protected Region content;
-    protected boolean block = false;
+    protected static boolean block = false;
     protected WrapperEffect wrapperEffect = null;
     protected DoubleProperty width = new SimpleDoubleProperty(-1);
     protected DoubleProperty height = new SimpleDoubleProperty(-1);
@@ -35,17 +35,17 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
         this.foreground = new Foreground();
         this.root = root;
 
-//        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
-////            root.behavior().closeDrawer();
-////            root.behavior().closeAside();
-//        });
+        this.foreground.addEventFilter(MouseEvent.MOUSE_PRESSED, _ -> {
+//            root.behavior().closeDrawer();
+//            root.behavior().closeAside();
+        });
 
         this.foreground.addEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
     }
 
     private final EventHandler<MouseEvent> hideEvent = _ -> {
         foreground.restyle(null, root);
-        hide();
+//        hide();
     };
 
     protected void blockForeground() {
@@ -105,7 +105,6 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
     @Override
     public void hide() {
         showing = false;
+        block = false;
     }
-
-
 }

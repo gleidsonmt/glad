@@ -48,6 +48,7 @@ public interface Flow extends ContainerBase<Flow> {
      */
     void remove(Node container);
 
+    boolean isBlocked();
     /**
      * Remove all nodes from the root.
      */
