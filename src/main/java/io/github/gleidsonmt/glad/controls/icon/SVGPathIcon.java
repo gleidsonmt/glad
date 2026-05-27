@@ -25,7 +25,6 @@ public class SVGPathIcon extends Group {
 //        setFill(color);
 //        name = icon.name();
 
-
         setAutoSizeChildren(true);
     }
 

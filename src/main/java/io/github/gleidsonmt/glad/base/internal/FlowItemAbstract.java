@@ -64,6 +64,7 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
         return showing;
     }
 
+
     @Override
     public void show() {
         showing = true;

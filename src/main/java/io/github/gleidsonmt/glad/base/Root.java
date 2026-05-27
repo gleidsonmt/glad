@@ -29,7 +29,10 @@ public class Root extends AbstractContainer<DefaultBreak> {
         setLayout(layout);
 
         // removes any node with absolute position, like alerts, dialogs, etc.
-        widthProperty().addListener((_, _, _) -> flow.clear());
+        widthProperty().addListener((_, _, _) -> {
+            if (flow.isBlocked()) return;
+            flow.clear();
+        });
 
         sceneProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {

@@ -89,7 +89,6 @@ public class TextBox extends TextBoxBase {
         return Objects.requireNonNull(Resources.class.getResource("agents/text-box.css")).toExternalForm();
     }
 
-
     public boolean isAction() {
         return action.get();
     }

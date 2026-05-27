@@ -15,4 +15,5 @@ public interface Form<T> {
     boolean persist();
 
     T get();
+
 }

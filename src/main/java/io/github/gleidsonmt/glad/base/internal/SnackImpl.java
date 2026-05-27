@@ -129,7 +129,37 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
         timeline.setRate(1);
         timeline.play();
+    }
+
+    private void reset() {
+        this.graphic = null;
+        this.actions = null;
+    }
+
+    @Override
+    public void hide() {
+        root.flow().remove(root.getChildren().removeLast());
         reset();
 
+//        Platform.runLater(() -> root.flow()
+//                .remove(snackBar));
+    }
+
+    @Override
+    public Snack message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    @Override
+    public Snack graphic(Node graphic) {
+        this.graphic = graphic;
+        return this;
+    }
+
+    @Override
+    public final Snack action(SnackOption... actions) {
+        this.actions = List.of(actions);
+        return this;
     }
 }

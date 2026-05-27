@@ -25,6 +25,7 @@ import javafx.scene.layout.StackPane;
 public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     private Pos pos = Pos.CENTER;
+    protected boolean cu = false;
 
     public FlowImpl(Root root) {
         super(root);
@@ -74,11 +75,15 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         container.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
     }
 
-    // Revised
     @Override
     public void remove(Node container) {
         reset();
         root.getChildren().removeAll(container);
+    }
+
+    @Override
+    public boolean isBlocked() {
+        return this.block;
     }
 
     @Override
@@ -143,7 +148,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         this.width.addListener((_, _, _) -> translateBasedOnNodeX(target));
     }
 
-    // needs to be cut in two other methods to calcalute x and y.
+    // needs to be cut in two other methods to calculate x and y.
     private void translateBasedOnNodeX(Region target) {
         double x;
         double maxX = getMaxPositionX(pos.getHpos(), target);
@@ -299,7 +304,6 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
             case null, default -> content.setTranslateX(event.getSceneX());
         }
         super.show();
-        reset();
     }
 
     // needs to be revised
@@ -348,9 +352,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
                 content.setMaxHeight(height);
             }
         }
-
         super.show();
-        reset();
     }
 
     @Override
@@ -358,4 +360,6 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         root.getChildren().remove(this.content);
         reset();
     }
+
+
 }
