@@ -37,6 +37,48 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
         this.root = root;
     }
 
+    @Override
+    public void show(String message) {
+        show(null, message);
+    }
+
+    @Override
+    public void show(Node graphic, String message, SnackOption... options) {
+        this.graphic = graphic;
+        this.message = message;
+        this.actions = List.of(options);
+        show();
+    }
+
+    private void reset() {
+        this.graphic = null;
+        this.actions = null;
+    }
+
+    @Override
+    public void hide() {
+        root.flow().remove(root.getChildren().removeLast());
+//        Platform.runLater(() -> root.flow()
+//                .remove(snackBar));
+    }
+
+    @Override
+    public Snack message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    @Override
+    public Snack graphic(Node graphic) {
+        this.graphic = graphic;
+        return this;
+    }
+
+    @Override
+    public final Snack action(SnackOption... actions) {
+        this.actions = List.of(actions);
+        return this;
+    }
 
     @Override
     public void show() {
@@ -89,61 +131,5 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
         timeline.play();
         reset();
 
-    }
-
-    @Override
-    public void show(String message) {
-        show(null, message);
-    }
-
-    @Override
-    public void show(Node graphic, String message, SnackOption... options) {
-        this.graphic = graphic;
-        this.message = message;
-        this.actions = List.of(options);
-        show();
-    }
-
-    @Override
-    public Snack with(WrapperEffect wrapperEffect) {
-        throw new UnsupportedOperationException("This method is not supported by this child component.");
-    }
-
-
-    @Override
-    public Snack block() {
-        throw new UnsupportedOperationException("This method is not supported by this child component.");
-    }
-
-
-    private void reset() {
-        this.graphic = null;
-        this.actions = null;
-    }
-
-    @Override
-    public void hide() {
-        root.flow().remove(root.getChildren().removeLast());
-//        Platform.runLater(() -> root.flow()
-//                .remove(snackBar));
-    }
-
-
-    @Override
-    public Snack message(String message) {
-        this.message = message;
-        return this;
-    }
-
-    @Override
-    public Snack graphic(Node graphic) {
-        this.graphic = graphic;
-        return this;
-    }
-
-    @Override
-    public final Snack action(SnackOption... actions) {
-        this.actions = List.of(actions);
-        return this;
     }
 }
