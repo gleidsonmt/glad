@@ -21,11 +21,12 @@ public class Foreground extends StackPane {
 
 
     public Foreground restyle(WrapperEffect effect, Root root) {
-        if (effect == null) {
+        if (effect == null || effect == WrapperEffect.NONE) {
             root.getChildren().getFirst().setEffect(null);
             this.setBackground(null);
             return this;
         }
+
         if (effect.equals(WrapperEffect.BLUR)) {
             root.getChildren().getFirst().setEffect(new BoxBlur(2, 2, 1));
 //            getScene().getRoot().setEffect(new BoxBlur(2, 2, 1));

@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'io.github.gleidsonmt'
-version '1.1.225'
+version '1.1.23'
 
 repositories {
     mavenCentral()
@@ -29,8 +29,6 @@ dependencies {
     compileOnly("org.jetbrains:annotations:26.1.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
-
-
 }
 
 test {

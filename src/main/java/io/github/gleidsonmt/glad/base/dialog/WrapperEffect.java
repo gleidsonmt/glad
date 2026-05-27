@@ -7,5 +7,5 @@ package io.github.gleidsonmt.glad.base.dialog;
  * Create on  24/01/2025
  */
 public enum WrapperEffect {
-    GRAY, BLUR
+    GRAY, BLUR, NONE
 }

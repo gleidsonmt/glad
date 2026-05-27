@@ -3,6 +3,7 @@
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Root;
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
 import io.github.gleidsonmt.glad.base.dialog.snack.SnackOption;
 import io.github.gleidsonmt.glad.controls.button.Button;
@@ -37,6 +38,49 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
     }
 
     @Override
+    public void show(String message) {
+        show(null, message);
+    }
+
+    @Override
+    public void show(Node graphic, String message, SnackOption... options) {
+        this.graphic = graphic;
+        this.message = message;
+        this.actions = List.of(options);
+        show();
+    }
+
+    private void reset() {
+        this.graphic = null;
+        this.actions = null;
+    }
+
+    @Override
+    public void hide() {
+        root.flow().remove(root.getChildren().removeLast());
+//        Platform.runLater(() -> root.flow()
+//                .remove(snackBar));
+    }
+
+    @Override
+    public Snack message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    @Override
+    public Snack graphic(Node graphic) {
+        this.graphic = graphic;
+        return this;
+    }
+
+    @Override
+    public final Snack action(SnackOption... actions) {
+        this.actions = List.of(actions);
+        return this;
+    }
+
+    @Override
     public void show() {
         var bar = new SnackBar(this.message);
         if (graphic != null) bar.setGraphic(graphic);
@@ -51,7 +95,7 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
                 bar.add(button, ref.count++, 0);
                 bar.add(new Separator(Orientation.VERTICAL), ref.count++, 0);
             });
-            bar.getChildren().removeLast();
+            if (actions.size() == 1) bar.getChildren().removeLast();
 
         }
         final Timeline timeline = new Timeline();

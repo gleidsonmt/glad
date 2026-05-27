@@ -11,8 +11,8 @@ import org.jetbrains.annotations.ApiStatus;
  */
 public interface Dialog extends DialogBase<Dialog> {
 
+    @Deprecated
     @ApiStatus.Experimental
     Dialog effect();
-
 
 }

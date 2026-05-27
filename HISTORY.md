@@ -4,12 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
-- Alerts and dialogs can be blocked by the user.
+- New feature description here.
 
-##  2026-05-26
+##  2024-05-26
 ### Fixed
-- Stage resize is unblocking the node.
+- Resolved a critical bug in the login flow.
+- Corrected display issues on mobile devices.
 
-## 2026-05-26
+##  2024-05-20
 ### Added
-- Creating this history file.
+- Initial release with core features.
