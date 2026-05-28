@@ -13,7 +13,7 @@ public interface Form<T> {
 
     boolean validate();
 
-    boolean persist();
+    void persist();
 
     T get();
 

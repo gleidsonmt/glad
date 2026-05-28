@@ -84,5 +84,5 @@ public abstract class AbstractForm<T> extends GridPane implements Form<T> {
     }
 
     @Override
-    public abstract boolean persist();
+    public abstract void persist();
 }
