@@ -2,20 +2,10 @@
 plugins {
     id 'java'
     id 'org.openjfx.javafxplugin' version '0.0.13'
-    id 'com.palantir.git-version' version '3.1.0'
-//    id("com.palantir.git-version") version "3.1.0"
 }
 
-//print(gitVersion())
 group 'io.github.gleidsonmt'
-version onlyNumberAndDots(gitVersion())
-
-static String onlyNumberAndDots(String value) {
-    return value.replaceAll(/[^0-9.]/, '')
-}
-
-print gitVersion()
-print version
+version "0.0.1"
 
 repositories {
     mavenCentral()
