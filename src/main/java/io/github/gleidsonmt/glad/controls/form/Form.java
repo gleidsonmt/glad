@@ -8,6 +8,7 @@ import org.jetbrains.annotations.ApiStatus;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  01/04/2024
  */
+@ApiStatus.Experimental
 public interface Form<T> {
 
     boolean validate();

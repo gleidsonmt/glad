@@ -22,6 +22,7 @@ import java.util.Objects;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  06/11/2024
  */
+@Deprecated(forRemoval = true)
 public class AlertLayout extends VBox {
 
     private final BarAction barAction;
