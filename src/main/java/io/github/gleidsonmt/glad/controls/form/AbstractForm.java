@@ -50,6 +50,10 @@ public abstract class AbstractForm<T> extends GridPane implements Form<T> {
 
     }
 
+    public ObservableList<FormField> getFields() {
+        return fields;
+    }
+
     public void addField(FormField field) {
         fields.add(field);
         if (field instanceof Node node) {
