@@ -12,14 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import org.jetbrains.annotations.ApiStatus;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.ObservableList;
-import javafx.scene.layout.GridPane;
-import org.jetbrains.annotations.ApiStatus;
-
-import java.util.Objects;
-
 
 import java.util.Objects;
 
@@ -30,7 +22,7 @@ import java.util.Objects;
  * Create on 27/05/2026
  */
 @ApiStatus.Experimental
-public class AbstractForm<T> extends GridPane implements Form<T> {
+public abstract class AbstractForm<T> extends GridPane implements Form<T> {
 
     private final BooleanProperty valid = new SimpleBooleanProperty(true);
 
@@ -92,8 +84,5 @@ public class AbstractForm<T> extends GridPane implements Form<T> {
     }
 
     @Override
-    public boolean persist() {
-        return false;
-    }
+    public abstract boolean persist();
 }
-
