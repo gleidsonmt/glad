@@ -87,6 +87,7 @@ public class Drawer extends VBox {
                     if (c.next()) {
                         if (c.wasAdded()) {
                             c.getAddedSubList().forEach(Drawer.this::recursivePopulate);
+                            group.selectToggle(group.getToggles().getFirst());
                         } else if (c.wasRemoved()) {
                             c.getRemoved().forEach(module ->
                                     defaultBox.getChildren().remove(findNode(defaultBox.getChildren(), module)));
@@ -135,7 +136,9 @@ public class Drawer extends VBox {
 //        Platform.runLater(() -> {
 //testing
 //        if (!group.getToggles().isEmpty()) {
+
         currentModule.bind(group.selectedToggleProperty().map(e -> (Module) e.getUserData()));
+
 //            group.selectToggle(group.getToggles().getFirst());
 //            currentModule.setValue((ModuleView) group.getToggles().getFirst().getUserData());
 //        }
@@ -342,7 +345,7 @@ public class Drawer extends VBox {
 
             ToggleButton b = (ToggleButton) call(view);
             group.getToggles().add(b);
-            b.setOnMouseClicked(_ -> currentModule.set(moduleImpl));
+//            b.setOnMouseClicked(_ -> currentModule.set(moduleImpl));
             moduleImpl.setNode(b);
 
             if (view.getContainer() != null) {

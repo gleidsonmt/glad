@@ -12,6 +12,8 @@ import org.jetbrains.annotations.ApiStatus;
  * Create on  10/06/2025
  */
 @SuppressWarnings("unused")
+@ApiStatus.Experimental
+@Deprecated(forRemoval = true)
 public interface Layout {
 
     @ApiStatus.Experimental
