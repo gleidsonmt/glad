@@ -9,7 +9,7 @@ import org.jetbrains.annotations.ApiStatus;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  19/07/2024
  */
-@ApiStatus.AvailableSince("1.0.0")
+@ApiStatus.Experimental
 public class View extends ModuleView {
 
     protected Node content;
@@ -59,8 +59,18 @@ public class View extends ModuleView {
     }
 
     @Override
+    public Node getNode(){
+        return this.content;
+    }
+
+    @Override
     public String toString() {
-        return "View{" + "\n\tname=" + getName() +
-               "\n}";
+        return "{\"View\":"
+               + super.toString()
+               + ", \"content\":" + content
+               + ", \"icon\":" + icon
+               + ", \"node\":" + getContent()
+
+               + "}";
     }
 }

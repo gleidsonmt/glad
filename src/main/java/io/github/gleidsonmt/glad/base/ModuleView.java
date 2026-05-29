@@ -15,6 +15,7 @@ import java.util.Arrays;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  10/06/2025
  */
+@ApiStatus.Experimental
 public class ModuleView implements Module {
 
     private final ObservableList<Module> modules;
