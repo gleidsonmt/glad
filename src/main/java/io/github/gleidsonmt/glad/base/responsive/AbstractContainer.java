@@ -124,7 +124,6 @@ public class AbstractContainer<T extends Size> extends StackPane {
 
     @ApiStatus.Experimental
     public void update() {
-//        breaker.doAction(this.sizer.getSize(this.getWidth()));
         this.sizer.change(this.sizer.getSize(this.getWidth()));
     }
 

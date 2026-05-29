@@ -24,8 +24,6 @@ public interface Module {
     default void setNode(Node node) {
     }
 
-    ;
-
     @Deprecated(forRemoval = true)
     boolean isAnimated();
 
@@ -36,8 +34,6 @@ public interface Module {
     @ApiStatus.Experimental
     default void onEnter(Layout layout) {
     }
-
-    ;
 
     // Testing
     default ObservableList<Module> getModules() {
@@ -53,9 +49,6 @@ public interface Module {
 
     default void setContainer(Pane container) {
     }
-
-    ;
-
     default Pane getContainer() {
         return null;
     }
