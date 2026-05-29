@@ -15,6 +15,6 @@ public interface Form<T> {
 
     void persist();
 
-    T get();
+    T getModel();
 
 }

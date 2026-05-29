@@ -75,7 +75,7 @@ public abstract class AbstractForm<T> extends GridPane implements Form<T> {
     }
 
     @Override
-    public T get() {
+    public T getModel() {
         return this.model;
     }
 
