@@ -8,6 +8,8 @@ import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.responsive.AbstractContainer;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
 /**
@@ -23,10 +25,11 @@ public class Root extends AbstractContainer<DefaultBreak> {
     /**
      * Initializes layout, flow, behavior; adds listeners for dynamic adjustments
      */
-    public Root(Layout layout) {
+    public Root(Node layout) {
         this.flow = new FlowImpl(this);
         this.behavior = new BehaviorImpl(this);
-        setLayout(layout);
+        setContent(layout);
+//        setLayout(layout);
 
         // removes any node with absolute position, like alerts, dialogs, etc.
         widthProperty().addListener((_, _, _) -> {
@@ -43,11 +46,13 @@ public class Root extends AbstractContainer<DefaultBreak> {
         });
     }
 
+    @Deprecated(forRemoval = true)
     public void setLayout(Layout layout) {
         this.getChildren().setAll((Node) layout);
         this.layout = layout;
     }
 
+    @Deprecated(forRemoval = true)
     public Layout getLayout() {
         return this.layout;
     }
@@ -58,5 +63,15 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     public Behavior behavior() {
         return this.behavior;
+    }
+
+
+    @Override
+    public ObservableList<Node> getChildren() {
+        return FXCollections.unmodifiableObservableList(super.getChildren());
+    }
+
+    public void setContent(Node content) {
+        super.getChildren().setAll(content);
     }
 }
