@@ -28,7 +28,10 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
         if (block) {
             root.block();
-            root.getForeground().restyle(WrapperEffect.NONE);
+            root.getForeground().restyle(with);
+        } else {
+            root.unblock();
+            root.getForeground().restyle(null);
         }
 
         root.flow()
@@ -41,9 +44,9 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
                 .content(new DialogContainer(node))
                 .show();
 
-
-
+            super.show();
     }
+
 
     private void reset() {
         with = null;
@@ -58,11 +61,12 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
     public void hide() {
         super.hide();
         root.flow().remove(super.content.getParent());
-        root.flow().remove(this.foreground);
-        foreground.restyle(null, root);
+//        root.flow().remove(this.foreground);
+//        foreground.restyle(null, root);
         reset();
 
     }
+
 
     @Override
     public Dialog effect() {

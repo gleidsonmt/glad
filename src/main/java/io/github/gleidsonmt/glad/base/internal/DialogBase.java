@@ -21,9 +21,6 @@ public interface DialogBase<T> extends FlowItem<T> {
 
     T content(Region node);
 
-    @Deprecated(forRemoval = true)
-    T effect(WrapperEffect effect);
-
     @ApiStatus.Experimental
     T full();
 

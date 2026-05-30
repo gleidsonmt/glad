@@ -2,18 +2,11 @@
 
 package io.github.gleidsonmt.glad.drawer;
 
-import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.base.Root;
-import javafx.beans.property.ObjectProperty;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.text.Text;
 
 /**
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>

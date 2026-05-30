@@ -2,12 +2,11 @@
 
 package io.github.gleidsonmt.glad.drawer;
 
-import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TitledPane;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 
 /**
@@ -23,16 +22,16 @@ public class DrawerMenu extends TitledPane {
         setText(module.getName());
         setContent(content);
         setUserData(module);
-//
+
         if (module.getGraphic() != null) {
             this.setGraphic(module.getGraphic());
         }
         this.setExpanded(false);
-//
+
         this.setContentDisplay(ContentDisplay.RIGHT);
         this.setAlignment(Pos.TOP_RIGHT);
         this.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-//
+
         this.getStyleClass().add("drawer-menu");
         content.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
 

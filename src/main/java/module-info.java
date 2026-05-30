@@ -50,5 +50,6 @@ module io.github.gleidsonmt.glad {
     opens io.github.gleidsonmt.glad to
             javafx.fxml, javafx.controls,
             javafx.graphics, javafx.base;
+    opens io.github.gleidsonmt.glad.base.drawer to javafx.fxml;
 
 }

@@ -43,7 +43,6 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
     }
 
     private final EventHandler<MouseEvent> hideEvent = _ -> {
-        foreground.restyle(null, root);
         root.getChildren().remove(foreground);
         hide();
     };
@@ -76,25 +75,10 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
         return (T) this;
     }
 
-    @Override
-    public T effect(WrapperEffect effect) {
-        this.with = effect;
-        return (T) this;
-    }
 
     @Override
     public T full() {
         this.anchor = Anchor.FULL;
         return (T) this;
-    }
-
-    @Override
-    public void show() {
-        showing = true;
-    }
-
-    @Override
-    public void hide() {
-        showing = false;
     }
 }

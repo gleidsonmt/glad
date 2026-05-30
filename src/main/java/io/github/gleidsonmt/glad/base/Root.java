@@ -24,6 +24,8 @@ public class Root extends AbstractContainer<DefaultBreak> {
     private Layout layout;
 
     private Foreground foreground;
+
+    private Node content;
     /**
      * Initializes layout, flow, behavior; adds listeners for dynamic adjustments
      */
@@ -75,7 +77,12 @@ public class Root extends AbstractContainer<DefaultBreak> {
 //    }
 
     public void setContent(Node content) {
+        this.content = content;
         super.getChildren().setAll(content);
+    }
+
+    public Node getContent() {
+        return content;
     }
 
     public void setForeground(Foreground foreground) {

@@ -4,6 +4,7 @@ package io.github.gleidsonmt.glad.base.drawer;
 
 import io.github.gleidsonmt.glad.drawer.DrawerItem;
 import io.github.gleidsonmt.glad.drawer.DrawerMenu;
+import io.github.gleidsonmt.glad.drawer.DrawerSeparator;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -61,7 +62,7 @@ public class Drawer extends VBox {
     public Drawer(@NotNull ObservableList<Module> modules) {
         this(modules, module -> switch (module) {
             case View view -> new DrawerItem(view);
-//            case ModuleSeparator separator -> new DrawerSeparator(separator);
+            case ModuleSeparator separator -> new DrawerSeparator(separator);
             case ViewGroup menu -> new DrawerMenu(menu); // TitledPane
             case null, default -> {
                 assert module != null;
@@ -373,8 +374,8 @@ public class Drawer extends VBox {
             } else {
                 defaultBox.getChildren().add(b);
             }
-//        } else if (moduleImpl instanceof ModuleSeparator moduleSeparator) {
-//            defaultBox.getChildren().add(call(moduleSeparator));
+        } else if (moduleImpl instanceof ModuleSeparator moduleSeparator) {
+            defaultBox.getChildren().add(call(moduleSeparator));
 
         } else if (moduleImpl instanceof ViewGroup viewGroup) {
             TitledPane container = (TitledPane) call(moduleImpl);

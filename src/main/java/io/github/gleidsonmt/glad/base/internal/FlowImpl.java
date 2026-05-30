@@ -1,13 +1,7 @@
-
-
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.Root;
-import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,7 +19,6 @@ import javafx.scene.layout.StackPane;
 public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     private Pos pos = Pos.CENTER;
-    protected boolean cu = false;
 
     public FlowImpl(Root root) {
         super(root);
@@ -361,6 +354,4 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         root.getChildren().remove(this.content);
         reset();
     }
-
-
 }
