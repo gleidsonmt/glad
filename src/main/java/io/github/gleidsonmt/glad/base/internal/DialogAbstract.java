@@ -91,17 +91,10 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
     @Override
     public void show() {
         showing = true;
-        if (this.block) {
-            this.foreground.removeEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
-            root.getChildren().add(foreground.restyle(with, root));
-        } else if (with != null) {
-            root.getChildren().add(foreground.restyle(with, root));
-        }
     }
 
     @Override
     public void hide() {
         showing = false;
-        block = false;
     }
 }

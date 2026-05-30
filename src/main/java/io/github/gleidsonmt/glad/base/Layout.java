@@ -2,6 +2,7 @@
 
 package io.github.gleidsonmt.glad.base;
 
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.ApiStatus;
 public interface Layout {
 
     @ApiStatus.Experimental
-    ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
+    ObjectProperty<io.github.gleidsonmt.glad.base.drawer.Module> currentModule = new SimpleObjectProperty<>();
 
     default void setLeft(Node node) {
     }
@@ -65,21 +66,21 @@ public interface Layout {
     }
 
     @ApiStatus.Experimental
-    default void updateView(Module oldVal, Module newVal) {
+    default void updateView(io.github.gleidsonmt.glad.base.drawer.Module oldVal, Module newVal) {
     }
 
     @ApiStatus.Experimental
-    default ObjectProperty<Module> currentModuleProperty() {
+    default ObjectProperty<io.github.gleidsonmt.glad.base.drawer.Module> currentModuleProperty() {
         return currentModule;
     }
 
     @ApiStatus.Experimental
-    default Module getModule() {
+    default io.github.gleidsonmt.glad.base.drawer.Module getModule() {
         return currentModule.get();
     }
 
     @ApiStatus.Experimental
-    default void setModule(Module module) {
+    default void setModule(io.github.gleidsonmt.glad.base.drawer.Module module) {
         currentModule.set(module);
     }
 }

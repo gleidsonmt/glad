@@ -5,6 +5,7 @@ package io.github.gleidsonmt.glad.base;
 
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
+import io.github.gleidsonmt.glad.base.internal.Foreground;
 import io.github.gleidsonmt.glad.base.responsive.AbstractContainer;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
@@ -22,6 +23,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
     private final Flow flow;
     private Layout layout;
 
+    private Foreground foreground;
     /**
      * Initializes layout, flow, behavior; adds listeners for dynamic adjustments
      */
@@ -29,11 +31,12 @@ public class Root extends AbstractContainer<DefaultBreak> {
         this.flow = new FlowImpl(this);
         this.behavior = new BehaviorImpl(this);
         setContent(layout);
+        setForeground(new Foreground());
 //        setLayout(layout);
 
         // removes any node with absolute position, like alerts, dialogs, etc.
         widthProperty().addListener((_, _, _) -> {
-            if (flow.isBlocked()) return;
+            if (super.getChildren().contains(foreground)) return;
             flow.clear();
         });
 
@@ -66,12 +69,29 @@ public class Root extends AbstractContainer<DefaultBreak> {
     }
 
 
-    @Override
-    public ObservableList<Node> getChildren() {
-        return FXCollections.unmodifiableObservableList(super.getChildren());
-    }
+//    @Override
+//    public ObservableList<Node> getChildren() {
+//        return FXCollections.unmodifiableObservableList(super.getChildren());
+//    }
 
     public void setContent(Node content) {
         super.getChildren().setAll(content);
+    }
+
+    public void setForeground(Foreground foreground) {
+        this.foreground = foreground;
+    }
+
+    public Foreground getForeground() {
+        return foreground;
+    }
+
+    public void block() {
+        if (!super.getChildren().contains(foreground)) super.getChildren().add(foreground);
+        foreground.show();
+    }
+
+    public void unblock() {
+        super.getChildren().remove(this.foreground);
     }
 }

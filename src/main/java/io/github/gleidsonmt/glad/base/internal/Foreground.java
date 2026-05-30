@@ -19,8 +19,53 @@ import javafx.scene.paint.Color;
  */
 public class Foreground extends StackPane {
 
+    public Foreground() {
+        setId("foreground");
+    }
 
+    public void restyle(WrapperEffect effect) {
+        if (effect == null) effect = WrapperEffect.NONE;
+        switch (effect) {
+            case WrapperEffect.BLUR -> {
+                this.setEffect(new BoxBlur(2, 2, 1));
+                this.setBackground(new Background(new BackgroundFill(
+                        Color.rgb(255, 255, 255, 0.1), CornerRadii.EMPTY, Insets.EMPTY)
+                ));
+            }
+            case WrapperEffect.GRAY -> {
+                this.setEffect(null);
+                this.setBackground(new Background(new BackgroundFill(
+                        Color.gray(0.5, 0.3), CornerRadii.EMPTY, Insets.EMPTY)
+                ));
+            }
+            case WrapperEffect.NONE -> {
+                this.setEffect(null);
+                this.setBackground(new Background(new BackgroundFill(
+                        Color.TRANSPARENT,
+                        CornerRadii.EMPTY,
+                        Insets.EMPTY)));
+            }
+            default -> {
+                this.setEffect(null);
+                this.setBackground(new Background(new BackgroundFill(
+                        Color.WHITE,
+                        CornerRadii.EMPTY,
+                        Insets.EMPTY)));
+            }
+        }
+    }
+
+    public void show() {
+        this.toFront();
+    }
+
+    public void hide() {
+        this.toBack();
+    }
+
+    @Deprecated(forRemoval = true)
     public Foreground restyle(WrapperEffect effect, Root root) {
+        setId("foreground");
         if (effect == null || effect == WrapperEffect.NONE) {
             root.getChildren().getFirst().setEffect(null);
             this.setBackground(null);

@@ -65,7 +65,8 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
             });
         }
 
-        root.getChildren().add(foreground.restyle(with == null ? WrapperEffect.GRAY : with, root));
+        root.getForeground().restyle(with);
+        root.block();
 
         root.flow()
                 .pos(Pos.CENTER)
@@ -74,15 +75,11 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
                 .content(new DialogContainer(alert))
                 .show();
 
-        System.out.println("this.block = " + this.block);
-        if (this.block) blockForeground();
-//        System.out.println("this.block = " + this.block);
-
-//
+//        if (this.block) blockForeground();
     }
 
     private void reset() {
-        this.with = null;
+        this.with = WrapperEffect.GRAY;
         this.buttons = null;
         this.block = false;
     }
@@ -90,7 +87,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     @Override
     public void hide() {
         root.flow().remove(alert.getParent());
-        root.flow().remove(foreground);
+        root.unblock();
         reset();
     }
 
@@ -128,6 +125,4 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     public void show() {
         open(title, content, type, buttons);
     }
-
-
 }

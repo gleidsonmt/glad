@@ -45,6 +45,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         height.set(-1);
         width.set(-1);
         full = false;
+        with = null;
     }
 
     @Override

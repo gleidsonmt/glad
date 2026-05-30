@@ -20,8 +20,15 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
     public void open(Node node) {
 
-        if (this.with != null) {
-            root.getChildren().add(foreground.restyle(with, root));
+//        if (this.with != null && !root.getChildren().contains(foreground)) {
+//            root.setForeground(foreground.restyle(with, root));
+//        } else {
+//            foreground.restyle(with, root);
+//        }
+
+        if (block) {
+            root.block();
+            root.getForeground().restyle(WrapperEffect.NONE);
         }
 
         root.flow()
@@ -33,6 +40,8 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
                 .anchor(anchor)
                 .content(new DialogContainer(node))
                 .show();
+
+
 
     }
 
