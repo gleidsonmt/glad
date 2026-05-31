@@ -2,6 +2,7 @@
 
 package io.github.gleidsonmt.glad.base.internal;
 
+import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.dialog.Dialog;
@@ -40,6 +41,7 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 //                .height(height == -1 ? 400 : height)
                 .width(width.get())
                 .height(height.get())
+
                 .anchor(anchor)
                 .content(new DialogContainer(node))
                 .show();
@@ -48,8 +50,9 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
     }
 
 
-    private void reset() {
-        with = null;
+    @Override
+    public void reset() {
+        super.reset();
     }
 
     @Override
@@ -61,10 +64,6 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
     public void hide() {
         super.hide();
         root.flow().remove(super.content.getParent());
-//        root.flow().remove(this.foreground);
-//        foreground.restyle(null, root);
-        reset();
-
     }
 
 

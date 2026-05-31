@@ -27,14 +27,13 @@ import java.util.TimerTask;
  */
 public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
 
-    private final Root root;
     private String message;
     private Node graphic;
 
     private List<SnackOption> actions;
 
     public SnackImpl(Root root) {
-        this.root = root;
+        super(root);
     }
 
     @Override
@@ -50,7 +49,9 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
         show();
     }
 
-    private void reset() {
+    @Override
+    public void reset() {
+        super.reset();
         this.graphic = null;
         this.actions = null;
     }

@@ -23,11 +23,10 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
     private EventHandler<MouseEvent> onClick;
 
     public WrapperImpl(Root root) {
-        this.root = root;
-        this.foreground = new Foreground();
+        super(root);
+        this.foreground = new ForegroundImpl(root);
 
-        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
-        });
+        this.root = root;
     }
 
     @Override
@@ -41,7 +40,7 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
         root.flow()
                 .anchor(Anchor.FULL)
                 .pos(Pos.CENTER)
-                .content(foreground.restyle(effect, root))
+//                .content(foreground.restyle(effect, root))
                 .show();
 
         if (with != null) {
@@ -52,7 +51,7 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
                     .show();
         }
 
-        foreground.setOnMousePressed(onClick);
+//        foreground.setOnMousePressed(onClick);
     }
 
     @Override

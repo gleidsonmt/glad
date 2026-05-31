@@ -4,6 +4,7 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.FlowItem;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -28,6 +29,12 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
 
     protected boolean block = false;
     protected WrapperEffect with = null;
+
+    protected Root root;
+
+    public FlowItemAbstract(Root root) {
+        this.root = root;
+    }
 
     @Override
     public T anchor(Anchor anchor) {
@@ -60,6 +67,12 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
     }
 
     @Override
+    public T with(String wrapperEffect) {
+        this.with = WrapperEffect.valueOf(wrapperEffect.toUpperCase());
+        return (T) this;
+    }
+
+    @Override
     public boolean isShowing() {
         return showing;
     }
@@ -72,5 +85,17 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
     @Override
     public void hide() {
         showing = false;
+        root.unblock();
+        root.getForeground().restyle(WrapperEffect.NONE);
+        reset();
+    }
+
+    public void reset() {
+        pos = null;
+        insets = Insets.EMPTY;
+        anchor = Anchor.NONE;
+        showing = false;
+        block = false;
+        with = null;
     }
 }
