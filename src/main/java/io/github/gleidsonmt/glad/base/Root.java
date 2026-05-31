@@ -6,6 +6,7 @@ package io.github.gleidsonmt.glad.base;
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.internal.Foreground;
+import io.github.gleidsonmt.glad.base.internal.ForegroundImpl;
 import io.github.gleidsonmt.glad.base.responsive.AbstractContainer;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
@@ -32,13 +33,11 @@ public class Root extends AbstractContainer<DefaultBreak> {
     public Root(Node layout) {
         this.flow = new FlowImpl(this);
         this.behavior = new BehaviorImpl(this);
+        this.foreground = new ForegroundImpl(this);
         setContent(layout);
-        setForeground(new Foreground());
-//        setLayout(layout);
-
         // removes any node with absolute position, like alerts, dialogs, etc.
         widthProperty().addListener((_, _, _) -> {
-            if (super.getChildren().contains(foreground)) return;
+            if (isBlocked()) return;
             flow.clear();
         });
 
@@ -85,20 +84,20 @@ public class Root extends AbstractContainer<DefaultBreak> {
         return content;
     }
 
-    public void setForeground(Foreground foreground) {
-        this.foreground = foreground;
-    }
-
     public Foreground getForeground() {
         return foreground;
     }
 
     public void block() {
-        if (!super.getChildren().contains(foreground)) super.getChildren().add(foreground);
+        if (!isBlocked()) super.getChildren().add((Node) foreground);
         foreground.show();
     }
 
     public void unblock() {
         super.getChildren().remove(this.foreground);
+    }
+
+    public boolean isBlocked() {
+        return super.getChildren().contains(this.foreground);
     }
 }
