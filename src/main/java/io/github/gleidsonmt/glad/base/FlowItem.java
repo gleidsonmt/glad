@@ -47,4 +47,6 @@ public interface FlowItem<T> extends AppearItem {
      */
     T with(WrapperEffect wrapperEffect);
 
+    T with(String wrapperEffect);
+
 }
