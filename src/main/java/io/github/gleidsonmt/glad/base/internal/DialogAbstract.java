@@ -26,29 +26,25 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
     protected DoubleProperty width = new SimpleDoubleProperty(-1);
     protected DoubleProperty height = new SimpleDoubleProperty(-1);
     protected boolean full = false;
-    protected Foreground foreground;
 
-    protected Root root;
 
     public DialogAbstract(Root root) {
-        this.foreground = new Foreground();
-        this.root = root;
+        super(root);
+//        this.foreground.addEventFilter(MouseEvent.MOUSE_PRESSED, _ -> {
+////            root.behavior().closeDrawer();
+////            root.behavior().closeAside();
+//        });
 
-        this.foreground.addEventFilter(MouseEvent.MOUSE_PRESSED, _ -> {
-//            root.behavior().closeDrawer();
-//            root.behavior().closeAside();
-        });
-
-        this.foreground.addEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
+//        this.foreground.addEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
     }
 
     private final EventHandler<MouseEvent> hideEvent = _ -> {
-        root.getChildren().remove(foreground);
+//        root.getChildren().remove(foreground);
         hide();
     };
 
     protected void blockForeground() {
-        this.foreground.removeEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
+//        this.foreground.removeEventFilter(MouseEvent.MOUSE_CLICKED, hideEvent);
     }
 
     @Override
@@ -75,10 +71,16 @@ public class DialogAbstract<T> extends FlowItemAbstract<T> implements DialogBase
         return (T) this;
     }
 
-
     @Override
     public T full() {
         this.anchor = Anchor.FULL;
         return (T) this;
+    }
+
+    @Override
+    public void reset() {
+        super.reset();
+        this.width.set(-1);
+        this.height.set(-1);
     }
 }
