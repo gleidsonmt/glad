@@ -1,51 +1,46 @@
-/* Контейнер слайдера */
+
 .slider {
     -fx-padding: 10px;
 }
 
-/* Дорожка слайдера (базовая линия) */
 .slider .track {
-    -fx-background-color: #E2E8F0; /* Светло-серый пастельный фон */
+    -fx-background-color: #E2E8F0;
     -fx-background-radius: 4px;
-    -fx-pref-height: 6px;          /* Оптимальная толщина */
+    -fx-pref-height: 6px;
 }
 
-/* Изменение фона дорожки при наведении на слайдер */
+
 .slider:hover .track {
     -fx-background-color: #CBD5E1;
 }
 
-/* Стиль ползунка (бегунка) */
+
 .slider .thumb {
-    -fx-background-color: #2563EB; /* Насыщенный синий цвет */
-    -fx-background-radius: 50%;    /* Идеальный круг */
+    -fx-background-color: #2563EB;
+    -fx-background-radius: 50%;
     -fx-pref-width: 16px;
     -fx-pref-height: 16px;
-    /* Мягкая тень для объема */
+
     -fx-effect: dropshadow(three-pass-box, rgba(37, 99, 235, 0.2), 6, 0, 0, 3);
 }
 
-/* Эффект при наведении на сам ползунок */
 .slider .thumb:hover {
-    -fx-background-color: #1D4ED8; /* Более глубокий синий */
-    -fx-cursor: hand;              /* Курсор-рука */
+    -fx-background-color: #1D4ED8;
+    -fx-cursor: hand;
 }
 
-/* Эффект активного клика и перетаскивания */
+
 .slider .thumb:pressed {
-    -fx-background-color: #1E40AF; /* Темно-синий цвет */
-    /* Эффект увеличения и яркого неонового свечения вокруг */
+    -fx-background-color: #1E40AF;
     -fx-scale-x: 1.15;
     -fx-scale-y: 1.15;
     -fx-effect: dropshadow(three-pass-box, rgba(37, 99, 235, 0.4), 10, 0, 0, 0);
 }
-
-/* Стилизация текста и делений (если они включены) */
 .slider .axis {
-    -fx-tick-label-fill: #64748B; /* Приглушенный серо-синий цвет текста */
+    -fx-tick-label-fill: #64748B;
     -fx-tick-label-font-size: 11px;
 }
 
 .slider .axis .axis-tick-mark {
-    -fx-stroke: #94A3B8;         /* Цвет черточек-делений */
+    -fx-stroke: #94A3B8;
 }
