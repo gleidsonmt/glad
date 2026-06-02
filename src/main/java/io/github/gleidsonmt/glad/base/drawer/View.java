@@ -36,8 +36,6 @@ public class View extends Module {
         this.graphic = icon;
     }
 
-
-
     @Override
     public String toString() {
         return "{\"View\":"
