@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls;
 
 import javafx.collections.SetChangeListener;
@@ -8,12 +10,13 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  01/04/2025
  */
 public class TextField extends javafx.scene.control.TextField implements Component {
 
     private List<String> pseudos;
+
     public TextField(String text) {
         super(text);
 
@@ -22,17 +25,16 @@ public class TextField extends javafx.scene.control.TextField implements Compone
             public void onChanged(Change<? extends PseudoClass> change) {
                 if (pseudos == null) return;
                 for (String state : pseudos) {
-                    String opt =  state.substring( state.indexOf(":") +1);
+                    String opt = state.substring(state.indexOf(":") + 1);
 
                     List<String> list = new ArrayList<>(List.of(state.split(":")));
-                    list.remove(list.size() -1);
+                    list.remove(list.size() - 1);
 //                    System.out.println("change.getSet() = " + change.getSet());
 
                     for (String item : list) {
                         if (change.getSet().contains(PseudoClass.getPseudoClass(item))) {
                             getStyleClass().addAll(opt);
                         } else {
-                            System.out.println("opt = " + opt);
                             getStyleClass().removeAll(opt);
                         }
                     }

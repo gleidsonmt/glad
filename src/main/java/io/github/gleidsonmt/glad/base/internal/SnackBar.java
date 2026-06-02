@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
 import javafx.geometry.Insets;
@@ -11,10 +13,10 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  12/08/2025
  */
-public class SnackBar extends GridPane  {
+public class SnackBar extends GridPane {
 
     private Node graphic;
     private final TextFlow textFlow;
@@ -28,7 +30,7 @@ public class SnackBar extends GridPane  {
         setPadding(new Insets(5, 20, 5, 20));
         textFlow.setTextAlignment(TextAlignment.CENTER);
 
-        add(textFlow, 1, 0,1,1);
+        add(textFlow, 1, 0, 1, 1);
         GridPane.setHgrow(textFlow, Priority.ALWAYS);
         GridPane.setVgrow(textFlow, Priority.ALWAYS);
 

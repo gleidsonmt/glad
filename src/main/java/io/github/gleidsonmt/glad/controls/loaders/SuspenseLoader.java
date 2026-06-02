@@ -1,9 +1,11 @@
+
+
 package io.github.gleidsonmt.glad.controls.loaders;
 
 import javafx.beans.property.StringProperty;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  13/09/2024
  */
 @SuppressWarnings("unused")

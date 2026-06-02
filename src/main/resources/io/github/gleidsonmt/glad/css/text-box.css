@@ -1,3 +1,5 @@
+
+
 .text-box {
     -fx-border-color: -border-color;
     -fx-text-fill: -text-color;
@@ -16,8 +18,7 @@
 }
 
 .text-box .editor:focused,
-.text-box .editor
-{
+.text-box .editor {
     -fx-text-fill: -text-color;
     -fx-background-color: transparent;
     -fx-border-color: transparent;
@@ -27,4 +28,16 @@
 .text-box *. .editor {
     -fx-background-color: transparent;
     -fx-border-color: red;
+}
+
+.text-box .icon-container {
+    -fx-padding: 10px;
+}
+
+.text-box:error:hover {
+    -fx-border-color: -danger;
+}
+
+.text-box:error .helper-label .text {
+    -fx-fill: -danger;
 }

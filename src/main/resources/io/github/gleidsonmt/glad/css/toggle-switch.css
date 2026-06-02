@@ -1,17 +1,19 @@
-ToggleSwitch  {
+
+
+ToggleSwitch {
     -fx-padding: 20px;
     -fx-color-animation: -fx-accent;
     -fx-track-color: -fx-background;
 }
 
-ToggleSwitch  .foreground {
+ToggleSwitch .foreground {
     -fx-background-color: white;
     -fx-border-color: -light-gray-2;
     -fx-border-width: 2px;
     -fx-border-radius: 20px;
 }
 
-ToggleSwitch  .trigger {
+ToggleSwitch .trigger {
     -fx-background-color: white;
     -fx-border-color: -light-gray-2;
     -fx-border-width: 2px;

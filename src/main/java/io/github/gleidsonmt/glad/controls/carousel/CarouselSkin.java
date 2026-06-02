@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.carousel;
 
 import javafx.animation.Animation;
@@ -28,7 +30,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  21/08/2025
  */
 public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
@@ -105,11 +107,11 @@ public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
         if (items != null && items.isEmpty()) { // view sample
             for (int i = 0; i < 3; i++) {
                 ToggleButton btn = new ToggleButton();
-                btn.setId(String.valueOf(i));
                 btn.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                 btn.setToggleGroup(group);
 
-                btn.getStyleClass().add("ind-" + i);
+                btn.getStyleClass().add("dot");
+                btn.setId(String.valueOf(i));
                 indicators.getChildren().add(btn);
             }
         }
@@ -117,7 +119,7 @@ public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
         initListener();
         init();
         if (getSkinnable().isAutoRide()) {
-             // add first view
+            // add first view
 //            control.addEventHandler(MouseEvent.MOUSE_EXITED, exited);
 //            control.addEventHandler(MouseEvent.MOUSE_ENTERED, entered);
         }
@@ -184,8 +186,8 @@ public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
         overLeft(left_button);
         overRight(right_button);
 
-        registerChangeListener(control.arrowsProperty(),  c -> {
-            removeArrows (((boolean) c.getValue()));
+        registerChangeListener(control.arrowsProperty(), c -> {
+            removeArrows(((boolean) c.getValue()));
         });
 
 //        registerChangeListener(control.arrowsProperty(), "VISIBLE_ARROWS");
@@ -310,6 +312,7 @@ public class CarouselSkin<T extends Node> extends SkinBase<Carousel<T>> {
 
             ToggleButton btn = new ToggleButton();
             btn.setId(String.valueOf(i));
+            btn.getStyleClass().add("dot");
             btn.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             btn.setToggleGroup(group);
 

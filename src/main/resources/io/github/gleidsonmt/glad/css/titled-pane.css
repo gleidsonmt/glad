@@ -1,3 +1,5 @@
+
+
 TitledPane .title {
     -fx-background-color: transparent;
     -fx-pref-height: 40px;
@@ -16,15 +18,15 @@ TitledPane .title .text {
 TitledPane .title .arrow-button .arrow,
 TitledPane:focused .title .arrow-button .arrow,
 TitledPane:expanded .title .arrow-button .arrow {
-    -fx-shape : "M11.1808 15.8297L6.54199 9.20285C5.89247 8.27496 6.55629 7 7.68892 7L16.3111 7C17.4437 7 18.1075 8.27496 17.458 9.20285L12.8192 15.8297C12.4211 16.3984 11.5789 16.3984 11.1808 15.8297Z";
+    -fx-shape: "M11.1808 15.8297L6.54199 9.20285C5.89247 8.27496 6.55629 7 7.68892 7L16.3111 7C17.4437 7 18.1075 8.27496 17.458 9.20285L12.8192 15.8297C12.4211 16.3984 11.5789 16.3984 11.1808 15.8297Z";
 
-    -fx-min-width : 6px;
-    -fx-pref-width : 9px;
-    -fx-pref-height : 7px;
-    -fx-min-height : 0px;
+    -fx-min-width: 6px;
+    -fx-pref-width: 9px;
+    -fx-pref-height: 7px;
+    -fx-min-height: 0px;
     -fx-background-color: -text-color;
-    -fx-effect : none;
-    -fx-focus-color : transparent;
+    -fx-effect: none;
+    -fx-focus-color: transparent;
 }
 
 TitledPane .content {

@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.icon;
 
 import javafx.beans.property.DoubleProperty;
@@ -7,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.shape.SVGPath;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  12/10/2024
  */
 public class ShapeIcon extends Label {
@@ -39,7 +41,7 @@ public class ShapeIcon extends Label {
 //        setMinSize(size.get(), size.get());
     }
 
-    private void init(Icon icon){
+    private void init(Icon icon) {
         shape = createShape(icon);
         setShape(shape);
     }
@@ -52,7 +54,7 @@ public class ShapeIcon extends Label {
         return shape;
     }
 
-    public void setSize(double size){
+    public void setSize(double size) {
         this.size.set(size);
     }
 

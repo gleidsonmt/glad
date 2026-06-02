@@ -1,4 +1,4 @@
-///*
+/// *
 // *    Copyright (C) Gleidson Neves da Silveira
 // *
 // *    This program is free software: you can redistribute it and/or modify
@@ -39,7 +39,7 @@
 //
 //
 ///**
-// * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+// * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
 // * Create on  22/09/2022
 // */
 //public class GNTextBoxSkin extends SkinBase<TextBoxBase> {

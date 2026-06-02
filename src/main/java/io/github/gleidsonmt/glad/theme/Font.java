@@ -1,9 +1,11 @@
+
+
 package io.github.gleidsonmt.glad.theme;
 
 import org.jetbrains.annotations.Contract;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  01/02/2025
  */
 public enum Font implements Neutral {

@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.charts;
 
 import javafx.collections.FXCollections;
@@ -11,7 +13,7 @@ import javafx.scene.shape.Circle;
 
 /**
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  13/03/2025
  */
 public class DonutChart extends PieChart {
@@ -65,7 +67,7 @@ public class DonutChart extends PieChart {
     private void updateInnerCircleLayout() {
         double minX = Double.MAX_VALUE, minY = Double.MAX_VALUE;
         double maxX = Double.MIN_VALUE, maxY = Double.MIN_VALUE;
-        for (Data data: getData()) {
+        for (Data data : getData()) {
             Node node = data.getNode();
 
             Bounds bounds = node.getBoundsInParent();

@@ -1,0 +1,27 @@
+
+
+.slider {
+    -track-color: -fx-accent;
+    -fx-cursor: hand;
+}
+
+.slider .thumb {
+    -fx-background-color: -fx-accent;
+    -fx-border-color: white;
+    -fx-border-radius: 100px;
+    -fx-border-width: 3px;
+    -fx-background-insets: 1px;
+    -fx-padding: 6px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .3), 5, 0, 0, 1);
+}
+
+.slider .track {
+    -fx-background-color: -light-gray;
+}
+
+.slider .label {
+    -fx-background-color: white;
+    -fx-padding: 8px;
+    -fx-background-radius: 100px 100px 100px 0px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .3), 5, 0, 0, 1);
+}

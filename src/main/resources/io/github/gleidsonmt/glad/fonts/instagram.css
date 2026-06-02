@@ -1,6 +1,8 @@
+
+
 @font-face {
     -fx-font-family: Instagram Sans Light;
-        src: url('Instagram-Sans-Light.ttf');
+    src: url('Instagram-Sans-Light.ttf');
 }
 
 @font-face {
@@ -15,7 +17,7 @@
 
 @font-face {
     -fx-font-family: Instagram Sans Headline;
-        src: url('Instagram-Sans-Headline.otf');
+    src: url('Instagram-Sans-Headline.otf');
 }
 
 @font-face {

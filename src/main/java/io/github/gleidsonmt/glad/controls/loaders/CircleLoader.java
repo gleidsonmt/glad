@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.loaders;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -14,7 +16,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  17/09/2024
  */
 public abstract class CircleLoader extends VBox implements SuspenseLoader {

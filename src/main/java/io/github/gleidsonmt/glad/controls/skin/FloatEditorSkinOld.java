@@ -1,19 +1,4 @@
-/*
- *    Copyright (C) Gleidson Neves da Silveira
- *
- *    This program is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 
 package io.github.gleidsonmt.glad.controls.skin;
 
@@ -34,7 +19,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  08/09/2022
  */
 public class FloatEditorSkinOld extends EditorSkin {
@@ -42,10 +27,10 @@ public class FloatEditorSkinOld extends EditorSkin {
     private static final PseudoClass FLOAT_PSEUDO_CLASS =
             PseudoClass.getPseudoClass("float");
 
-    private final Label moveablePrompt  = new Label("Float Prompt");
+    private final Label moveablePrompt = new Label("Float Prompt");
 
     private final FloatEditor control;
-    private VPos                vPos;
+    private VPos vPos;
 
     private final double aniVeloz = 100;
 
@@ -97,10 +82,9 @@ public class FloatEditorSkinOld extends EditorSkin {
                     downAnimation.stop();
                     up();
 
-                } else
-                    if (isPromptInCenter()) {
-                        up();
-                    }
+                } else if (isPromptInCenter()) {
+                    up();
+                }
 
             } else {
 
@@ -121,7 +105,7 @@ public class FloatEditorSkinOld extends EditorSkin {
             vPos = (VPos) c.getValue();
 
             if (vPos == VPos.TOP) // It's for calcs.. use the padding for relocate the prompt in line of border
-                control.setPadding(new Insets(0, 6,0,6));
+                control.setPadding(new Insets(0, 6, 0, 6));
             else {
                 control.setPadding(new Insets(4, 7, 4, 5));
             }
@@ -145,12 +129,12 @@ public class FloatEditorSkinOld extends EditorSkin {
     // Getting the middle of prompt
     public double getPromptHalf() {
 //        return (moveablePrompt.getHeight() / 2) ;
-        return moveablePrompt.getHeight() ;
+        return moveablePrompt.getHeight();
     }
 
     // Getting the top line from the center of this skin
     public double getMaxTopPosition() {
-        return - (control.getHeight() / 2 );
+        return -(control.getHeight() / 2);
     }
 
     // Convetion for define in center
@@ -160,7 +144,7 @@ public class FloatEditorSkinOld extends EditorSkin {
 
     // Convention for define is in top
     private boolean isPromptInTop() {
-        return vPos == VPos.BASELINE || vPos ==  VPos.TOP;
+        return vPos == VPos.BASELINE || vPos == VPos.TOP;
     }
 
     private void configAnimation() {
@@ -174,8 +158,8 @@ public class FloatEditorSkinOld extends EditorSkin {
         if (downAnimation.getStatus() == Animation.Status.RUNNING ||
             upAnimation.getStatus() == Animation.Status.RUNNING) {
 
-                positionInArea(moveablePrompt, x,
-                        y, w, h , -1, HPos.LEFT, VPos.CENTER);
+            positionInArea(moveablePrompt, x,
+                    y, w, h, -1, HPos.LEFT, VPos.CENTER);
 
             return;
         }
@@ -184,11 +168,11 @@ public class FloatEditorSkinOld extends EditorSkin {
 
 
         if (isPromptInTop()) {
-            positionInArea(moveablePrompt, x, -8, w, h , -1, HPos.LEFT, getPos());
+            positionInArea(moveablePrompt, x, -8, w, h, -1, HPos.LEFT, getPos());
 //            positionInArea(filledBorder, x, y, w, h , -1, HPos.LEFT, getPos());
 
         } else {
-            positionInArea(moveablePrompt, x, y, w, h , -1, HPos.LEFT, VPos.CENTER);
+            positionInArea(moveablePrompt, x, y, w, h, -1, HPos.LEFT, VPos.CENTER);
         }
 
     }
@@ -207,9 +191,9 @@ public class FloatEditorSkinOld extends EditorSkin {
         double ty;
 
         if (getPos() == VPos.TOP) {
-            ty = getMaxTopPosition() + snappedTopInset() ;
+            ty = getMaxTopPosition() + snappedTopInset();
         } else {
-            ty = getMaxTopPosition() ;
+            ty = getMaxTopPosition();
         }
 
 
@@ -227,7 +211,7 @@ public class FloatEditorSkinOld extends EditorSkin {
                 )),
 
                 new KeyFrame(Duration.millis(aniVeloz), new KeyValue(
-                        moveablePrompt.translateXProperty(),  control.getDistanceX()
+                        moveablePrompt.translateXProperty(), control.getDistanceX()
                 )),
 
                 new KeyFrame(Duration.ZERO, new KeyValue(

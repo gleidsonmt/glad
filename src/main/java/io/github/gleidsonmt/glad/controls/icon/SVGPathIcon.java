@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.icon;
 
 import javafx.scene.Group;
@@ -6,7 +8,7 @@ import javafx.scene.shape.SVGPath;
 //import org.jetbrains.annotations.NotNull;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  12/12/2024
  */
 public class SVGPathIcon extends Group {
@@ -23,11 +25,10 @@ public class SVGPathIcon extends Group {
 //        setFill(color);
 //        name = icon.name();
 
-
         setAutoSizeChildren(true);
     }
 
-    private void setContentAndResize( SVGPath icon, double size) {
+    private void setContentAndResize(SVGPath icon, double size) {
         path.setContent(icon.getContent());
         this.getChildren().add(path);
         setScale(size);
@@ -38,7 +39,7 @@ public class SVGPathIcon extends Group {
 //        this.layoutChildren();
     }
 
-    public void setScale(double size){
+    public void setScale(double size) {
         path.setScaleX(0.023 * size);
         path.setScaleY(0.023 * size);
     }

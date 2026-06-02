@@ -1,11 +1,12 @@
 
+
 /*******************************************************************************
 *                                                                              *
     @RadioButton
 *                                                                              *
 *******************************************************************************/
 
-RadioButton{
+RadioButton {
     -fx-border-width: 2px;
     -fx-cursor: hand;
 }
@@ -20,12 +21,11 @@ RadioButton .radio {
 }
 
 RadioButton:hover .radio,
-RadioButton:selected:hover .radio
-{
+RadioButton:selected:hover .radio {
     -fx-border-color: -border-hover;
 }
 
-RadioButton:selected .radio  {
+RadioButton:selected .radio {
     -fx-background-color: white;
     -fx-border-color: -fx-accent;
     -fx-border-radius: 100px;

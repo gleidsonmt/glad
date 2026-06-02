@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.toggle_switch;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -14,7 +16,8 @@ import java.util.Objects;
 
 /**
  * A toggle specialized in turning off and on action.
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ *
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  29/03/2025
  */
 public class ToggleSwitch extends Control {
@@ -66,9 +69,11 @@ public class ToggleSwitch extends Control {
         return FACTORY.getCssMetaData();
     }
 
-    @Override public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
+    @Override
+    public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
         return getClassCssMetaData();
     }
+
     // Typical JavaFX property implementation
     public Color getTrackColor() {
         return this.trackColor.getValue();
@@ -101,6 +106,7 @@ public class ToggleSwitch extends Control {
     public StyleableProperty<Number> getArc() {
         return arc;
     }
+
     public ObjectProperty<Color> animationColorProperty() {
         return (ObjectProperty<Color>) this.animationColor;
     }

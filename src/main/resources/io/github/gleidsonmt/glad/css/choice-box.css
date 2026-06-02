@@ -1,9 +1,11 @@
+
+
 ChoiceBox {
     -fx-background-color: -fx-accent;
-    -fx-text-fill : white;
-    -fx-font-weight : bolder;
-    -fx-graphic-text-gap : 10;
-    -fx-cursor : hand;
+    -fx-text-fill: white;
+    -fx-font-weight: bolder;
+    -fx-graphic-text-gap: 10;
+    -fx-cursor: hand;
     -fx-effect: none;
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;

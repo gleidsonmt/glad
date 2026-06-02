@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.theme;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -9,12 +11,14 @@ import java.util.Arrays;
 
 /**
  * This class provides all the css to the scene.
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ *
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  29/01/2025
  */
 public class ThemeProvider {
     /**
      * Install all the css.
+     *
      * @param scene The scene to install the css.
      */
     public static void install(Scene scene) {
@@ -23,8 +27,9 @@ public class ThemeProvider {
 
     /**
      * Install the css in the scene.
+     *
      * @param scene the scene to install the css.
-     * @param css the css to install.
+     * @param css   the css to install.
      */
     @ApiStatus.Experimental
     public static void install(Scene scene, Neutral... css) {
@@ -48,8 +53,9 @@ public class ThemeProvider {
 
     /**
      * Install the css in the scene.
+     *
      * @param scene the scene to install the css.
-     * @param css the css to install.
+     * @param css   the css to install.
      */
     public static void install(Scene scene, Css... css) {
         if (Arrays.stream(css).anyMatch(el -> el.toString().toLowerCase().contains("all"))) {

@@ -1,7 +1,9 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  14/08/2025
  */
 public interface AppearItem {
@@ -14,4 +16,9 @@ public interface AppearItem {
      * Method called to remove the content on the screen.
      */
     void hide();
+
+    /**
+     * @return if the item is showing on root.
+     */
+    boolean isShowing();
 }

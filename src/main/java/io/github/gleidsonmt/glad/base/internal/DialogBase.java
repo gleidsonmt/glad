@@ -6,7 +6,7 @@ import javafx.scene.layout.Region;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  05/09/2025
  */
 public interface DialogBase<T> extends FlowItem<T> {
@@ -19,8 +19,7 @@ public interface DialogBase<T> extends FlowItem<T> {
 
     T content(Region node);
 
-    T effect(WrapperEffect effect);
-
     @ApiStatus.Experimental
     T full();
+
 }

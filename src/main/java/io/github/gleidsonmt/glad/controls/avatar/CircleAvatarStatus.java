@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.avatar;
 
 import io.github.gleidsonmt.glad.theme.Css;
@@ -13,7 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  22/04/2025
  */
 public final class CircleAvatarStatus extends Circle {
@@ -28,8 +30,8 @@ public final class CircleAvatarStatus extends Circle {
         ContextMenu contextMenu = new ContextMenu();
         ThemeProvider.install(contextMenu.getScene(), Css.DEFAULT);
 
-        avatarStatus. setOnMouseClicked(e -> {
-            contextMenu.show(this, Side.BOTTOM, 0,0);
+        avatarStatus.setOnMouseClicked(e -> {
+            contextMenu.show(this, Side.BOTTOM, 0, 0);
         });
 
         for (Status status : Status.values()) {
@@ -48,6 +50,7 @@ public final class CircleAvatarStatus extends Circle {
             contextMenu.getItems().add(menuItem);
         }
     }
+
     private void _switch(Circle circle, Status status) {
         if (status == Status.BUSY) {
             circle.setStyle("-fx-fill: -danger;");

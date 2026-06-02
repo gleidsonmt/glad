@@ -1,14 +1,16 @@
+
+
 package io.github.gleidsonmt.glad.theme;
 
 import java.util.Arrays;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  31/01/2025
  */
 public enum Css implements Neutral {
 
-//    DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
+    //    DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
     DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
 
     TOGGLE_SWITCH("toggle-switch.css"),

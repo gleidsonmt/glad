@@ -1,10 +1,12 @@
+
+
 package io.github.gleidsonmt.glad.base.responsive;
 
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import org.jetbrains.annotations.Contract;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/09/2024
  */
 public enum DefaultBreak implements Size {

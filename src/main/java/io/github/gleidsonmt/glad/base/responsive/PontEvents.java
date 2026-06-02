@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.responsive;
 
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
@@ -7,7 +9,7 @@ import javafx.event.EventHandler;
 import java.util.Arrays;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  23/06/2025
  */
 @Deprecated(forRemoval = true)

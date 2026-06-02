@@ -1,13 +1,15 @@
 module io.github.gleidsonmt.glad {
 
-    requires  javafx.graphics;
-    requires  javafx.controls;
-
-    requires org.jetbrains.annotations;
     requires java.desktop;
-    requires javafx.base;
 
-    requires org.scenicview.scenicview;
+    requires javafx.graphics;
+    requires javafx.controls;
+    requires javafx.base;
+    requires javafx.web;
+
+    requires static org.jetbrains.annotations;
+
+    requires java.logging;
 
     opens io.github.gleidsonmt.glad.base to javafx.fxml;
     opens io.github.gleidsonmt.glad.base.internal to javafx.fxml;
@@ -24,6 +26,7 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.theme;
 
     exports io.github.gleidsonmt.glad.controls;
+    exports io.github.gleidsonmt.glad.controls.form;
     exports io.github.gleidsonmt.glad.controls.icon;
     exports io.github.gleidsonmt.glad.controls.avatar;
     exports io.github.gleidsonmt.glad.controls.toggle_switch;
@@ -32,6 +35,7 @@ module io.github.gleidsonmt.glad {
     exports io.github.gleidsonmt.glad.controls.badge;
     exports io.github.gleidsonmt.glad.controls.button;
     exports io.github.gleidsonmt.glad.controls.carousel;
+    exports io.github.gleidsonmt.glad.controls.avatar_crop;
     exports io.github.gleidsonmt.glad.drawer;
 
     exports io.github.gleidsonmt.glad.controls.enums;
@@ -46,5 +50,6 @@ module io.github.gleidsonmt.glad {
     opens io.github.gleidsonmt.glad to
             javafx.fxml, javafx.controls,
             javafx.graphics, javafx.base;
+    opens io.github.gleidsonmt.glad.base.drawer to javafx.fxml;
 
 }

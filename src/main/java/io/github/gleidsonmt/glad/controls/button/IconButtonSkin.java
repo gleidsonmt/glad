@@ -1,19 +1,4 @@
-/*
- *    Copyright (C) Gleidson Neves da Silveira
- *
- *    This program is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 
 package io.github.gleidsonmt.glad.controls.button;
 
@@ -35,7 +20,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  25/09/2022
  */
 @Deprecated(forRemoval = true, since = "1.0.0")
@@ -114,7 +99,7 @@ public class IconButtonSkin extends SkinBase<FabButton> {
 //                        + stroke.getRadii().getTopRightHorizontalRadius()
 //                        + stroke.getRadii().getTopLeftVerticalRadius();
 
-                double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() +  stroke.getRadii().getTopLeftVerticalRadius();
+                double arcWidth = stroke.getRadii().getTopLeftVerticalRadius() + stroke.getRadii().getTopLeftVerticalRadius();
 
 
                 clip.setArcWidth(arcWidth);
@@ -133,14 +118,14 @@ public class IconButtonSkin extends SkinBase<FabButton> {
 
             timeline.getKeyFrames().setAll(
                     new KeyFrame(Duration.ZERO, new KeyValue(circle.radiusProperty(), 0)),
-                    new KeyFrame(Duration.millis(250), new KeyValue(circle.radiusProperty(), radius *2 ))
+                    new KeyFrame(Duration.millis(250), new KeyValue(circle.radiusProperty(), radius * 2))
             );
 
 
             timeline.play();
 
 
-            timeline.setOnFinished( (e) -> getChildren().remove(circle));
+            timeline.setOnFinished((e) -> getChildren().remove(circle));
         }
     };
 

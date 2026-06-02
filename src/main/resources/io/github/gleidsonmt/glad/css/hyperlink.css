@@ -1,4 +1,6 @@
 
+
+
 .hyperlink .text {
     -fx-fill: -fx-accent;
     -fx-font-weight: bold;
@@ -7,11 +9,11 @@
 
 .hyperlink {
     -fx-border-color: transparent;
-    -fx-underline:false;
+    -fx-underline: false;
 }
 
 .hyperlink:hover {
-    -fx-underline:true;
+    -fx-underline: true;
 }
 
 .hyperlink .icon {

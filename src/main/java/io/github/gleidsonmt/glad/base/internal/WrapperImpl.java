@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.*;
@@ -9,30 +11,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/01/2025
  */
-@Deprecated
+@Deprecated(forRemoval = true)
 public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
 
     private final Root root;
     private final Foreground foreground;
 
-    private Flow flow;
-
-    private Region with;
-
     private EventHandler<MouseEvent> onClick;
 
     public WrapperImpl(Root root) {
+        super(root);
+        this.foreground = new ForegroundImpl(root);
+
         this.root = root;
-        this.foreground = new Foreground();
-
-        this.foreground.addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
-            root.behavior().closeDrawer();
-            root.behavior().closeAside();
-        });
-
     }
 
     @Override
@@ -46,44 +40,18 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
         root.flow()
                 .anchor(Anchor.FULL)
                 .pos(Pos.CENTER)
-                .content(foreground.restyle(effect, root))
+//                .content(foreground.restyle(effect, root))
                 .show();
 
         if (with != null) {
             root.flow()
                     .anchor(anchor)
                     .pos(pos)
-                    .content(with)
                     .insets(insets)
                     .show();
         }
 
-        foreground.setOnMousePressed(onClick);
-
-
-//        if (!root.getChildren().contains(foreground)) {
-//            root.getChildren().add(foreground);
-//        }
-
-//        if (effect.equals(WrapperEffect.BLUR)) {
-//            root.getChildren().getFirst().setEffect(new BoxBlur(2, 2, 1));
-//            foreground.setBackground(new Background(
-//                    new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)
-//            ));
-//        } else {
-//            root.getChildren().getFirst().setEffect(null);
-//            foreground.setBackground(
-//                    new Background(
-//                            new BackgroundFill(
-////                                Color.gray(0.5, 0.3),
-//                                    Color.gray(0.5, 0.3),
-//                                    CornerRadii.EMPTY,
-//                                    Insets.EMPTY)
-//                    )
-//            );
-//        }
-
-
+//        foreground.setOnMousePressed(onClick);
     }
 
     @Override
@@ -93,14 +61,7 @@ public class WrapperImpl extends FlowItemAbstract<Wrapper> implements Wrapper {
     }
 
     @Override
-    public Wrapper with(Region node) {
-        this.with = node;
-        return this;
-    }
-
-    @Override
     public Wrapper with(Flow node) {
-        this.flow = node;
         return this;
     }
 

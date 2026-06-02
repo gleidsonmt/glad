@@ -1,3 +1,5 @@
+
+
 /*
     Created on : 01/02/2024
     Author     : Gleidson Neves da Silveira
@@ -25,11 +27,11 @@ Text, .text {
 }
 
 .font-instagram-light {
-     -fx-font-family: "Instagram Sans Light";
+    -fx-font-family: "Instagram Sans Light";
 }
 
 .font-instagram-medium {
-     -fx-font-family: "Instagram Sans Medium";
+    -fx-font-family: "Instagram Sans Medium";
 }
 
 .font-instagram-headline {
@@ -41,48 +43,48 @@ Text, .text {
 }
 
 /* @Size */
-.text-10, .btn-small, .text-small, .text-small  .text {
-  -fx-font-size : 10px;
+.text-10, .btn-small, .text-small, .text-small .text {
+    -fx-font-size: 10px;
 }
 
-.text-12, .h6, .h6  .text {
-    -fx-font-size : 12px;
+.text-12, .h6, .h6 .text {
+    -fx-font-size: 12px;
 }
 
 .text-14, .h5, .h5 .text {
-  -fx-font-size : 14px;
+    -fx-font-size: 14px;
 }
 
-.text-18, .text-18  .text, .h4, .h4 .text {
-  -fx-font-size : 18px;
+.text-18, .text-18 .text, .h4, .h4 .text {
+    -fx-font-size: 18px;
 }
 
-.text-20, .text-20  .text {
-  -fx-font-size : 20px;
+.text-20, .text-20 .text {
+    -fx-font-size: 20px;
 }
 
-.text-22, .text-22  .text {
-  -fx-font-size : 22px;
+.text-22, .text-22 .text {
+    -fx-font-size: 22px;
 }
 
-.text-24, .text-24  .text, .h3, .h3 .label .text {
-  -fx-font-size : 24px;
+.text-24, .text-24 .text, .h3, .h3 .label .text {
+    -fx-font-size: 24px;
 }
 
 .text-30, .h2, .h2 .text, .h2 .label .text {
-  -fx-font-size : 30px;
+    -fx-font-size: 30px;
 }
 
 .text-34, .text-34 .text {
-  -fx-font-size : 34px;
+    -fx-font-size: 34px;
 }
 
-.text-36, .h1, .h1  .text {
-  -fx-font-size : 36px;
+.text-36, .h1, .h1 .text {
+    -fx-font-size: 36px;
 }
 
-.text-48, .h1, .h1  .text {
-  -fx-font-size : 48px;
+.text-48, .h1, .h1 .text {
+    -fx-font-size: 48px;
 }
 
 .bold {
@@ -102,14 +104,14 @@ Text, .text {
 }
 
 .text-info {
-     -text-color: -info;
+    -text-color: -info;
 }
 
 .text-success {
     -text-color: -success;
 }
 
-.text-warning{
+.text-warning {
     -fx-text-fill: -warning;
     -text-color: -warning;
 }

@@ -1,10 +1,13 @@
+
+
 package io.github.gleidsonmt.glad.base.responsive;
 
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 
 /**
  * A single triggered action.
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ *
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  05/03/2025
  */
 @FunctionalInterface

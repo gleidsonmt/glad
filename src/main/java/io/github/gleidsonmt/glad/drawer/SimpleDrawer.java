@@ -1,6 +1,8 @@
+
+
 package io.github.gleidsonmt.glad.drawer;
 
-import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.property.ReadOnlyObjectProperty;
@@ -14,7 +16,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  17/04/2025
  */
 @Deprecated

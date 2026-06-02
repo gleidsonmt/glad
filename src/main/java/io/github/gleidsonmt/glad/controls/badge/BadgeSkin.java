@@ -1,21 +1,4 @@
-/*
- *
- *    Copyright (C) Gleidson Neves da Silveira
- *
- *    This program is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
+
 
 package io.github.gleidsonmt.glad.controls.badge;
 
@@ -37,7 +20,7 @@ import javafx.util.StringConverter;
 public class BadgeSkin extends SkinBase<Badge> {
 
     private final Label lblInfo = new Label();
-    private final SVGIcon icon ;
+    private final SVGIcon icon;
 
     public BadgeSkin(Badge control) {
         super(control);
@@ -45,9 +28,9 @@ public class BadgeSkin extends SkinBase<Badge> {
         icon = (SVGIcon) control.getGraphic();
 
         lblInfo.setAlignment(Pos.CENTER);
-        lblInfo.setMinSize(20,20);
-        lblInfo.setPrefSize(10,10);
-        lblInfo.setMaxSize(10,10);
+        lblInfo.setMinSize(20, 20);
+        lblInfo.setPrefSize(10, 10);
+        lblInfo.setMaxSize(10, 10);
         lblInfo.setMouseTransparent(true);
 
         lblInfo.setCache(true);
@@ -76,7 +59,7 @@ public class BadgeSkin extends SkinBase<Badge> {
         Bindings.bindBidirectional(lblInfo.textProperty(), control.numberOfNotificationsProperty(), converter);
 
         this.getChildren().addAll(icon, lblInfo);
-        lblInfo.getStyleClass().addAll(   "text-white");
+        lblInfo.getStyleClass().addAll("text-white");
 
         registerChangeListener(control.boxColorProperty(), c ->
                 updateBackground((Color) c.getValue(), getSkinnable().getType()));
@@ -96,15 +79,15 @@ public class BadgeSkin extends SkinBase<Badge> {
     }
 
     private CornerRadii updateRadi(BadgeType type) {
-        return type == BadgeType.ROUNDED ?  new CornerRadii(3) :
+        return type == BadgeType.ROUNDED ? new CornerRadii(3) :
                 type == BadgeType.RECT ? new CornerRadii(0) :
-                        new CornerRadii(10);
+                new CornerRadii(10);
     }
 
     @Override
     protected void layoutChildren(double x, double y, double w, double h) {
-        layoutInArea(icon,x, y, w, h, -1, HPos.CENTER, VPos.CENTER);
-        layoutInArea(lblInfo, x,y+5, getSkinnable().getWidth()-10, h, -1, HPos.RIGHT,  VPos.BASELINE);
+        layoutInArea(icon, x, y, w, h, -1, HPos.CENTER, VPos.CENTER);
+        layoutInArea(lblInfo, x, y + 5, getSkinnable().getWidth() - 10, h, -1, HPos.RIGHT, VPos.BASELINE);
     }
 
     @Override

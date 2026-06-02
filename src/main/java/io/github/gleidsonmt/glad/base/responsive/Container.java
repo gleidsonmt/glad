@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.responsive;
 
 import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
@@ -8,16 +10,27 @@ import javafx.scene.Node;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  03/02/2026
  */
 public class Container extends AbstractContainer<Size> {
 
     public Container() {
+        this(null, DefaultBreak.values());
+    }
+
+    public Container(Node node) {
+        this(node, DefaultBreak.values());
     }
 
     public Container(Size[] values) {
+        this(null, values);
+    }
+
+    public Container(Node node, Size[] values) {
         super(values);
+        if (node != null) this.getChildren().add(node);
+
 //        this.getChildren().addListener(new ListChangeListener<Node>() {
 //            @Override
 //            public void onChanged(Change<? extends Node> change) {

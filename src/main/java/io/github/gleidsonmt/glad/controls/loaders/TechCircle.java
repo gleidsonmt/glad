@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.controls.loaders;
 
 import javafx.collections.FXCollections;
@@ -7,7 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  17/09/2024
  */
 @SuppressWarnings("unused")
@@ -41,7 +43,7 @@ public class TechCircle extends CircleLoader implements SuspenseLoader {
         circles.get(2).setRadius(85);
 
         // start with diferent angles per circle and speed
-        rotate(circles.get(0), 180, 18 );
+        rotate(circles.get(0), 180, 18);
         rotate(circles.get(1), 360, 10);
         rotate(circles.get(2), 60, 22);
 

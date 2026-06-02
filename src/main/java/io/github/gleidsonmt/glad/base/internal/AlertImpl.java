@@ -1,11 +1,12 @@
+
+
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.*;
+import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.base.dialog.Alert;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
-import io.github.gleidsonmt.glad.base.dialog.alert.layout.AlertLayout;
 import io.github.gleidsonmt.glad.base.dialog.alert.AlertType;
-import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
+import io.github.gleidsonmt.glad.base.dialog.alert.layout.AlertLayout;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -15,7 +16,7 @@ import javafx.scene.control.ButtonBar;
 import java.util.Arrays;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  21/03/2025
  */
 public class AlertImpl extends DialogAbstract<Alert> implements Alert {
@@ -25,10 +26,9 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     private AlertType type = AlertType.INFO;
     private Button[] buttons;
 
-    private Snack snack;
-
     public AlertImpl(Root root) {
         super(root);
+        with = WrapperEffect.GRAY;
     }
 
     private void open(String title) {
@@ -65,27 +65,31 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
             });
         }
 
-        root.getChildren().add(foreground.restyle(wrapperEffect == null ? WrapperEffect.GRAY : wrapperEffect, root));
+        root.getForeground().restyle(with);
+        root.block();
 
         root.flow()
                 .pos(Pos.CENTER)
-                .width(width != -1 ? width : 600)
-                .height(height != -1 ? height : 300)
+                .width(width.get() != -1 ? width.get() : 600)
+                .height(height.get() != -1 ? height.get() : 300)
                 .content(new DialogContainer(alert))
                 .show();
 
-        reset();
+//        if (this.block) blockForeground();
     }
 
-    private void reset() {
-        this.wrapperEffect = null;
+    @Override
+    public void reset() {
+        super.reset();
+        this.with = WrapperEffect.GRAY;
         this.buttons = null;
     }
 
     @Override
     public void hide() {
         root.flow().remove(alert.getParent());
-        root.flow().remove(foreground);
+        root.unblock();
+        reset();
     }
 
     @Override
@@ -122,6 +126,4 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
     public void show() {
         open(title, content, type, buttons);
     }
-
-
 }

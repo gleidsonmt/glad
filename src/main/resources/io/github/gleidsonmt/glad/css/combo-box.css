@@ -1,3 +1,5 @@
+
+
 /* -------------- STYLES FOR THE DEFAULT LISTVIEW-BASED COMBOBOX ------------- */
 
 .combo-box-base {
@@ -9,7 +11,7 @@
     -fx-cursor: hand;
     -fx-border-width: 2px;
 
-    -fx-cursor : hand;
+    -fx-cursor: hand;
     -fx-background-radius: 12.5px;
     -fx-border-radius: 12.5px;
     -fx-pref-height: 40px;
@@ -34,6 +36,7 @@
     -fx-text-fill: red;
 
 }
+
 .combo-box-base > .arrow-button {
     -fx-background-radius: 3px;
     -fx-padding: 0.5em 0.667em 0.5em 0.833333em; /* 6 8 6 10 */
@@ -55,35 +58,40 @@
     -fx-border-radius: 12.5px;
     -fx-background-radius: 12.5px;
 }
+
 .combo-box-popup > .list-view {
     -fx-background-color: white;
     -fx-border-width: 2px;
     -fx-border-color: -light-gray-2;
     -fx-background-insets: 0px;
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.1) , 12, 0.0 , 0 , 1 );
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0.0, 0, 1);
 
     -fx-border-radius: 12.5px;
     -fx-background-radius: 12.5px;
 }
+
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
     /* No alternate highlighting */
     -fx-background: -fx-control-inner-background;
-        -fx-border-radius: 5px;
-        -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
 }
 
 .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
     -fx-background-color: -light-gray;
 }
-.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover .text,
-.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected .text {
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover .text,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected .text {
     -fx-font-weight: bolder;
 }
-.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
-.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
     -fx-background-color: -light-gray;
     -fx-background-insets: 0px;
 }
+
 .combo-box-popup > .list-view > .placeholder > .label {
     -fx-text-fill: -text-color;
 }

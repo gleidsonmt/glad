@@ -16,15 +16,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * The class created for using a model to the main container.
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  19/03/2025
- */
+/// The class created for using a model to the main container.
+///
+/// @author Gleidson Neves da Silveira | [gleidisonmt@gmail.com](mailto:gleidisonmt@gmail.com)
+/// Create on  19/03/2025
 @SuppressWarnings("unused")
 public class AbstractContainer<T extends Size> extends StackPane {
 
-//    Responsible for responsive actions.
+    //    Responsible for responsive actions.
     protected Sizer<T> sizer;
 
     @SuppressWarnings("unchecked")
@@ -42,6 +41,7 @@ public class AbstractContainer<T extends Size> extends StackPane {
 
     /**
      * Instead of getting using {@link #getBreakpoints()} you can pass an event and a size directly.
+     *
      * @param event The event to occur.
      * @param sizes The sizes when this event occurs.
      */
@@ -61,9 +61,9 @@ public class AbstractContainer<T extends Size> extends StackPane {
      * }, "LG MD");
      * }
      * </pre>
-     *  The MD and MD examples will be converted to an enum with the same name.
-     *  Additionally, you can add an extra operand symbol.
-     *  <pre>
+     * The MD and MD examples will be converted to an enum with the same name.
+     * Additionally, you can add an extra operand symbol.
+     * <pre>
      * {@code
      * container.addBreakpoint(_ -> {
      * title.getStyleClass().remove("bg-red-500");
@@ -72,6 +72,7 @@ public class AbstractContainer<T extends Size> extends StackPane {
      * </pre>
      * The symbol > means you want to add every breakpoint that is greater than MD or
      * < means you want to add every breakpoint that is less than LG.
+     *
      * @param event The event to occur.
      * @param sizes The sizes when this event occurs.
      */
@@ -79,12 +80,12 @@ public class AbstractContainer<T extends Size> extends StackPane {
         List<T> list = null;
         // Filters sizes by name and collects matches
         for (String size : sizes.split(" ")) {
-             if (size.contains("<") || size.contains(">")) {
+            if (size.contains("<") || size.contains(">")) {
                 list = getByOperation(size, size.substring(0, 1));
-             } else {
-                 // Filters sizes by name and collects matches
+            } else {
+                // Filters sizes by name and collects matches
                 list = Arrays.stream(this.sizer.getSizes()).filter(el -> el.name().equalsIgnoreCase(size)).collect(Collectors.toList());
-             }
+            }
         }
         // if found a size, add a point.
         if (list != null) {
@@ -122,8 +123,7 @@ public class AbstractContainer<T extends Size> extends StackPane {
     }
 
     @ApiStatus.Experimental
-    public void update(){
-//        breaker.doAction(this.sizer.getSize(this.getWidth()));
+    public void update() {
         this.sizer.change(this.sizer.getSize(this.getWidth()));
     }
 

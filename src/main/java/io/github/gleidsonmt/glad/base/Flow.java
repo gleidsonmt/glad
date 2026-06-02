@@ -1,5 +1,8 @@
+
+
 package io.github.gleidsonmt.glad.base;
 
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.ContainerBase;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
@@ -9,19 +12,24 @@ import org.jetbrains.annotations.ApiStatus;
 /**
  * Flow has the methods add children in the stack in the root.
  * This can be very useful to add animations, dialogs, alerts, etc.
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ *
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/01/2025
  */
 public interface Flow extends ContainerBase<Flow> {
     // Utils
-    /**
+
+   /**
      * If they fit in the root (screen).
+     *
      * @param node The node to test.
      * @return true if fits.
      */
-    @ApiStatus.Experimental
+   @Deprecated
+   @ApiStatus.Experimental
     boolean fits(Region node);
 
+    @Deprecated
     @ApiStatus.Experimental
     void clearConstraints(Region node);
 
@@ -32,14 +40,14 @@ public interface Flow extends ContainerBase<Flow> {
 
     void show(MouseEvent node);
 
-    // Removing
-
     /**
      * Remove a node from the root.
+     *
      * @param container The node to remove.
      */
     void remove(Node container);
 
+    boolean isBlocked();
     /**
      * Remove all nodes from the root.
      */

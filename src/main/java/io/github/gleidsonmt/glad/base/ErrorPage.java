@@ -1,21 +1,4 @@
-/*
- *
- *    Copyright (C) Gleidson Neves da Silveira
- *
- *    This program is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- */
+
 
 package io.github.gleidsonmt.glad.base;
 
@@ -28,7 +11,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  02/07/2023
  */
 public class ErrorPage extends ScrollPane {
@@ -43,7 +26,7 @@ public class ErrorPage extends ScrollPane {
     private final Text info = new Text();
 
     private final TextFlow titleFlow = new TextFlow(title);
-//    private final Hyperlink see = new Hyperlink("See Routes");
+    //    private final Hyperlink see = new Hyperlink("See Routes");
     private final TextFlow infoFlow = new TextFlow(info);
 
     public ErrorPage(String name) {
@@ -62,7 +45,7 @@ public class ErrorPage extends ScrollPane {
         title.getStyleClass().addAll("text-bold", "h1");
         title.getStyleClass().addAll("-fx-fill: -text-color;");
         legend.getStyleClass().addAll("-fx-fill: -text-color;");
-        info.getStyleClass().addAll( "h6");
+        info.getStyleClass().addAll("h6");
         info.setStyle("-fx-fill: -text-color;");
         titleFlow.setTextAlignment(TextAlignment.CENTER);
         infoFlow.setTextAlignment(TextAlignment.CENTER);

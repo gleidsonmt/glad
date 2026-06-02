@@ -1,6 +1,5 @@
 package io.github.gleidsonmt.glad.base.internal;
 
-import io.github.gleidsonmt.glad.base.Anchor;
 import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.Root;
 import javafx.geometry.HPos;
@@ -14,13 +13,12 @@ import javafx.scene.layout.StackPane;
 
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/01/2025
  */
 public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     private Pos pos = Pos.CENTER;
-
 
     public FlowImpl(Root root) {
         super(root);
@@ -30,14 +28,17 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
      * Every time the properties to avoid getting the same configurations
      * for other callings.
      */
-    private void reset() {
+    @Override
+    public void reset() {
         anchor = null;
         pos = Pos.CENTER;
         insets = Insets.EMPTY;
-        wrapperEffect = null;
-        width = -1;
-        height = -1;
+        width.unbind();
+        height.unbind();
+        height.set(-1);
+        width.set(-1);
         full = false;
+        with = null;
     }
 
     @Override
@@ -70,7 +71,13 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     @Override
     public void remove(Node container) {
+        reset();
         root.getChildren().removeAll(container);
+    }
+
+    @Override
+    public boolean isBlocked() {
+        return this.block;
     }
 
     @Override
@@ -85,13 +92,17 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         return root.getChildren().contains(node);
     }
 
+
+
     @Override
     public Flow pos(Pos pos) {
         this.pos = pos;
         return this;
     }
 
+    // Revised
     public void show(Region target) {
+
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, Pos.TOP_LEFT);
 
@@ -103,82 +114,100 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
         this.content.applyCss();
         relocateByNode(target);
-        reset();
 
+        super.show();
     }
 
     private void relocateByNode(Region target) {
+        if (this.height.get() == -1) {
+            // if the height of the content has no pref height
+            // then the height will be settled by the content
+            this.content.maxHeightProperty().bind(this.content.heightProperty());
+            this.height.bind(this.content.maxHeightProperty());
+
+        } else { // if the height is settled, the height will be fixed
+            this.content.maxHeightProperty().bind(this.height);
+            translateBasedOnNodeY(target);
+        }
+
+        if (this.width.get() == -1) {
+            this.content.maxWidthProperty().bind(this.content.prefWidthProperty());
+            this.width.bind(this.content.maxWidthProperty());
+        } else {
+            this.content.maxWidthProperty().bind(this.width);
+            translateBasedOnNodeX(target);
+        }
+
+        this.height.addListener((_, _, _) -> translateBasedOnNodeY(target));
+        this.width.addListener((_, _, _) -> translateBasedOnNodeX(target));
+    }
+
+    // needs to be cut in two other methods to calculate x and y.
+    private void translateBasedOnNodeX(Region target) {
         double x;
-        double y;
-
         double maxX = getMaxPositionX(pos.getHpos(), target);
-        double maxY = getMaxPositionY(pos.getVpos(), target);
-
-        double spaceVertical = getSpaceVertical(pos.getVpos(), maxY);
         double spaceHorizontal = getSpaceHorizontal(pos.getHpos(), maxX);
 
-        double height = this.height == -1 ?
-                this.content.prefHeight(-1) : this.height;
-
-        this.content.setMaxHeight(height);
-        this.content.setPrefHeight(height);
-        this.content.setMinHeight(height);
-
-        double width = this.width == -1 ?
-                this.content.prefHeight(-1) : this.width;
-
-        this.content.setMaxWidth(width);
-        this.content.setPrefWidth(width);
-        this.content.setMinWidth(width);
-
         switch (pos.getHpos()) {
-            case LEFT ->  {
-                if (width > spaceHorizontal) {
+            case LEFT -> {
+                if (width.get() > spaceHorizontal) {
                     x = maxX - (spaceHorizontal);
-                } else x = (maxX - width);
+                } else x = (maxX - width.get());
             }
             case RIGHT -> {
-                if (width > spaceHorizontal) {
-                    double cut = width - (spaceHorizontal);
+                if (width.get() > spaceHorizontal) {
+                    double cut = width.get() - (spaceHorizontal);
                     x = maxX - cut;
                 } else x = maxX;
             }
             case null, default -> {
-                if (width / 2 > spaceHorizontal) {
-                    double cut = width - spaceHorizontal;
+                if (width.get() / 2 > spaceHorizontal) {
+                    double cut = width.get() - spaceHorizontal;
                     x = maxX - cut;
+                    // for tests
+//                    x = getMaxPositionX(HPos.LEFT,target) - width.get();
                 } else {
-                   x = (maxX - (width / 2));
+                    x = (maxX - (width.get() / 2));
                 }
             }
         }
+        content.setTranslateX(Math.round(x));
+
+    }
+
+    private void translateBasedOnNodeY(Region target) {
+        double y;
+        double maxY = getMaxPositionY(pos.getVpos(), target);
+        double spaceVertical = getSpaceVertical(pos.getVpos(), maxY);
 
         switch (pos.getVpos()) {
             case BOTTOM -> {
-                if (height > spaceVertical) {
-                    double cut = height - spaceVertical;
-                     y = maxY - cut;
+                if (height.get() > spaceVertical) {
+                    double cut = height.get() - spaceVertical;
+                    y = maxY - cut;
+//                    y = getMaxPositionY(VPos.BOTTOM,target) - height.get();
                 } else {
                     y = maxY;
                 }
             }
             case TOP -> {
-                if (height > spaceVertical) {
+                if (height.get() > spaceVertical) {
                     y = maxY - spaceVertical;
                 } else {
-                    y = maxY - height;
+                    y = maxY - height.get();
                 }
             }
             case null, default -> {
-                if (height / 2 > spaceVertical) {
+                if (height.get() / 2 > spaceVertical) {
                     y = maxY - spaceVertical;
                 } else {
-                    y = maxY - (height / 2);
+                    y = maxY - (height.get() / 2);
                 }
             }
         }
-        content.setTranslateX(Math.round(x));
+
         content.setTranslateY(Math.round(y));
+
     }
 
     private double getSpaceHorizontal(HPos pos, double maxX) {
@@ -244,15 +273,15 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
         this.content.applyCss();
 
-        double height = this.height == -1 ?
-                this.content.minHeight(-1) : this.height;
+        double height = this.height.get() == -1 ?
+                this.content.minHeight(-1) : this.height.get();
 
         this.content.setMaxHeight(height);
         this.content.setPrefHeight(height);
         this.content.setMinHeight(height);
 
-        double width = this.width == -1 ?
-                this.content.minWidth(-1) : this.width;
+        double width = this.width.get() == -1 ?
+                this.content.minWidth(-1) : this.width.get();
 
         this.content.setMaxWidth(width);
         this.content.setPrefWidth(width);
@@ -268,9 +297,10 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
             case CENTER -> content.setTranslateY(event.getSceneY() - (height / 2));
             case null, default -> content.setTranslateX(event.getSceneX());
         }
-        reset();
+        super.show();
     }
 
+    // needs to be revised
     @Override
     public void show() {
 
@@ -289,14 +319,14 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         this.content.applyCss();
         this.content.layout();
 
-        double height = this.height == -1 ?
-                this.content.prefHeight(-1)  : this.height;
+        double height = this.height.get() == -1 ?
+                this.content.prefHeight(-1) : this.height.get();
 
         this.content.setPrefHeight(height);
         this.content.setMinHeight(height);
 
-        double width = this.width == -1 ?
-                this.content.prefWidth(-1) : this.width;
+        double width = this.width.get() == -1 ?
+                this.content.prefWidth(-1) : this.width.get();
 
         this.content.setPrefWidth(width);
         this.content.setMinWidth(width);
@@ -316,12 +346,12 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
                 content.setMaxHeight(height);
             }
         }
-
-        reset();
+        super.show();
     }
 
     @Override
     public void hide() {
-        root.getChildren().removeLast();
+        root.getChildren().remove(this.content);
+        reset();
     }
 }

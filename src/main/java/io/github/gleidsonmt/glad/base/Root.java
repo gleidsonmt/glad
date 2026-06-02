@@ -1,66 +1,63 @@
+
+
 package io.github.gleidsonmt.glad.base;
 
 
-import io.github.gleidsonmt.glad.base.dialog.Wrapper;
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
-import io.github.gleidsonmt.glad.base.internal.WrapperImpl;
+import io.github.gleidsonmt.glad.base.internal.Foreground;
+import io.github.gleidsonmt.glad.base.internal.ForegroundImpl;
 import io.github.gleidsonmt.glad.base.responsive.AbstractContainer;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
-import io.github.gleidsonmt.glad.base.responsive.BreakPoint;
-import io.github.gleidsonmt.glad.base.responsive.sizer.Size;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
-import javafx.application.Platform;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-
-import java.util.Arrays;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  26/01/2025
  */
 public class Root extends AbstractContainer<DefaultBreak> {
 
     private final Behavior behavior;
     private final Flow flow;
-    private final Wrapper wrapper;
+    private Layout layout;
 
-    // Breakpoint, use to change the layout to phone or bigger
-    private final DoubleProperty breakpoint = new SimpleDoubleProperty(640);
+    private Foreground foreground;
 
-    private final Layout layout;
-
-    public Root(Layout layout) {
+    private Node content;
+    /**
+     * Initializes layout, flow, behavior; adds listeners for dynamic adjustments
+     */
+    public Root(Node layout) {
         this.flow = new FlowImpl(this);
-        this.wrapper = new WrapperImpl(this);
         this.behavior = new BehaviorImpl(this);
-        this.getChildren().add((Node) layout);
+        this.foreground = new ForegroundImpl(this);
 
-        this.layout = layout;
-
+        setContent(layout);
+        // removes any node with absolute position, like alerts, dialogs, etc.
         widthProperty().addListener((_, _, _) -> {
-//            wrapper.hide();
-//            flow.clear();
+            if (isBlocked()) return;
+            flow.clear();
         });
 
         sceneProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
-                newValue.addEventFilter(ExecutionEventError.ACTION_ERROR, e -> {
-                    // testing
+                newValue.addEventFilter(ExecutionEventError.ACTION_ERROR, _ -> {
+                    // testing future implementations
                 });
             }
         });
     }
 
+    @Deprecated(forRemoval = true)
+    public void setLayout(Layout layout) {
+        this.getChildren().setAll((Node) layout);
+        this.layout = layout;
+    }
+
+    @Deprecated(forRemoval = true)
     public Layout getLayout() {
         return this.layout;
     }
@@ -69,49 +66,39 @@ public class Root extends AbstractContainer<DefaultBreak> {
         return this.flow;
     }
 
-    @Deprecated(forRemoval = true)
-    public Wrapper wrapper() {
-        return this.wrapper;
-    }
-
     public Behavior behavior() {
         return this.behavior;
     }
 
-    /**
-     * Get in which width the view will change to phone size.
-     *
-     * @return The width.
-     */
-    @Deprecated(forRemoval = true)
-    public double getBreakpoint() {
-        return breakpoint.get();
+
+//    @Override
+//    public ObservableList<Node> getChildren() {
+//        return FXCollections.unmodifiableObservableList(super.getChildren());
+//    }
+
+    public void setContent(Node content) {
+        this.content = content;
+        super.getChildren().setAll(content);
     }
 
-    /**
-     * Set in which width the view will change to phone size.
-     */
-    @Deprecated(forRemoval = true)
-    public void setBreakpoint(double breakpoint) {
-        this.breakpoint.set(breakpoint);
+    public Node getContent() {
+        return content;
     }
 
-    @Deprecated(forRemoval = true)
-    public DoubleProperty breakpointProperty() {
-        return this.breakpoint;
+    public Foreground getForeground() {
+        return foreground;
     }
 
-    @Deprecated(forRemoval = true)
-    public void addPoint(EventHandler<ActionEvent> event, Size... breaks) {
-//        breaker.getPoints().add(new BreakPoint(event, breaks));
+    public void block() {
+        if (!isBlocked()) super.getChildren().add((Node) foreground);
+        foreground.show();
     }
 
-    @Deprecated(forRemoval = true)
-    public void addPoints(BreakPoint... points) {
-//        breaker.getPoints().addAll(Arrays.stream(points).toList());
+    public void unblock() {
+        super.getChildren().remove(foreground);
     }
-    @Deprecated(forRemoval = true)
-    public void clearPoints() {
-//        breaker.getPoints().clear();
+
+    public boolean isBlocked() {
+        return super.getChildren().contains(foreground);
     }
 }

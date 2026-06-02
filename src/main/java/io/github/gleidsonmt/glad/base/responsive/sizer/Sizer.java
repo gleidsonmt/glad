@@ -1,3 +1,5 @@
+
+
 package io.github.gleidsonmt.glad.base.responsive.sizer;
 
 import io.github.gleidsonmt.glad.base.responsive.Breaker;
@@ -12,7 +14,7 @@ import org.jetbrains.annotations.ApiStatus;
 /**
  * This class acts like an observer for size/width changes on the panel.
  *
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  05/03/2025
  */
 public class Sizer<T extends Size> {
@@ -29,11 +31,12 @@ public class Sizer<T extends Size> {
     public Sizer(Region region, T[] sizes) {
         this(region, sizes, false);
     }
+
     public Sizer(Region region, T[] sizes, boolean _log) {
         this(region, sizes, new Breaker<>(), _log);
     }
 
-    public Sizer(Region region, T[] sizes,  Breaker<T> breaker) {
+    public Sizer(Region region, T[] sizes, Breaker<T> breaker) {
         this(region, sizes, breaker, false);
     }
 
@@ -106,7 +109,7 @@ public class Sizer<T extends Size> {
     }
 
     @ApiStatus.Experimental
-    public void change(T t){
+    public void change(T t) {
         this.breaker.doAction(t);
     }
 

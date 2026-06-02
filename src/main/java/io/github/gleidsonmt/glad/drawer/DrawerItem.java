@@ -1,23 +1,18 @@
+
+
 package io.github.gleidsonmt.glad.drawer;
 
-import io.github.gleidsonmt.glad.base.Module;
+import io.github.gleidsonmt.glad.base.drawer.Module;
 import io.github.gleidsonmt.glad.base.Root;
-import javafx.beans.property.ObjectProperty;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.text.Text;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  17/04/2025
  */
-public class DrawerItem extends ToggleButton  {
+public class DrawerItem extends ToggleButton {
 
     public DrawerItem(Module item) {
         super(item.getName());
@@ -26,9 +21,11 @@ public class DrawerItem extends ToggleButton  {
         setAlignment(Pos.CENTER_LEFT);
         setPrefWidth(Double.MAX_VALUE);
 
-        addEventFilter(MouseEvent.MOUSE_RELEASED, _ -> {
+        addEventFilter(MouseEvent.MOUSE_CLICKED, _ -> {
             Root root = (Root) getScene().getRoot();
-            root.behavior().closeDrawer();
+            if (root.behavior().dialog().isShowing()) {
+                root.behavior().dialog().hide();
+            }
         });
 
         if (item.getGraphic() != null) {

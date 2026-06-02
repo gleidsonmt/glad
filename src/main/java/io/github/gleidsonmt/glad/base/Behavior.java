@@ -7,7 +7,7 @@ import io.github.gleidsonmt.glad.base.dialog.snack.Snack;
 import org.jetbrains.annotations.ApiStatus;
 
 /**
- * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+ * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  01/02/2025
  */
 public interface Behavior {
@@ -18,22 +18,6 @@ public interface Behavior {
 
     Snack snack();
 
-    @Deprecated(forRemoval = true)
-    void openDrawer();
-
-    @Deprecated(forRemoval = true)
-    void closeDrawer();
-
-    @Deprecated(forRemoval = true)
-    void closeAside();
-
-    @Deprecated(forRemoval = true)
-    boolean isDrawerOpen();
-
-    @Deprecated(forRemoval = true)
-    void openAside();
-
-    @Deprecated(forRemoval = true)
-    boolean isDrawerAbsolute();
+    Drawer drawer();
 
 }

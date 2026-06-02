@@ -4,8 +4,8 @@
 //import javafx.beans.property.SimpleObjectProperty;
 //import javafx.scene.Node;
 //
-///**
-// * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
+/// **
+// * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
 // * Create on  17/04/2025
 // */
 //

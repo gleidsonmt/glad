@@ -1,13 +1,11 @@
+
 plugins {
     id 'java'
-    id 'application'
-    id 'org.javamodularity.moduleplugin' version '1.8.12'
     id 'org.openjfx.javafxplugin' version '0.0.13'
-    id 'org.beryx.jlink' version '2.25.0'
 }
 
 group 'io.github.gleidsonmt'
-version '1.1.12'
+version "0.0.1"
 
 repositories {
     mavenCentral()
@@ -26,15 +24,8 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
 }
 
-application {
-    mainModule = 'io.github.gleidsonmt.glad'
-    mainClass = 'io.github.gleidsonmt.glad.App'
-
-}
-
 dependencies {
-    implementation 'org.jetbrains:annotations:24.0.1'
-    implementation files("vendor/scenicview.jar")
+    compileOnly("org.jetbrains:annotations:26.1.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
