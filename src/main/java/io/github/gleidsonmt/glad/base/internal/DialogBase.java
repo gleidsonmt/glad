@@ -1,5 +1,3 @@
-
-
 package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.FlowItem;

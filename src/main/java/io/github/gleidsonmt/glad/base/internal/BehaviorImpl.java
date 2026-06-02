@@ -34,6 +34,7 @@ public class BehaviorImpl implements Behavior {
     private final Alert alert;
     private final Dialog dialog;
     private final Snack snack;
+    private final Drawer drawer;
 
     private final BooleanProperty drawerOpen = new SimpleBooleanProperty();
 
@@ -45,6 +46,7 @@ public class BehaviorImpl implements Behavior {
         this.alert = new AlertImpl(root);
         this.dialog = new DialogImpl(root);
         this.snack = new SnackImpl(root);
+        this.drawer = new DrawerImpl(root);
     }
 
     @Override
@@ -60,5 +62,10 @@ public class BehaviorImpl implements Behavior {
     @Override
     public Snack snack() {
         return this.snack;
+    }
+
+    @Override
+    public Drawer drawer() {
+        return this.drawer;
     }
 }

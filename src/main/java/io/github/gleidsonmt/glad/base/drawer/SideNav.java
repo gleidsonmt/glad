@@ -39,7 +39,7 @@ import java.util.function.Predicate;
  */
 @ApiStatus.Experimental
 @SuppressWarnings("unused")
-public class Drawer extends VBox {
+public class SideNav extends VBox {
 
     private final ObjectProperty<Module> currentModule = new SimpleObjectProperty<>();
     private ObjectProperty<Callback<Module, Node>> cellFactory;
@@ -51,15 +51,15 @@ public class Drawer extends VBox {
     protected final DrawerContainer container;
     protected final ToggleGroup group = new ToggleGroup();
 
-    public Drawer() {
+    public SideNav() {
         this(FXCollections.observableArrayList());
     }
 
-    public Drawer(@NotNull Module... modules) {
+    public SideNav(@NotNull Module... modules) {
         this(FXCollections.observableArrayList(modules));
     }
 
-    public Drawer(@NotNull ObservableList<Module> modules) {
+    public SideNav(@NotNull ObservableList<Module> modules) {
         this(modules, module -> switch (module) {
             case View view -> new DrawerItem(view);
             case ModuleSeparator separator -> new DrawerSeparator(separator);
@@ -72,7 +72,7 @@ public class Drawer extends VBox {
 
     }
 
-    public Drawer(@NotNull ObservableList<Module> modules, @NotNull Callback<Module, Node> cellFactory) {
+    public SideNav(@NotNull ObservableList<Module> modules, @NotNull Callback<Module, Node> cellFactory) {
         this.setId("drawer");
         this.container = new DrawerContainer(defaultBox);
         defaultBox.setId("drawer-content");
@@ -85,7 +85,7 @@ public class Drawer extends VBox {
                 newValue.addListener((ListChangeListener<Module>) c -> {
                     if (c.next()) {
                         if (c.wasAdded()) {
-                            c.getAddedSubList().forEach(Drawer.this::recursivePopulate);
+                            c.getAddedSubList().forEach(SideNav.this::recursivePopulate);
                             group.selectToggle(group.getToggles().getFirst());
                         } else if (c.wasRemoved()) {
                             c.getRemoved().forEach(module ->

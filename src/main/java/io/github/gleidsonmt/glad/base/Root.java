@@ -34,6 +34,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
         this.flow = new FlowImpl(this);
         this.behavior = new BehaviorImpl(this);
         this.foreground = new ForegroundImpl(this);
+
         setContent(layout);
         // removes any node with absolute position, like alerts, dialogs, etc.
         widthProperty().addListener((_, _, _) -> {
@@ -94,10 +95,10 @@ public class Root extends AbstractContainer<DefaultBreak> {
     }
 
     public void unblock() {
-        super.getChildren().remove(this.foreground);
+        super.getChildren().remove(foreground);
     }
 
     public boolean isBlocked() {
-        return super.getChildren().contains(this.foreground);
+        return super.getChildren().contains(foreground);
     }
 }

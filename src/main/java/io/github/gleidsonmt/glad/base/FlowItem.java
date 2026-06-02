@@ -1,5 +1,3 @@
-
-
 package io.github.gleidsonmt.glad.base;
 
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;

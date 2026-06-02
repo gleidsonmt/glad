@@ -80,6 +80,9 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
     @Override
     public void show() {
         showing = true;
+        if (root.isBlocked()) {
+            root.getForeground().restyle(with);
+        }
     }
 
     @Override

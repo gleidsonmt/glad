@@ -1,5 +1,3 @@
-
-
 package io.github.gleidsonmt.glad.base;
 
 
@@ -19,5 +17,7 @@ public interface Behavior {
     Alert alert();
 
     Snack snack();
+
+    Drawer drawer();
 
 }
