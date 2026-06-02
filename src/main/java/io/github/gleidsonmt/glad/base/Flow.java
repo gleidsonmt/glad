@@ -40,10 +40,6 @@ public interface Flow extends ContainerBase<Flow> {
 
     void show(MouseEvent node);
 
-    // Removing
-
-    void reset();
-
     /**
      * Remove a node from the root.
      *

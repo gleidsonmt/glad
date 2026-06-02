@@ -78,6 +78,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 //        if (this.block) blockForeground();
     }
 
+    @Override
     public void reset() {
         super.reset();
         this.with = WrapperEffect.GRAY;
