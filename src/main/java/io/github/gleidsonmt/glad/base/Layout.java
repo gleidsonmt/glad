@@ -27,13 +27,6 @@ public interface Layout {
         return null;
     }
 
-    default void setRight(Node node) {
-    }
-
-    default Node getRight() {
-        return null;
-    }
-
     default void setTop(Node node) {
     }
 
