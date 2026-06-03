@@ -42,7 +42,9 @@ public enum Css implements Neutral {
     SPINNER("spinner.css"),
     DATE_PICKER("date_picker.css"),
     TITLED_PANE("titled-pane.css"),
-    ALL("ALL");
+    ALL("ALL"),
+    SLIDER("slider.css")
+    ;
 
     private final String url;
 
