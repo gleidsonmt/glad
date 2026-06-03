@@ -25,6 +25,8 @@ public interface Drawer {
 
     Drawer with(WrapperEffect wrapperEffect);
 
+    Drawer with(String wrapperEffect);
+
     Drawer content(Node content);
 
     void show();

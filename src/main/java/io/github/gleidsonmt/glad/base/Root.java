@@ -24,7 +24,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
     private final Flow flow;
     private Layout layout;
 
-    private Foreground foreground;
+    private final Foreground foreground;
 
     private Node content;
     /**
@@ -95,6 +95,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
     }
 
     public void unblock() {
+        if (!isBlocked()) return;
         super.getChildren().remove(foreground);
     }
 

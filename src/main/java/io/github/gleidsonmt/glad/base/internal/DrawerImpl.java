@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 /**
@@ -29,9 +30,6 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
     //
     @Override
     public void show() {
-        System.out.println("this.with = " + this.with);
-        System.out.println("this.with = " + this.content);
-        System.out.println("root.getChildren().contains(this.content) = " + root.getChildren().contains(this.content));
 
         root.block();
 
@@ -39,7 +37,7 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
                 .content((Region) this.content)
                 .with(this.with)
                 .width(300)
-                .height(this.height.get())
+                .height(-1)
                 .pos(Pos.CENTER_LEFT)
                 .anchor(Anchor.LEFT)
                 .show();
@@ -77,8 +75,13 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
 
     @Override
     public void hide() {
+//        if (!isShowing()) return;
+//        if (this.content == null) return;
         root.getChildren().remove(this.content);
         this.content.setTranslateX(0);
+        StackPane.clearConstraints(this.content);
+        this.width.set(-1);
+        this.height.set(-1);
         super.hide();
     }
 }

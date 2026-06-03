@@ -315,30 +315,34 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, pos);
         StackPane.setMargin(content, insets);
-
+//
         this.content.applyCss();
         this.content.layout();
-
+//
         double height = this.height.get() == -1 ?
                 this.content.prefHeight(-1) : this.height.get();
-
+//
         this.content.setPrefHeight(height);
         this.content.setMinHeight(height);
-
+//
         double width = this.width.get() == -1 ?
                 this.content.prefWidth(-1) : this.width.get();
 
         this.content.setPrefWidth(width);
         this.content.setMinWidth(width);
-
+//
         switch (anchor) {
             case TOP, BOTTOM -> {
                 content.setMaxHeight(height);
                 content.setMaxWidth(-1);
+                content.setPrefWidth(-1);
+                content.setMinWidth(-1);
             }
             case LEFT, RIGHT -> {
                 content.setMaxWidth(width);
                 content.setMaxHeight(-1);
+                content.setPrefHeight(-1);
+                content.setMinHeight(-1);
             }
             case FULL -> content.setMaxSize(-1, -1);
             case null, default -> {
