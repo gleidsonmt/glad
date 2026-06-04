@@ -4,6 +4,8 @@ package io.github.gleidsonmt.glad;
 
 import javafx.scene.image.Image;
 
+import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.Objects;
 
 /**

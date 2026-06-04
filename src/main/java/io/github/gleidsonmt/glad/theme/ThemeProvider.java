@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.jetbrains.annotations.ApiStatus;
 
+import java.io.InputStream;
 import java.util.Arrays;
 
 /**
@@ -48,6 +49,9 @@ public class ThemeProvider {
     }
 
     public static void install(Scene scene, Font... css) {
+        Arrays.stream(css).forEach(el -> {
+            InputStream inputStream;
+        });
         Arrays.stream(css).forEach(el -> scene.getStylesheets().add(Resources.getFont(el.getUrl())));
     }
 

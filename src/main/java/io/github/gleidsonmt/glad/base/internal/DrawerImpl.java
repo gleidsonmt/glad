@@ -30,7 +30,6 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
     //
     @Override
     public void show() {
-
         root.block();
 
         root.flow()
@@ -62,6 +61,7 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
             timeline.play();
 
             timeline.setOnFinished(_ -> {
+//                this.content.setTranslateX(0);
                 hide();
             });
         });
@@ -75,13 +75,16 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
 
     @Override
     public void hide() {
+        System.out.println("isShowing() = " + isShowing());
+
 //        if (!isShowing()) return;
 //        if (this.content == null) return;
-        root.getChildren().remove(this.content);
+//        root.getChildren().remove(this.content);
         this.content.setTranslateX(0);
-        StackPane.clearConstraints(this.content);
-        this.width.set(-1);
-        this.height.set(-1);
+//        StackPane.clearConstraints(this.content);
+//        this.width.set(-1);
+//        this.height.set(-1);
         super.hide();
+        root.flow().remove(this.content);
     }
 }
