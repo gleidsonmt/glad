@@ -369,7 +369,6 @@ public class SideNav extends VBox {
 
 
             if (view.getContainer() != null) {
-                System.out.println("view.getContainer() = " + view.getContainer());
                 view.getContainer().getChildren().add(b);
             } else {
                 defaultBox.getChildren().add(b);
@@ -379,7 +378,6 @@ public class SideNav extends VBox {
 
         } else if (moduleImpl instanceof ViewGroup viewGroup) {
             TitledPane container = (TitledPane) call(moduleImpl);
-            System.out.println("viewGroup = " + container.getContent());
 
             if (viewGroup.getContainer() == null) {
                 container.getStyleClass().add("module-first");
@@ -387,7 +385,6 @@ public class SideNav extends VBox {
 
                 if (viewGroup.getModules() != null && !viewGroup.getModules().isEmpty()) {
                     viewGroup.getModules().forEach(el -> {
-                        System.out.println("el = " + container.getContent());
                         el.setContainer((Pane) container.getContent());
                         recursivePopulate(el);
                     });
