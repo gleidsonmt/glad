@@ -1,7 +1,9 @@
-news
-<h1 align="center">Glad</h1>
-<h6 align="center"> This project is part of the set of custom components created for JavaFx. </h6>
-<h1></h1>
+# Glad
+Hello, this is a library of many things to reuse in projects for JavaFx. I expect this can really grow.
+
+[![News](https://img.shields.io/badge/Newsletter-brightgreen.svg?style=for-the-badge)](HISTORY.md)
+[![License](https://img.shields.io/github/license/gleidsonmt/DashboardFx.svg?style=for-the-badge)](https://github.com/gleidsonmt/DashboardFX/blob/alpha/LICENSE.txt)
+![Build](https://img.shields.io/github/v/tag/gleidsonmt/DashboardFx.svg?color=gray&label=Version&style=for-the-badge)
 
 # 💗 Wall
 
