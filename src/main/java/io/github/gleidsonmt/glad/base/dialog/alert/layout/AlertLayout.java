@@ -8,7 +8,6 @@ import io.github.gleidsonmt.glad.base.dialog.alert.icons.ErrorIcon;
 import io.github.gleidsonmt.glad.base.dialog.alert.icons.InfoIcon;
 import io.github.gleidsonmt.glad.base.dialog.alert.icons.SuccessIcon;
 import io.github.gleidsonmt.glad.base.dialog.alert.icons.WarnIcon;
-import io.github.gleidsonmt.testfx.glad.base.dialog.alert.layout.BarAction;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;

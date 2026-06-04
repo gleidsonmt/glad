@@ -1,6 +1,15 @@
 
 
-package io.github.gleidsonmt.testfx.glad.base.dialog.alert.layout;
+/*
+ * *
+ *  * Description:
+ *  *
+ *  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
+ *  * Create on ${DATE}
+ *
+ */
+
+package io.github.gleidsonmt.glad.base.dialog.alert.layout;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.ButtonBar;
