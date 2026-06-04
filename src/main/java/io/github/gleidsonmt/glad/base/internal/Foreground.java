@@ -12,6 +12,7 @@ package io.github.gleidsonmt.glad.base.internal;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * Description:
@@ -25,8 +26,10 @@ public interface Foreground {
 
     void hide();
 
+    @ApiStatus.Experimental
     void addAction(EventHandler<MouseEvent> eventHandler);
 
+    @ApiStatus.Experimental
     void removeAction();
 
     void restyle(WrapperEffect effect);
