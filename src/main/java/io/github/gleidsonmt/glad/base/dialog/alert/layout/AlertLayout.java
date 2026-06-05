@@ -1,5 +1,3 @@
-
-
 package io.github.gleidsonmt.glad.base.dialog.alert.layout;
 
 import io.github.gleidsonmt.glad.Resources;
