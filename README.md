@@ -11,6 +11,8 @@ Hello, this is a library of many things to reuse in projects for JavaFx. I expec
 ![PrimaryColors](wall/primary_colors.png)
 
 ### Typographic
+![PrimaryColors](wall/fonts.png)
+
 ![PrimaryColors](wall/headlines.png)
 
 # 💗 Wall
