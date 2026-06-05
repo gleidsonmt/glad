@@ -6,7 +6,8 @@ Hello, this is a library of many things to reuse in projects for JavaFx. I expec
 ![Build](https://img.shields.io/github/v/tag/gleidsonmt/glad.svg?color=gray&label=Version&style=for-the-badge)
 
 ## Design System
-##### Primary Colors
+#### Primary Colors
+##### A class <code>ThemeProvider</code> has  method <code>install()</code> 
 ![PrimaryColors](wall/primary_colors.png)
 
 # 💗 Wall
