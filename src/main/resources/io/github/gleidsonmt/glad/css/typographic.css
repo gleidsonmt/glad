@@ -17,11 +17,12 @@
 
 Text {
     -fx-font-family: "Poppins";
-    -fx-font-smoothing-type: gray; /* Works better with poppins */
 }
 
 .text {
     -fx-fill: -text-color;
+    -fx-font-smoothing-type: gray; /* Works better with poppins */
+
 }
 
 
