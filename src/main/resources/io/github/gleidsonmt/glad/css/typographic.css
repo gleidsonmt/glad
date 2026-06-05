@@ -6,8 +6,12 @@
     v. 1.0
 */
 
+Labeled,
+Label,
 .label {
     -fx-shape: none;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12px;
 }
 
 .icon-container .icon {
@@ -15,7 +19,7 @@
 }
 
 Text, .text {
-    -fx-font-family: Poppins Regular;
+    -fx-font-family: Poppins Bold;
     -fx-fill: -text-color;
     -fx-font-smoothing-type: gray; /* Works better with poppins */
 }

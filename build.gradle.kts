@@ -1,10 +1,8 @@
-
 plugins {
     java
     id("org.openjfx.javafxplugin") version "0.1.0"
     id("com.palantir.git-version") version "3.1.0"
 }
-
 
 group = "io.github.gleidsonmt"
 
