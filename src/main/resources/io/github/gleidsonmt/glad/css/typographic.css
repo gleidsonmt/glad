@@ -6,12 +6,9 @@
     v. 1.0
 */
 
-Labeled,
-Label,
 .label {
     -fx-shape: none;
     -fx-font-weight: bold;
-    -fx-background-radius: 12px;
 }
 
 .icon-container .icon {
