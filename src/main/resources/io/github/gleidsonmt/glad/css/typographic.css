@@ -15,11 +15,15 @@
     -fx-fill: -icon-color;
 }
 
-Text, .text {
-    -fx-font-family: Poppins Bold;
-    -fx-fill: -text-color;
+Text {
+    -fx-font-family: "Poppins";
     -fx-font-smoothing-type: gray; /* Works better with poppins */
 }
+
+.text {
+    -fx-fill: -text-color;
+}
+
 
 /* @Font */
 
@@ -40,7 +44,7 @@ Text, .text {
 }
 
 .font-poppins {
-    -fx-font-family: "Poppins Regular";
+    -fx-font-family: "Poppins";
 }
 
 /* @Size */

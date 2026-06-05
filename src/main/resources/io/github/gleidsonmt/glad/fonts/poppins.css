@@ -96,10 +96,3 @@
     -fx-font-family: Poppins ThinItalic;
     src: url('Poppins-ThinItalic.ttf');
 }
-
-@font-face {
-    -fx-font-family: Instagram Sans;
-    src: url('Instagram-Sans.ttf');
-}
-
-
