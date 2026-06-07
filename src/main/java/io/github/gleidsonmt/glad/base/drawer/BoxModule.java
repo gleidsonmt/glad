@@ -23,6 +23,7 @@ public class BoxModule extends VBox {
 
     public BoxModule(String name, ToggleButton toggleButton) {
         this.name = name;
+        getStyleClass().add("box-module");
         Text title = new Text(name);
 
         getChildren().add(title);
