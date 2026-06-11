@@ -24,8 +24,6 @@ import javafx.util.Duration;
  */
 public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
 
-    protected Pane pane = new Pane();
-
     private BooleanProperty on = new SimpleBooleanProperty(false);
 
     private final TranslateTransition translateAnimation = new TranslateTransition(Duration.seconds(0.15));
@@ -40,7 +38,6 @@ public class ToggleSwitchSkin extends SkinBase<ToggleSwitch> {
 
     protected ToggleSwitchSkin(ToggleSwitch control) {
         super(control);
-        getChildren().add(pane);
         trigger.getStyleClass().add("trigger");
         trigger.setFill(Color.WHITE);
         trigger.setStroke(Color.LIGHTGRAY);
