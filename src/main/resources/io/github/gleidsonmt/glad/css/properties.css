@@ -1223,10 +1223,6 @@
 
 /* @Background */
 
-.bg-background {
-    -fx-background-color: -fx-background;
-}
-
 .bg-primary {
     -fx-background-color: -primary;
     -bar-color: -primary;
@@ -1537,6 +1533,12 @@
     -fx-background-color: black;
     -bar-color: black;
 }
+
+.bg-background {
+    -fx-background-color: -fx-background;
+    -bar-color: black;
+}
+
 
 /* @ Grid colors */
 
