@@ -87,25 +87,4 @@ public class PasswordBox extends TextBox {
     protected Skin<?> createDefaultSkin() {
         return new PasswordBoxSkin(this);
     }
-
-    @Override
-    public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(Resources.class.getResource("agents/text-box.css")).toExternalForm();
-    }
-
-//    @Override
-
-    private @NotNull EventHandler<MouseEvent> createAction() {
-        return _ -> {
-            getEditor().setMaskText(!getEditor().isMaskText());
-            hideButton.setGraphic(
-                    new SVGIcon(
-                            !getEditor().isMaskText() ?
-                                    Icon.VISIBILITY_OFF : Icon.VISIBILITY
-                    )
-            );
-            getEditor().setText(getText());
-            getEditor().end();
-        };
-    }
 }
