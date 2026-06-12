@@ -64,6 +64,7 @@ public class PasswordBox extends TextBox {
         if (icon != null) setLeftNode(icon);
         setText(text);
 
+
 //        if (action) setRightNode(createRightAction());
 
         // When editor has text clear button will appear

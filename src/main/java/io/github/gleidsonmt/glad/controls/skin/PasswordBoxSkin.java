@@ -6,10 +6,8 @@ import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.controls.text_box.PasswordBox;
-import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import javafx.beans.value.ChangeListener;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import org.jetbrains.annotations.NotNull;
 
