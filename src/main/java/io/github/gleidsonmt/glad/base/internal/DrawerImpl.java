@@ -78,7 +78,7 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
         System.out.println("isShowing() = " + isShowing());
 
 //        if (!isShowing()) return;
-//        if (this.content == null) return;
+        if (this.content == null) return;
 //        root.getChildren().remove(this.content);
         this.content.setTranslateX(0);
 //        StackPane.clearConstraints(this.content);
