@@ -135,7 +135,7 @@ Text {
     -text-color: -unique;
 }
 
-.text-elegant {
+.text-elegant, .text-elegant .text {
     -text-color: -elegant;
 }
 
