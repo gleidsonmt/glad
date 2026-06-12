@@ -36,6 +36,7 @@ public enum Css implements Neutral {
     IMMERSIVE_SCROLL("immersive_scroll.css"),
     TYPOGRAPHIC("typographic.css"),
 
+    SCROLLBAR("scroll-bar.css"),
 
     PROGRESS_BAR("progress-bar.css"),
     TEXT_FIELD("text-field.css"),

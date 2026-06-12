@@ -18,7 +18,7 @@ public class DrawerMenu extends TitledPane {
     public DrawerMenu(Module module) {
 
         VBox content = new VBox();
-        content.getStyleClass().add("container");
+        content.getStyleClass().addAll("container");
         setText(module.getName());
         setContent(content);
         setUserData(module);

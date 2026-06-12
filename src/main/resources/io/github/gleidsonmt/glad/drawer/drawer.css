@@ -49,6 +49,7 @@
 }
 
 #drawer .drawer-item:hover .text {
+    -fx-font-weight: bold;
     -fx-fill: -fx-accent;
 }
 
