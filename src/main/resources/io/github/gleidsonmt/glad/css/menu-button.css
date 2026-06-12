@@ -7,8 +7,8 @@ MenuButton {
     -fx-cursor: hand;
     -fx-effect: none;
     -fx-background-color: -fx-accent;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
+    -fx-background-radius: 12.5px;
+    -fx-border-radius: 12.5px;
     -fx-pref-height: 40px;
     -icon-color: white;
     -fx-padding: 2px 5px 2px 5px;

@@ -1,8 +1,12 @@
 
+.button .text, IconButton .text {
+    -fx-font-weight: bolder;
+    -fx-font-size: 10pt;
+}
 
 Button, IconButton {
     -fx-text-fill: white;
-    -fx-font-weight: bolder;
+    -fx-font-smoothing-type: gray;
     -fx-graphic-text-gap: 10;
     -fx-cursor: hand;
     -fx-effect: none;
@@ -12,9 +16,9 @@ Button, IconButton {
     -fx-border-width: 2px;
 }
 
-Button {
-    -fx-background-radius: 12px;
-    -fx-border-radius: 12px;
+Button, IconButton {
+    -fx-background-radius: 12.5px;
+    -fx-border-radius: 12.5px;
     -fx-pref-height: 42px;
 }
 

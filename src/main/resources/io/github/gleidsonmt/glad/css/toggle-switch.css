@@ -1,7 +1,6 @@
 
 
 ToggleSwitch {
-    -fx-padding: 20px;
     -fx-color-animation: -fx-accent;
     -fx-track-color: -fx-background;
 }
