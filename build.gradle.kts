@@ -1,38 +1,37 @@
 plugins {
     java
-    id("org.openjfx.javafxplugin") version "0.1.0"
-    id("com.palantir.git-version") version "3.1.0"
+    id("org.openjfx.javafxplugin") version "0.0.13"
 }
 
 group = "io.github.gleidsonmt"
-
-// Get the version from git tags
-val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
-val details = versionDetails()
-version = onlyNumberAndDots(details.lastTag)
-
-fun onlyNumberAndDots(value: String): String {
-    return value.replace(Regex("[^0-9.]"), "")
-}
+version = "1.1.225"
 
 repositories {
     mavenCentral()
 }
 
-tasks.withType<JavaCompile> {
+val junitVersion = "5.10.2"
+
+tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
 }
 
 javafx {
     version = "23.0.2"
-    modules("javafx.controls", "javafx.fxml", "javafx.web", "javafx.swing")
+    modules = listOf(
+        "javafx.controls",
+        "javafx.fxml",
+        "javafx.web",
+        "javafx.swing"
+    )
 }
 
 dependencies {
     compileOnly("org.jetbrains:annotations:26.1.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
-tasks.named<Test>("test") {
-    // Use JUnit Platform for unit tests.
+tasks.test {
     useJUnitPlatform()
 }

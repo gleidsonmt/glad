@@ -1,5 +1,3 @@
-
-
 package io.github.gleidsonmt.glad.controls.text_box;
 
 import io.github.gleidsonmt.glad.Resources;
@@ -9,10 +7,13 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
 import javafx.geometry.Pos;
 import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyEvent;
 
 import java.util.Objects;
@@ -44,10 +45,19 @@ public class Editor extends TextField {
                 event.consume();
             }
         });
+        maskTextProperty().addListener(this::changed);
+    }
+
+    @Override
+    public void copy() {
+        if (maskText.get()) return;
+        super.copy();
     }
 
     @Override
     public void paste() {
+        if (maskText.get()) return;
+
         final Clipboard clipboard = Clipboard.getSystemClipboard();
 
         if (clipboard.hasString()) {
@@ -100,5 +110,9 @@ public class Editor extends TextField {
 
     public void setMaxText(int max) {
         this.max.set(max);
+    }
+
+    private void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+        if (newValue) addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
     }
 }
