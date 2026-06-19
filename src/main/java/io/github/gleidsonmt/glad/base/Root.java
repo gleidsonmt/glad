@@ -1,7 +1,4 @@
-
-
 package io.github.gleidsonmt.glad.base;
-
 
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
@@ -10,8 +7,6 @@ import io.github.gleidsonmt.glad.base.internal.ForegroundImpl;
 import io.github.gleidsonmt.glad.base.responsive.AbstractContainer;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.Node;
 
 /**
@@ -22,7 +17,6 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     private final Behavior behavior;
     private final Flow flow;
-    private Layout layout;
 
     private final Foreground foreground;
 
@@ -51,17 +45,6 @@ public class Root extends AbstractContainer<DefaultBreak> {
         });
     }
 
-    @Deprecated(forRemoval = true)
-    public void setLayout(Layout layout) {
-        this.getChildren().setAll((Node) layout);
-        this.layout = layout;
-    }
-
-    @Deprecated(forRemoval = true)
-    public Layout getLayout() {
-        return this.layout;
-    }
-
     public Flow flow() {
         return this.flow;
     }
@@ -69,12 +52,6 @@ public class Root extends AbstractContainer<DefaultBreak> {
     public Behavior behavior() {
         return this.behavior;
     }
-
-
-//    @Override
-//    public ObservableList<Node> getChildren() {
-//        return FXCollections.unmodifiableObservableList(super.getChildren());
-//    }
 
     public void setContent(Node content) {
         this.content = content;
@@ -96,10 +73,10 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     public void unblock() {
         if (!isBlocked()) return;
-        super.getChildren().remove(foreground);
+        getChildren().remove((Node) foreground);
     }
 
     public boolean isBlocked() {
-        return super.getChildren().contains(foreground);
+        return super.getChildren().contains((Node) foreground);
     }
 }
