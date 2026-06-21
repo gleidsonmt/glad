@@ -1534,9 +1534,14 @@
     -bar-color: black;
 }
 
-.bg-background {
+
+.bg-theme {
     -fx-background-color: -fx-background;
-    -bar-color: black;
+    -bar-color: -fx-background;
+}
+
+.bg-foreground {
+    -fx-background-color: -fx-foreground;
 }
 
 
@@ -3101,6 +3106,10 @@
 }
 
 /* @Border-color */
+
+.border-theme {
+    -fx-border-color: -border-color;
+}
 
 .border-primary {
     -fx-border-color: -primary;

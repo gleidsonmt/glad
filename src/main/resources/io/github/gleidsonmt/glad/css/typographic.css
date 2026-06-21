@@ -4,28 +4,28 @@
     v. 1.0
 */
 
-.label {
-    -fx-shape: none;
-    -fx-font-smoothing-type: gray; /* Works better with poppins */
-}
 
 .icon-container .icon {
     -fx-fill: -icon-color;
 }
+
 
 Label,
 .label,
 Text {
     -fx-font-family: "Poppins";
     -fx-fill: -text-color;
-    -fx-font-smoothing-type: gray; /* Works better with poppins */
-
+    -fx-font-smoothing-type: gray;
 }
 
 .text {
     -fx-fill: -text-color;
-    -fx-font-smoothing-type: gray; /* Works better with poppins */
 }
+
+.icon-container  {
+    -fx-fill: -icon-color;
+}
+
 
 /* @Font */
 

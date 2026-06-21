@@ -14,6 +14,7 @@ public enum Css implements Neutral {
     DEFAULT("colors.css typographic.css properties.css shapes.css immersive_scroll.css"),
 
     TOGGLE_SWITCH("toggle-switch.css"),
+    LABEL("label.css"),
     CHOICE_BOX("choice-box.css"),
     TREE_VIEW("tree-view.css"),
     LIST_VIEW("list-view.css"),
@@ -43,8 +44,11 @@ public enum Css implements Neutral {
     SPINNER("spinner.css"),
     DATE_PICKER("date_picker.css"),
     TITLED_PANE("titled-pane.css"),
-    ALL("ALL"),
-    SLIDER("slider.css")
+
+    BADGE("badge.css"),
+    SLIDER("slider.css"),
+
+    ALL("ALL")
     ;
 
     private final String url;

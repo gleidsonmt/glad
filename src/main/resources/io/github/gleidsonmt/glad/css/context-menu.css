@@ -7,11 +7,11 @@
 */
 
 .context-menu {
-    -fx-background-color: white;
+    -fx-background-color: -fx-background;
     -fx-background-insets: 0;
     -fx-padding: 0px; /* 4 1 8 1 */
     -fx-effect: none;
-    -fx-border-color: -medium-gray;
+    -fx-border-color: -border-color;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
 }
@@ -41,12 +41,12 @@
 
 .menu-item:focused,
 .menu-item:hover {
-    -fx-background-color: -light-gray;
+    -fx-background-color: -hover-color;
     -fx-border-color: -medium-gray;
 }
 
 .menu-item:hover .text {
-    -fx-fill: -dark-gray-2;
+    -fx-fill: -text-color;
 }
 
 .menu-item-first {

@@ -93,17 +93,13 @@ Button .text {
 .inside-button:focused:pressed,
 .inside-button:focused:hover,
 .inside-button:focused {
-    -fx-background-color: -medium-gray;
+    -fx-background-color: -hover-color;
     -fx-border-color: transparent;
-    -text-color: -dark-gray-2;
-    -icon-color: -dark-gray-2;
 }
 
 .inside-button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -text-color: -dark-gray;
-    -icon-color: -text-color;
 }
 
 .inside-button:hover {

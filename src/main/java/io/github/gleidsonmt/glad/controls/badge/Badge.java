@@ -56,6 +56,7 @@ public final class Badge extends IconButton {
 
     public Badge(Node node, int number, int max) {
         super(node, true);
+        getStyleClass().removeAll("icon-button");
         getStyleClass().addAll("badge", "size-40", "max-size-40", "min-size-40");
         setCursor(Cursor.HAND);
         numberOfNotifications.set(number);

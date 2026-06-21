@@ -28,6 +28,7 @@ public class IconButton extends Button {
     public IconButton(Node icon, boolean inside, String[] classes) {
         setGraphic(icon);
         getStyleClass().addAll(inside ? "inside-button" : "icon-button", "w-40", "h-40");
+//        getStyleClass().addAll(inside ? "inside-button" : "icon-button", "w-40", "h-40");
         if (classes != null) getStyleClass().addAll(classes);
         setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
     }

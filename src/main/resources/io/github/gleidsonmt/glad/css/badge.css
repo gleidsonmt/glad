@@ -1,0 +1,5 @@
+
+
+.badge:hover {
+    -fx-background-color: -hover-color;
+}

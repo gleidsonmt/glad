@@ -1,4 +1,3 @@
-
 /*
     Created on : 25/10/2022, 08:00:15
     Author     : Gleidson Neves da Silveira
@@ -9,6 +8,9 @@
 
     -fx-background-color: -fx-background;
     -fx-accent: #0085ff;
+    -fx-foreground: white;
+    -border-color: -light-gray-2;
+
 
     /* Bootstrap */
     -primary: #4285f4;
@@ -66,9 +68,9 @@
 
     -text-color: -dark-gray;
     -icon-color: -text-color;
-    -hover-color: -dark-gray-2;
+    -hover-color: -light-gray-2;
     -border-color: -light-gray-2;
-    -border-hover: -medium-gray-2;
+
     -fx-background: white;
     -bar-color: -fx-accent;
     -track-color: -light-gray;
@@ -638,9 +640,25 @@
     /* web #37474f */
     -blue-grey-900: rgb(38, 50, 56);
     /* web #263238 */
+}
 
+.root:dark-theme {
+    -fx-background: derive(#1c1c1e, 0%);
+
+    -text-color: #d8d3d5;
+
+    -fx-foreground: derive(#1c1c1e, 10%);
+    -border-color: #d8d3d5;
+    -icon-color: #d1d0d5;
+    -hover-color: derive(#1c1c1e, 20%);
+
+
+    -border-color: -elegant;
+    -fx-foreground: derive(-elegant, -10%);
+    -icon-color: -text-color;
 
 }
+
 
 
 /*******************************************************************************
@@ -654,7 +672,7 @@
 }
 
 .chart-plot-background {
-    -fx-background-color: -fx-background;
+    -fx-background-color: -fx-foreground;
 }
 
 .chart-content {
