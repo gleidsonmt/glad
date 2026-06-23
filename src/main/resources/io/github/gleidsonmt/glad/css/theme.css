@@ -1,0 +1,43 @@
+.root {
+
+    -fx-background-color: -fx-background;
+    -fx-accent: #0085ff;
+    -fx-foreground:  -light-gray-2;
+
+    -text-color: -dark-gray;
+    -icon-color: -text-color;
+    -hover-color: -light-gray-2;
+    -border-color: -light-gray-2;
+
+    -fx-background: white;
+    -bar-color: -fx-accent;
+    -track-color: -light-gray;
+}
+
+.root:dark-theme {
+    -fx-background: derive(#1c1c1e, 0%);
+
+    -text-color: #d8d3d5;
+
+    -fx-foreground: derive(#1c1c1e, 10%);
+    -icon-color: #d1d0d5;
+    -hover-color: derive(#1c1c1e, 20%);
+
+
+    -border-color:  derive(#1c1c1e, 10%);
+    -fx-foreground: derive(-elegant, -10%);
+    -icon-color: -text-color;
+
+}
+
+.block-code {
+    -fx-background-color: -fx-foreground;
+    -fx-font-smoothing-type: gray;
+    -fx-font-size: 14px;
+}
+
+.root:dark-theme .label,
+.root:dark-theme .text,
+.root:dark-theme Text {
+    -fx-fill: -text-color;
+}

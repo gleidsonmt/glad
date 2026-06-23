@@ -1,20 +1,27 @@
-
-
-ToggleSwitch {
-    -fx-color-animation: -fx-accent;
-    -fx-track-color: -fx-background;
+.root:dark-theme ToggleSwitch .foreground{
+    -fx-stroke: -dark-gray-2;
 }
 
 ToggleSwitch .foreground {
-    -fx-background-color: white;
+    -fx-background-color: -fx-foreground;
+}
+
+ToggleSwitch {
+    -fx-color-animation: -fx-accent;
+    -fx-track-color: -fx-foreground;
+}
+
+ToggleSwitch .foreground {
     -fx-border-color: -light-gray-2;
     -fx-border-width: 2px;
     -fx-border-radius: 20px;
+    -fx-background-color: red;
+
 }
 
 ToggleSwitch .trigger {
-    -fx-background-color: white;
     -fx-border-color: -light-gray-2;
     -fx-border-width: 2px;
     -fx-border-radius: 20px;
+
 }

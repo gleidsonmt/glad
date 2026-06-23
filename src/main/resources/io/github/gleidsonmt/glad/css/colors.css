@@ -6,12 +6,6 @@
 */
 .root {
 
-    -fx-background-color: -fx-background;
-    -fx-accent: #0085ff;
-    -fx-foreground:  -light-gray-2;;
-    -border-color: -light-gray-2;
-
-
     /* Bootstrap */
     -primary: #4285f4;
     -info: #33B5E5;
@@ -66,26 +60,21 @@
     -light-blue: #82B1FF;
     -gray: #8e8e8e;
 
-    -text-color: -dark-gray;
-    -icon-color: -text-color;
-    -hover-color: -light-gray-2;
-    -border-color: -light-gray-2;
-
-    -fx-background: white;
-    -bar-color: -fx-accent;
-    -track-color: -light-gray;
-
     /* Chart Colors */
     CHART_COLOR_1: -info;
     CHART_COLOR_2: -mint;
     CHART_COLOR_3: -amber;
     CHART_COLOR_4: -grapefruit;
     CHART_COLOR_5: -teal;
+    CHART_COLOR_6: -purple;
+    CHART_COLOR_7: -orange;
+    CHART_COLOR_8: -green;
 
     CHART_COLOR_1_TRANS_20: derive(-info, 20%);
     CHART_COLOR_2_TRANS_20: derive(-mint, 20%);
     CHART_COLOR_3_TRANS_20: derive(-amber, 20%);
     CHART_COLOR_4_TRANS_20: derive(-grapefruit, 20%);
+
     /* 70% opacity */
     CHART_COLOR_1_TRANS_70: derive(-info, 70%);
     CHART_COLOR_2_TRANS_70: derive(-mint, 70%);
@@ -641,31 +630,6 @@
     -blue-grey-900: rgb(38, 50, 56);
     /* web #263238 */
 }
-
-.root:dark-theme {
-    -fx-background: derive(#1c1c1e, 0%);
-
-    -text-color: #d8d3d5;
-
-    -fx-foreground: derive(#1c1c1e, 10%);
-    -border-color: #d8d3d5;
-    -icon-color: #d1d0d5;
-    -hover-color: derive(#1c1c1e, 20%);
-
-
-    -border-color: -elegant;
-    -fx-foreground: derive(-elegant, -10%);
-    -icon-color: -text-color;
-
-}
-
-.root:dark-theme .label,
-.root:dark-theme .text,
-.root:dark-theme Text {
-    -fx-fill: -text-color;
-}
-
-
 /*******************************************************************************
  *                                                                             *
  * Charts                                                                      *
@@ -732,11 +696,13 @@
     -fx-border-color: transparent AXIS_COLOR transparent transparent;
 }
 
+/*noinspection CssInvalidPseudoSelector*/
 .axis:top > .axis-label,
 .axis:left > .axis-label {
     -fx-padding: 0 0 4px 0;
 }
 
+/*noinspection CssInvalidPseudoSelector*/
 .axis:bottom > .axis-label,
 .axis:right > .axis-label {
     -fx-padding: 4px 0 0 0;

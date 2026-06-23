@@ -24,7 +24,7 @@ TitledPane:expanded .title .arrow-button .arrow {
     -fx-pref-width: 9px;
     -fx-pref-height: 7px;
     -fx-min-height: 0px;
-    -fx-background-color: -text-color;
+    -fx-background-color: red;
     -fx-effect: none;
     -fx-focus-color: transparent;
 }

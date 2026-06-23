@@ -14,7 +14,11 @@ Button, IconButton {
     -icon-color: white;
     -text-color: white;
     -fx-border-width: 2px;
+    -fx-alignment: center;
+    -fx-padding: 2px 5px 2px 5px;
 }
+
+
 
 Button, IconButton {
     -fx-background-radius: 12.5px;
@@ -67,7 +71,7 @@ Button:cancel:focused:pressed {
 }
 
 Button .ripple {
-    -fx-fill: #ffffff50
+    -fx-fill: #ffffff50;
 }
 
 Button .text {
@@ -101,10 +105,17 @@ Button .text {
     -fx-border-color: transparent;
 }
 
-.inside-button:hover {
-    -fx-background-color: -light-gray-2;
-    -icon-color: -text-color;
+.root:dark-theme Button:cancel,
+.root:dark-theme IconButton:cancel
+ {
+    -fx-background-color: transparent;
+    -fx-border-color: -dark-gray-2;
 }
 
 
-
+.root:dark-theme .inside-button:hover,
+.root:dark-theme Button:cancel:hover,
+.root:dark-theme IconButton:cancel:hover
+{
+    -fx-border-color: -dark-gray-2;
+}

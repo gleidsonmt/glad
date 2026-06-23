@@ -65,7 +65,6 @@
     -fx-font-weight: bold;
 }
 
-
 #drawer .titled-pane .title {
     -fx-padding: 10px 5px 10px 10px;
 }
@@ -169,4 +168,11 @@
 #drawer .module-selected > .title .text {
     -fx-fill: white;
     -fx-background-color: white;
+}
+
+.root:dark-hteme #drawer .label .text,
+.root:dark-theme #drawer .text {
+    -text-color: white;
+    -fx-font-smoothing: gray;
+    -fx-font-weight: normal;
 }

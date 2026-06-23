@@ -40,7 +40,7 @@
 .check-box .box,
 .check-box:hover .box {
     -fx-border-width: 2px;
-    -fx-border-color: -border-hover;
+    -fx-border-color: -hover-color;
 }
 
 .check-box:selected .box {

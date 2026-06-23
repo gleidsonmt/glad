@@ -47,6 +47,7 @@ public enum Css implements Neutral {
 
     BADGE("badge.css"),
     SLIDER("slider.css"),
+    THEME_DEFAULT("theme.css"),
 
     ALL("ALL")
     ;
