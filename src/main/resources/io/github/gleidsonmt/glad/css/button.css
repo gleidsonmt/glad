@@ -1,7 +1,7 @@
 
 .button .text, IconButton .text {
-    -fx-font-weight: bolder;
-    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
 }
 
 Button, IconButton {
@@ -43,7 +43,7 @@ IconButton:cancel,
 Button:cancel,
 .btn-outlined {
     -fx-background-color: -light-gray;
-    -fx-border-color: -light-gray-2;
+    -fx-border-color: -border-color;
     -fx-border-width: 2px;
     -icon-color: -fx-accent;
     -text-color: -fx-accent;
@@ -63,7 +63,7 @@ Button:cancel:hover:focused,
 Button:cancel:hover,
 .btn-outlined:focused:pressed,
 Button:cancel:focused:pressed {
-    -fx-border-color: -medium-gray-2;
+    -fx-border-color: -border-color;
 }
 
 Button .ripple {
@@ -80,7 +80,6 @@ Button .text {
     -text-color: -dark-gray;
     -icon-color: -text-color;
 }
-
 
 .flat:focused,
 .flat:hover,

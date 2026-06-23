@@ -1,7 +1,7 @@
 
 
 .alert {
-    -fx-background-color: white;
+    -fx-background-color: -fx-background;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .3), 5, 0, 0, 1);
     -fx-spacing: 30px;
@@ -19,7 +19,7 @@
 }
 
 .alert .bar-container {
-    -fx-background-color: -light-gray;
+    -fx-background-color: -fx-foreground;
     -fx-alignment: center;
     -fx-padding: 10px;
 }
@@ -32,7 +32,7 @@
 
 .alert .button:cancel {
     -fx-background-color: -fx-background;
-    -fx-border-color: -light-gray-2;
+    -fx-border-color: derive(-border-color, -20%);
     -fx-border-insets: -2px;
 }
 

@@ -8,7 +8,7 @@
 
     -fx-background-color: -fx-background;
     -fx-accent: #0085ff;
-    -fx-foreground: white;
+    -fx-foreground:  -light-gray-2;;
     -border-color: -light-gray-2;
 
 
@@ -659,6 +659,11 @@
 
 }
 
+.root:dark-theme .label,
+.root:dark-theme .text,
+.root:dark-theme Text {
+    -fx-fill: -text-color;
+}
 
 
 /*******************************************************************************
@@ -708,7 +713,7 @@
 .axis {
     AXIS_COLOR: derive(-fx-background, -20%);
     -fx-tick-label-font-size: 0.833333em; /* 10px */
-    -fx-tick-label-fill: derive(-fx-text-background-color, 30%);
+    -fx-tick-label-fill: derive(-text-color, 30%);
 }
 
 .axis:top {
@@ -771,7 +776,7 @@
 
 .chart-vertical-zero-line,
 .chart-horizontal-zero-line {
-    -fx-stroke: derive(-fx-text-background-color, 40%);
+    -fx-stroke: derive(-text-color, 40%);
 }
 
 /*******************************************************************************
