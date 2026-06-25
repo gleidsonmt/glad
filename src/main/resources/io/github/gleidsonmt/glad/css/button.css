@@ -15,7 +15,7 @@ Button, IconButton {
     -text-color: white;
     -fx-border-width: 2px;
     -fx-alignment: center;
-    -fx-padding: 2px 5px 2px 5px;
+    -fx-padding: 2px 10px 2px 10px;
 }
 
 
@@ -24,6 +24,8 @@ Button, IconButton {
     -fx-background-radius: 12.5px;
     -fx-border-radius: 12.5px;
     -fx-pref-height: 42px;
+    -fx-min-height: 42px;
+
 }
 
 IconButton:pressed:focused,

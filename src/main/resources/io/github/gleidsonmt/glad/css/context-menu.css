@@ -16,6 +16,12 @@
     -fx-background-radius: 5px;
 }
 
+.root:dark-theme .context-menu {
+    -fx-border-color: -dark-gray-2;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .1), 5, 0, 0, 1);
+}
+
 .menu-item .text {
     -fx-font-size: 14px;
     -fx-font-family: "Instagram Sans";

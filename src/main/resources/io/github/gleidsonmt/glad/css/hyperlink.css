@@ -1,5 +1,8 @@
 
 
+.root:dark-theme .hyperlink .text {
+    -fx-fill: -fx-accent;
+}
 
 .hyperlink .text {
     -fx-fill: -fx-accent;

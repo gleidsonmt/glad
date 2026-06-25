@@ -64,6 +64,16 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         container.setTranslateX(0);
         container.setLayoutY(0);
         container.setLayoutX(0);
+
+        container.minWidthProperty().unbind();
+        container.minHeightProperty().unbind();
+
+        container.prefWidthProperty().unbind();
+        container.prefHeightProperty().unbind();
+
+        container.maxWidthProperty().unbind();
+        container.maxHeightProperty().unbind();
+
         container.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
         container.setMinSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
         container.setPrefSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);

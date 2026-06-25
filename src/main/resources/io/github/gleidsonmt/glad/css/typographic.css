@@ -5,11 +5,6 @@
 */
 
 
-.icon-container .icon {
-    -fx-fill: -icon-color;
-}
-
-
 .text,
 .label,
 Text {
@@ -18,14 +13,28 @@ Text {
     -fx-font-smoothing-type: gray;
 }
 
+.root:dark-theme Text,
+.root:dark-theme .label,
+.root:dark-theme .text {
+
+    -fx-stroke-width: 0.3;
+    -fx-font-smoothing-type: lcd;
+    -fx-stroke: -text-color;
+
+}
+
 .text {
     -fx-fill: -text-color;
 }
 
-.icon-container  {
+.icon-container .icon {
     -fx-fill: -icon-color;
 }
 
+
+.icon-container  {
+    -fx-fill: -icon-color;
+}
 
 /* @Font */
 
