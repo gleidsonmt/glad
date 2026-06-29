@@ -1,12 +1,6 @@
 
-.button .text, IconButton .text {
-    -fx-font-weight: bold;
-    -fx-font-size: 12px;
-}
-
 Button, IconButton {
     -fx-text-fill: white;
-    -fx-font-smoothing-type: gray;
     -fx-graphic-text-gap: 10;
     -fx-cursor: hand;
     -fx-effect: none;
@@ -16,8 +10,20 @@ Button, IconButton {
     -fx-border-width: 2px;
     -fx-alignment: center;
     -fx-padding: 2px 10px 2px 10px;
+
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-font-smoothing-type: lcd;
+    -fx-stroke: white;
 }
 
+.root:dark-theme Button .text {
+    -fx-stroke: white;
+}
+
+.root:dark-theme Button:cancel .text {
+    -fx-stroke: -fx-accent;
+}
 
 
 Button, IconButton {

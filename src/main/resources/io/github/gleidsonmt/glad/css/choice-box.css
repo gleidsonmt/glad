@@ -7,8 +7,8 @@ ChoiceBox {
     -fx-graphic-text-gap: 10;
     -fx-cursor: hand;
     -fx-effect: none;
-    -fx-background-radius: 10px;
-    -fx-border-radius: 10px;
+    -fx-background-radius: 12.5px;
+    -fx-border-radius: 12.5px;
     -fx-pref-height: 40px;
     -fx-padding: 2px 5px 2px 5px;
     -fx-background-insets: 0px;
@@ -26,6 +26,8 @@ ChoiceBox {
 ChoiceBox .label .text {
     -fx-fill: white;
 }
+
+
 
 .choice-outlined .label .text {
     -fx-fill: -text-color;

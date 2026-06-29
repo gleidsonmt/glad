@@ -18,6 +18,10 @@
     -fx-border-color: -light-gray-2;
 }
 
+.combo-box-base:hover {
+    -fx-border-color: -medium-gray-2;
+}
+
 .combo-box-base .list-cell:selected {
     -fx-font-weight: bolder;
 }

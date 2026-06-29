@@ -116,7 +116,7 @@ Text {
 }
 
 .text-primary {
-    -text-color: -fx-accent;
+    -text-color: -fx-primary;
 }
 
 .text-info {
