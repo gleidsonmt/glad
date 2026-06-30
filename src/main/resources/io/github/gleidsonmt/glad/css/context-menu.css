@@ -1,5 +1,4 @@
 
-
 /*
     Created on : 20/10/224, 08:00:15
     Author     : Gleidson Neves da Silveira
@@ -26,7 +25,6 @@
     -fx-font-size: 14px;
     -fx-font-family: "Instagram Sans";
 }
-
 .menu-item {
     -fx-padding: 8px 15px 8px 15px;
     -fx-border-insets: 0px;
@@ -48,15 +46,18 @@
     -fx-border-radius: 5px;
 }
 
+
+
+
+
+
+
 .menu-item:focused,
 .menu-item:hover {
     -fx-background-color: -hover-color;
     -fx-border-color: -medium-gray;
 }
 
-.menu-item:hover .text {
-    -fx-fill: -text-color;
-}
 
 .menu-item-first {
     -fx-border-color: transparent;
@@ -93,4 +94,15 @@
     -fx-fill: white;
     -fx-font-smoothing: GRAY;
     -fx-stroke: white;
+}
+
+ .context-menu .menu-item .label .text {
+     -fx-fill: -text-color;
+ }
+
+ .context-menu .menu-item:hover .label .text {
+    -fx-fill: -text-color;
+    -fx-stroke: -text-color;;
+     -fx-stroke-width: 0.3;
+
 }
