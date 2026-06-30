@@ -22,7 +22,7 @@ RadioButton .radio {
 
 RadioButton:hover .radio,
 RadioButton:selected:hover .radio {
-    -fx-border-color: -border-hover;
+    -fx-border-color: derive(-fx-accent, -10%);
 }
 
 RadioButton:selected .radio {
