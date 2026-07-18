@@ -1,0 +1,26 @@
+
+.text-box-base {
+    -fx-border-width: 2px;
+    -fx-border-color: -border-color;
+    -fx-pref-height: 40px;
+    -fx-padding: 0px 6px 0px 6px;
+
+    -fx-text-fill: -text-color;
+    -fx-background-color: -fx-background;
+    -fx-border-color: -border-color;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-pref-height: 40px;
+    /*-fx-min-height: 40px;*/
+    -fx-padding: 0px 10px 0px 10px;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-box-base:focus-within {
+    -fx-border-color: -fx-accent;
+}
+
+.editor {
+    -fx-border-width: 0px;
+}

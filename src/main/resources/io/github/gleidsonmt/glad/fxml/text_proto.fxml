@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <VBox spacing="20.0">
+               <children>
+                  <TextField prefHeight="40.0" prefWidth="200.0" text="TextField">
+                     <styleClass>
+                        <String fx:value="border-1" />
+                        <String fx:value="border-primary" />
+                     </styleClass>
+                  </TextField>
+                  <GridPane hgap="5.0" prefHeight="40.0" prefWidth="200.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="20.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="20.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Group>
+                           <children>
+                              <SVGPath content="M324.5-404.5Q310-419 310-440t14.5-35.5Q339-490 360-490t35.5 14.5Q410-461 410-440t-14.5 35.5Q381-390 360-390t-35.5-14.5Zm240 0Q550-419 550-440t14.5-35.5Q579-490 600-490t35.5 14.5Q650-461 650-440t-14.5 35.5Q621-390 600-390t-35.5-14.5ZM480-160q134 0 227-93t93-227q0-24-3-46.5T786-570q-21 5-42 7.5t-44 2.5q-91 0-172-39T390-708q-32 78-91.5 135.5T160-486v6q0 134 93 227t227 93Zm0 80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-54-715q42 70 114 112.5T700-640q14 0 27-1.5t27-3.5q-42-70-114-112.5T480-800q-14 0-27 1.5t-27 3.5ZM177-581q51-29 89-75t57-103q-51 29-89 75t-57 103Zm249-214Zm-103 36Z" scaleX="0.023" scaleY="0.023" />
+                           </children>
+                        </Group>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
+                        <Group GridPane.columnIndex="2">
+                           <children>
+                              <SVGPath content="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" scaleX="0.023" scaleY="0.023" />
+                           </children>
+                        </Group>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="border-1" />
+                        <String fx:value="border-primary" />
+                        <String fx:value="rounded" />
+                     </styleClass>
+                  </GridPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../css/colors.css" />
+      <URL value="@../css/typographic.css" />
+      <URL value="@../css/shapes.css" />
+      <URL value="@../css/text-field.css" />
+      <URL value="@../css/text-box.css" />
+      <URL value="@../css/properties.css" />
+   </stylesheets>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</StackPane>

@@ -2,9 +2,9 @@
 
 package io.github.gleidsonmt.glad.controls.skin;
 
+import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.controls.form.FormField;
 import io.github.gleidsonmt.glad.controls.text_box.Editor;
-import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
 import javafx.beans.DefaultProperty;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
@@ -13,9 +13,11 @@ import javafx.css.*;
 import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
+import javafx.scene.control.TextField;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Base class to construtc input field with a editor.
@@ -27,7 +29,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public abstract class TextBoxBase extends Control implements FormField {
 
-    private final ObjectProperty<Editor> editor = new SimpleObjectProperty<>();
+    private final ObjectProperty<TextField> editor = new SimpleObjectProperty<>();
     private final ObjectProperty<Node> leftNode = new SimpleObjectProperty<>();
     private final ObjectProperty<Node> rightNode = new SimpleObjectProperty<>();
 
@@ -37,10 +39,16 @@ public abstract class TextBoxBase extends Control implements FormField {
     private final StyleableObjectProperty<Boolean> animated =
             new SimpleStyleableObjectProperty<>(ANIMATE, this, "animate", false);
 
+    private final StyleableDoubleProperty spacing =
+            new SimpleStyleableDoubleProperty(SPACING, this, "spacing", 0.0);
+
     private static final CssMetaData<TextBoxBase, Boolean> ANIMATE =
             FACTORY.createBooleanCssMetaData(
                     "-fx-animate",
                     g -> g.animated, true);
+
+    private static final CssMetaData<TextBoxBase, Number> SPACING =
+            FACTORY.createSizeCssMetaData("-fx-spacing", s -> s.spacing, 8.0);
 
     private static final PseudoClass PSEUDO_CLASS_ERROR = PseudoClass.getPseudoClass("error");
     private static final PseudoClass PSEUDO_CLASS_SUCCESS = PseudoClass.getPseudoClass("success");
@@ -63,7 +71,7 @@ public abstract class TextBoxBase extends Control implements FormField {
     }
 
     protected TextBoxBase(boolean mask) {
-        editor.set(new Editor());
+//        editor.set(new Editor());
         maskText.set(mask);
         getStyleClass().add("text-box-base");
 
@@ -72,7 +80,7 @@ public abstract class TextBoxBase extends Control implements FormField {
             if (newValue != null) {
 
                 newValue.focusedProperty().addListener(retainFocus);
-                newValue.maskTextProperty().bindBidirectional(maskText);
+//                newValue.maskTextProperty().bindBidirectional(maskText);
                 newValue.textProperty().bindBidirectional(text);
                 newValue.promptTextProperty().bindBidirectional(promptText);
 
@@ -96,6 +104,12 @@ public abstract class TextBoxBase extends Control implements FormField {
 //        }
         return new TextBoxBaseSkin(this);
     }
+
+    @Override
+    public String getUserAgentStylesheet() {
+        return Objects.requireNonNull(Resources.class.getResource("agents/text-box-base.css")).toExternalForm();
+    }
+
 
     @Override
     public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
@@ -135,15 +149,15 @@ public abstract class TextBoxBase extends Control implements FormField {
         return valid;
     }
 
-    public Editor getEditor() {
+    public TextField getEditor() {
         return editor.get();
     }
 
-    protected ObjectProperty<Editor> editorProperty() {
+    protected ObjectProperty<TextField> editorProperty() {
         return editor;
     }
 
-    protected void setEditor(Editor editor) {
+    protected void setEditor(TextField editor) {
         this.editor.set(editor);
     }
 
@@ -222,4 +236,15 @@ public abstract class TextBoxBase extends Control implements FormField {
         this.promptText.set(promptText);
     }
 
+    public StyleableDoubleProperty spacingProperty() {
+        return spacing;
+    }
+
+    public double getSpacing() {
+        return spacing.get();
+    }
+
+    public void setSpacing(double val) {
+        spacing.set(val);
+    }
 }

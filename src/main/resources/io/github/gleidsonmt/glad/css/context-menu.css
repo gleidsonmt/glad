@@ -26,7 +26,8 @@
     -fx-font-family: "Instagram Sans";
 }
 .menu-item {
-    -fx-padding: 8px 15px 8px 15px;
+    /*-fx-padding: 8px 15px 8px 15px;*/
+    -fx-padding: 6px 15px 6px 15px;
     -fx-border-insets: 0px;
     -fx-background-insets: 0px;
 }
@@ -46,10 +47,10 @@
     -fx-border-radius: 5px;
 }
 
-
-
-
-
+.menu-item {
+    -fx-border-insets: 3px;
+    -fx-background-insets: 3px;
+}
 
 
 .menu-item:focused,
@@ -60,20 +61,20 @@
 
 
 .menu-item-first {
-    -fx-border-color: transparent;
+    /*-fx-border-color: transparent;*/
 }
 
 .menu-item-first:hover {
-    -fx-border-color: transparent transparent -medium-gray transparent;
+    /*-fx-border-color: transparent transparent -medium-gray transparent;*/
 }
 
 .menu-item-last {
-    -fx-border-color: transparent;
+    /*-fx-border-color: transparent;*/
 }
 
-.menu-item-last:hover {
-    -fx-border-color: -medium-gray transparent transparent transparent;
-}
+/*.menu-item-last:hover {*/
+/*    -fx-border-color: -medium-gray transparent transparent transparent;*/
+/*}*/
 
 .arrow {
     -fx-rotate: 90;
@@ -102,7 +103,5 @@
 
  .context-menu .menu-item:hover .label .text {
     -fx-fill: -text-color;
-    -fx-stroke: -text-color;;
-     -fx-stroke-width: 0.3;
 
 }

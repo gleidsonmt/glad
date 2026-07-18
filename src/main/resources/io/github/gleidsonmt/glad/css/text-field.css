@@ -1,6 +1,4 @@
 
-
-
 TextField, PasswordField, .text-field {
     -fx-text-fill: -text-color;
     -fx-background-color: -fx-background;
@@ -9,7 +7,7 @@ TextField, PasswordField, .text-field {
     -fx-border-radius: 5px;
     -fx-border-width: 2px;
     -fx-pref-height: 40px;
-    -fx-min-height: 40px;
+    /*-fx-min-height: 40px;*/
     -fx-padding: 0px 10px 0px 10px;
     -fx-faint-focus-color: transparent;
 }

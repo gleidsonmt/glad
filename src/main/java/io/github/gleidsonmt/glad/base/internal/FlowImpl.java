@@ -129,8 +129,9 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
     }
 
     private void relocateByNode(Region target) {
+        System.out.println("this.height.get() = " + this.height.get());
         if (this.height.get() == -1) {
-            // if the height of the content has no pref height
+            // if the height of the content has no pref sliheight,
             // then the height will be settled by the content
             this.content.maxHeightProperty().bind(this.content.heightProperty());
             this.height.bind(this.content.maxHeightProperty());
@@ -181,7 +182,12 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
                 }
             }
         }
+        System.out.println("x = " + x);
         content.setTranslateX(Math.round(x));
+
+        content.maxWidthProperty().unbind();
+        content.prefWidthProperty().unbind();
+        content.minWidthProperty().unbind();
 
     }
 
@@ -217,6 +223,9 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         }
 
         content.setTranslateY(Math.round(y));
+        content.maxHeightProperty().unbind();
+        content.prefHeightProperty().unbind();
+        content.minHeightProperty().unbind();
 
     }
 

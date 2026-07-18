@@ -4,12 +4,9 @@ package io.github.gleidsonmt.glad.controls.skin;
 
 import io.github.gleidsonmt.glad.controls.ComponentSkin;
 import io.github.gleidsonmt.glad.controls.text_box.Editor;
-import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
-import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.css.PseudoClass;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
@@ -32,19 +29,22 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
         super(_control);
         this.control = _control;
 
+
 //        if (_control.isAnimate()) {
-//            _control.setEditor(new FloatEditor());
+////            _control.setEditor(new FloatEditor());
 //            pseudoClassStateChanged(PseudoClass.getPseudoClass("animate"), true);
 //        } else {
-//            _control.setEditor(new Editor());
+////            _control.setEditor(new Editor());
 //            pseudoClassStateChanged(PseudoClass.getPseudoClass("animate"), false);
 //        }
 
-        if (_control.getEditor() != null) {
-            _control.getEditor().textProperty().bindBidirectional(_control.textProperty());
-            _control.getEditor().promptTextProperty().bindBidirectional(_control.promptTextProperty());
-            _control.getEditor().maskTextProperty().bindBidirectional(_control.maskTextProperty());
-        }
+
+
+//        if (_control.getEditor() != null) {
+//            _control.getEditor().textProperty().bindBidirectional(_control.textProperty());
+//            _control.getEditor().promptTextProperty().bindBidirectional(_control.promptTextProperty());
+//            _control.getEditor().maskTextProperty().bindBidirectional(_control.maskTextProperty());
+//        }
 
         control.editorProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
@@ -98,6 +98,11 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
         });
 
         setInitialState(control);
+//
+//        control.getEditor().prefHeightProperty().bind(control.prefHeightProperty());
+//        control.getEditor().minHeightProperty().bind(control.minHeightProperty());
+//        control.getEditor().maxHeightProperty().bind(control.maxHeightProperty());
+
     }
 
 
@@ -111,7 +116,7 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
             helperLabel.setOpacity(0);
             helperLabel.setFocusTraversable(false);
             helperLabel.setPrefWidth(Double.MAX_VALUE);
-//            helperLabel.setWrapText(true);
+            helperLabel.setWrapText(true);
             setAnimatedValidate();
 
         }
@@ -138,6 +143,24 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
 
     }
 
+//    @Override
+//    protected double computePrefHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
+//        return
+//                super.computePrefHeight(control.getEditor().getHeight(), topInset, rightInset, bottomInset, leftInset)
+//                +
+//                control.getEditor().prefHeight(width) + topInset + bottomInset
+//                ;
+//
+//    }
+//
+//    @Override
+//    protected double computeMinHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
+//        return
+//                super.computePrefHeight(width, topInset, rightInset, bottomInset, leftInset)
+//                +
+//                control.getEditor().minHeight(width) + topInset + bottomInset
+//                ;
+//    }
 
     @Override
     protected void layoutChildren(double x, double y, double w, double h) {
@@ -169,8 +192,11 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
 
         }
 
+        edX = edX + getSkinnable().getSpacing();
+        edW = edW - (getSkinnable().getSpacing() * 2);
+
         if (getChildren().contains(control.getEditor())) {
-            positionInArea(control.getEditor(), edX, y, edW, h, -1, HPos.LEFT, VPos.CENTER);
+            layoutInArea(control.getEditor(), edX, y, edW, h, -1, HPos.LEFT, VPos.CENTER);
         }
 
         if (getChildren().contains(control.getLeftNode()))
@@ -186,8 +212,14 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
             helperLabel.requestLayout();
         }
 
-        if (control.getEditor() != null)
-            control.getEditor().resize(edW, control.getHeight());
+//        if (control.getEditor() instanceof FloatEditor floatEditor) {
+//            floatEditor.resize(edW, control.getHeight());
+//        } else {
+//            if (control.getEditor() != null)
+//                control.getEditor().resize(edW, control.getHeight());
+//        }
+
+//        layoutInArea(control.getEditor(), edX, y, w - edX,h, -1, HPos.LEFT, VPos.CENTER);
 
         bind(control);
     }
@@ -207,11 +239,6 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
                 helperLabel.setText((String) e.getValue());
             }
         });
-    }
-
-    @Override
-    protected double computeMaxHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
-        return super.computePrefHeight(width, topInset, rightInset, bottomInset, leftInset);
     }
 
     @Override

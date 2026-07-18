@@ -82,7 +82,13 @@
     -fx-background-radius: 100px 100px 50px 50px;
 }
 
-.info {
+.info,
+.info-left {
+    -fx-background-radius: 100px 100px 100px 0px;
+    -fx-border-radius: 100px 100px 100px 0px;
+}
+
+.info-right {
     -fx-background-radius: 100px 100px 100px 0px;
 }
 

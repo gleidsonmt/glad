@@ -15,18 +15,17 @@
 }
 
 .root:dark-theme {
-    -fx-background: derive(#1c1c1e, 0%);
+    -fx-background: derive(#1c1c1e, 20%);
 
     -text-color: #d8d3d5;
     -fx-stroke: -text-color;
 
-    -fx-foreground: derive(#1c1c1e, 10%);
     -icon-color: #d1d0d5;
     -hover-color: derive(#1c1c1e, 20%);
 
 
     -border-color:  derive(#1c1c1e, 10%);
-    -fx-foreground: derive(-elegant, -10%);
+    -fx-foreground: derive(-elegant, 0%);
     -icon-color: -text-color;
 
 }
@@ -41,4 +40,10 @@
 .root:dark-theme .text,
 .root:dark-theme Text {
     -fx-fill: -text-color;
+}
+.text-box .editor:focus,
+.text-box:focus-within .editor,
+.text-box .editor
+{
+    -fx-background-color: transparent;
 }

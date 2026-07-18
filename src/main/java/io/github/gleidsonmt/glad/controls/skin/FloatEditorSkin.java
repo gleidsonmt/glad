@@ -35,6 +35,7 @@ public class FloatEditorSkin extends EditorSkin {
 
         moveablePrompt.getStyleClass().add("moveable-prompt");
         moveablePrompt.setMouseTransparent(true);
+        moveablePrompt.setWrapText(true);
         moveablePrompt.toFront();
 
         // add prompt and hide old prompt
@@ -147,7 +148,8 @@ public class FloatEditorSkin extends EditorSkin {
         super.layoutChildren(x, y, w, h);
         if (!isAnimation()) {
             if (getSkinnable().getText() != null && !getSkinnable().getText().isEmpty()) {
-                positionInArea(moveablePrompt, x,
+//                positionInArea(moveablePrompt, x + ((FloatEditor) getSkinnable()).getDistanceX(),
+                positionInArea(moveablePrompt, x + ( -( (TextBoxBase) getSkinnable().getParent()).getLeftNode().getBoundsInParent().getWidth() ),
                         (y - moveablePrompt.getTranslateY() +
                          getSkinnable().getInsets().getTop() + getSkinnable().getInsets().getBottom()),
                         w, h, -1, HPos.LEFT, VPos.BASELINE);

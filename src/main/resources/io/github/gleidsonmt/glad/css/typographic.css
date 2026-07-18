@@ -11,6 +11,7 @@ Text {
     -fx-font-family: "Poppins";
     -fx-fill: -text-color;
     -fx-font-smoothing-type: gray;
+    -fx-stroke: transparent;
 }
 
 .root:dark-theme Text,
@@ -19,7 +20,7 @@ Text {
 
     -fx-stroke-width: 0.3;
     -fx-font-smoothing-type: lcd;
-    -fx-stroke: -text-color;
+    -fx-stroke: -medium-gray-2;
 
 }
 
@@ -30,7 +31,6 @@ Text {
 .icon-container .icon {
     -fx-fill: -icon-color;
 }
-
 
 .icon-container  {
     -fx-fill: -icon-color;

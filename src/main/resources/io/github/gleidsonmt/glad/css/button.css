@@ -103,14 +103,20 @@ Button .text {
 
 .inside-button:focused:pressed,
 .inside-button:focused:hover,
+.inside-button:hover,
 .inside-button:focused {
-    -fx-background-color: -hover-color;
+    -fx-background-color: -light-gray-2;
     -fx-border-color: transparent;
 }
 
 .inside-button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
+}
+
+.inside-button .icon-container .icon {
+    -text-color: -dark-gray;
+    -fx-fill: -text-color;
 }
 
 .root:dark-theme Button:cancel,

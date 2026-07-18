@@ -1,46 +1,60 @@
-
 .slider {
-    -fx-padding: 10px;
+
 }
 
 .slider .track {
-    -fx-background-color: #E2E8F0;
+    -fx-background-color: -light-gray;
     -fx-background-radius: 4px;
     -fx-pref-height: 6px;
 }
 
-
 .slider:hover .track {
-    -fx-background-color: #CBD5E1;
+    -fx-background-color:  -light-gray-2;
 }
 
+.slider .thumb {
+    -fx-background-color: -fx-accent;
+    -fx-background-radius: 50%;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+
+    /*-fx-effect: dropshadow(three-pass-box, rgba(37, 99, 235, 0.2), 6, 0, 0, 3);*/
+
+    -fx-padding: 10px;
+}
 
 .slider .thumb {
-    -fx-background-color: #2563EB;
-    -fx-background-radius: 50%;
-    -fx-pref-width: 16px;
-    -fx-pref-height: 16px;
-
-    -fx-effect: dropshadow(three-pass-box, rgba(37, 99, 235, 0.2), 6, 0, 0, 3);
+    -fx-border-width: 3px;
+    -fx-border-color: white;
+    -fx-border-radius: 10px;
+    -fx-border-insets: -1px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .1), 10, 0.5, 0, 1);
 }
 
 .slider .thumb:hover {
-    -fx-background-color: #1D4ED8;
+    -fx-background-color: derive(-fx-accent, -10%);
     -fx-cursor: hand;
 }
 
-
 .slider .thumb:pressed {
-    -fx-background-color: #1E40AF;
+    -fx-background-color: derive(-fx-accent, -20%);
     -fx-scale-x: 1.15;
     -fx-scale-y: 1.15;
     -fx-effect: dropshadow(three-pass-box, rgba(37, 99, 235, 0.4), 10, 0, 0, 0);
 }
+
 .slider .axis {
-    -fx-tick-label-fill: #64748B;
+    -fx-tick-label-fill: red;
     -fx-tick-label-font-size: 11px;
 }
 
 .slider .axis .axis-tick-mark {
-    -fx-stroke: #94A3B8;
+    -fx-stroke: -medium-gray-2;
 }
+
+.slider .track {
+    -fx-control-inner-background: #e0e0e0; /* Cor padrão do fundo */
+    -fx-background-color: -light-gray-2, -light-gray-2, -light-gray;
+}
+

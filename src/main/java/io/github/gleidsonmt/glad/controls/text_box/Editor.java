@@ -3,10 +3,7 @@ package io.github.gleidsonmt.glad.controls.text_box;
 import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.controls.skin.EditorSkin;
 import javafx.beans.DefaultProperty;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.geometry.Pos;
@@ -21,7 +18,7 @@ import java.util.Objects;
 /**
  * Basic class for editor boxes.
  * Editor is a wrapper of TextField it aims to be used inside a control.
- * Usually a box control, like (PasswordBox,  {@link TextBox}) etc.
+ * Usually a box control, like (PasswordBox,  {@link TextBoxOld}) etc.
  *
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  20/09/2022
@@ -34,6 +31,21 @@ public class Editor extends TextField {
     private final BooleanProperty maskText = new SimpleBooleanProperty(false);
     // used for max text input
     private final IntegerProperty max = new SimpleIntegerProperty(Integer.MAX_VALUE);
+    private final StringProperty label = new SimpleStringProperty(this, "label");
+    private final DoubleProperty spacing = new SimpleDoubleProperty(this, "spacing", 0);
+
+    public final double getSpacing() {
+        return spacing.get();
+    }
+
+    public final void setSpacing(double value) {
+        spacing.set(value);
+    }
+
+    public final DoubleProperty spacingProperty() {
+        return spacing;
+    }
+
 
     public Editor() {
         getStyleClass().add("editor");
@@ -114,5 +126,17 @@ public class Editor extends TextField {
 
     private void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
         if (newValue) addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
+    }
+
+    public final String getLabel() {
+        return label.get();
+    }
+
+    public final void setLabel(String value) {
+        label.set(value);
+    }
+
+    public final StringProperty labelProperty() {
+        return label;
     }
 }

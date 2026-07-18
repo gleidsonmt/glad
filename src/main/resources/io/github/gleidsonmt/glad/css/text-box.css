@@ -1,43 +1,39 @@
 
+.text-box {
+}
 
 .text-box {
-    -fx-border-color: -border-color;
-    -fx-text-fill: -text-color;
-    -fx-background-color: -fx-background;
-    -fx-background-radius: 5px;
-    -fx-border-radius: 5px;
-    -fx-border-width: 2px;
-    -fx-padding: 0px 5px 0px 5px;
-    -fx-faint-focus-color: transparent;
+    -fx-spacing: 15px;
 }
 
-.text-box:hover,
-.text-box:focused {
-    -fx-border-color: -fx-accent;
-    -fx-border-width: 2px;
-}
+.text-box .editor  {
+    -fx-padding: 0px 15px 0px 15px;
 
-.text-box .editor:focused,
-.text-box .editor {
-    -fx-text-fill: -text-color;
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-faint-focus-color: transparent;
-}
-
-.text-box *. .editor {
-    -fx-background-color: transparent;
+    -fx-background-color: red;
     -fx-border-color: red;
+    -fx-fill: red;
+    -fx-border-width: 0px;
+
+    -fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";
+
 }
 
-.text-box .icon-container {
-    -fx-padding: 10px;
+.text-box .text-box-base {
+    -fx-spacing: 8px;
 }
 
-.text-box:error:hover {
-    -fx-border-color: -danger;
+.text-box .editor {
+    -fx-border-width: 0px;
+    /*-fx-background-color: red;*/
+
 }
 
-.text-box:error .helper-label .text {
-    -fx-fill: -danger;
+.text-box .label {
+    -fx-background-color: transparent;
+    -fx-padding: 0px 2px 0px 2px;
+    -fx-font-size: 12px;
+}
+
+.text-box:animate .label {
+    -fx-background-color: white;
 }
