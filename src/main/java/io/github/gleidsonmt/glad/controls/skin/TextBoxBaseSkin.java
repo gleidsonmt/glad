@@ -29,23 +29,6 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
         super(_control);
         this.control = _control;
 
-
-//        if (_control.isAnimate()) {
-////            _control.setEditor(new FloatEditor());
-//            pseudoClassStateChanged(PseudoClass.getPseudoClass("animate"), true);
-//        } else {
-////            _control.setEditor(new Editor());
-//            pseudoClassStateChanged(PseudoClass.getPseudoClass("animate"), false);
-//        }
-
-
-
-//        if (_control.getEditor() != null) {
-//            _control.getEditor().textProperty().bindBidirectional(_control.textProperty());
-//            _control.getEditor().promptTextProperty().bindBidirectional(_control.promptTextProperty());
-//            _control.getEditor().maskTextProperty().bindBidirectional(_control.maskTextProperty());
-//        }
-
         control.editorProperty().addListener((_, _, newValue) -> {
             if (newValue != null) {
                 if (!getChildren().contains(newValue)) {
@@ -59,7 +42,6 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
             if (!getChildren().contains(control.getEditor()))
                 getChildren().add(control.getEditor());
         }
-
 
         if (control.getRightNode() != null) {
             control.getRightNode().setManaged(false);
@@ -98,10 +80,6 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
         });
 
         setInitialState(control);
-//
-//        control.getEditor().prefHeightProperty().bind(control.prefHeightProperty());
-//        control.getEditor().minHeightProperty().bind(control.minHeightProperty());
-//        control.getEditor().maxHeightProperty().bind(control.maxHeightProperty());
 
     }
 
@@ -121,7 +99,6 @@ public class TextBoxBaseSkin extends SkinBase<TextBoxBase> implements ComponentS
 
         }
     }
-
 
     private void setAnimatedValidate() {
         double aniV = 200;

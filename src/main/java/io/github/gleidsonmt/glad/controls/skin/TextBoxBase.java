@@ -63,45 +63,42 @@ public abstract class TextBoxBase extends Control implements FormField {
 
     private final BooleanProperty maskText = new SimpleBooleanProperty(true); // used for password text
 
-    private final StringProperty text = new SimpleStringProperty();
-    private final StringProperty promptText = new SimpleStringProperty();
+    protected final StringProperty text = new SimpleStringProperty();
+    @Deprecated(forRemoval = true)
+    protected final StringProperty promptText = new SimpleStringProperty();
 
     public TextBoxBase() {
-        this(false);
+        this(new TextField());
     }
 
-    protected TextBoxBase(boolean mask) {
-//        editor.set(new Editor());
-        maskText.set(mask);
+    protected TextBoxBase(TextField editor) {
+//        maskText.set(mask);
         getStyleClass().add("text-box-base");
+        editor.getStyleClass().add("editor");
 
         editorProperty().addListener((_, oldValue, newValue) -> {
 
             if (newValue != null) {
 
                 newValue.focusedProperty().addListener(retainFocus);
-//                newValue.maskTextProperty().bindBidirectional(maskText);
-                newValue.textProperty().bindBidirectional(text);
+                text.bindBidirectional(newValue.textProperty());
                 newValue.promptTextProperty().bindBidirectional(promptText);
 
                 if (oldValue != null)
                     oldValue.focusedProperty().removeListener(retainFocus);
             }
 
+            if (oldValue != null) {
+                text.unbindBidirectional(oldValue.textProperty());
+            }
         });
 
+        setEditor(editor);
 
     }
 
     @Override
     protected Skin<?> createDefaultSkin() {
-//        if (animated.get()) {
-//            editor.set(new FloatEditor());
-//            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, true);
-//        } else {
-//            editor.set(new Editor());
-//            pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, false);
-//        }
         return new TextBoxBaseSkin(this);
     }
 
@@ -109,7 +106,6 @@ public abstract class TextBoxBase extends Control implements FormField {
     public String getUserAgentStylesheet() {
         return Objects.requireNonNull(Resources.class.getResource("agents/text-box-base.css")).toExternalForm();
     }
-
 
     @Override
     public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {

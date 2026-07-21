@@ -4,7 +4,6 @@ import io.github.gleidsonmt.glad.controls.ComponentSkin;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.controls.text_box.Editor;
 import io.github.gleidsonmt.glad.controls.text_box.TextBox;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -15,7 +14,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
-import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.SkinBase;
 import javafx.scene.control.TextField;
@@ -46,9 +44,9 @@ public class TextBoxSkin extends SkinBase<TextBoxBase> implements ComponentSkin<
 
     private final TextBoxBase textBox = new TextBoxBase() {
         {
-            var editor = new TextField();
-            editor.getStyleClass().add("editor");
-            setEditor(editor);
+//            var editor = new TextField();
+//            editor.getStyleClass().add("editor");
+//            setEditor(editor);
         }
     };
 
@@ -75,19 +73,21 @@ public class TextBoxSkin extends SkinBase<TextBoxBase> implements ComponentSkin<
 
     public TextBoxSkin(TextBox _control) {
         super(_control);
+
         this.control = _control;
+        System.out.println(_control.getText());
+        System.out.println(_control.getEditor().getText());
+        textBox.setEditor(_control.getEditor());
+
         this.clearButton = new IconButton(new SVGIcon(Icon.CLEAR), true);
         configAction(_control);
 
         count.setManaged(false);
 
-
         pseudoClassStateChanged(PseudoClass.getPseudoClass("animate"), _control.isAnimate());
-
 
         bind(_control);
         setInitialState(_control);
-
 
         getChildren().addAll(textBox, label);
 
@@ -146,12 +146,12 @@ public class TextBoxSkin extends SkinBase<TextBoxBase> implements ComponentSkin<
     }
 
     private void addCount() {
-        count.textProperty().unbind();
+//        count.textProperty().unbind();
         count.textProperty().bind(textBox.getEditor().lengthProperty().asString("%d").concat("/").concat(control.maxProperty().asString("%d")));
 
         textBox.getEditor().setTextFormatter(new TextFormatter<>(change -> {
             // Check if the proposed new text length exceeds 10
-            System.out.println(change.getControlNewText().length());
+//            System.out.println(change.getControlNewText().length());
             if (change.getControlNewText().length() > control.getMax()) {
 
                 return null; // Reject the change
@@ -340,9 +340,11 @@ public class TextBoxSkin extends SkinBase<TextBoxBase> implements ComponentSkin<
 
     @Override
     public void bind(TextBoxBase _control) {
+
         textBox.leftNodeProperty().bindBidirectional(_control.leftNodeProperty());
 
-        textBox.getEditor().textProperty().bindBidirectional(_control.textProperty());
+//        textBox.getEditor().textProperty().bindBidirectional(_control.textProperty());
+//        _control.textProperty().bindBidirectional(textBox.getEditor().textProperty());
         helper.textProperty().bindBidirectional(_control.helperTextProperty());
         label.textProperty().bind(control.labelProperty());
 

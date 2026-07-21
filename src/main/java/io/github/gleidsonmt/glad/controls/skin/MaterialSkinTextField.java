@@ -37,7 +37,10 @@ public class MaterialSkinTextField extends TextFieldSkin {
 //        MenuItem menuUndo = new MenuItem(rc.getString(""));
 
         menuUndo.setGraphic(new SVGIcon(Icon.UNDO, 0.8));
-        menuUndo.setOnAction(_ -> control.undo());
+        menuUndo.setOnAction(_ -> {
+            System.out.println("control = " + control.isUndoable());
+            control.undo();
+        });
         menuUndo.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN));
         menuUndo.disableProperty().bind(control.undoableProperty().not());
         menuUndo.getStyleClass().add("menu-item-first");
@@ -50,13 +53,13 @@ public class MaterialSkinTextField extends TextFieldSkin {
 
         MenuItem menuCut = new MenuItem(bundle.getString("TextInputControl.menu.Cut"));
         menuCut.setGraphic(new SVGIcon(Icon.CUT,iconSize));
-        menuCut.setOnAction(e -> control.cut());
+        menuCut.setOnAction(_ -> control.cut());
         menuCut.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
         menuCut.disableProperty().bind(control.selectedTextProperty().isEmpty());
 
         MenuItem menuCopy = new MenuItem(bundle.getString("TextInputControl.menu.Copy"));
         menuCopy.setGraphic(new SVGIcon(Icon.COPY,iconSize));
-        menuCopy.setOnAction(e -> {
+        menuCopy.setOnAction(_ -> {
             control.selectAll();
             control.copy();
             control.deselect();
@@ -89,7 +92,6 @@ public class MaterialSkinTextField extends TextFieldSkin {
                 ));
 
     }
-
 }
 
 class CustomContextMenu extends ContextMenu {
@@ -98,9 +100,6 @@ class CustomContextMenu extends ContextMenu {
         this.getItems().addAll(menuItem);
         this.getScene().getRoot().setStyle("-fx-background-color: transparent;");
         this.setPrefWidth(200);
-
 //        this.setStyle("-fx-background-color: transparent; -fx-border-color: gray; -fx-background-radius: 10px;  -fx-border-radius: 10px; ");
     }
-
 }
-

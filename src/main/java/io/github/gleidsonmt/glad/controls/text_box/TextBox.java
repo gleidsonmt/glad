@@ -8,6 +8,7 @@ import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
 import javafx.beans.property.*;
 import javafx.scene.Node;
 import javafx.scene.control.Skin;
+import javafx.scene.control.TextField;
 
 import java.util.Objects;
 
@@ -51,7 +52,7 @@ public class TextBox extends TextBoxBase {
     }
 
     public TextBox(Node icon, String text, boolean action) {
-        super(false);
+        super(new TextField());
 
         this.action = new SimpleBooleanProperty(action);
 
@@ -69,7 +70,6 @@ public class TextBox extends TextBoxBase {
 //        };
 
     }
-
 
     public final String getHelperText() {
         return helperText.get();

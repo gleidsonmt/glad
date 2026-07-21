@@ -6,7 +6,6 @@ import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
-import io.github.gleidsonmt.glad.controls.skin.TextBoxSkinOld;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Node;
@@ -53,7 +52,7 @@ public class TextBoxOld extends TextBoxBase {
     }
 
     public TextBoxOld(Node icon, String text, boolean action) {
-        super(false);
+//        super(false);
 
         this.action = new SimpleBooleanProperty(action);
 
@@ -72,7 +71,8 @@ public class TextBoxOld extends TextBoxBase {
 
     @Override
     protected Skin<?> createDefaultSkin() {
-        return new TextBoxSkinOld(this);
+//        return new TextBoxSkinOld(this);
+        return null;
     }
 
     public void setIcon(Node node) {

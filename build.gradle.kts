@@ -17,7 +17,7 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 javafx {
-    version = "23.0.2"
+    version = "25.0.3"
     modules = listOf(
         "javafx.controls",
         "javafx.fxml",
