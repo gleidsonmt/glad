@@ -6,7 +6,7 @@
 
     -text-color: -dark-gray;
     -icon-color: -text-color;
-    -hover-color: -light-gray;
+    -hover-color: -medium-gray;
     -border-color: -light-gray-2;
 
     -fx-background: white;
@@ -41,9 +41,23 @@
 .root:dark-theme Text {
     -fx-fill: -text-color;
 }
-.text-box .editor:focus,
-.text-box:focus-within .editor,
-.text-box .editor
-{
-    -fx-background-color: transparent;
+
+
+.button-list {
+    -fx-padding: 2px;
+   -fx-background-color: -fx-foreground;
+    -fx-background-radius: 10px;
 }
+
+.button-list .toggle-button:first-child {
+    -fx-background-radius: 10px 0px 0px 10px;
+}
+
+.button-list .toggle-button:last-child {
+    -fx-background-radius: 0px 10px 10px 0px;
+}
+
+.button-list .toggle-button {
+    -fx-background-radius: 0px;
+}
+

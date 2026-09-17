@@ -17,7 +17,7 @@ import java.util.Objects;
 
 /**
  * Basic class for editor boxes.
- * Editor is a wrapper of TextField it aims to be used inside a control.
+ * EditorOld is a wrapper of TextField it aims to be used inside a control.
  * Usually a box control, like (PasswordBox,  {@link TextBoxOld}) etc.
  *
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
@@ -25,7 +25,7 @@ import java.util.Objects;
  */
 @SuppressWarnings("unused")
 @DefaultProperty("children")
-public class Editor extends TextField {
+public class EditorOld extends TextField {
 
     // used for password text
     private final BooleanProperty maskText = new SimpleBooleanProperty(false);
@@ -47,7 +47,7 @@ public class Editor extends TextField {
     }
 
 
-    public Editor() {
+    public EditorOld() {
         getStyleClass().add("editor");
         setAlignment(Pos.CENTER_LEFT);
 

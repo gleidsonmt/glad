@@ -55,7 +55,7 @@
 
 .menu-item:focused,
 .menu-item:hover {
-    -fx-background-color: -hover-color;
+    -fx-background-color: -light-gray;
     -fx-border-color: -medium-gray;
 }
 

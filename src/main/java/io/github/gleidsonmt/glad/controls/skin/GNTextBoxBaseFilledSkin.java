@@ -18,7 +18,7 @@
 //package io.github.gleidsonmt.glad.controls.skin;
 //
 //import io.github.gleidsonmt.glad.controls.enums.FloatAlignment;
-//import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
+//import io.github.gleidsonmt.glad.controls.text_box.FloatEditorOld;
 //import javafx.animation.Animation;
 //import javafx.animation.KeyFrame;
 //import javafx.animation.KeyValue;
@@ -62,13 +62,13 @@
 //
 //        getChildren().add(filledBorder);
 //
-//        if (control.getEditor() instanceof FloatEditor)
+//        if (control.getEditor() instanceof FloatEditorOld)
 //            filledBorder.setManaged(false);
 //
 //        filledBorder.setStyle("-fx-background-color: -fx-accent;");
 //
-//        if (control.getEditor() instanceof FloatEditor)
-//            ((FloatEditor) control.getEditor()).setFloatAlignment(FloatAlignment.TOP);
+//        if (control.getEditor() instanceof FloatEditorOld)
+//            ((FloatEditorOld) control.getEditor()).setFloatAlignment(FloatAlignment.TOP);
 //
 //        if (getChildren().contains(control.getLeftNode())) {
 //            control.setPadding(new Insets(0, 5, 0, 10));

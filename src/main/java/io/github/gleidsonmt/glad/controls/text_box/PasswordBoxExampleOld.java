@@ -5,53 +5,52 @@ package io.github.gleidsonmt.glad.controls.text_box;
 import io.github.gleidsonmt.glad.controls.button.IconButton;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.controls.skin.PasswordBoxSkin;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Node;
-import javafx.scene.control.Skin;
 
 /**
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  04/04/2025
  * Ultimate.
  */
-public class PasswordBoxOld extends TextBoxOld {
+@Deprecated
+public class PasswordBoxExampleOld extends TextBoxExample {
 
     private final IconButton hideButton;
 
-    public PasswordBoxOld() {
+    public PasswordBoxExampleOld() {
         this((Icon) null, null);
     }
 
-    public PasswordBoxOld(Icon icon) {
+    public PasswordBoxExampleOld(Icon icon) {
         this(icon, null);
     }
 
-    public PasswordBoxOld(String text) {
+    public PasswordBoxExampleOld(String text) {
         this((Icon) null, text);
     }
 
-    public PasswordBoxOld(Icon icon, String text) {
+    public PasswordBoxExampleOld(Icon icon, String text) {
         this(icon != null ? new SVGIcon(icon) : null, text, false);
     }
 
-    public PasswordBoxOld(Node icon, String text) {
+    public PasswordBoxExampleOld(Node icon, String text) {
         this(icon, text, false);
     }
 
-    public PasswordBoxOld(Icon icon, String text, boolean action) {
+    public PasswordBoxExampleOld(Icon icon, String text, boolean action) {
         this(icon != null ? new SVGIcon(icon) : null, text, action);
     }
 
-    public PasswordBoxOld(Node icon, String text, boolean action) {
+    public PasswordBoxExampleOld(Node icon, String text, boolean action) {
         super(icon, text, action);
-        setMaskText(true);
+//        setMaskText(true);
         this.hideButton = new IconButton(new SVGIcon(Icon.VISIBILITY), true);
         this.hideButton.getStyleClass().addAll("rounded", "max-w-30", "min-w-30", "min-h-30", "max-h-30");
         this.action = new SimpleBooleanProperty(action);
 
         getStyleClass().addAll("password-box", "text-box");
-        if (icon != null) setLeftNode(icon);
+//        if (icon != null) setLeftNode(icon);
         setText(text);
 
 
@@ -74,8 +73,8 @@ public class PasswordBoxOld extends TextBoxOld {
 
     }
 
-    @Override
-    protected Skin<?> createDefaultSkin() {
-        return new PasswordBoxSkin(this);
-    }
+//    @Override
+//    protected Skin<?> createDefaultSkin() {
+//        return new PasswordBoxSkin(this);
+//    }
 }

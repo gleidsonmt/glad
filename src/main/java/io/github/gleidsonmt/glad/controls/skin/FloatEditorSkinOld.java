@@ -3,7 +3,7 @@
 package io.github.gleidsonmt.glad.controls.skin;
 
 import io.github.gleidsonmt.glad.controls.enums.FloatAlignment;
-import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
+import io.github.gleidsonmt.glad.controls.text_box.FloatEditorOld;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -22,6 +22,7 @@ import javafx.util.Duration;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  08/09/2022
  */
+@Deprecated(forRemoval = true)
 public class FloatEditorSkinOld extends EditorSkin {
 
     private static final PseudoClass FLOAT_PSEUDO_CLASS =
@@ -29,7 +30,7 @@ public class FloatEditorSkinOld extends EditorSkin {
 
     private final Label moveablePrompt = new Label("Float Prompt");
 
-    private final FloatEditor control;
+    private final FloatEditorOld control;
     private VPos vPos;
 
     private final double aniVeloz = 100;
@@ -38,7 +39,7 @@ public class FloatEditorSkinOld extends EditorSkin {
     private final Timeline downAnimation = new Timeline();
 
 
-    public FloatEditorSkinOld(FloatEditor _control) {
+    public FloatEditorSkinOld(FloatEditorOld _control) {
         super(_control);
         this.control = _control;
 

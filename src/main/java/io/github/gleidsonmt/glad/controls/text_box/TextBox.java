@@ -1,126 +1,166 @@
 package io.github.gleidsonmt.glad.controls.text_box;
 
-import io.github.gleidsonmt.glad.Resources;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.controls.skin.TextBoxSkin;
-import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
 import javafx.beans.property.*;
+import javafx.css.*;
 import javafx.scene.Node;
+import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
 
-import java.util.Objects;
+import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
- * Created on 07/07/2026
+ * Created on 24/08/2026
  */
-public class TextBox extends TextBoxBase {
+public class TextBox extends Control {
 
-    protected BooleanProperty action;
-    private final StringProperty label = new SimpleStringProperty(this, "label");
-    private final StringProperty helperText = new SimpleStringProperty(this, "helperText");
+    private final StringProperty label = new SimpleStringProperty(this, "Label", "");
+    private final StringProperty suggestedText = new SimpleStringProperty(this, "Suggested Text");
+    private final ObjectProperty<Node> icon = new SimpleObjectProperty<>(this, "icon");
     private final IntegerProperty max = new SimpleIntegerProperty(this, "max", -1);
+    private final ObjectProperty<TextField> editor = new SimpleObjectProperty<>(this, "editor");
+
+    protected static final StyleablePropertyFactory<TextBox> FACTORY =
+            new StyleablePropertyFactory<>(Control.getClassCssMetaData());
+
+    protected final StyleableObjectProperty<Boolean> animated =
+            new SimpleStyleableObjectProperty<>(ANIMATE, this, "animate", false);
+
+    protected final StyleableObjectProperty<Boolean> actionable =
+            new SimpleStyleableObjectProperty<>(ACTIONABLE, this, "animate", false);
+
+    protected static final CssMetaData<TextBox, Boolean> ACTIONABLE =
+            FACTORY.createBooleanCssMetaData(
+                    "-fx-actionable",
+                    g -> g.actionable, false);
+
+    protected static final CssMetaData<TextBox, Boolean> ANIMATE =
+            FACTORY.createBooleanCssMetaData(
+                    "-fx-animate",
+                    g -> g.animated, false);
+
+    protected static final PseudoClass PSEUDO_CLASS_ANIMATE = PseudoClass.getPseudoClass("animate");
+
 
     public TextBox() {
-        this((Icon) null, null);
+        this(Icon.NONE, null, false);
+    }
+
+    public TextBox(String label) {
+       this(Icon.NONE, label, false);
     }
 
     public TextBox(Icon icon) {
-        this(icon, null);
+        this(icon, null, false);
     }
 
-    public TextBox(Node icon) {
-        this(icon, null);
+    public TextBox(Icon icon, String label, boolean action) {
+        this(new SVGIcon(icon), label, action);
     }
 
-    public TextBox(String text) {
-        this((Icon) null, text);
-    }
-
-    public TextBox(Icon icon, String text) {
-        this(icon != null ? new SVGIcon(icon) : null, text, false);
-    }
-
-    public TextBox(Node icon, String text) {
-        this(icon, text, false);
-    }
-
-    public TextBox(Icon icon, String text, boolean action) {
-        this(icon != null ? new SVGIcon(icon) : null, text, action);
-    }
-
-    public TextBox(Node icon, String text, boolean action) {
-        super(new TextField());
-
-        this.action = new SimpleBooleanProperty(action);
-
-        getStyleClass().remove("text-box-base");
+    public TextBox(Node icon, String label, boolean action) {
         getStyleClass().add("text-box");
-        if (icon != null) setLeftNode(icon);
-        setText(text);
-
-
-//        if (action) setRightNode(createRightAction());
-
-        // When editor has text clear button will appear
-//        ChangeListener<String> hideAction = (_, _, newVal) -> {
-//            setRightNode(newVal != null && !newVal.isEmpty() && isAction() ? createRightAction() : null);
-//        };
-
+        this.label.set(label);
+        this.icon.set(icon);
+        editor.set(new TextField());
+        animated.addListener((_, _, newVal) -> pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, newVal));
     }
-
-    public final String getHelperText() {
-        return helperText.get();
-    }
-
-    public final void setHelperText(String value) {
-        helperText.set(value);
-    }
-
-    public final StringProperty helperTextProperty() {
-        return helperText;
-    }
-
-
-    public final String getLabel() {
-        return label.get();
-    }
-
-    public final void setLabel(String value) {
-        label.set(value);
-    }
-
-    public final StringProperty labelProperty() {
-        return label;
-    }
-
 
     @Override
     protected Skin<?> createDefaultSkin() {
-        return new TextBoxSkin(this);
+        return new TextBoxSkin(this, editor.get());
     }
 
-    public void setIcon(Node node) {
-        setLeftNode(node);
+    public StringProperty textProperty() {
+        return editor.get().textProperty();
     }
+
+    public String getText() {
+        return editor.get().getText();
+    }
+
+    public void setText(String text) {
+        editor.get().setText(text);
+    }
+
+    public TextField getEditor() {
+        return editor.get();
+    }
+
+
+//    @Override
+//    public String getUserAgentStylesheet() {
+//        return Objects.requireNonNull(getClass().getResource("button_list.css")).toExternalForm();
+//    }
+
+
 
     @Override
-    public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(Resources.class.getResource("agents/text-box.css")).toExternalForm();
+    public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
+        return FACTORY.getCssMetaData();
     }
 
-    public boolean isAction() {
-        return action.get();
+    public Node getIcon() {
+        return icon.get();
     }
 
-    public BooleanProperty actionProperty() {
-        return action;
+    public void setIcon(Node icon) {
+        this.icon.set(icon);
     }
 
-    public void setAction(boolean action) {
-        this.action.set(action);
+    public ObjectProperty<Node> iconProperty() {
+        return this.icon;
+    }
+
+    public void setLabel(String label) {
+        this.label.set(label);
+    }
+
+    public String getLabel() {
+        return label.get();
+    }
+
+    public StringProperty labelProperty() {
+        return label;
+    }
+
+    public boolean isAnimate() {
+        return animated.get();
+    }
+
+    public BooleanProperty animateProperty() {
+        return BooleanProperty.booleanProperty(animated);
+    }
+
+    public boolean isActionable() {
+        return actionable.get();
+    }
+
+    public BooleanProperty actionableProperty() {
+        return BooleanProperty.booleanProperty(actionable);
+    }
+
+    public void setActionable(boolean actionable) {
+        this.actionable.set(actionable);
+    }
+
+    public void setAnimate(boolean animate) {
+        this.animated.set(animate);
+    }
+
+    public StringProperty suggestedProperty() {
+        return suggestedText;
+    }
+
+    public void setSuggested(String suggested) {
+        this.suggestedText.set(suggested);
+    }
+
+    public String getSuggested() {
+        return suggestedText.get();
     }
 
     public void setMax(int max) {

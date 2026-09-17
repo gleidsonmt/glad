@@ -1,15 +1,18 @@
 
-TextField, PasswordField, .text-field {
+TextField, PasswordField {
     -fx-text-fill: -text-color;
     -fx-background-color: -fx-background;
     -fx-border-color: -border-color;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-border-width: 2px;
-    -fx-pref-height: 40px;
-    /*-fx-min-height: 40px;*/
-    -fx-padding: 0px 10px 0px 10px;
+
+    -fx-padding: 0px 12px 0px 12px;
     -fx-faint-focus-color: transparent;
+
+    -fx-pref-height: 40px;
+    /*-fx-min-height: 140px;*/
+    -fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";
 }
 
 TextField:hover,
@@ -33,26 +36,6 @@ TextField:readonly:focused,
 TextField:readonly:focused:hover,
 TextField:readonly {
     -fx-border-color: transparent;
-}
-
-TextField-error:focused,
-TextField-error {
-    -fx-accent: -red-700;
-    -fx-border-color: -fx-accent;
-}
-
-.text-box-base .text-field {
-    -fx-padding: 0px 2px 0px 2px;
-}
-
-.inside-text-field:focused,
-.inside-text-field:hover,
-.inside-text-field:focused:hover,
-.inside-text-field {
-    -fx-border-radius: 0px;
-    -fx-background-radius: 0px;
-    -fx-border-color: transparent;
-    -fx-background-color: transparent;
 }
 
 

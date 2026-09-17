@@ -1,39 +1,182 @@
 
 .text-box {
-}
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-border-color: transparent;
+    -fx-faint-focus-color: transparent;
 
-.text-box {
-    -fx-spacing: 15px;
-}
-
-.text-box .editor  {
-    -fx-padding: 0px 15px 0px 15px;
-
-    -fx-background-color: red;
-    -fx-border-color: red;
-    -fx-fill: red;
+    /*-fx-border-insets: 20px 0px 0px 0px;*/
+    -fx-background-insets: 0px;
+    -fx-border-insets: 0px;
     -fx-border-width: 0px;
 
-    -fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";
 
-}
-
-.text-box .text-box-base {
-    -fx-spacing: 8px;
-}
-
-.text-box .editor {
-    -fx-border-width: 0px;
-    /*-fx-background-color: red;*/
-
+    /*-fx-min-height: 56px;*/
+    /*-fx-min-height: 100px;*/
+    -fx-pref-height: 80px;
 }
 
 .text-box .label {
-    -fx-background-color: transparent;
-    -fx-padding: 0px 2px 0px 2px;
-    -fx-font-size: 12px;
+    -fx-background-color: -fx-background;
+    -fx-padding: 0px 4px 0px 4px;
+    /*-fx-pref-height: 16px;*/
 }
 
-.text-box:animate .label {
-    -fx-background-color: white;
+.text-box:animate {
 }
+
+
+.text-box:animate {
+    /*-fx-min-height: 180px;*/
+}
+
+
+
+.text-box .count-text,
+.text-box .suggested-text {
+    -fx-padding: 0px;
+}
+
+
+.text-box .suggested-text {
+    /*-fx-padding: 0px 0px 10px 0px;*/
+
+}
+
+.text-box .editor:focus,
+.text-box:focus-within .editor,
+.text-box .editor
+{
+    -fx-padding: 0px;
+}
+
+.background {
+    -fx-border-radius: 5px;
+    -fx-border-width: 2px;
+    -fx-border-color: -border-color;
+    /*-fx-background-color: yellow;*/
+}
+
+.text-box .background {
+    -fx-background-color: transparent;
+}
+
+.text-box:focus-within .background {
+    -fx-border-color: -fx-accent;
+}
+
+.text-box {
+    /*-fx-padding: 0px 2px 0px 2px;*/
+    -fx-padding: 0px;
+}
+
+.text-box .editor {
+    -fx-padding: 0px 0px 0px 0px;
+}
+
+.text-box:focus-within .editor {
+    -fx-background-color: transparent;
+}
+
+
+
+
+
+/*TextGreat, .text-box {*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-background-radius: 5px;*/
+/*    -fx-border-radius: 5px;*/
+/*    -fx-border-width: 2px;*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-faint-focus-color: transparent;*/
+
+
+/*    !*-fx-border-insets: 20px 0px 0px 0px;*!*/
+/*    -fx-spacing: 10px;*/
+/*    -fx-background-insets: 0px;*/
+/*    -fx-border-insets: 0px;*/
+/*    -fx-border-width: 0px;*/
+
+/*    -fx-padding: 0px ;*/
+/*    */
+/*    -fx-font-size: 12pt;*/
+/*}*/
+
+/*.text-box:focus-within .text-box-base {*/
+/*    -fx-border-color: -fx-accent;*/
+/*}*/
+/*.text-box .text-box-base {*/
+/*    -fx-pref-height: 200px;*/
+/*    -fx-border-width: 2px;*/
+/*    -fx-padding: 0px 2px 0px 15px;*/
+
+/*    -fx-border-color: -border-color;*/
+/*    -fx-border-width: 2px;*/
+/*    -fx-border-radius: 5px;*/
+/*    !*-fx-border-width: 0px;*!*/
+/*}*/
+
+/*.text-box .label {*/
+/*    -fx-alignment: center-left;*/
+/*}*/
+
+/*.text-box:animate {*/
+/*    -fx-border-insets:0px 0px 0px 0px;*/
+/*    !*-fx-pref-height: 50px;*!*/
+/*}*/
+
+/*.text-box .label {*/
+/*    -fx-background-color: -fx-background;*/
+/*}*/
+
+/*.text-box:hover,*/
+/*.text-box:focused {*/
+/*    -fx-border-color: transparent;*/
+/*}*/
+
+/*.text-box .editor:focused,*/
+.text-box .editor {
+    -fx-text-fill: -text-color;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-box *. .editor {
+    -fx-background-color: transparent;
+}
+
+/*.text-box .icon-container {*/
+/*    -fx-padding: 10px;*/
+/*}*/
+
+/*.text-box:error:hover {*/
+/*    -fx-border-color: -danger;*/
+/*}*/
+
+/*.text-box:error .helper-label .text {*/
+/*    -fx-fill: -danger;*/
+/*}*/
+
+/*.editor:hover,*/
+/*.editor:focused,*/
+/*.editor:hover:focused,*/
+/*.editor {*/
+/*    -fx-border-color: transparent;*/
+/*    -fx-text-fill: -text-color;*/
+/*    -fx-background-color: -fx-background;*/
+/*    -fx-background-radius: 5px;*/
+/*    -fx-border-radius: 5px;*/
+/*    -fx-faint-focus-color: transparent;*/
+/*    !*-fx-pref-height: 300px;*!*/
+
+/*    -fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";*/
+/*    -fx-padding: 0px;*/
+/*}*/
+
+/*Editor {*/
+/*    !*-fx-border-insets: 20px 0px 0px 0px;*!*/
+/*    !*-fx-pref-height: 60px; !* 40 + 20 *!*!*/
+/*}*/

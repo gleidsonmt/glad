@@ -1,14 +1,10 @@
-
-
 package io.github.gleidsonmt.glad.controls.skin;
 
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
-import io.github.gleidsonmt.glad.controls.text_box.Editor;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.control.TextField;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.control.*;
 import javafx.scene.control.skin.TextFieldSkin;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -23,9 +19,45 @@ import java.util.ResourceBundle;
  */
 public class MaterialSkinTextField extends TextFieldSkin {
 
+    private final BooleanProperty showPassword;
+
+    public boolean isShowPassword() {
+        return showPassword.get();
+    }
+
+    public BooleanProperty showPasswordProperty() {
+        return showPassword;
+    }
+
+    @Override
+    protected String maskText(String txt) {
+        if (showPassword == null) {
+            return super.maskText(txt);
+        }
+        if (showPassword.get()) {
+            return txt;
+        }
+        return super.maskText(txt);
+    }
+
     public MaterialSkinTextField(TextField control) {
         super(control);
         double iconSize = 0.8;
+
+        this.showPassword = new SimpleBooleanProperty(false);
+
+        // Force the skin to refresh the text representation when the boolean toggles
+        showPassword.addListener((obs, oldVal, newVal) -> {
+            // Trick JavaFX into thinking the text changed so it invokes maskText()
+            String currentText = control.getText();
+            // passwordField.setText(null);
+            control.setText(currentText);
+            // Move caret back to the end of the text
+            control.end();
+
+
+        });
+
 //        control.setContextMenu(new ContextMenu(new MenuItem("Material")));
 
 //        String baseName = "com/sun/javafx/scene/control/skin/resources/controls";
@@ -38,7 +70,6 @@ public class MaterialSkinTextField extends TextFieldSkin {
 
         menuUndo.setGraphic(new SVGIcon(Icon.UNDO, 0.8));
         menuUndo.setOnAction(_ -> {
-            System.out.println("control = " + control.isUndoable());
             control.undo();
         });
         menuUndo.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN));
@@ -55,17 +86,26 @@ public class MaterialSkinTextField extends TextFieldSkin {
         menuCut.setGraphic(new SVGIcon(Icon.CUT,iconSize));
         menuCut.setOnAction(_ -> control.cut());
         menuCut.setAccelerator(new KeyCodeCombination(KeyCode.X, KeyCombination.CONTROL_DOWN));
-        menuCut.disableProperty().bind(control.selectedTextProperty().isEmpty());
 
         MenuItem menuCopy = new MenuItem(bundle.getString("TextInputControl.menu.Copy"));
         menuCopy.setGraphic(new SVGIcon(Icon.COPY,iconSize));
+
         menuCopy.setOnAction(_ -> {
             control.selectAll();
             control.copy();
             control.deselect();
         });
         menuCopy.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN));
-        menuCopy.disableProperty().bind(control.textProperty().isEmpty());
+        if (control instanceof PasswordField) {
+            menuCopy.disableProperty().bind(showPassword.not());
+            menuCut.disableProperty().bind(showPassword.not());
+        } else {
+            menuCopy.disableProperty().bind(control.textProperty().isEmpty());
+            menuCut.disableProperty().bind(control.selectedTextProperty().isEmpty());
+        }
+//        System.out.println("showPassword = " + showPassword);
+//        System.out.println("control = " + control);
+//        menuCopy.disableProperty().bind(showPassword);
 
         MenuItem menuRemove = new MenuItem(bundle.getString("TextInputControl.menu.DeleteSelection"));
         menuRemove.setGraphic(new SVGIcon(Icon.DELETE,iconSize));

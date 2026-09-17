@@ -2,22 +2,14 @@
 
 package io.github.gleidsonmt.glad.controls.skin;
 
-import io.github.gleidsonmt.glad.Resources;
-import io.github.gleidsonmt.glad.controls.form.FormField;
-import io.github.gleidsonmt.glad.controls.text_box.Editor;
 import javafx.beans.DefaultProperty;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.css.*;
 import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Skin;
 import javafx.scene.control.TextField;
-import org.jetbrains.annotations.ApiStatus;
-
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Base class to construtc input field with a editor.
@@ -27,54 +19,41 @@ import java.util.Objects;
  */
 @DefaultProperty("children")
 @SuppressWarnings("unused")
-public abstract class TextBoxBase extends Control implements FormField {
+@Deprecated(forRemoval = true)
+public class TextBoxBase extends Control {
 
-    private final ObjectProperty<TextField> editor = new SimpleObjectProperty<>();
-    private final ObjectProperty<Node> leftNode = new SimpleObjectProperty<>();
-    private final ObjectProperty<Node> rightNode = new SimpleObjectProperty<>();
+    protected final ObjectProperty<TextField> editor = new SimpleObjectProperty<>();
+    protected final ObjectProperty<Node> leftNode = new SimpleObjectProperty<>();
+    protected final ObjectProperty<Node> rightNode = new SimpleObjectProperty<>();
 
-    private static final StyleablePropertyFactory<TextBoxBase> FACTORY =
+    protected static final StyleablePropertyFactory<TextBoxBase> FACTORY =
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
 
-    private final StyleableObjectProperty<Boolean> animated =
-            new SimpleStyleableObjectProperty<>(ANIMATE, this, "animate", false);
+    protected final StyleableDoubleProperty spacing =
+            new SimpleStyleableDoubleProperty(SPACING, this, "spacing", 8.0);
 
-    private final StyleableDoubleProperty spacing =
-            new SimpleStyleableDoubleProperty(SPACING, this, "spacing", 0.0);
 
-    private static final CssMetaData<TextBoxBase, Boolean> ANIMATE =
-            FACTORY.createBooleanCssMetaData(
-                    "-fx-animate",
-                    g -> g.animated, true);
-
-    private static final CssMetaData<TextBoxBase, Number> SPACING =
+    protected static final CssMetaData<TextBoxBase, Number> SPACING =
             FACTORY.createSizeCssMetaData("-fx-spacing", s -> s.spacing, 8.0);
 
-    private static final PseudoClass PSEUDO_CLASS_ERROR = PseudoClass.getPseudoClass("error");
-    private static final PseudoClass PSEUDO_CLASS_SUCCESS = PseudoClass.getPseudoClass("success");
 
-    private final StringProperty helperText = new SimpleStringProperty();
-    private final BooleanProperty valid = new SimpleBooleanProperty(this, "valid", true);
+    protected final StringProperty helperText = new SimpleStringProperty();
 
-    private static final PseudoClass PSEUDO_CLASS_ANIMATE = PseudoClass.getPseudoClass("animate");
 
-    private final ChangeListener<Boolean> retainFocus = (_, _, newValue) ->
+    protected final ChangeListener<Boolean> retainFocus = (_, _, newValue) ->
             setFocused(newValue);
 
-    private final BooleanProperty maskText = new SimpleBooleanProperty(true); // used for password text
+    protected final BooleanProperty maskText = new SimpleBooleanProperty(true); // used for password text
 
     protected final StringProperty text = new SimpleStringProperty();
     @Deprecated(forRemoval = true)
     protected final StringProperty promptText = new SimpleStringProperty();
 
-    public TextBoxBase() {
-        this(new TextField());
-    }
-
-    protected TextBoxBase(TextField editor) {
+    public TextBoxBase(TextField editor) {
+        setEditor(editor);
 //        maskText.set(mask);
         getStyleClass().add("text-box-base");
-        editor.getStyleClass().add("editor");
+//        editor.getStyleClass().add("editor");
 
         editorProperty().addListener((_, oldValue, newValue) -> {
 
@@ -92,9 +71,6 @@ public abstract class TextBoxBase extends Control implements FormField {
                 text.unbindBidirectional(oldValue.textProperty());
             }
         });
-
-        setEditor(editor);
-
     }
 
     @Override
@@ -102,14 +78,21 @@ public abstract class TextBoxBase extends Control implements FormField {
         return new TextBoxBaseSkin(this);
     }
 
-    @Override
-    public String getUserAgentStylesheet() {
-        return Objects.requireNonNull(Resources.class.getResource("agents/text-box-base.css")).toExternalForm();
+//    @Override
+//    public String getUserAgentStylesheet() {
+//        return Objects.requireNonNull(Resources.class.getResource("agents/text-box-base.css")).toExternalForm();
+//    }
+
+    public StyleableDoubleProperty spacingProperty() {
+        return spacing;
     }
 
-    @Override
-    public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
-        return FACTORY.getCssMetaData();
+    public double getSpacing() {
+        return spacing.get();
+    }
+
+    public void setSpacing(double val) {
+        spacing.set(val);
     }
 
     public String getHelperText() {
@@ -124,26 +107,6 @@ public abstract class TextBoxBase extends Control implements FormField {
         this.helperText.set(helperText);
     }
 
-    @Override
-    public void validate() {
-        pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !isValid());
-        ((TextBoxBaseSkin) getSkin()).validate(isValid());
-        valid.addListener((_, _, newValue) -> pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !newValue));
-    }
-
-    @Override
-    public boolean isValid() {
-        return valid.get();
-    }
-
-    public void setValid(boolean valid) {
-        this.valid.set(valid);
-    }
-
-    @Override
-    public BooleanProperty validProperty() {
-        return valid;
-    }
 
     public TextField getEditor() {
         return editor.get();
@@ -165,7 +128,7 @@ public abstract class TextBoxBase extends Control implements FormField {
         return leftNode;
     }
 
-    protected void setLeftNode(Node leftNode) {
+    public void setLeftNode(Node leftNode) {
         this.leftNode.set(leftNode);
     }
 
@@ -177,23 +140,8 @@ public abstract class TextBoxBase extends Control implements FormField {
         return rightNode;
     }
 
-    protected void setRightNode(Node rightNode) {
+    public void setRightNode(Node rightNode) {
         this.rightNode.set(rightNode);
-    }
-
-    @ApiStatus.Experimental
-    public boolean isAnimate() {
-        return animated.get();
-    }
-
-    @ApiStatus.Experimental
-    public ObservableValue<Boolean> animateProperty() {
-        return animated;
-    }
-
-    @ApiStatus.Experimental
-    public void setAnimate(boolean animate) {
-        this.animated.set(animate);
     }
 
     public boolean isMaskText() {
@@ -232,15 +180,5 @@ public abstract class TextBoxBase extends Control implements FormField {
         this.promptText.set(promptText);
     }
 
-    public StyleableDoubleProperty spacingProperty() {
-        return spacing;
-    }
 
-    public double getSpacing() {
-        return spacing.get();
-    }
-
-    public void setSpacing(double val) {
-        spacing.set(val);
-    }
 }

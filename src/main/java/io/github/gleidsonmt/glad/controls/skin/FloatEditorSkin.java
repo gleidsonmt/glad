@@ -2,7 +2,7 @@
 
 package io.github.gleidsonmt.glad.controls.skin;
 
-import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
+import io.github.gleidsonmt.glad.controls.text_box.FloatEditorOld;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -18,6 +18,7 @@ import javafx.util.Duration;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  04/04/2025
  */
+@Deprecated(forRemoval = true)
 public class FloatEditorSkin extends EditorSkin {
 
     private final Label moveablePrompt = new Label("Float Prompt");
@@ -26,7 +27,7 @@ public class FloatEditorSkin extends EditorSkin {
     private final Timeline upAnimation = new Timeline();
     private final Timeline downAnimation = new Timeline();
 
-    public FloatEditorSkin(FloatEditor _control) {
+    public FloatEditorSkin(FloatEditorOld _control) {
         super(_control);
 
         // Setting default Conventions
@@ -148,7 +149,7 @@ public class FloatEditorSkin extends EditorSkin {
         super.layoutChildren(x, y, w, h);
         if (!isAnimation()) {
             if (getSkinnable().getText() != null && !getSkinnable().getText().isEmpty()) {
-//                positionInArea(moveablePrompt, x + ((FloatEditor) getSkinnable()).getDistanceX(),
+//                positionInArea(moveablePrompt, x + ((FloatEditorOld) getSkinnable()).getDistanceX(),
                 positionInArea(moveablePrompt, x + ( -( (TextBoxBase) getSkinnable().getParent()).getLeftNode().getBoundsInParent().getWidth() ),
                         (y - moveablePrompt.getTranslateY() +
                          getSkinnable().getInsets().getTop() + getSkinnable().getInsets().getBottom()),

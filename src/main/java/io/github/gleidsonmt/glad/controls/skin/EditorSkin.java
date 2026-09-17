@@ -2,17 +2,11 @@
 
 package io.github.gleidsonmt.glad.controls.skin;
 
-import io.github.gleidsonmt.glad.controls.text_box.Editor;
-import io.github.gleidsonmt.glad.controls.text_box.FloatEditor;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.geometry.HPos;
-import javafx.geometry.VPos;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
+import io.github.gleidsonmt.glad.controls.text_box.EditorOld;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.control.TextField;
 import javafx.scene.control.skin.TextFieldSkin;
-import javafx.scene.layout.Border;
-import javafx.scene.text.Font;
 
 /**
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
@@ -21,53 +15,44 @@ import javafx.scene.text.Font;
 @Deprecated(forRemoval = true)
 public class EditorSkin extends TextFieldSkin {
 
-    public EditorSkin(Editor _control) {
-        super(_control);
+    private final BooleanProperty showPassword;
+
+    public EditorSkin(TextField control) {
+        super(control);
+
+        this.showPassword = new SimpleBooleanProperty(false);
+
+        // Force the skin to refresh the text representation when the boolean toggles
+        showPassword.addListener((obs, oldVal, newVal) -> {
+            // Trick JavaFX into thinking the text changed so it invokes maskText()
+            String currentText = control.getText();
+//                passwordField.setText(null);
+            control.setText(currentText);
+//
+// Move caret back to the end of the text
+            control.end();
+
+        });
+
+
     }
 
     @Override
     protected String maskText(String txt) {
-        if (getSkinnable() instanceof Editor editor) {
-            if (editor.isMaskText()) {
-                final char BULLET = '\u25cf';
-                int n = txt.length();
-
-                return String.valueOf(BULLET).repeat(n);
-            } else {
-                return editor.textProperty().getValueSafe();
-            }
-        } else return txt;
+        if (showPassword == null) {
+            return super.maskText(txt);
+        }
+        if (showPassword.get()) {
+            return txt;
+        }
+        return super.maskText(txt);
     }
 
+    public boolean isShowPassword() {
+        return showPassword.get();
+    }
 
-//    @Override
-//    protected double computeMinHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
-//        return getSkinnable().minHeight(width) + label.minHeight(width);
-//    }
-//
-//    @Override
-//    protected double computePrefHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
-//        return getSkinnable().prefHeight(width) + label.prefHeight(width);
-//    }
-
-//    @Override
-//    protected double computeMaxHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
-//        return getSkinnable().maxHeight(width) + label.maxHeight(width);
-//    }
-
-//    @Override
-//    protected double computeMinHeight(double width, double topInset, double rightInset, double bottomInset, double leftInset) {
-//        return
-//                super.computeMinHeight(width, topInset+30, rightInset, bottomInset, leftInset)
-//                +
-//                label.minHeight(width) + 20+150
-//
-//                ;
-//    }
-
-
-
-
-
-
+    public BooleanProperty showPasswordProperty() {
+        return showPassword;
+    }
 }

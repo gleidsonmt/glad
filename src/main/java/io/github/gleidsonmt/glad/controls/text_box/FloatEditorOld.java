@@ -19,16 +19,16 @@ import java.util.Objects;
  * Create on  08/09/2022
  */
 @DefaultProperty("children")
-public class FloatEditor extends Editor {
+public class FloatEditorOld extends EditorOld {
 
     private final ObjectProperty<FloatAlignment> floatAlignment = new SimpleObjectProperty<>(); // top of aligment
     private final DoubleProperty distanceX = new SimpleDoubleProperty(); // distance x for the prompt label
 
-    public FloatEditor() {
+    public FloatEditorOld() {
         this(null, FloatAlignment.BASELINE);
     }
 
-    public FloatEditor(String floatPrompt, FloatAlignment alignment) {
+    public FloatEditorOld(String floatPrompt, FloatAlignment alignment) {
 
         floatAlignment.set(alignment);
 

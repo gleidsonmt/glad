@@ -3,6 +3,7 @@
 package io.github.gleidsonmt.glad.controls.text_box;
 
 import io.github.gleidsonmt.glad.Resources;
+import io.github.gleidsonmt.glad.controls.TextField;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import io.github.gleidsonmt.glad.controls.skin.TextBoxBase;
@@ -52,7 +53,7 @@ public class TextBoxOld extends TextBoxBase {
     }
 
     public TextBoxOld(Node icon, String text, boolean action) {
-//        super(false);
+        super(new TextField(""));
 
         this.action = new SimpleBooleanProperty(action);
 

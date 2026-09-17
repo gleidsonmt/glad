@@ -8,7 +8,7 @@
 .text,
 .label,
 Text {
-    -fx-font-family: "Poppins";
+    -fx-font-family: "Poppins Regular";
     -fx-fill: -text-color;
     -fx-font-smoothing-type: gray;
     -fx-stroke: transparent;

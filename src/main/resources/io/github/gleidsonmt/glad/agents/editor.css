@@ -1,11 +1,8 @@
-Editor {
-}
-
 .editor:hover,
 .editor:focused,
 .editor:hover:focused,
 .editor {
-    -fx-border-color: -fx-accent;
+    -fx-border-color: transparent;
     -fx-text-fill: -text-color;
     -fx-background-color: -fx-background;
     -fx-background-radius: 5px;
@@ -13,8 +10,7 @@ Editor {
     -fx-faint-focus-color: transparent;
     /*-fx-pref-height: 300px;*/
 
-    -fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";
-
+    /*-fx-skin: "io.github.gleidsonmt.glad.controls.skin.MaterialSkinTextField";*/
 
 }
 
