@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.controls.text_box;
 
+import io.github.gleidsonmt.glad.controls.form.FormField;
 import io.github.gleidsonmt.glad.controls.icon.Icon;
 import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.property.*;
@@ -15,13 +16,15 @@ import java.util.List;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Created on 24/08/2026
  */
-public class TextBox extends Control {
+public class TextBox extends Control implements FormField {
 
     private final StringProperty label = new SimpleStringProperty(this, "Label", "");
     private final StringProperty suggestedText = new SimpleStringProperty(this, "Suggested Text");
+    private final StringProperty errorText = new SimpleStringProperty(this, "Error Text", "Error");
     private final ObjectProperty<Node> icon = new SimpleObjectProperty<>(this, "icon");
     private final IntegerProperty max = new SimpleIntegerProperty(this, "max", -1);
     private final ObjectProperty<TextField> editor = new SimpleObjectProperty<>(this, "editor");
+    protected final BooleanProperty valid = new SimpleBooleanProperty(this, "valid", true);
 
     protected static final StyleablePropertyFactory<TextBox> FACTORY =
             new StyleablePropertyFactory<>(Control.getClassCssMetaData());
@@ -43,6 +46,8 @@ public class TextBox extends Control {
                     g -> g.animated, false);
 
     protected static final PseudoClass PSEUDO_CLASS_ANIMATE = PseudoClass.getPseudoClass("animate");
+    protected static final PseudoClass PSEUDO_CLASS_ERROR = PseudoClass.getPseudoClass("error");
+    protected static final PseudoClass PSEUDO_CLASS_SUCCESS = PseudoClass.getPseudoClass("success");
 
 
     public TextBox() {
@@ -57,21 +62,30 @@ public class TextBox extends Control {
         this(icon, null, false);
     }
 
+    public TextBox(Icon icon, String label) {
+        this(icon, label, false);
+    }
+
     public TextBox(Icon icon, String label, boolean action) {
         this(new SVGIcon(icon), label, action);
     }
 
     public TextBox(Node icon, String label, boolean action) {
+        this(icon, label, action, new TextField());
+    }
+
+    protected TextBox(Node icon, String label, boolean action, TextField editor) {
+        this.editor.set(editor);
         getStyleClass().add("text-box");
         this.label.set(label);
         this.icon.set(icon);
-        editor.set(new TextField());
+        setActionable(action);
         animated.addListener((_, _, newVal) -> pseudoClassStateChanged(PSEUDO_CLASS_ANIMATE, newVal));
     }
 
     @Override
     protected Skin<?> createDefaultSkin() {
-        return new TextBoxSkin(this, editor.get());
+        return new TextBoxSkin(this);
     }
 
     public StringProperty textProperty() {
@@ -96,7 +110,12 @@ public class TextBox extends Control {
 //        return Objects.requireNonNull(getClass().getResource("button_list.css")).toExternalForm();
 //    }
 
-
+    @Override
+    public void validate() {
+        pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !isValid());
+        ((TextBoxSkin) getSkin()).validate(isValid());
+//        valid.addListener((_, _, newValue) -> pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !newValue));
+    }
 
     @Override
     public List<CssMetaData<? extends Styleable, ?>> getControlCssMetaData() {
@@ -173,5 +192,29 @@ public class TextBox extends Control {
 
     public IntegerProperty maxProperty() {
         return max;
+    }
+
+    public StringProperty errorText() {
+        return errorText;
+    }
+
+    public String getErrorText() {
+        return errorText.get();
+    }
+
+    public void setErrorText(String errorText) {
+        this.errorText.set(errorText);
+    }
+
+    public boolean isValid() {
+        return valid.get();
+    }
+
+    public void setValid(boolean valid) {
+        this.valid.set(valid);
+    }
+
+    public BooleanProperty validProperty() {
+        return valid;
     }
 }

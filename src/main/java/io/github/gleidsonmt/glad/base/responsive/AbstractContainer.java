@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -77,14 +78,19 @@ public class AbstractContainer<T extends Size> extends StackPane {
      * @param sizes The sizes when this event occurs.
      */
     public void addBreakpoint(EventHandler<ActionEvent> event, String sizes) {
-        List<T> list = null;
+        List<T> list = new ArrayList<>();
+        System.out.println("sizes = " + sizes);
         // Filters sizes by name and collects matches
         for (String size : sizes.split(" ")) {
+            System.out.println("size = " + size);
             if (size.contains("<") || size.contains(">")) {
                 list = getByOperation(size, size.substring(0, 1));
             } else {
                 // Filters sizes by name and collects matches
-                list = Arrays.stream(this.sizer.getSizes()).filter(el -> el.name().equalsIgnoreCase(size)).collect(Collectors.toList());
+                // filtra apeans um
+                Optional<T> item =  Arrays.stream(this.sizer.getSizes()).filter(el -> el.name().equalsIgnoreCase(size)).findAny();
+                if (item.isPresent())
+                    list.add(item.get());
             }
         }
         // if found a size, add a point.

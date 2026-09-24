@@ -26,6 +26,7 @@ public class TextBoxBehavior {
         });
 
         editor.textProperty().addListener((_, _, newValue) -> {
+            if (!base.getSkinnable().isActionable()) return;
             if (newValue != null && !newValue.isEmpty()) {
                 if (base.getContainer().getChildren().contains(actionButton)) return;
                 base.getContainer().getChildren().addLast(actionButton);

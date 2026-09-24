@@ -29,6 +29,7 @@ public class PasswordBoxBehavior {
         });
 
         editor.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!base.getSkinnable().isActionable()) return;
             if (newValue != null && !newValue.isEmpty()) {
                 if (base.getContainer().getChildren().contains(actionButton)) return;
                 base.getContainer().getChildren().addLast(actionButton);

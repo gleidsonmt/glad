@@ -15,7 +15,7 @@
 
     /*-fx-min-height: 56px;*/
     /*-fx-min-height: 100px;*/
-    -fx-pref-height: 80px;
+    /*-fx-pref-height: 80px;*/
 }
 
 .text-box .label {
@@ -33,20 +33,21 @@
 }
 
 
-
 .text-box .count-text,
 .text-box .suggested-text {
     -fx-padding: 0px;
 }
 
-
 .text-box .suggested-text {
     /*-fx-padding: 0px 0px 10px 0px;*/
-
 }
 
-.text-box .editor:focus,
-.text-box:focus-within .editor,
+.text-box .error-text .text {
+    -fx-fill: -red-500;
+}
+
+.text-box .editor:focused,
+/*.text-box:focus-within .editor,*/
 .text-box .editor
 {
     -fx-padding: 0px;

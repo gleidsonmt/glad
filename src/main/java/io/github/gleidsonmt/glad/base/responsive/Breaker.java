@@ -21,13 +21,15 @@ public class Breaker<T extends Size> implements Actionable<T> {
 
     @Override
     public void doAction(T size) {
-        Platform.runLater(() -> {
+//        Platform.runLater(() -> {
             List<BreakPoint> p = points.stream().filter(el -> el.getBreaks().contains(size)).toList();
+//            p.stream().forEach(e -> System.out.println("size = " + e));
+//        System.out.println("size = " + size);
             if (p.isEmpty()) return;
             // Make an action defined by the user.
             // This action is convenient to be a new layout based on the scene size
             p.forEach(e -> e.getEventHandler().handle(new ActionEvent()));
-        });
+//        });
 
     }
 

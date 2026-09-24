@@ -27,7 +27,7 @@ public class TextBoxSkin extends SkinBase<TextBox> {
     private final Label suggestedText = new Label(null);
 
     private Label countText = new Label();
-    private TextField editor = new TextField();
+    private TextField editor;
     private HBox container = new HBox();
 
     private Timeline animation = new Timeline();
@@ -38,8 +38,9 @@ public class TextBoxSkin extends SkinBase<TextBox> {
     public boolean top = false;
     private double labelScale = 0.90;
 
-    protected TextBoxSkin(TextBox control, TextField editor) {
+    protected TextBoxSkin(TextBox control) {
         super(control);
+        this.editor = control.getEditor();
         getChildren().addAll(container);
 
         if (control.getLabel() != null && !control.getLabel().isEmpty() && !control.getLabel().isBlank()) {
@@ -53,6 +54,7 @@ public class TextBoxSkin extends SkinBase<TextBox> {
 
         label.setLabelFor(editor);
         HBox.setHgrow(editor, Priority.ALWAYS);
+        control.setFocusTraversable(false);
 
         if (control.isActionable() && editor instanceof PasswordField)
             new PasswordBoxBehavior(this, editor);
@@ -63,13 +65,18 @@ public class TextBoxSkin extends SkinBase<TextBox> {
         initialSate();
 //        container.setMouseTransparent(true);
 
+//        registerChangeListener(control.focusVisibleProperty(), c -> {
+//            if ((boolean) c.getValue()) {
+//                editor.requestLayout();
+//            }
+//        });
         registerChangeListener(control.focusWithinProperty(), c -> {
-
-            if (!control.isAnimate()) return;
 
             if ((boolean) c.getValue()) {
                 editor.requestFocus();
             }
+
+            if (!control.isAnimate()) return;
 
             if ((boolean) c.getValue()) {
                 if (editor.getText() == null || editor.getText().isEmpty()) {
@@ -110,6 +117,13 @@ public class TextBoxSkin extends SkinBase<TextBox> {
             }
         });
 
+        registerChangeListener(getSkinnable().validProperty(), c -> {
+
+            validate((boolean) c.getValue());
+
+        });
+
+
         registerChangeListener(getSkinnable().maxProperty(), c -> {
             if (((int) c.getValue()) > 0) {
                 if (!getChildren().contains(countText)) {
@@ -127,6 +141,38 @@ public class TextBoxSkin extends SkinBase<TextBox> {
                 container.getChildren().addFirst(newValue);
         });
 
+    }
+
+    public void validate(boolean valid) {
+
+        String text = valid ? getSkinnable().getSuggested() : getSkinnable().getErrorText();
+        suggestedText.setText(text);
+        if (!valid) suggestedText.getStyleClass().add("error-text");
+        if (valid) suggestedText.getStyleClass().remove("suggested-text");
+
+        if (text != null && !text.isEmpty()) {
+            if (!getChildren().contains(suggestedText)) {
+                getChildren().add(suggestedText);
+            }
+        } else if (getSkinnable().getSuggested() == null) {
+            getChildren().remove(suggestedText);
+        }
+
+//        if (getSkinnable().getErrorText() == null || getSkinnable().getErrorText().isEmpty()) return;
+//
+////        if (getChildren().contains(helper)) return;
+////        else
+////            getChildren().add(helper);
+//        if (!getChildren().contains(suggestedText)) {
+//            getChildren().add(suggestedText);
+//        }
+
+//        if (!valid) {
+//            helperAnimation.play();
+//        } else {
+//            if (helper != null)
+//                helper.setOpacity(0.0);
+//        }
     }
 
     private void initialSate() {
@@ -213,6 +259,11 @@ public class TextBoxSkin extends SkinBase<TextBox> {
     @Override
     protected double computeMinWidth(double height, double topInset, double rightInset, double bottomInset, double leftInset) {
         return leftInset + rightInset + container.minWidth(height);
+    }
+
+    @Override
+    protected double computeMaxWidth(double height, double topInset, double rightInset, double bottomInset, double leftInset) {
+        return leftInset + rightInset + container.maxWidth(height);
     }
 
     @Override
@@ -329,7 +380,7 @@ public class TextBoxSkin extends SkinBase<TextBox> {
 
     @Override
     protected void layoutChildren(double x, double y, double w, double h) {
-        super.layoutChildren(x,y,w,h);
+        super.layoutChildren(x, y, w, h);
         boolean hasSuggested = getChildren().contains(suggestedText);
         boolean hasCount = getChildren().contains(countText);
 
@@ -352,7 +403,7 @@ public class TextBoxSkin extends SkinBase<TextBox> {
                 layoutInArea(label, labelX, y, w, topSpace * 2, -1, HPos.LEFT, VPos.TOP);
             }
         } else {
-            layoutInArea(label, labelX, y, w, topSpace, -1, HPos.LEFT, VPos.TOP);
+            layoutInArea(label, x, y, w, topSpace, -1, HPos.LEFT, VPos.TOP);
         }
 
         // Layout bottom elements with full bounds aligning to bottom
