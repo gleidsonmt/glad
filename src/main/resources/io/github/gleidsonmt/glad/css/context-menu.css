@@ -8,12 +8,17 @@
 .context-menu {
     -fx-background-color: -fx-background;
     -fx-background-insets: 0;
-    -fx-padding: 0px; /* 4 1 8 1 */
+    -fx-padding: 2px; /* 4 1 8 1 */
     -fx-border-color: -light-gray-2;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .1), 5, 0, 0, 1);
 }
+
+ .menu .context-menu {
+    -fx-background: white;
+}
+
 
 .root:dark-theme .context-menu {
     -fx-border-color: -dark-gray-2;
@@ -25,6 +30,7 @@
     -fx-font-size: 12px;
     -fx-font-family: "Instagram Sans";
 }
+
 .menu-item {
     /*-fx-padding: 8px 15px 8px 15px;*/
     -fx-padding: 6px 15px 6px 15px;
@@ -97,11 +103,11 @@
     -fx-stroke: white;
 }
 
- .context-menu .menu-item .label .text {
-     -fx-fill: -text-color;
- }
+.context-menu .menu-item .label .text {
+    -fx-fill: -text-color;
+}
 
- .context-menu .menu-item:hover .label .text {
+.context-menu .menu-item:hover .label .text {
     -fx-fill: -text-color;
 
 }

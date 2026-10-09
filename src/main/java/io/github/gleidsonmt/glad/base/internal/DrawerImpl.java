@@ -75,7 +75,6 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
 
     @Override
     public void hide() {
-        System.out.println("isShowing() = " + isShowing());
 
 //        if (!isShowing()) return;
         if (this.content == null) return;

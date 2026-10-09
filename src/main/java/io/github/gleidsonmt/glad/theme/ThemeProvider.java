@@ -3,10 +3,10 @@
 package io.github.gleidsonmt.glad.theme;
 
 import io.github.gleidsonmt.glad.Resources;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.jetbrains.annotations.ApiStatus;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 
@@ -17,6 +17,7 @@ import java.util.Arrays;
  * Create on  29/01/2025
  */
 public class ThemeProvider {
+
     /**
      * Install all the css.
      *

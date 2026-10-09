@@ -7,6 +7,7 @@ module io.github.gleidsonmt.glad {
     requires javafx.base;
     requires javafx.web;
 
+
     requires static org.jetbrains.annotations;
 
     requires java.logging;
@@ -51,5 +52,7 @@ module io.github.gleidsonmt.glad {
             javafx.fxml, javafx.controls,
             javafx.graphics, javafx.base;
     opens io.github.gleidsonmt.glad.base.drawer to javafx.fxml;
+    exports io.github.gleidsonmt.glad.tail;
+
 
 }

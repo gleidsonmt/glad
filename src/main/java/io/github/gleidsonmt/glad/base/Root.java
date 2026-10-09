@@ -7,6 +7,8 @@ import io.github.gleidsonmt.glad.base.internal.ForegroundImpl;
 import io.github.gleidsonmt.glad.base.responsive.AbstractContainer;
 import io.github.gleidsonmt.glad.base.responsive.DefaultBreak;
 import io.github.gleidsonmt.glad.errors.ExecutionEventError;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.Node;
 
 /**
@@ -20,7 +22,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     private final Foreground foreground;
 
-    private Node content;
+    private final ObjectProperty<Node> content = new SimpleObjectProperty<>();
     /**
      * Initializes layout, flow, behavior; adds listeners for dynamic adjustments
      */
@@ -54,11 +56,15 @@ public class Root extends AbstractContainer<DefaultBreak> {
     }
 
     public void setContent(Node content) {
-        this.content = content;
+        this.content.set(content);
         super.getChildren().setAll(content);
     }
 
     public Node getContent() {
+        return content.get();
+    }
+
+    public ObjectProperty<Node> contentProperty() {
         return content;
     }
 

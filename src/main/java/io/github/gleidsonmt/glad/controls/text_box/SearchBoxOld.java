@@ -8,6 +8,7 @@ import io.github.gleidsonmt.glad.controls.icon.Icon;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  02/10/2025
  */
+@Deprecated(forRemoval = true)
 public class SearchBoxOld extends TextBoxOld {
 
     public SearchBoxOld() {

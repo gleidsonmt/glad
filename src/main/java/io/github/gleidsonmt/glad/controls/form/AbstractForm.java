@@ -83,7 +83,6 @@ public abstract class AbstractForm<T> extends GridPane implements Form<T> {
     public boolean validate() {
         fields.stream().filter(Objects::nonNull)
                 .forEach(FormField::validate);
-
         return valid.get();
     }
 

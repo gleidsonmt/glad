@@ -1,6 +1,8 @@
 .root {
 
+    -fx-background: white;
     -fx-background-color: -fx-background;
+
     -fx-accent: #0085ff;
     -fx-foreground:  -light-gray;
 

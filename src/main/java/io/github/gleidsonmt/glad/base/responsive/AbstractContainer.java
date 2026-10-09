@@ -79,10 +79,8 @@ public class AbstractContainer<T extends Size> extends StackPane {
      */
     public void addBreakpoint(EventHandler<ActionEvent> event, String sizes) {
         List<T> list = new ArrayList<>();
-        System.out.println("sizes = " + sizes);
         // Filters sizes by name and collects matches
         for (String size : sizes.split(" ")) {
-            System.out.println("size = " + size);
             if (size.contains("<") || size.contains(">")) {
                 list = getByOperation(size, size.substring(0, 1));
             } else {

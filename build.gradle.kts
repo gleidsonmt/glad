@@ -30,6 +30,10 @@ dependencies {
     compileOnly("org.jetbrains:annotations:26.1.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+
+//    implementation(fileTree(mapOf("dir" to "vendor", "include" to listOf("*.jar"))))
+
+
 }
 
 tasks.test {

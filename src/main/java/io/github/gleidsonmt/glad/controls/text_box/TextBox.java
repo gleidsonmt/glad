@@ -114,7 +114,7 @@ public class TextBox extends Control implements FormField {
     public void validate() {
         pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !isValid());
         ((TextBoxSkin) getSkin()).validate(isValid());
-//        valid.addListener((_, _, newValue) -> pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !newValue));
+        valid.addListener((_, _, newValue) -> pseudoClassStateChanged(PSEUDO_CLASS_ERROR, !newValue));
     }
 
     @Override
