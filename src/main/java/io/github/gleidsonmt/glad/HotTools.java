@@ -1,6 +1,5 @@
 package io.github.gleidsonmt.glad;
 
-import io.github.gleidsonmt.glad.base.Root;
 import io.github.gleidsonmt.glad.tail.ClassWatcher;
 import javafx.scene.Scene;
 
@@ -16,6 +15,21 @@ import java.net.URLClassLoader;
  */
 public class HotTools {
 
+    public static void init(Scene scene, Launch.MODE mode) {
+        switch (mode) {
+            case DEV:
+                installWatcher(scene, true);
+                analyzeNodes(scene);
+                listenCss(scene);
+                break;
+            case RUN:
+                installWatcher(scene, false);
+                break;
+            case DEBUG:
+                break;
+        }
+    }
+
     /**
      * Install a watcher to analyze nodes in the given scene.
      * This watcher writes a resource file with styleClasses.
@@ -25,8 +39,8 @@ public class HotTools {
      *
      * @param scene The scene to analyze.
      */
-    public static void installWatcher(Scene scene) {
-        new ClassWatcher(scene);
+    public static void installWatcher(Scene scene, boolean write) {
+        new ClassWatcher(scene,write);
     }
 
     private static Class<?> loadClassJar(String jarName, String fullClass) {
