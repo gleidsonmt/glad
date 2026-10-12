@@ -8,7 +8,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import org.jetbrains.annotations.ApiStatus;
@@ -32,6 +31,7 @@ public abstract class AbstractForm<T> extends GridPane implements Form<T> {
     public AbstractForm(T model) {
         this.model = model;
         fields = FXCollections.observableArrayList();
+        setVgap(10);
     }
 
     public void render() {
@@ -54,24 +54,12 @@ public abstract class AbstractForm<T> extends GridPane implements Form<T> {
         return fields;
     }
 
-    public void addField(FormField field) {
-        fields.add(field);
-        if (field instanceof Node node) {
-            getChildren().add(node);
-            GridPane.setHgrow(node, Priority.ALWAYS);
-        }
-    }
-
     public void addField(FormField field, int colIndex, int rowIndex) {
         fields.add(field);
         if (field instanceof Node node) {
             add(node, colIndex, rowIndex);
             GridPane.setHgrow(node, Priority.ALWAYS);
         }
-    }
-
-    public void addLabel(Label label,int colIndex, int rowIndex) {
-        add(label, colIndex, rowIndex);
     }
 
     @Override
