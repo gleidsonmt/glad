@@ -1,6 +1,5 @@
 package io.github.gleidsonmt.glad.tail;
 
-import io.github.gleidsonmt.glad.base.Root;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.scene.Node;
@@ -8,8 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
@@ -18,10 +15,11 @@ import java.util.List;
 public class ClassWatcher {
 
     private final TailwindWatcher tailwindWatcher = new TailwindWatcher();
+    private boolean write = false;
 
-    public ClassWatcher(Scene scene) {
+    public ClassWatcher(Scene scene, boolean write) {
         Platform.runLater(() -> {
-
+            this.write = write;
             try {
                 tailwindWatcher.start();
             } catch (IOException | InterruptedException e) {
@@ -32,17 +30,17 @@ public class ClassWatcher {
 
             // 2. Cria um listener reativo global na raiz da Scene.
             // Toda vez que um novo painel, botão ou nó entrar no layout, ele ativa o monitoramento automaticamente.
-//            scene.rootProperty().addListener((_, _, newRoot) -> {
-//                if (newRoot != null) {
-//                    watchContainer(newRoot);
-//                }
-//            });
+            scene.rootProperty().addListener((_, _, newRoot) -> {
+                if (newRoot != null) {
+                    watchContainer(newRoot);
+                }
+            });
 
-            if (scene.getRoot() instanceof Root root) {
-                root.contentProperty().addListener((_, _, newValue) -> {
-                    watchContainer(newValue);
-                });
-            }
+//            if (scene.getRoot() instanceof Root root) {
+//                root.contentProperty().addListener((_, _, newValue) -> {
+//                    watchContainer(newValue);
+//                });
+//            }
         });
     }
 
@@ -69,7 +67,6 @@ public class ClassWatcher {
                             }
 
                         } else if (change.wasRemoved()) {
-                            System.out.println("removed = " + change.getRemoved());
                             for (Node removedNode : change.getRemoved()) {
                                 if (removedNode instanceof Parent par) {
                                     par.getChildrenUnmodifiable().removeListener(this);
@@ -102,50 +99,24 @@ public class ClassWatcher {
         if (node instanceof Node component) {
 
             // Evita adicionar o mesmo listener duplicado se o componente já estiver sendo vigiado
-//            if (component.getProperties().containsKey("tailwind-watched")) return;
-//            component.getProperties().put("tailwind-watched", true);
+            if (component.getProperties().containsKey("tailwind-watched")) return;
+            component.getProperties().put("tailwind-watched", true);
 
 
-            component.getStyleClass().addListener(new ListChangeListener<>() {
-                @Override
-                public void onChanged(Change<? extends String> change) {
-                    while (change.next()) {
-                        if (change.wasAdded()) {
-                            for (String className : change.getAddedSubList()) {
+            // por que isso estava duplicando as classes?
+//            tailwindWatcher.write(component.getStyleClass());
 
-                                Platform.runLater(() -> {
-
-                                    component.getStyleClass().removeListener(this);
-                                    component.getStyleClass().remove(className); // Remove a versão com []
-
-                                    var cleaned = new ClassConverter().clean(className);
-//
-                                    // Evita duplicar se a classe limpa já existir no componente
-                                    if (!component.getStyleClass().contains(cleaned)) {
-                                        component.getStyleClass().add(cleaned);
-                                    }
-
-                                    tailwindWatcher.append(cleaned);
-                                    // 3. Re adiciona o listener para monitorar futuras inserções legítimas
-                                    component.getStyleClass().addListener(this);
-                                });
-
-                            }
-                        }
-                    }
-                }
-            });
-
-            tailwindWatcher.write(component.getStyleClass());
 
             // Processa as classes que o componente já possui no momento em que foi descoberto
-            List<String> classes = new ArrayList<>(component.getStyleClass());
 
-            for (String classeLimpa : classes) {
-                component.getStyleClass().remove(classeLimpa);
-                component.getStyleClass().add(new ClassConverter().clean(classeLimpa));
-            }
-
+            component.getStyleClass().replaceAll(s -> {
+//                if (!component.getProperties().containsKey("tailwind-watched")) {
+//                    return s;
+//                };
+                if (write) tailwindWatcher.append(s);
+                component.getProperties().put("tailwind-watched", true);
+                return new ClassConverter().clean(s);
+            });
         }
     }
 }
