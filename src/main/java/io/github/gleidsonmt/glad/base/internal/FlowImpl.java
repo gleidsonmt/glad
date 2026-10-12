@@ -2,6 +2,7 @@ package io.github.gleidsonmt.glad.base.internal;
 
 import io.github.gleidsonmt.glad.base.Flow;
 import io.github.gleidsonmt.glad.base.Root;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -33,12 +34,16 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         anchor = null;
         pos = Pos.CENTER;
         insets = Insets.EMPTY;
+
         width.unbind();
         height.unbind();
+
         height.set(-1);
         width.set(-1);
+
         full = false;
         with = null;
+        showing = false;
     }
 
     @Override
@@ -102,8 +107,6 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         return root.getChildren().contains(node);
     }
 
-
-
     @Override
     public Flow pos(Pos pos) {
         this.pos = pos;
@@ -129,8 +132,9 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
     }
 
     private void relocateByNode(Region target) {
+
         if (this.height.get() == -1) {
-            // if the height of the content has no pref sliheight,
+            // if the height of the content has no prefs height,
             // then the height will be settled by the content
             this.content.maxHeightProperty().bind(this.content.heightProperty());
             this.height.bind(this.content.maxHeightProperty());
@@ -148,8 +152,12 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
             translateBasedOnNodeX(target);
         }
 
-        this.height.addListener((_, _, _) -> translateBasedOnNodeY(target));
-        this.width.addListener((_, _, _) -> translateBasedOnNodeX(target));
+        this.height.addListener((_, _, _) -> {
+            if (showing) translateBasedOnNodeY(target);
+        });
+        this.width.addListener((_, _, _) -> {
+            if (showing) translateBasedOnNodeX(target);
+        });
     }
 
     // needs to be cut in two other methods to calculate x and y.
@@ -332,13 +340,13 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
         StackPane.clearConstraints(content);
         StackPane.setAlignment(content, pos);
         StackPane.setMargin(content, insets);
-//
+
         this.content.applyCss();
         this.content.layout();
-//
+
         double height = this.height.get() == -1 ?
                 this.content.prefHeight(-1) : this.height.get();
-//
+
         this.content.setPrefHeight(height);
         this.content.setMinHeight(height);
 //
