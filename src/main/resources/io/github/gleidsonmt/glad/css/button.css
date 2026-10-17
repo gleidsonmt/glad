@@ -1,4 +1,5 @@
-Button, IconButton {
+Button,
+IconButton {
     -fx-text-fill: white;
     -fx-graphic-text-gap: 10;
     -fx-cursor: hand;
@@ -13,6 +14,11 @@ Button, IconButton {
     -fx-font-weight: bolder;
     -fx-font-size: 12px;
     -fx-font-smoothing-type: lcd;
+
+    -fx-background-radius: 12.5px;
+    -fx-border-radius: 12.5px;
+    -fx-pref-height: 42px;
+    -fx-min-height: 42px;
 }
 
 .root:dark-theme Button .text {
@@ -21,13 +27,6 @@ Button, IconButton {
 
 .root:dark-theme Button:cancel .text {
     -fx-stroke: -fx-accent;
-}
-
-Button, IconButton {
-    -fx-background-radius: 12.5px;
-    -fx-border-radius: 12.5px;
-    -fx-pref-height: 42px;
-    -fx-min-height: 42px;
 }
 
 IconButton:pressed:focused,
@@ -78,9 +77,7 @@ Button .ripple {
     -fx-fill: #ffffff50;
 }
 
-Button .text {
-    -fx-fill: -text-color;
-}
+
 
 .flat {
     -fx-background-color: -light-gray-2;

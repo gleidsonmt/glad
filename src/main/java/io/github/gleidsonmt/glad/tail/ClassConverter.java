@@ -23,6 +23,14 @@ public class ClassConverter {
             {"min-h", "-fx-min-height: "},
             {"max-h", "-fx-max-height: "},
             {"cursor", "-fx-cursor: "},
+            {"align", "-fx-alignment: "},
+            {"text", "-fx-fill: "},
+            {"pd", "-fx-padding: "},
+            {"hgap", "-fx-hgap: "},
+            {"vgap", "-fx-vgap: "},
+            {"spacing", "-fx-spacing: "},
+            {"icon", "-icon-color: "},
+            {"display", "-fx-content-display: "},
             {"bg", " -fx-background-color: "}
     };
 
@@ -67,7 +75,22 @@ public class ClassConverter {
     }
 
     public String clean(String className) {
-        return className.replaceAll("[\\[\\]]+", "").replace(":", "-");
+//        return className.replaceAll("[\\[\\]]+", "").replace(":", "-");
+        return className.contains("[")
+                ? className
+                .replace(" ", "")
+                .replaceAll("[\\[\\]]+", "")
+                .replace(":", "-")
+                .replace("%", "pct")
+                .replaceAll("[^a-z0-9-]+", "")
+                :
+                className;
+//        return className
+//                .replace(" ", "")
+//                .replaceAll("[\\[\\]]+", "")
+//                .replace(":", "-")
+//                .replace("%", "pct")
+//                .replaceAll("[^a-z0-9-]+", "");
     }
 
     public String convert(String[][] prefixes, String[] modifiers, String className) {
@@ -75,10 +98,10 @@ public class ClassConverter {
 
         StringBuilder cssContent = new StringBuilder();
         StringBuilder availablePrefixes = new StringBuilder();
-        for (String[] prefix : prefixes){
+        for (String[] prefix : prefixes) {
             availablePrefixes.append(prefix[0]).append("|");
         }
-        availablePrefixes.delete(availablePrefixes.length() - 1, availablePrefixes.length() );
+        availablePrefixes.delete(availablePrefixes.length() - 1, availablePrefixes.length());
 
         String regex = "\\b(?:([a-zA-Z0-9]+):)?(" + availablePrefixes + ")-(\\[([^]\n" +
                        "]*)]|(-?[a-zA-Z0-9%#\\-]+" +
@@ -89,6 +112,7 @@ public class ClassConverter {
 
         Matcher matcher = pattern.matcher(className);
 
+
         if (matcher.matches()) {
             String fullClass = matcher.group(0);
             String modifier = matcher.group(1);
@@ -97,18 +121,13 @@ public class ClassConverter {
             // Se o grupo 3 (com colchetes) for nulo, pega o grupo 4 (sem colchetes)
             String value = matcher.group(3) != null ? matcher.group(3) : matcher.group(4);
 
-            cssSelector = fullClass
-                    .replace(":", "-")
-                    .replace("[", "")
-                    .replace("]", "")
-                    .replace("%", "")
-                    .replace("#", "");
+            cssSelector = clean(fullClass);
 
             StringBuilder ruleBuilder = new StringBuilder();
             boolean validRule;
+            boolean function = value.contains("(");
 
-
-            if (value.contains("[")) {
+            if (value.contains("[") || value.contains("]")) {
                 value = value.replace("[", "").replace("]", "");
             }
 
@@ -116,26 +135,60 @@ public class ClassConverter {
 
                 if (prefix.equals(p[0])) {
 
+                    if (prefix.equals("display")) {
+                        if (value.equals("graphic")) {
+                            value = "graphic-only";
+                        }
+
+                        if (value.equals("text")) {
+                            value = "text-only";
+                        }
+                    }
+
+                    if (prefix.equals("w") || prefix.equals("h") || prefix.equals("max-h") || prefix.equals("min-h") || prefix.equals("max-w")) {
+                        if (!isNumber(value)) break;
+                    }
+
                     if (prefix.equals("bg")) {
-                        if (!isColor(value)) {
+
+                        if (isCustomColor(value)) {
+                            value = "-" + value;
+                        } else if (!isColor(value) && !function) {
                             value = "-" + value;
                         }
+                    }
+
+                    if (prefix.equals("icon")) {
+                        if (!isColor(value)) return "";
+                        if (isColor(value) && !function) {
+                            value = "-" + value;
+                        }
+                    }
+
+                    if (prefix.equals("text")) {
+                        if (isNumber(value)) {
+                            p[1] = "-fx-font-size: ";
+                        } else if (isColor(value)) {
+                            p[1] = "-text-color: ";
+                        } else if (value.equals("accent")) {
+                            value = "-fx-" + value;
+                        } else {
+                            p[1] = "";
+                        }
+
                     }
 
                     if (modifier != null) {
                         for (String m : modifiers) {
                             if (m.equals(modifier)) {
-//                                cssSelector = modifier + "-" + prefix + "-" + value.replace("-", "") + ":" + modifier;
                                 cssSelector = modifier + "-" + prefix + "-" + value.replaceFirst("-", "") + ":" + modifier;
-                                System.out.println("modifier = " + modifier);
-                                System.out.println("prefix = " + prefix);
-                                System.out.println("v = " + value);
                                 break;
                             }
                         }
                     }
 
-                    ruleBuilder.append("\t").append(p[1]).append(value).append(";\n");
+                    if (!p[1].isEmpty() && !p[1].isBlank())
+                        ruleBuilder.append("\t").append(p[1]).append(value).append(";\n");
                 }
             }
 
@@ -153,19 +206,26 @@ public class ClassConverter {
         return null;
     }
 
-    private boolean isColor(String color) {
+    private boolean isNumber(String val) {
+        return val.matches("-?\\d+(\\.\\d+)?");
+    }
 
+    private boolean isCustomColor(String color) {
+        Pattern pattern = Pattern.compile("[a-zA-Z]+-[0-9]+");
+        return pattern.matcher(color).matches();
+    }
+
+    private boolean isColor(String color) {
+        color = color.replaceFirst("-", "").replaceAll("[^a-zA-Z]", "");
         try {
             // Tenta converter a String (aceita "red", "#FF0000", "rgb(255,0,0)", etc.)
             Color.web(color);
             return true; // Se não deu erro, a cor é válida
         } catch (IllegalArgumentException e) {
             // O erro foi interceptado aqui porque a string não é uma cor reconhecida
-            System.out.println("Erro: '" + color + "' não é uma cor JavaFX válida.");
             return false;
         } catch (NullPointerException e) {
             // Opcional: trata o caso da string ser nula
-            System.out.println("Erro: A string da cor está nula.");
             return false;
         }
     }

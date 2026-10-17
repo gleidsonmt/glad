@@ -50,9 +50,6 @@ public class ThemeProvider {
     }
 
     public static void install(Scene scene, Font... css) {
-        Arrays.stream(css).forEach(el -> {
-            InputStream inputStream;
-        });
         Arrays.stream(css).forEach(el -> scene.getStylesheets().add(Resources.getFont(el.getUrl())));
     }
 

@@ -2,9 +2,15 @@
 package io.github.gleidsonmt.glad.controls.icon;
 
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.css.CssMetaData;
+import javafx.css.SimpleStyleableObjectProperty;
+import javafx.css.Styleable;
+import javafx.css.StyleablePropertyFactory;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
@@ -14,6 +20,17 @@ public class SVGIcon extends SVGPathIcon {
 
     private String name;
     private final SimpleObjectProperty<Icon> icon = new SimpleObjectProperty<>();
+
+    protected static final StyleablePropertyFactory<SVGIcon> FACTORY =
+            new StyleablePropertyFactory<>(SVGIcon.getClassCssMetaData());
+
+    protected final SimpleStyleableObjectProperty<Color> fill =
+            new SimpleStyleableObjectProperty<>(FILL, this, "fill", Color.GRAY);
+
+    protected static final CssMetaData<SVGIcon, Color> FILL =
+            FACTORY.createColorCssMetaData(
+                    "-fx-fill",
+                    g -> g.fill, Color.GRAY);
 
     public SVGIcon() {
         this(Icon.NONE);
@@ -42,9 +59,21 @@ public class SVGIcon extends SVGPathIcon {
                 setContent(newValue);
             }
         });
+
+        this.fill.addListener((_, _, newValue) -> {
+            if (newValue != null) {
+                path.setFill(newValue);
+            }
+        });
+
         setPickOnBounds(true);
         setAutoSizeChildren(true);
         setMouseTransparent(true);
+    }
+
+    @Override
+    public List<CssMetaData<? extends Styleable, ?>> getCssMetaData() {
+        return FACTORY.getCssMetaData();
     }
 
     public Icon getIcon() {

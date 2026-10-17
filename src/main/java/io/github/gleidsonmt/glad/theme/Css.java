@@ -45,6 +45,8 @@ public enum Css implements Neutral {
     DATE_PICKER("date_picker.css"),
     TITLED_PANE("titled-pane.css"),
 
+    TEXT_AREA("text-area.css"),
+
     BADGE("badge.css"),
     SLIDER("slider.css"),
     THEME_DEFAULT("theme.css"),

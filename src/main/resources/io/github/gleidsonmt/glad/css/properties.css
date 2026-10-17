@@ -130,10 +130,6 @@
     -fx-content-display: center;
 }
 
-.display-graphic {
-    -fx-content-display: graphic_only;
-}
-
 .display-text {
     -fx-content-display: text_only;
 }

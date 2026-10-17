@@ -1,5 +1,7 @@
+Badge {
+    -fx-background-color: transparent;
+}
 
-
-.badge:hover {
+Badge:hover {
     -fx-background-color: -hover-color;
 }

@@ -1,10 +1,12 @@
 package io.github.gleidsonmt.glad.tail;
 
+import io.github.gleidsonmt.glad.base.Root;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 
 import java.io.IOException;
 
@@ -41,6 +43,7 @@ public class ClassWatcher {
 //                    watchContainer(newValue);
 //                });
 //            }
+
         });
     }
 
@@ -48,7 +51,7 @@ public class ClassWatcher {
     private void watchContainer(Node node) {
         if (node instanceof Parent parent) {
             // Escuta se novos filhos entrarem neste contêiner específico (ex: um VBox ou HBox)
-            parent.getChildrenUnmodifiable().addListener(new ListChangeListener<Node>() {
+            parent.getChildrenUnmodifiable().addListener(new ListChangeListener<>() {
                 @Override
                 public void onChanged(Change<? extends Node> change) {
 
@@ -71,6 +74,7 @@ public class ClassWatcher {
                                 if (removedNode instanceof Parent par) {
                                     par.getChildrenUnmodifiable().removeListener(this);
                                 }
+                                watchNode(removedNode);
                             }
                         } else if (change.wasAdded()) {
                             for (Node addedNode : change.getAddedSubList()) {
@@ -99,13 +103,16 @@ public class ClassWatcher {
         if (node instanceof Node component) {
 
             // Evita adicionar o mesmo listener duplicado se o componente já estiver sendo vigiado
-            if (component.getProperties().containsKey("tailwind-watched")) return;
-            component.getProperties().put("tailwind-watched", true);
+//            if (component.getProperties().containsKey("tailwind-watched")) return;
+//            component.getProperties().put("tailwind-watched", true);
+
+            if (component instanceof ScrollPane scroll) {
+                watchContainer(scroll.getContent());
+            }
 
 
             // por que isso estava duplicando as classes?
 //            tailwindWatcher.write(component.getStyleClass());
-
 
             // Processa as classes que o componente já possui no momento em que foi descoberto
 
@@ -113,7 +120,9 @@ public class ClassWatcher {
 //                if (!component.getProperties().containsKey("tailwind-watched")) {
 //                    return s;
 //                };
+
                 if (write) tailwindWatcher.append(s);
+
                 component.getProperties().put("tailwind-watched", true);
                 return new ClassConverter().clean(s);
             });

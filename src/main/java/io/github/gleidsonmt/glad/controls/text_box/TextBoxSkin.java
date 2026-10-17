@@ -32,8 +32,6 @@ public class TextBoxSkin extends SkinBase<TextBox> {
 
     private Timeline animation = new Timeline();
     private double aniVeloz = 200;
-    //    private Node icon = new SVGIcon(Icon.FACE);
-//    private Node action = new SVGIcon(Icon.CLEAR);
 
     public boolean top = false;
     private double labelScale = 0.90;

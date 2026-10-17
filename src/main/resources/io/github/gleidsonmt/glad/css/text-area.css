@@ -1,0 +1,19 @@
+TextArea {
+    -fx-background-color: transparent;
+    -fx-effect: none;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-border-color: -border-color;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 12px;
+}
+
+TextArea:focused {
+    -fx-border-color: -fx-accent;
+}
+
+TextArea .scroll-pane .content {
+    -fx-background-color: transparent;
+}

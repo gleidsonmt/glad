@@ -5,8 +5,9 @@
 */
 
 
-.text,
-.label,
+/*.text,*/
+/*.label,*/
+Label,
 Text {
     -fx-font-family: "Poppins Regular";
     -fx-fill: -text-color;

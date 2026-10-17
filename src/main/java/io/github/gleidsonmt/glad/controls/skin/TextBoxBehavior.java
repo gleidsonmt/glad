@@ -18,6 +18,9 @@ public class TextBoxBehavior {
         actionButton.setCancelButton(true);
 //        actionButton.setManaged(false);
         actionButton.getStyleClass().addAll("rounded", "max-w-30", "min-w-30", "min-h-30", "max-h-30");
+//        actionButton.setMaxHeight(30);
+//        actionButton.setPrefHeight(30);
+//        actionButton.setMinHeight(30);
 //        base.setRightNode(actionButton);
 //        base.getContainer().getChildren().addLast(actionButton);
         actionButton.setOnAction(_ -> {

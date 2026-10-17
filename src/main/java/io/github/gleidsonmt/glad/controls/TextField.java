@@ -13,6 +13,7 @@ import java.util.List;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Create on  01/04/2025
  */
+@Deprecated
 public class TextField extends javafx.scene.control.TextField implements Component {
 
     private List<String> pseudos;

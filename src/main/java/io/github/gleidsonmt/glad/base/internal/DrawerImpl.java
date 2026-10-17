@@ -49,7 +49,7 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
         timeline.getKeyFrames().setAll(
                 new KeyFrame(Duration.millis(0),
                         new KeyValue(content.translateXProperty(), -300)),
-                new KeyFrame(Duration.millis(200),
+                new KeyFrame(Duration.millis(100),
                         new KeyValue(content.translateXProperty(), 0))
         );
 
