@@ -84,7 +84,8 @@ public class ClassConverter {
                 .replace("%", "pct")
                 .replaceAll("[^a-z0-9-]+", "")
                 :
-                className;
+                className
+                        .replaceFirst(":", "-");
 //        return className
 //                .replace(" ", "")
 //                .replaceAll("[\\[\\]]+", "")
