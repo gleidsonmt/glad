@@ -1,4 +1,4 @@
-TextArea {
+.text-area {
     -fx-background-color: transparent;
     -fx-effect: none;
     -fx-faint-focus-color: transparent;
@@ -10,10 +10,10 @@ TextArea {
     -fx-font-size: 12px;
 }
 
-TextArea:focused {
+.text-area:focused {
     -fx-border-color: -fx-accent;
 }
 
-TextArea .scroll-pane .content {
+.text-area .scroll-pane .content {
     -fx-background-color: transparent;
 }

@@ -27,44 +27,68 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
         super(root);
     }
 
+    @Override
+    public boolean isShowing() {
+        return super.isShowing();
+    }
+
     //
     @Override
     public void show() {
+        show(Pos.CENTER_LEFT);
+    }
+
+    public void show(Pos pos) {
+        show(Pos.CENTER_LEFT, Anchor.LEFT);
+    }
+
+    public void show(Pos pos, Anchor anchor) {
         root.block();
+
+        var width = 0;
+        var height = 0;
+
+        switch (pos.getHpos()) {
+            case CENTER, LEFT, RIGHT -> width = 300;
+        }
+
+        switch (pos.getVpos()) {
+            case TOP, BOTTOM, CENTER -> height = 300;
+        }
 
         root.flow()
                 .content((Region) this.content)
                 .with(this.with)
-                .width(300)
-                .height(-1)
-                .pos(Pos.CENTER_LEFT)
-                .anchor(Anchor.LEFT)
+                .width(width)
+                .height(height)
+                .pos(pos)
+                .anchor(anchor)
                 .show();
 
         super.show();
 
 
-        Timeline timeline = new Timeline();
+//        Timeline timeline = new Timeline();
+//
+//        timeline.getKeyFrames().setAll(
+//                new KeyFrame(Duration.millis(0),
+//                        new KeyValue(content.translateXProperty(), -300)),
+//                new KeyFrame(Duration.millis(100),
+//                        new KeyValue(content.translateXProperty(), 0))
+//        );
+//
+//        timeline.setRate(1);
+//        timeline.play();
 
-        timeline.getKeyFrames().setAll(
-                new KeyFrame(Duration.millis(0),
-                        new KeyValue(content.translateXProperty(), -300)),
-                new KeyFrame(Duration.millis(100),
-                        new KeyValue(content.translateXProperty(), 0))
-        );
-
-        timeline.setRate(1);
-        timeline.play();
-
-        root.getForeground().addAction(_ -> {
-            timeline.setRate(-1);
-            timeline.play();
-
-            timeline.setOnFinished(_ -> {
-//                this.content.setTranslateX(0);
-                hide();
-            });
-        });
+//        root.getForeground().addAction(_ -> {
+//            timeline.setRate(-1);
+//            timeline.play();
+//
+//            timeline.setOnFinished(_ -> {
+////                this.content.setTranslateX(0);
+//                hide();
+//            });
+//        });
     }
 
     @Override

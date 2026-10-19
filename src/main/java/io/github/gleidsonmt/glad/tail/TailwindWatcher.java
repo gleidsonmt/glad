@@ -8,54 +8,10 @@ import java.io.IOException;
  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
  * Created on 28/09/2026
  */
+@Deprecated(forRemoval = true)
 public class TailwindWatcher {
 
     private PathResolver path = new PathResolver();
-
-//    private static final Logger log = Logger.getGlobal();
-//
-//    // Método mágico que varre a sua pasta src/main/java, descobre o pacote atual
-//    // e espelha a mesma estrutura dentro de resources/
-//    private void resolveDynamicPaths() {
-//        try {
-//            // Procura o primeiro arquivo .java para descobrir qual é o pacote do projeto (ex: todo)
-//            Path firstJavaFile = Files.walk(SOURCE_DIR)
-//                    .filter(Files::isRegularFile)
-//                    .filter(p -> p.toString().endsWith(".java"))
-//                    .findFirst()
-//                    .orElse(null);
-//
-//            String packagePathStr = "css/tailwind.css"; // Fallback padrão caso não ache
-//
-//            if (firstJavaFile != null) {
-//                // Pega o caminho relativo a partir de src/main/java (ex: io/github/gleidsonmt/todo/Main.java)
-//                Path relativePath = SOURCE_DIR.relativize(firstJavaFile);
-//                Path packageFolder = relativePath.getParent(); // Retorna: io/github/gleidsonmt/todo
-//
-//                if (packageFolder != null) {
-//                    // Monta o caminho final jogando a pasta 'css' dentro do pacote descoberto
-//                    packagePathStr = packageFolder.toString().replace("\\", "/") + "/css/tailwind.css";
-//                }
-//            }
-//
-//            // Define o caminho de saída apontando para a pasta resources do projeto que está rodando
-//            cssOutputPath = ROOT_DIR.resolve("src/main/resources").resolve(packagePathStr);
-
-    /// /            System.out.println("🎯 [JIT Config] Destino mapeado para: " + cssOutputPath);
-//            log.info("🎯 [JIT Config] Destino mapeado para: " + cssOutputPath);
-//
-//        } catch (IOException e) {
-//            // Se falhar por algum motivo, joga na raiz de resources/css como segurança
-//            cssOutputPath = ROOT_DIR.resolve("src/main/resources/css/typographic.css");
-//        }
-//    }
-    public void printRules() {
-//        String[] list = acceptablePrefixes.split("|");
-//        for (String prefix : list) {
-//            System.out.println("Prefix: " + prefix);
-//        }
-
-    }
 
     public void start() throws IOException, InterruptedException {
         path.resolve();

@@ -1,5 +1,4 @@
 
-
 /*
     Created on : 20/10/224, 08:00:15
     Author     : Gleidson Neves da Silveira
@@ -16,15 +15,19 @@
     */
 }
 
+.scroll-pane {
+    -fx-vbar-policy: as-needed;
+}
 .scroll-pane:hover,
 .scroll-pane:pressed {
     -fx-vbar-policy: as-needed;
     -fx-hbar-policy: never;
-    /*
 
-
-      */
 }
+
+
+
+
 
 /* ARROW SHAPES */
 .scroll-bar:horizontal > .decrement-button > .decrement-arrow {
@@ -94,7 +97,6 @@
 .scroll-bar:pressed > .increment-button,
 .scroll-bar:pressed > .decrement-button {
     -fx-background-color: transparent;
-    -fx-background-color: -dark-gray;
 }
 
 .list-view:focused .virtual-flow .scroll-bar:vertical {

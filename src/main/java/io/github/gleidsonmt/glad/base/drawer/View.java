@@ -1,14 +1,3 @@
-
-
-/*
- * *
- *  * Description:
- *  *
- *  * @author Gleidson Neves da Silveira | <a href="mailto:gleidisonmt@gmail.com">gleidisonmt@gmail.com</a> <br>
- *  * Create on ${DATE}
- *
- */
-
 package io.github.gleidsonmt.glad.base.drawer;
 
 import javafx.scene.Node;

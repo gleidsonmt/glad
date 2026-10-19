@@ -13,6 +13,7 @@ import io.github.gleidsonmt.glad.base.dialog.Alert;
 import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.ContentItem;
 import io.github.gleidsonmt.glad.base.internal.DialogBase;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 
 /**
@@ -31,5 +32,12 @@ public interface Drawer {
 
     void show();
 
+    void show(Pos pos);
+
+    void show(Pos pos, Anchor anchor);
+
     void hide();
+
+    boolean isShowing();
+
 }

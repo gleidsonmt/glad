@@ -1,6 +1,8 @@
 package io.github.gleidsonmt.glad;
 
 import io.github.gleidsonmt.glad.tail.ClassWatcher;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.File;
@@ -15,15 +17,21 @@ import java.net.URLClassLoader;
  */
 public class HotTools {
 
+    private static ClassWatcher watcher;
+
+    public static ClassWatcher getWatcher() {
+        return watcher;
+    }
+
     public static void init(Scene scene, Launch.MODE mode) {
         switch (mode) {
             case DEV:
-                installWatcher(scene, true);
+                watcher = installWatcher(scene, true);
                 analyzeNodes(scene);
                 listenCss(scene);
                 break;
             case RUN:
-                installWatcher(scene, false);
+                watcher = installWatcher(scene, false);
                 break;
             case DEBUG:
                 break;
@@ -39,7 +47,11 @@ public class HotTools {
      *
      * @param scene The scene to analyze.
      */
-    public static void installWatcher(Scene scene, boolean write) {
+    public static ClassWatcher installWatcher(Scene scene, boolean write) {
+        return new ClassWatcher(scene,write);
+    }
+
+    public static void installWatcher(Parent scene, boolean write) {
         new ClassWatcher(scene,write);
     }
 
