@@ -151,8 +151,9 @@ public class ClassConverter {
                     }
 
                     if (prefix.equals("bg")) {
-
-                        if (isCustomColor(value)) {
+                        if (value.equals("background")) {
+                            value = "-fx-background";
+                        } else if (isCustomColor(value)) {
                             value = "-" + value;
                         } else if (!isColor(value) && !function) {
                             value = "-" + value;

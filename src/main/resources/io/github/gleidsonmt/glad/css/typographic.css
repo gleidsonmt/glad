@@ -8,6 +8,7 @@
 /*.text,*/
 /*.label,*/
 Label,
+Button,
 Text {
     -fx-font-family: "Poppins Regular";
     -fx-fill: -text-color;
