@@ -24,10 +24,19 @@ public class ForegroundImpl extends StackPane implements Foreground {
     public ForegroundImpl(Root root) {
         setId("foreground");
         this.root = root;
+        setViewOrder(7);
     }
 
     @Override
     public void restyle(WrapperEffect effect) {
+        restyle(effect, 7);
+    }
+
+    public void restyle(WrapperEffect effect, double order) {
+        this.setViewOrder(order);
+        
+        if (!root.getChildren().contains(this)) root.getChildren().add(this);
+        
         if (effect == null) effect = WrapperEffect.NONE;
         switch (effect) {
             case WrapperEffect.BLUR -> {
@@ -61,6 +70,7 @@ public class ForegroundImpl extends StackPane implements Foreground {
 
     @Override
     public void show() {
+
         this.toFront();
     }
 

@@ -43,7 +43,7 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
     }
 
     public void show(Pos pos, Anchor anchor) {
-        root.block();
+        if (showing) return;
 
         var width = 0;
         var height = 0;
@@ -56,6 +56,9 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
             case TOP, BOTTOM, CENTER -> height = 300;
         }
 
+        this.content.setViewOrder(4);
+        root.getForeground().restyle(with, this.content.getViewOrder() + 1);
+
         root.flow()
                 .content((Region) this.content)
                 .with(this.with)
@@ -65,7 +68,10 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
                 .anchor(anchor)
                 .show();
 
+        System.out.println("this = " + block);
+
         super.show();
+        System.out.println("this 2= " + block);
 
 
 //        Timeline timeline = new Timeline();

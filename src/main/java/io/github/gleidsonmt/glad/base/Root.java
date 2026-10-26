@@ -23,10 +23,21 @@ public class Root extends AbstractContainer<DefaultBreak> {
     private final Foreground foreground;
 
     private final ObjectProperty<Node> content = new SimpleObjectProperty<>();
+
+    private boolean block = false;
+
     /**
      * Initializes layout, flow, behavior; adds listeners for dynamic adjustments
      */
     public Root(Node layout) {
+
+        // container/root/this 6
+        // foreground 5
+        // drawer 4
+        // flow 3
+        // dialogs 2
+        // alerts 1
+
         this.flow = new FlowImpl(this);
         this.behavior = new BehaviorImpl(this);
         this.foreground = new ForegroundImpl(this);
@@ -34,6 +45,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
         setContent(layout);
         // removes any node with absolute position, like alerts, dialogs, etc.
         widthProperty().addListener((_, _, _) -> {
+//            System.out.println("isBlocked() = " + isBlocked());
             if (isBlocked()) return;
 //            flow.clear();
         });
@@ -57,6 +69,7 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     public void setContent(Node content) {
         this.content.set(content);
+        content.setViewOrder(6);
         super.getChildren().setAll(content);
     }
 
@@ -73,16 +86,19 @@ public class Root extends AbstractContainer<DefaultBreak> {
     }
 
     public void block() {
-        if (!isBlocked()) super.getChildren().add((Node) foreground);
-        foreground.show();
+        this.block = true;
+//        if (!isBlocked()) super.getChildren().add((Node) foreground);
+//        foreground.show();
     }
 
     public void unblock() {
-        if (!isBlocked()) return;
-        getChildren().remove((Node) foreground);
+        this.block = false;
+//        if (!isBlocked()) return;
+//        getChildren().remove((Node) foreground);
     }
 
     public boolean isBlocked() {
-        return super.getChildren().contains((Node) foreground);
+        return this.block;
+//        return super.getChildren().contains((Node) foreground);
     }
 }

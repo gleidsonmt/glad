@@ -27,13 +27,17 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 //            foreground.restyle(with, root);
 //        }
 
-        if (block) {
-            root.block();
-            root.getForeground().restyle(with);
+        var dialog = new DialogContainer(node);
+        dialog.setViewOrder(2);
+
+        if (root.isBlocked()) {
+//            root.block();
+            root.getForeground().restyle(with, dialog.getViewOrder() + 1);
         } else {
-            root.unblock();
-            root.getForeground().restyle(null);
+//            root.unblock();
+            root.getForeground().restyle(null, 7);
         }
+
 
         root.flow()
                 .pos(pos)
@@ -43,12 +47,11 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
                 .height(height.get())
 
                 .anchor(anchor)
-                .content(new DialogContainer(node))
+                .content(dialog)
                 .show();
 
             super.show();
     }
-
 
     @Override
     public void reset() {

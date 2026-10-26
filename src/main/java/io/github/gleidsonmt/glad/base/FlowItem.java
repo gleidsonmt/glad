@@ -36,6 +36,7 @@ public interface FlowItem<T> extends AppearItem {
      * @return The FlowItem.
      */
     @ApiStatus.Experimental
+    @Deprecated(forRemoval = true)
     T block();
 
     /**

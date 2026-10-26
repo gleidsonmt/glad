@@ -54,6 +54,7 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
         return (T) this;
     }
 
+    @Deprecated(forRemoval = true)
     @Override
     public T block() {
         this.block = true;
@@ -79,17 +80,20 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
 
     @Override
     public void show() {
+        System.out.println("block = " + block);
         showing = true;
-        if (root.isBlocked()) {
-            root.getForeground().restyle(with);
-        }
+//        if (root.isBlocked()) {
+//            root.getForeground().restyle(with);
+//        }
     }
 
     @Override
     public void hide() {
+//        if (root.getChildren().size() > 2) return;
+        System.out.println("root.getChildren() = " + root.getChildren());
         showing = false;
-        root.unblock();
-        root.getForeground().restyle(WrapperEffect.NONE);
+        root.getForeground().restyle(WrapperEffect.NONE, 7);
+//        root.unblock();
         reset();
     }
 
@@ -98,7 +102,7 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
         insets = Insets.EMPTY;
         anchor = Anchor.NONE;
         showing = false;
-        block = false;
+//        block = false;
         with = null;
     }
 }

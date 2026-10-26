@@ -34,4 +34,6 @@ public interface Foreground {
 
     void restyle(WrapperEffect effect);
 
+    void restyle(WrapperEffect effect, double order);
+
 }

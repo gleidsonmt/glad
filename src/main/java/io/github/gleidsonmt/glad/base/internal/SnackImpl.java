@@ -56,7 +56,6 @@ public class SnackImpl extends FlowItemAbstract<Snack> implements Snack {
         this.actions = null;
     }
 
-
     @Override
     public void show() {
         var bar = new SnackBar(this.message);
