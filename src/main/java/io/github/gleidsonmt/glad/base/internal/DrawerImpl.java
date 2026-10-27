@@ -68,11 +68,8 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
                 .anchor(anchor)
                 .show();
 
-        System.out.println("this = " + block);
 
         super.show();
-        System.out.println("this 2= " + block);
-
 
 //        Timeline timeline = new Timeline();
 //

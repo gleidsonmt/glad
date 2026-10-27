@@ -90,10 +90,8 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
     @Override
     public void hide() {
 //        if (root.getChildren().size() > 2) return;
-        System.out.println("root.getChildren() = " + root.getChildren());
         showing = false;
         root.getForeground().restyle(WrapperEffect.NONE, 7);
-//        root.unblock();
         reset();
     }
 
