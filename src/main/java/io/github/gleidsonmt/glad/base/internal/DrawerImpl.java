@@ -57,7 +57,7 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
         }
 
         this.content.setViewOrder(4);
-        root.getForeground().restyle(with, this.content.getViewOrder() + 1);
+        root.getForeground().restyle(with, 5);
 
         root.flow()
                 .content((Region) this.content)
@@ -71,27 +71,32 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
 
         super.show();
 
-//        Timeline timeline = new Timeline();
-//
-//        timeline.getKeyFrames().setAll(
-//                new KeyFrame(Duration.millis(0),
-//                        new KeyValue(content.translateXProperty(), -300)),
-//                new KeyFrame(Duration.millis(100),
-//                        new KeyValue(content.translateXProperty(), 0))
-//        );
-//
-//        timeline.setRate(1);
-//        timeline.play();
+        Timeline timeline = new Timeline();
 
-//        root.getForeground().addAction(_ -> {
-//            timeline.setRate(-1);
-//            timeline.play();
 //
-//            timeline.setOnFinished(_ -> {
-////                this.content.setTranslateX(0);
-//                hide();
-//            });
-//        });
+        switch (pos.getHpos()) {
+            case LEFT -> {
+                timeline.getKeyFrames().setAll(
+                        new KeyFrame(Duration.millis(0),
+                                new KeyValue(content.translateXProperty(), -300)),
+                        new KeyFrame(Duration.millis(100),
+                                new KeyValue(content.translateXProperty(), 0))
+                );
+            }
+            case RIGHT -> {
+                timeline.getKeyFrames().setAll(
+                        new KeyFrame(Duration.millis(0),
+                                new KeyValue(content.translateXProperty(), 300)),
+                        new KeyFrame(Duration.millis(100),
+                                new KeyValue(content.translateXProperty(), 0))
+                );
+            }
+
+        }
+
+        timeline.setRate(1);
+        timeline.play();
+
     }
 
     @Override
@@ -110,7 +115,7 @@ public class DrawerImpl extends DialogAbstract<Drawer> implements Drawer {
 //        StackPane.clearConstraints(this.content);
 //        this.width.set(-1);
 //        this.height.set(-1);
-        super.hide();
         root.flow().remove(this.content);
+        super.hide();
     }
 }

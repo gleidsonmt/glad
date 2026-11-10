@@ -65,6 +65,7 @@ public class DialogImpl extends DialogAbstract<Dialog> implements Dialog {
 
     @Override
     public void hide() {
+        if (this.content == null) return;
         super.hide();
         root.flow().remove(super.content.getParent());
     }

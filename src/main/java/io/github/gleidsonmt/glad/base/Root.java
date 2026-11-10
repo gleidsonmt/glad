@@ -1,5 +1,6 @@
 package io.github.gleidsonmt.glad.base;
 
+import io.github.gleidsonmt.glad.base.dialog.WrapperEffect;
 import io.github.gleidsonmt.glad.base.internal.BehaviorImpl;
 import io.github.gleidsonmt.glad.base.internal.FlowImpl;
 import io.github.gleidsonmt.glad.base.internal.Foreground;
@@ -93,6 +94,11 @@ public class Root extends AbstractContainer<DefaultBreak> {
 
     public void unblock() {
         this.block = false;
+        foreground.restyle(WrapperEffect.NONE, 7);
+
+        if (behavior.drawer() != null) behavior.drawer().hide();
+        if (behavior.alert() != null) behavior.alert().hide();
+        if (behavior.dialog() != null) behavior.dialog().hide();
 //        if (!isBlocked()) return;
 //        getChildren().remove((Node) foreground);
     }

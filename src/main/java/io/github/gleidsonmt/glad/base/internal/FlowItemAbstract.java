@@ -80,7 +80,6 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
 
     @Override
     public void show() {
-        System.out.println("block = " + block);
         showing = true;
 //        if (root.isBlocked()) {
 //            root.getForeground().restyle(with);
@@ -91,8 +90,8 @@ public abstract class FlowItemAbstract<T> implements FlowItem<T> {
     public void hide() {
 //        if (root.getChildren().size() > 2) return;
         showing = false;
-        root.getForeground().restyle(WrapperEffect.NONE, 7);
         reset();
+        root.getForeground().restyle(WrapperEffect.NONE, 999);
     }
 
     public void reset() {

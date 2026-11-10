@@ -87,6 +87,7 @@ public class AlertImpl extends DialogAbstract<Alert> implements Alert {
 
     @Override
     public void hide() {
+        if (alert == null) return;
         root.flow().remove(alert.getParent());
         root.unblock();
         reset();

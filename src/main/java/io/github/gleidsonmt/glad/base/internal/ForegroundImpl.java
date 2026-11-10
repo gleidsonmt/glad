@@ -70,7 +70,6 @@ public class ForegroundImpl extends StackPane implements Foreground {
 
     @Override
     public void show() {
-
         this.toFront();
     }
 
