@@ -32,7 +32,6 @@ public interface ComponentAction {
                     if (change.getSet().contains(PseudoClass.getPseudoClass(item))) {
                         node.getStyleClass().addAll(opt);
                     } else {
-                        System.out.println("opt = " + opt);
                         node.getStyleClass().removeAll(opt);
                     }
                 }

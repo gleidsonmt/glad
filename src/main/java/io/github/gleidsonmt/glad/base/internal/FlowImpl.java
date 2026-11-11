@@ -380,7 +380,7 @@ public class FlowImpl extends DialogAbstract<Flow> implements Flow {
 
     @Override
     public void hide() {
-//        root.getChildren().remove(this.content);
-//        reset();
+        root.getChildren().remove(this.content);
+        reset();
     }
 }

@@ -1,5 +1,4 @@
 
-
 package io.github.gleidsonmt.glad.demos;
 
 import javafx.application.Application;

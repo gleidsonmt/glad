@@ -24,6 +24,7 @@ public class HotTools {
     }
 
     public static void init(Scene scene, Launch.MODE mode) {
+        System.out.println("mode = " + mode);
         switch (mode) {
             case DEV:
                 watcher = installWatcher(scene, true);

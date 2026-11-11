@@ -2,6 +2,8 @@
 
 package io.github.gleidsonmt.glad.controls.button;
 
+import io.github.gleidsonmt.glad.controls.icon.Icon;
+import io.github.gleidsonmt.glad.controls.icon.SVGIcon;
 import javafx.beans.DefaultProperty;
 import javafx.scene.Node;
 import javafx.scene.control.ContentDisplay;
@@ -13,12 +15,12 @@ import javafx.scene.control.ContentDisplay;
 @DefaultProperty("control")
 public class IconButton extends Button {
 
-    public IconButton() {
-        this(null);
-    }
-
     public IconButton(Node icon) {
         this(icon, false);
+    }
+
+    public IconButton(Icon icon) {
+        this(new SVGIcon(icon), false);
     }
 
     public IconButton(Node icon, boolean inside) {
@@ -26,6 +28,7 @@ public class IconButton extends Button {
     }
 
     public IconButton(Node icon, boolean inside, String[] classes) {
+        super("Button");
         setGraphic(icon);
 //        getStyleClass().addAll(inside ? "inside-button" : "icon-button", "w-40", "h-40");
 //        getStyleClass().addAll(inside ? "inside-button" : "icon-button", "w-40", "h-40");

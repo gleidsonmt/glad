@@ -31,7 +31,8 @@ public class ClassConverter {
             {"spacing", "-fx-spacing: "},
             {"icon", "-icon-color: "},
             {"display", "-fx-content-display: "},
-            {"bg", " -fx-background-color: "}
+            {"bg", " -fx-background-color: "},
+            {"fill", "-fx-fill: "},
     };
 
     private final String[] modifiers = {
@@ -150,7 +151,7 @@ public class ClassConverter {
                         if (!isNumber(value)) break;
                     }
 
-                    if (prefix.equals("bg")) {
+                    if (prefix.equals("bg") || prefix.equals("fill")) {
                         if (value.equals("background")) {
                             value = "-fx-background";
                         } else if (isCustomColor(value)) {
