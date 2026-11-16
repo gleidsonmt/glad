@@ -16,6 +16,10 @@
     -track-color: -light-gray;
 }
 
+.text {
+    -fx-font-family: Poppins Regular;
+}
+
 .root:dark-theme {
     -fx-background: derive(#1c1c1e, 20%);
 
